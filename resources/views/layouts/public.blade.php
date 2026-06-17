@@ -83,7 +83,7 @@
             <!-- Logo Section -->
             <div class="flex items-center">
                 <a href="{{ url('/') }}" class="flex items-center group">
-                    @include('partials.logo', ['idSuffix' => 'nav', 'class' => 'h-10 w-auto', 'icon_only' => false, 'color_mode' => 'light'])
+                    @include('partials.logo', ['idSuffix' => 'nav', 'class' => 'h-12 lg:h-14 w-auto max-w-[200px]', 'icon_only' => false, 'color_mode' => 'light'])
                 </a>
                 <!-- Vertical Separator Line -->
                 <div class="hidden lg:block h-8 w-[1px] bg-slate-200 mx-6"></div>
@@ -185,7 +185,7 @@
                     <!-- Column 1: Brand & Tagline -->
                     <div class="md:col-span-3 space-y-6">
                         <a href="{{ url('/') }}" class="flex items-center">
-                            @include('partials.logo', ['idSuffix' => 'foot', 'class' => 'h-10 w-auto', 'icon_only' => false, 'color_mode' => 'light'])
+                            @include('partials.logo', ['idSuffix' => 'foot', 'class' => 'h-12 lg:h-14 w-auto max-w-[200px]', 'icon_only' => false, 'color_mode' => 'light'])
                         </a>
                         <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-sans">
                             Real experience. Real quality. London’s trusted construction partner.
