@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+    <defs>
+        <linearGradient id="silver-grad-favicon" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F8FAFC" />
+            <stop offset="35%" stop-color="#CBD5E1" />
+            <stop offset="70%" stop-color="#64748B" />
+            <stop offset="100%" stop-color="#334155" />
+        </linearGradient>
+        <linearGradient id="teal-grad-favicon" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#38BDF8" />
+            <stop offset="50%" stop-color="#0284C7" />
+            <stop offset="100%" stop-color="#1E3A8A" />
+        </linearGradient>
+        <filter id="drop-shadow-favicon" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#000" flood-opacity="0.4" />
+        </filter>
+        
+        <!-- Reusable Swirl/Swoosh path -->
+        <path id="swoosh-favicon" d="M 50,6 C 68,6 84,18 89,35 C 92,45 91,55 86,64 C 85,66 82,64 83,62 C 87,54 88,45 85,37 C 81,23 68,12 50,11 Z" fill="url(#teal-grad-favicon)" />
+    </defs>
+    <g filter="url(#drop-shadow-favicon)">
+        <!-- Swirling Outer 360 Ring (Vortex of 3 Swooshes) -->
+        <use href="#swoosh-favicon" />
+        <use href="#swoosh-favicon" transform="rotate(120 50 50)" />
+        <use href="#swoosh-favicon" transform="rotate(240 50 50)" />
+
+        <!-- Inner Drafting / Architectural Reference Circle -->
+        <circle cx="50" cy="50" r="33.5" stroke="url(#silver-grad-favicon)" stroke-width="1.2" stroke-dasharray="3 2" fill="none" opacity="0.6" />
+        <circle cx="50" cy="50" r="31.5" stroke="url(#teal-grad-favicon)" stroke-width="0.8" fill="none" opacity="0.4" />
+
+        <!-- Blueprint / Drafting Crosshairs with Ticks -->
+        <!-- Vertical Top -->
+        <line x1="50" y1="18" x2="50" y2="5" stroke="url(#silver-grad-favicon)" stroke-width="1" opacity="0.7" />
+        <line x1="47.5" y1="10" x2="52.5" y2="10" stroke="url(#silver-grad-favicon)" stroke-width="1" opacity="0.7" />
+        <!-- Vertical Bottom -->
+        <line x1="50" y1="80" x2="50" y2="95" stroke="url(#silver-grad-favicon)" stroke-width="1" opacity="0.7" />
+        <line x1="47.5" y1="90" x2="52.5" y2="90" stroke="url(#silver-grad-favicon)" stroke-width="1" opacity="0.7" />
+        <!-- Horizontal Left -->
+        <line x1="29" y1="50" x2="5" y2="50" stroke="url(#silver-grad-favicon)" stroke-width="1" opacity="0.7" />
+        <line x1="10" y1="47.5" x2="10" y2="52.5" stroke="url(#silver-grad-favicon)" stroke-width="1" opacity="0.7" />
+        <!-- Horizontal Right -->
+        <line x1="71" y1="50" x2="95" y2="50" stroke="url(#silver-grad-favicon)" stroke-width="1" opacity="0.7" />
+        <line x1="90" y1="47.5" x2="90" y2="52.5" stroke="url(#silver-grad-favicon)" stroke-width="1" opacity="0.7" />
+
+        <!-- Hollow House Outline -->
+        <path d="M 50,18 L 65,30 L 65,24 L 71,24 L 71,34.8 L 80,42 L 71,42 L 71,64 L 50,80 L 29,64 L 29,42 L 20,42 Z M 50,24 L 67,37 L 67,61 L 50,74 L 33,61 L 33,37 Z" fill="url(#teal-grad-favicon)" fill-rule="evenodd" />
+
+        <!-- Monogram CR / C3 -->
+        <!-- Left letter 'C' -->
+        <path d="M 45.5,37 L 39.5,37 L 36.5,40 L 36.5,58 L 39.5,61 L 45.5,61" stroke="url(#silver-grad-favicon)" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" />
+        
+        <!-- Center vertical line -->
+        <line x1="50" y1="37" x2="50" y2="61" stroke="url(#silver-grad-favicon)" stroke-width="3.5" stroke-linecap="square" />
+        
+        <!-- Right letter '3' -->
+        <path d="M 54.5,37 L 60.5,37 L 63.5,40 L 63.5,47 L 58.5,49 M 58.5,49 L 63.5,51 L 63.5,58 L 60.5,61 L 54.5,61" stroke="url(#silver-grad-favicon)" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" />
+    </g>
+</svg>

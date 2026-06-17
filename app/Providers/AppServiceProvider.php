@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        if (\Illuminate\Support\Facades\Schema::hasTable('site_contents')) {
+            \Illuminate\Support\Facades\View::composer('*', function ($view) {
+                static $content = null;
+                if ($content === null) {
+                    $content = \App\Models\SiteContent::pluck('value', 'key')->all();
+                }
+                $view->with('content', $content);
+            });
+        }
+    }
+}
