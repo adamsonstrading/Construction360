@@ -544,40 +544,92 @@
 
             <!-- Team Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                @forelse($team as $member)
-                    <div class="bg-white border border-slate-150 rounded-2xl p-8 flex flex-col items-center text-center hover:border-slate-350 transition-all duration-300">
-                        @php
-                            $words = explode(' ', trim($member->name));
-                            $initials = strtoupper(substr($words[0] ?? 'T', 0, 1) . (isset($words[1]) ? substr($words[1], 0, 1) : ''));
-                        @endphp
-                        <div class="h-28 w-28 rounded-full bg-slate-950 border-2 border-aqua flex items-center justify-center mb-6 shadow-md relative overflow-hidden select-none flex-shrink-0">
-                            @if($member->image_url)
-                                <img src="{{ asset($member->image_url) }}" alt="{{ $member->name }}" class="object-cover h-full w-full">
-                            @else
-                                <span class="text-2xl font-black tracking-wider font-sans text-white">{{ $initials }}</span>
-                                <div class="absolute inset-0 bg-gradient-to-tr from-aqua/10 to-transparent"></div>
-                            @endif
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 tracking-tight">{{ $member->name }}</h3>
-                        <p class="text-[10px] font-bold text-aqua uppercase tracking-widest mt-1">{{ $member->role }}</p>
-                        <p class="mt-4 text-xs text-slate-500 leading-relaxed font-sans max-w-xs">
-                            {{ $member->description }}
-                        </p>
-                        
-                        <!-- Accreditations row -->
-                        <div class="mt-6 flex flex-wrap gap-1.5 justify-center">
-                            @foreach(explode(',', $member->accreditations ?? '') as $badge)
-                                @if(trim($badge))
-                                    <span class="text-[9px] font-bold uppercase tracking-wider text-slate-650 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">{{ trim($badge) }}</span>
-                                @endif
-                            @endforeach
-                        </div>
+                <!-- Member 1 -->
+                @if(!empty($content['team_member_1_name']))
+                <div class="bg-white border border-slate-150 rounded-2xl p-8 flex flex-col items-center text-center hover:border-slate-350 transition-all duration-300">
+                    @php
+                        $words1 = explode(' ', trim($content['team_member_1_name']));
+                        $initials1 = strtoupper(substr($words1[0] ?? 'T', 0, 1) . (isset($words1[1]) ? substr($words1[1], 0, 1) : ''));
+                    @endphp
+                    <div class="h-28 w-28 rounded-full bg-slate-950 border-2 border-aqua flex items-center justify-center mb-6 shadow-md relative overflow-hidden select-none flex-shrink-0">
+                        <span class="text-2xl font-black tracking-wider font-sans text-white">{{ $initials1 }}</span>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-aqua/10 to-transparent"></div>
                     </div>
-                @empty
+                    <h3 class="text-lg font-bold text-slate-900 tracking-tight">{{ $content['team_member_1_name'] }}</h3>
+                    <p class="text-[10px] font-bold text-aqua uppercase tracking-widest mt-1">{{ $content['team_member_1_role'] ?? '' }}</p>
+                    <p class="mt-4 text-xs text-slate-500 leading-relaxed font-sans max-w-xs">
+                        {{ $content['team_member_1_description'] ?? '' }}
+                    </p>
+                    
+                    <div class="mt-6 flex flex-wrap gap-1.5 justify-center">
+                        @foreach(explode(',', $content['team_member_1_accreditations'] ?? '') as $badge)
+                            @if(trim($badge))
+                                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-650 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">{{ trim($badge) }}</span>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+
+                <!-- Member 2 -->
+                @if(!empty($content['team_member_2_name']))
+                <div class="bg-white border border-slate-150 rounded-2xl p-8 flex flex-col items-center text-center hover:border-slate-350 transition-all duration-300">
+                    @php
+                        $words2 = explode(' ', trim($content['team_member_2_name']));
+                        $initials2 = strtoupper(substr($words2[0] ?? 'T', 0, 1) . (isset($words2[1]) ? substr($words2[1], 0, 1) : ''));
+                    @endphp
+                    <div class="h-28 w-28 rounded-full bg-slate-950 border-2 border-aqua flex items-center justify-center mb-6 shadow-md relative overflow-hidden select-none flex-shrink-0">
+                        <span class="text-2xl font-black tracking-wider font-sans text-white">{{ $initials2 }}</span>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-aqua/10 to-transparent"></div>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 tracking-tight">{{ $content['team_member_2_name'] }}</h3>
+                    <p class="text-[10px] font-bold text-aqua uppercase tracking-widest mt-1">{{ $content['team_member_2_role'] ?? '' }}</p>
+                    <p class="mt-4 text-xs text-slate-500 leading-relaxed font-sans max-w-xs">
+                        {{ $content['team_member_2_description'] ?? '' }}
+                    </p>
+                    
+                    <div class="mt-6 flex flex-wrap gap-1.5 justify-center">
+                        @foreach(explode(',', $content['team_member_2_accreditations'] ?? '') as $badge)
+                            @if(trim($badge))
+                                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-650 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">{{ trim($badge) }}</span>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+
+                <!-- Member 3 -->
+                @if(!empty($content['team_member_3_name']))
+                <div class="bg-white border border-slate-150 rounded-2xl p-8 flex flex-col items-center text-center hover:border-slate-350 transition-all duration-300">
+                    @php
+                        $words3 = explode(' ', trim($content['team_member_3_name']));
+                        $initials3 = strtoupper(substr($words3[0] ?? 'T', 0, 1) . (isset($words3[1]) ? substr($words3[1], 0, 1) : ''));
+                    @endphp
+                    <div class="h-28 w-28 rounded-full bg-slate-950 border-2 border-aqua flex items-center justify-center mb-6 shadow-md relative overflow-hidden select-none flex-shrink-0">
+                        <span class="text-2xl font-black tracking-wider font-sans text-white">{{ $initials3 }}</span>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-aqua/10 to-transparent"></div>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 tracking-tight">{{ $content['team_member_3_name'] }}</h3>
+                    <p class="text-[10px] font-bold text-aqua uppercase tracking-widest mt-1">{{ $content['team_member_3_role'] ?? '' }}</p>
+                    <p class="mt-4 text-xs text-slate-500 leading-relaxed font-sans max-w-xs">
+                        {{ $content['team_member_3_description'] ?? '' }}
+                    </p>
+                    
+                    <div class="mt-6 flex flex-wrap gap-1.5 justify-center">
+                        @foreach(explode(',', $content['team_member_3_accreditations'] ?? '') as $badge)
+                            @if(trim($badge))
+                                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-650 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">{{ trim($badge) }}</span>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+
+                @if(empty($content['team_member_1_name']) && empty($content['team_member_2_name']) && empty($content['team_member_3_name']))
                     <div class="col-span-3 text-center py-16 bg-slate-50 border border-slate-200 rounded-xl">
                         <p class="text-sm text-slate-500">No team members listed yet.</p>
                     </div>
-                @endforelse
+                @endif
             </div>
         </div>
     </section>
