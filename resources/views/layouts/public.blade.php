@@ -102,12 +102,8 @@
             <!-- Desktop Right: Mail Link & Button -->
             <div class="hidden lg:flex items-center space-x-6">
                 <!-- Mail Link (Replaces number) -->
-                <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="flex items-center space-x-2 text-xs font-bold text-slate-700 hover:text-aqua transition-colors group">
-                    <span class="text-slate-400">Email:</span>
+                <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="flex items-center text-xs font-bold text-slate-700 hover:text-aqua transition-colors group">
                     <span class="underline decoration-aqua decoration-2 underline-offset-4">{{ $content['header_email'] ?? 'info@construction360.co' }}</span>
-                    <svg class="h-4 w-4 text-aqua group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                    </svg>
                 </a>
 
                 <!-- Pill-shape Button matching competitor green color -->
@@ -133,10 +129,7 @@
             <a href="{{ route('blog.index') }}" class="block text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors">News</a>
             <a href="{{ route('contact.index') }}" class="block text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors">Contact</a>
             <div class="pt-4 border-t border-slate-100 flex flex-col space-y-3">
-                <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="text-xs font-bold text-slate-700 hover:text-aqua flex items-center space-x-2">
-                    <svg class="h-4 w-4 text-aqua" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                    </svg>
+                <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="text-xs font-bold text-slate-700 hover:text-aqua flex items-center">
                     <span>{{ $content['header_email'] ?? 'info@construction360.co' }}</span>
                 </a>
                 <a href="#" onclick="openTenderModal(); return false;" class="block text-center py-3 text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white rounded-full shadow-sm">
