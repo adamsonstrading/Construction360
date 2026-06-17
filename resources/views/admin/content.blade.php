@@ -153,6 +153,91 @@
                 </div>
             </div>
 
+            <!-- Section Headers Group -->
+            <div class="space-y-6 pt-4">
+                <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider border-b border-slate-150 pb-2 flex items-center">
+                    <span class="h-2 w-2 rounded-full bg-[#008080] mr-2"></span>
+                    Landing Page Section Headers
+                </h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Services Header -->
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
+                        <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Services Section</span>
+                        <div>
+                            <label for="services_label" class="block text-xs font-semibold text-slate-700">Label (Small Text)</label>
+                            <input type="text" name="services_label" id="services_label" value="{{ old('services_label', $content['services_label'] ?? 'Marking Benchmarks') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="services_title" class="block text-xs font-semibold text-slate-700">Title</label>
+                            <input type="text" name="services_title" id="services_title" value="{{ old('services_title', $content['services_title'] ?? 'Principle Contractor in construction') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                    </div>
+
+                    <!-- Projects Header -->
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
+                        <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Projects Section</span>
+                        <div>
+                            <label for="projects_label" class="block text-xs font-semibold text-slate-700">Label (Small Text)</label>
+                            <input type="text" name="projects_label" id="projects_label" value="{{ old('projects_label', $content['projects_label'] ?? 'Selected Scopes') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="projects_title" class="block text-xs font-semibold text-slate-700">Title</label>
+                            <input type="text" name="projects_title" id="projects_title" value="{{ old('projects_title', $content['projects_title'] ?? 'Explore our diverse portfolio') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                    </div>
+
+                    <!-- Why Choose Us Header -->
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
+                        <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Why Choose Us Section</span>
+                        <div>
+                            <label for="assurances_label" class="block text-xs font-semibold text-slate-700">Label (Small Text)</label>
+                            <input type="text" name="assurances_label" id="assurances_label" value="{{ old('assurances_label', $content['assurances_label'] ?? 'Operational Assurances') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="assurances_title" class="block text-xs font-semibold text-slate-700">Title</label>
+                            <input type="text" name="assurances_title" id="assurances_title" value="{{ old('assurances_title', $content['assurances_title'] ?? 'An exceptional quality that can\'t be beaten') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                    </div>
+
+                    <!-- Testimonials Header -->
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
+                        <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Testimonials Section</span>
+                        <div>
+                            <label for="testimonials_label" class="block text-xs font-semibold text-slate-700">Label (Small Text)</label>
+                            <input type="text" name="testimonials_label" id="testimonials_label" value="{{ old('testimonials_label', $content['testimonials_label'] ?? 'Client Feedback') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="testimonials_title" class="block text-xs font-semibold text-slate-700">Title</label>
+                            <input type="text" name="testimonials_title" id="testimonials_title" value="{{ old('testimonials_title', $content['testimonials_title'] ?? 'Verified Testimonials') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                    </div>
+
+                    <!-- Blog Header -->
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
+                        <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Blog Section</span>
+                        <div>
+                            <label for="blog_label" class="block text-xs font-semibold text-slate-700">Label (Small Text)</label>
+                            <input type="text" name="blog_label" id="blog_label" value="{{ old('blog_label', $content['blog_label'] ?? 'Blueprints & Blue Skies') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="blog_title" class="block text-xs font-semibold text-slate-700">Title</label>
+                            <input type="text" name="blog_title" id="blog_title" value="{{ old('blog_title', $content['blog_title'] ?? 'Discover inspiration and trends') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- About Us Group -->
             <div class="space-y-4 pt-4">
                 <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider border-b border-slate-150 pb-2 flex items-center">

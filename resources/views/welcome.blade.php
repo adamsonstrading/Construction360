@@ -210,9 +210,9 @@
             <!-- Header -->
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-20">
                 <div class="max-w-2xl">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#84cc16]">Marking Benchmarks</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#84cc16]">{{ $content['services_label'] ?? 'Marking Benchmarks' }}</span>
                     <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
-                        Principle Contractor in construction
+                        {{ $content['services_title'] ?? 'Principle Contractor in construction' }}
                     </h2>
                 </div>
                 <div>
@@ -275,9 +275,9 @@
             <!-- Section Header -->
             <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-20">
                 <div class="max-w-2xl">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-aqua">Selected Scopes</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-aqua">{{ $content['projects_label'] ?? 'Selected Scopes' }}</span>
                     <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
-                        Explore our diverse portfolio
+                        {{ $content['projects_title'] ?? 'Explore our diverse portfolio' }}
                     </h2>
                 </div>
                 
@@ -361,9 +361,9 @@
     <section id="why-choose-us" class="py-28 bg-white border-b border-slate-100 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-aqua">Operational Assurances</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-aqua">{{ $content['assurances_label'] ?? 'Operational Assurances' }}</span>
                 <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
-                    An exceptional quality that can't be beaten
+                    {{ $content['assurances_title'] ?? "An exceptional quality that can't be beaten" }}
                 </h2>
             </div>
 
@@ -435,8 +435,8 @@
     <section class="py-28 bg-slate-50/50 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-aqua">Client Feedback</span>
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">Verified Testimonials</h2>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-aqua">{{ $content['testimonials_label'] ?? 'Client Feedback' }}</span>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">{{ $content['testimonials_title'] ?? 'Verified Testimonials' }}</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -587,9 +587,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
             <div class="max-w-3xl mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#84cc16]">Blueprints & Blue Skies</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#84cc16]">{{ $content['blog_label'] ?? 'Blueprints & Blue Skies' }}</span>
                 <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
-                    Discover inspiration and trends
+                    {{ $content['blog_title'] ?? 'Discover inspiration and trends' }}
                 </h2>
             </div>
 

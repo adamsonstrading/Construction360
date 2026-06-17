@@ -60,6 +60,18 @@ class ContentController extends Controller
             // Header Top Bar & Corporate Contact
             'header_email' => 'required|email|max:255',
 
+            // Section Headers
+            'services_label' => 'required|string|max:255',
+            'services_title' => 'required|string|max:255',
+            'projects_label' => 'required|string|max:255',
+            'projects_title' => 'required|string|max:255',
+            'assurances_label' => 'required|string|max:255',
+            'assurances_title' => 'required|string|max:255',
+            'testimonials_label' => 'required|string|max:255',
+            'testimonials_title' => 'required|string|max:255',
+            'blog_label' => 'required|string|max:255',
+            'blog_title' => 'required|string|max:255',
+
             // Team Section Headers
             'team_section_label' => 'required|string|max:255',
             'team_section_title' => 'required|string|max:255',
