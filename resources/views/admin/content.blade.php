@@ -442,22 +442,59 @@
 
             <!-- Corporate Contacts Settings -->
             <div class="space-y-4 pt-4">
-                <h4 class="text-sm font-bold text-[#008080] uppercase tracking-wider border-b border-slate-150 pb-2 flex items-center">
-                    <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    Corporate Contact Info
+            <!-- Corporate Contact Info -->
+            <div class="space-y-4 pt-4">
+                <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider border-b border-slate-150 pb-2 flex items-center">
+                    <span class="h-2 w-2 rounded-full bg-[#008080] mr-2"></span>
+                    Corporate Header & Contact
                 </h4>
-                <div>
-                    <label for="header_email" class="block text-sm font-semibold text-slate-700">Corporate Email Address</label>
-                    <div class="mt-1.5">
-                        <input type="email" name="header_email" id="header_email" value="{{ old('header_email', $content['header_email'] ?? '') }}" required
-                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="header_email" class="block text-sm font-semibold text-slate-700">Corporate Email Address</label>
+                        <div class="mt-1.5">
+                            <input type="email" name="header_email" id="header_email" value="{{ old('header_email', $content['header_email'] ?? '') }}" required
+                                class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
+                        </div>
+                        @error('header_email')
+                            <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                        @enderror
                     </div>
-                    <p class="mt-1 text-xs text-slate-400">The central corporate email shown on the top bar, footer, and subpages.</p>
-                    @error('header_email')
-                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
-                    @enderror
+
+                    <div>
+                        <label for="header_phone" class="block text-sm font-semibold text-slate-700">Corporate Phone Number</label>
+                        <div class="mt-1.5">
+                            <input type="text" name="header_phone" id="header_phone" value="{{ old('header_phone', $content['header_phone'] ?? '+44 7123 456789') }}" required
+                                class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
+                        </div>
+                        @error('header_phone')
+                            <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div>
+                        <label for="contact_address" class="block text-sm font-semibold text-slate-700">Physical Address</label>
+                        <div class="mt-1.5">
+                            <textarea rows="3" name="contact_address" id="contact_address" required
+                                class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">{{ old('contact_address', $content['contact_address'] ?? '6a, Kingfisher House, Restmor Way, Hackbridge, Wallington SM6 7AH') }}</textarea>
+                        </div>
+                        @error('contact_address')
+                            <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="contact_map_url" class="block text-sm font-semibold text-slate-700">Google Maps URL</label>
+                        <div class="mt-1.5">
+                            <input type="url" name="contact_map_url" id="contact_map_url" value="{{ old('contact_map_url', $content['contact_map_url'] ?? 'https://maps.app.goo.gl/91D2EVyYh2s8dC5X8') }}"
+                                class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
+                        </div>
+                        @error('contact_map_url')
+                            <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
 

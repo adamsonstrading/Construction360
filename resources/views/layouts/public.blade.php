@@ -226,7 +226,7 @@
 
                         <!-- Address -->
                         <p class="text-xs sm:text-sm text-slate-550 font-sans leading-relaxed font-medium">
-                            Warehouse 6a, Kingfisher House, Restmor Way, Hackbridge, London SM6 7AH
+                            {{ $content['contact_address'] ?? '6a, Kingfisher House, Restmor Way, Hackbridge, Wallington SM6 7AH' }}
                         </p>
 
                         <!-- Social Media Links -->

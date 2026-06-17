@@ -100,12 +100,12 @@
                         <div>
                             <h3 class="text-base font-extrabold text-slate-900 font-sans">Location</h3>
                             <p class="text-xs text-slate-500 font-semibold font-sans mt-1 leading-relaxed line-clamp-2">
-                                6a, Kingfisher House, Restmor Way, Hackbridge, Wallington SM6 7AH
+                                {{ $content['contact_address'] ?? '6a, Kingfisher House, Restmor Way, Hackbridge, Wallington SM6 7AH' }}
                             </p>
                         </div>
                     </div>
                     <div class="pt-6">
-                        <a href="https://maps.app.goo.gl/91D2EVyYh2s8dC5X8" target="_blank" rel="noopener noreferrer"
+                        <a href="{{ $content['contact_map_url'] ?? 'https://maps.app.goo.gl/91D2EVyYh2s8dC5X8' }}" target="_blank" rel="noopener noreferrer"
                            class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white transition-all block text-center">
                             Visit Us
                         </a>

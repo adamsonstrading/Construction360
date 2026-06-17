@@ -59,6 +59,9 @@ class ContentController extends Controller
 
             // Header Top Bar & Corporate Contact
             'header_email' => 'required|email|max:255',
+            'header_phone' => 'nullable|string|max:255',
+            'contact_address' => 'nullable|string|max:500',
+            'contact_map_url' => 'nullable|url|max:1000',
 
             // Section Headers
             'services_label' => 'required|string|max:255',
