@@ -66,3 +66,5 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     // Team CRUD
     Route::resource('team', TeamController::class);
 });
+
+Route::get('/sync-live-data', function () { Artisan::call('db:seed', ['--class' => 'LiveSyncSeeder']); return 'Live site successfully synced with local database!'; });
