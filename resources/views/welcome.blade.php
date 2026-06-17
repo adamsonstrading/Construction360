@@ -103,60 +103,99 @@
         </div>
     </section>
 
-    <!-- Philosophy Section -->
-    <section id="about" class="py-28 bg-slate-950 text-white border-b border-slate-900 scroll-mt-20">
+    <!-- About Us Section Redesign -->
+    <section id="about" class="py-24 bg-white text-slate-900 border-b border-slate-100 scroll-mt-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
+            <!-- Huge Heading spanning top -->
+            <div class="mb-16">
+                <h2 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#0f284d] tracking-tighter leading-[1.05] max-w-3xl">
+                    We build more than just structures,<br>we build dreams
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
                 
-                <!-- Left Column (Heading & Copy) -->
-                <div class="lg:col-span-7 space-y-8">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#84cc16]">Shaping Skylines</span>
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tighter leading-none">
-                        We build more than just structures, we build dreams
-                    </h2>
-                    
-                    <div class="space-y-6 text-slate-400 font-sans text-sm sm:text-base leading-relaxed">
-                        <p class="border-l-2 border-aqua pl-6 py-1 text-slate-200">
+                <!-- Left Column (Main Image) -->
+                <div class="lg:col-span-4 h-full relative group rounded-2xl overflow-hidden shadow-sm border border-slate-200">
+                    <img src="{{ asset('images/about_engineering.png') }}" alt="Construction 360 Building" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[400px]">
+                </div>
+
+                <!-- Middle Column (Vision, Mission, Values) -->
+                <div class="lg:col-span-4 space-y-10 py-4 flex flex-col justify-center pl-0 lg:pl-4">
+                    <!-- Vision -->
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 text-[#0f284d]">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                            </svg>
+                            <h3 class="text-xl font-bold tracking-tight">Our vision</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">
                             Shaping London's skyline through innovative design and exceptional construction.
                         </p>
-                        <p>
+                    </div>
+                    
+                    <!-- Mission -->
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 text-[#0f284d]">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.36c-5.91.5-9.25-4.14-9.25-9.14A9 9 0 019.5 3a5.98 5.98 0 014.28 1.48m5.84 7.36l-3.32-3.32m3.32 3.32A7.95 7.95 0 0019.5 12c0-2.28-.95-4.34-2.48-5.8m0 0L14 3.14m3.02 3.08a7.96 7.96 0 00-6.1-2.45m0 0l-1.32 1.32" />
+                            </svg>
+                            <h3 class="text-xl font-bold tracking-tight">Our mission</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">
                             To deliver outstanding residential and commercial developments across London, combining visionary design with meticulous craftsmanship and unwavering client commitment.
                         </p>
-                        <p class="text-xs uppercase tracking-widest text-white font-bold flex items-center space-x-2">
-                            <span class="h-1.5 w-1.5 rounded-full bg-aqua"></span>
-                            <span>Through Integrity, Excellence, Innovation, success along Partnership.</span>
+                    </div>
+
+                    <!-- Values -->
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 text-[#0f284d]">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <h3 class="text-xl font-bold tracking-tight">Our values</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Through Integrity, Excellence, Innovation, success along Partnership.
                         </p>
                     </div>
                 </div>
 
-                <!-- Right Column (CEO signature & Quote card) -->
-                <div class="lg:col-span-5 relative">
-                    <!-- Background Accent Line vector -->
-                    <div class="absolute -right-6 -bottom-6 w-full h-full border border-white/5 rounded-3xl pointer-events-none -z-10"></div>
-                    
-                    <div class="bg-slate-900/60 border border-slate-800 rounded-3xl overflow-hidden p-8 sm:p-10 shadow-2xl relative">
-                        <!-- Founder Image -->
-                        <div class="h-64 sm:h-80 w-full overflow-hidden rounded-2xl bg-slate-800 border border-slate-700 relative mb-8 group">
-                            <img src="{{ asset('images/about_engineering.png') }}" alt="Founder & CEO" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 opacity-95">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                <!-- Right Column (Green Card & Overlapping Image) -->
+                <div class="lg:col-span-4 relative mt-24 lg:mt-0 lg:pt-24 flex items-stretch">
+                    <!-- Overlapping image placed absolutely relative to this column -->
+                    <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-[85%] z-10 mix-blend-multiply drop-shadow-2xl opacity-90 hidden sm:block">
+                        <img src="{{ asset('images/about_overlap.png') }}" alt="Project cutout" class="w-full object-contain mix-blend-multiply drop-shadow-xl" style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+                    </div>
+
+                    <div class="bg-[#84cc16] text-[#0f284d] rounded-2xl p-10 flex flex-col justify-between relative shadow-2xl w-full">
+                        <!-- Content inside green card -->
+                        <div class="pt-16 sm:pt-24 z-20 relative">
+                            <p class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug">
+                                "With over 12 years of experience, we are committed to delivering premium quality & craftmanship."
+                            </p>
                         </div>
                         
-                        <!-- Quote text -->
-                        <p class="text-base sm:text-lg text-slate-100 italic leading-relaxed font-sans mb-6">
-                            "With over 12 years of experience, we are committed to delivering premium quality & craftsmanship."
-                        </p>
-                        
-                        <!-- Signature -->
-                        <div class="flex items-center justify-between border-t border-slate-800 pt-6">
-                            <div>
-                                <h4 class="text-sm font-bold uppercase tracking-wider text-white">Founder & CEO</h4>
-                                <p class="text-[10px] font-bold text-aqua uppercase tracking-widest mt-0.5">Construction 360 Ltd</p>
-                            </div>
-                            <div class="h-10 w-10 rounded-full border border-slate-800 flex items-center justify-center text-aqua">
-                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75" />
+                        <div class="mt-16 flex items-end justify-between z-20 relative">
+                            <span class="text-xs font-bold uppercase tracking-widest text-white">Founder & CEO</span>
+                            
+                            <!-- Stamp/Seal Graphic -->
+                            <div class="w-16 h-16 rounded-full border border-[#0f284d]/20 flex items-center justify-center opacity-40 animate-spin-slow">
+                                <svg viewBox="0 0 100 100" class="w-full h-full text-[#0f284d] fill-current">
+                                    <path id="curve" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" />
+                                    <text font-size="12" font-weight="bold" letter-spacing="2">
+                                        <textPath href="#curve" startOffset="0%">• CONSTRUCTION 360 • LONDON</textPath>
+                                    </text>
                                 </svg>
                             </div>
+                        </div>
+                        
+                        <!-- Accent graphics inside the card -->
+                        <div class="absolute inset-0 opacity-10 pointer-events-none rounded-2xl overflow-hidden">
+                            <svg class="absolute top-0 right-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <polygon points="0,100 100,0 100,100" fill="currentColor"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
