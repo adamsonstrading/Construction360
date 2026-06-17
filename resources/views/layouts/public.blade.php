@@ -90,19 +90,19 @@
             </div>
 
             <!-- Desktop Nav Links (Competitor Matched) -->
-            <nav id="desktop-nav" class="hidden lg:flex items-center space-x-6">
-                <a href="{{ url('/') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link">Home</a>
-                <a href="{{ url('/?scroll=about') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link" data-scroll="about">Who We Are</a>
-                <a href="{{ route('services.index') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link">Our Services</a>
-                <a href="{{ route('projects.index') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link">Projects</a>
-                <a href="{{ route('blog.index') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link">News</a>
-                <a href="{{ route('contact.index') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link">Contact</a>
+            <nav id="desktop-nav" class="hidden lg:flex items-center space-x-3 xl:space-x-6">
+                <a href="{{ url('/') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link whitespace-nowrap">Home</a>
+                <a href="{{ url('/?scroll=about') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link whitespace-nowrap" data-scroll="about">Who We Are</a>
+                <a href="{{ route('services.index') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link whitespace-nowrap">Our Services</a>
+                <a href="{{ route('projects.index') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link whitespace-nowrap">Projects</a>
+                <a href="{{ route('blog.index') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link whitespace-nowrap">News</a>
+                <a href="{{ route('contact.index') }}" class="nav-link text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-aqua transition-colors evoke-link whitespace-nowrap">Contact</a>
             </nav>
 
             <!-- Desktop Right: Mail Link & Button -->
-            <div class="hidden lg:flex items-center space-x-6">
+            <div class="hidden lg:flex items-center space-x-3 xl:space-x-6">
                 <!-- Mail Link (Replaces number) -->
-                <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="flex items-center space-x-2 text-xs font-bold text-slate-700 hover:text-aqua transition-colors group">
+                <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="hidden xl:flex items-center space-x-2 text-xs font-bold text-slate-700 hover:text-aqua transition-colors group whitespace-nowrap">
                     <span class="text-slate-400">Email:</span>
                     <span class="underline decoration-aqua decoration-2 underline-offset-4">{{ $content['header_email'] ?? 'info@construction360.co' }}</span>
                     <svg class="h-4 w-4 text-aqua group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -111,7 +111,7 @@
                 </a>
 
                 <!-- Pill-shape Button matching competitor green color -->
-                <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white rounded-full shadow-sm transition-all duration-200">
+                <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center justify-center px-4 xl:px-6 py-2.5 xl:py-3 text-[10px] xl:text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white rounded-full shadow-sm transition-all duration-200 whitespace-nowrap flex-shrink-0">
                     Get In Touch
                 </a>
             </div>
