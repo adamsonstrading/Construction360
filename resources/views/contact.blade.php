@@ -63,26 +63,26 @@
                     </div>
                 </div>
 
-                <!-- Card 2: Digital Mailbox -->
+                <!-- Card 2: Mobile Number -->
                 <div class="bg-white border border-slate-150 rounded-3xl p-8 shadow-lg hover:shadow-xl hover:border-slate-250 transition-all flex flex-col justify-between min-h-[240px]">
                     <div class="space-y-4">
-                        <!-- Icon -->
+                        <!-- Phone Icon -->
                         <div class="h-10 w-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-aqua">
                             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.375M9 18h3.375m-6.375-6h.008v.008H6V12zm0 3h.008v.008H6V15zm0 3h.008v.008H6V18zm6-9h.008v.008h-.008V9zm0 3h.008v.008h-.008V12zm0 3h.008v.008h-.008V15zm0 3h.008v.008h-.008V18zm6-9h.008v.008h-.008V9zm0 3h.008v.008h-.008V12zm0 3h.008v.008h-.008V15zm0 3h.008v.008h-.008V18zm-6-5.25h.008v.008h-.008v-.008zm-3-2.25h.008v.008H9V9.75zm-3 0h.008v.008H6V9.75z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-base font-extrabold text-slate-900 font-sans">Digital Mailbox</h3>
+                            <h3 class="text-base font-extrabold text-slate-900 font-sans">Mobile Number</h3>
                             <span class="text-xs font-semibold text-slate-500 font-sans block mt-1">
-                                Secure electronic audits only
+                                {{ $content['header_phone'] ?? '+44 7123 456789' }}
                             </span>
                         </div>
                     </div>
                     <div class="pt-6">
-                        <a href="#message-form" 
+                        <a href="tel:{{ $content['header_phone'] ?? '+447123456789' }}" 
                            class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white transition-all block text-center">
-                            Submit Brief
+                            Call Now
                         </a>
                     </div>
                 </div>
