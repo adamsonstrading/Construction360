@@ -30,8 +30,11 @@ class ContentController extends Controller
             
             'hero_title' => 'required|string|max:255',
             'hero_subtitle' => 'required|string|max:1000',
-            'about_text' => 'required|string',
-            'about_philosophy' => 'required|string',
+            'about_heading' => 'required|string',
+            'about_vision' => 'required|string',
+            'about_mission' => 'required|string',
+            'about_values' => 'required|string',
+            'about_quote' => 'required|string',
             
             // Operational Assurances
             'insurance_title' => 'required|string|max:255',

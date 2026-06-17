@@ -161,23 +161,56 @@
                 </h4>
 
                 <div>
-                    <label for="about_text" class="block text-sm font-semibold text-slate-700">Company Overview Text</label>
+                    <label for="about_heading" class="block text-sm font-semibold text-slate-700">About Section Heading</label>
                     <div class="mt-1.5">
-                        <textarea rows="4" name="about_text" id="about_text" required
-                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">{{ old('about_text', $content['about_text'] ?? '') }}</textarea>
+                        <textarea rows="2" name="about_heading" id="about_heading" required
+                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">{{ old('about_heading', $content['about_heading'] ?? '') }}</textarea>
                     </div>
-                    @error('about_text')
+                    @error('about_heading')
                         <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div>
-                    <label for="about_philosophy" class="block text-sm font-semibold text-slate-700">Operational Philosophy & Tendering Notice</label>
+                    <label for="about_vision" class="block text-sm font-semibold text-slate-700">Our Vision</label>
                     <div class="mt-1.5">
-                        <textarea rows="4" name="about_philosophy" id="about_philosophy" required
-                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">{{ old('about_philosophy', $content['about_philosophy'] ?? '') }}</textarea>
+                        <textarea rows="2" name="about_vision" id="about_vision" required
+                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">{{ old('about_vision', $content['about_vision'] ?? '') }}</textarea>
                     </div>
-                    @error('about_philosophy')
+                    @error('about_vision')
+                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="about_mission" class="block text-sm font-semibold text-slate-700">Our Mission</label>
+                    <div class="mt-1.5">
+                        <textarea rows="3" name="about_mission" id="about_mission" required
+                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">{{ old('about_mission', $content['about_mission'] ?? '') }}</textarea>
+                    </div>
+                    @error('about_mission')
+                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="about_values" class="block text-sm font-semibold text-slate-700">Our Values</label>
+                    <div class="mt-1.5">
+                        <textarea rows="2" name="about_values" id="about_values" required
+                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">{{ old('about_values', $content['about_values'] ?? '') }}</textarea>
+                    </div>
+                    @error('about_values')
+                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="about_quote" class="block text-sm font-semibold text-slate-700">Founder's Quote</label>
+                    <div class="mt-1.5">
+                        <textarea rows="2" name="about_quote" id="about_quote" required
+                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">{{ old('about_quote', $content['about_quote'] ?? '') }}</textarea>
+                    </div>
+                    @error('about_quote')
                         <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
                     @enderror
                 </div>

@@ -109,7 +109,7 @@
             <!-- Huge Heading spanning top -->
             <div class="mb-16">
                 <h2 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#0f284d] tracking-tighter leading-[1.05] max-w-3xl">
-                    We build more than just structures,<br>we build dreams
+                    {!! nl2br(e($content['about_heading'] ?? "We build more than just structures,\nwe build dreams")) !!}
                 </h2>
             </div>
             
@@ -131,7 +131,7 @@
                             <h3 class="text-xl font-bold tracking-tight">Our vision</h3>
                         </div>
                         <p class="text-slate-600 text-sm leading-relaxed">
-                            Shaping London's skyline through innovative design and exceptional construction.
+                            {{ $content['about_vision'] ?? "Shaping London's skyline through innovative design and exceptional construction." }}
                         </p>
                     </div>
                     
@@ -144,7 +144,7 @@
                             <h3 class="text-xl font-bold tracking-tight">Our mission</h3>
                         </div>
                         <p class="text-slate-600 text-sm leading-relaxed">
-                            To deliver outstanding residential and commercial developments across London, combining visionary design with meticulous craftsmanship and unwavering client commitment.
+                            {{ $content['about_mission'] ?? "To deliver outstanding residential and commercial developments across London, combining visionary design with meticulous craftsmanship and unwavering client commitment." }}
                         </p>
                     </div>
 
@@ -157,7 +157,7 @@
                             <h3 class="text-xl font-bold tracking-tight">Our values</h3>
                         </div>
                         <p class="text-slate-600 text-sm leading-relaxed">
-                            Through Integrity, Excellence, Innovation, success along Partnership.
+                            {{ $content['about_values'] ?? "Through Integrity, Excellence, Innovation, success along Partnership." }}
                         </p>
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                         <!-- Content inside green card -->
                         <div class="pt-16 sm:pt-24 z-20 relative">
                             <p class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug">
-                                "With over 12 years of experience, we are committed to delivering premium quality & craftmanship."
+                                "{{ $content['about_quote'] ?? "With over 12 years of experience, we are committed to delivering premium quality & craftmanship." }}"
                             </p>
                         </div>
                         
