@@ -177,12 +177,9 @@
                     
                     <!-- Column 1: Brand & Tagline -->
                     <div class="md:col-span-3 space-y-6">
-                        <a href="{{ url('/') }}" class="block -mt-2">
+                        <a href="{{ url('/') }}" class="block -mt-6">
                             @include('partials.logo', ['idSuffix' => 'foot', 'class' => 'w-full max-w-[220px] max-h-20 object-contain object-left-top', 'icon_only' => false, 'color_mode' => 'light'])
                         </a>
-                        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-sans pr-4">
-                            Real experience. Real quality. London’s trusted construction partner.
-                        </p>
                     </div>
 
                     <!-- Column 2: Bounded Middle Navigation Links -->
