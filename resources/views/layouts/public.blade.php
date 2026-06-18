@@ -176,7 +176,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
                     
                     <!-- Column 1: Brand & Tagline -->
-                    <div class="md:col-span-4 space-y-6">
+                    <div class="md:col-span-3 space-y-6">
                         <a href="{{ url('/') }}" class="flex items-center">
                             @include('partials.logo', ['idSuffix' => 'foot', 'class' => 'h-auto w-full max-w-[220px] object-contain', 'icon_only' => false, 'color_mode' => 'light'])
                         </a>
@@ -186,7 +186,7 @@
                     </div>
 
                     <!-- Column 2: Bounded Middle Navigation Links -->
-                    <div class="md:col-span-4 grid grid-cols-2 gap-x-4 gap-y-3.5 md:border-l md:border-r border-slate-150 px-0 md:px-8 lg:px-12">
+                    <div class="md:col-span-5 grid grid-cols-2 gap-x-4 gap-y-3.5 md:border-l md:border-r border-slate-150 px-0 md:px-8 lg:px-12">
                         <div class="space-y-3">
                             <a href="{{ url('/?scroll=about') }}" class="block text-xs sm:text-sm font-bold text-slate-700 hover:text-aqua transition-colors font-sans py-0.5">About Us</a>
                             <a href="{{ route('tendering') }}" class="block text-xs sm:text-sm font-bold text-slate-700 hover:text-aqua transition-colors font-sans py-0.5">Tendering Standard</a>
