@@ -165,13 +165,6 @@
                                     Verify you are human
                                 </label>
                             </div>
-                            <div class="flex flex-col items-end justify-center leading-none text-right">
-                                <!-- Cloudflare Mock Logo -->
-                                <div class="flex items-center space-x-1">
-                                    <span class="text-[9px] font-extrabold text-slate-400 font-sans uppercase tracking-widest">Cloudflare</span>
-                                </div>
-                                <span class="text-[7px] text-slate-400 mt-1 font-sans">Privacy • Terms</span>
-                            </div>
                         </div>
 
                         <!-- Name Inputs (split like competitor) -->
