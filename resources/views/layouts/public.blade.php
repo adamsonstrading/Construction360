@@ -178,7 +178,7 @@
                     <!-- Column 1: Brand & Tagline -->
                     <div class="md:col-span-3 space-y-6">
                         <a href="{{ url('/') }}" class="flex items-center">
-                            @include('partials.logo', ['idSuffix' => 'foot', 'class' => 'h-auto w-full max-w-[220px] object-contain', 'icon_only' => false, 'color_mode' => 'light'])
+                            @include('partials.logo', ['idSuffix' => 'foot', 'class' => 'w-full max-w-[220px] max-h-20 object-contain object-left', 'icon_only' => false, 'color_mode' => 'light'])
                         </a>
                         <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-sans pr-4">
                             Real experience. Real quality. London’s trusted construction partner.
