@@ -464,7 +464,7 @@
                     <div>
                         <label for="header_phone" class="block text-sm font-semibold text-slate-700">Corporate Phone Number</label>
                         <div class="mt-1.5">
-                            <input type="text" name="header_phone" id="header_phone" value="{{ old('header_phone', $content['header_phone'] ?? '+44 7123 456789') }}" required
+                            <input type="text" name="header_phone" id="header_phone" value="{{ old('header_phone', $content['header_phone'] ?? '+44 xxxxxx') }}" required
                                 class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
                         </div>
                         @error('header_phone')

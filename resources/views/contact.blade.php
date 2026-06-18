@@ -75,12 +75,13 @@
                         <div>
                             <h3 class="text-base font-extrabold text-slate-900 font-sans">Mobile Number</h3>
                             <span class="text-xs font-semibold text-slate-500 font-sans block mt-1">
-                                {{ $content['header_phone'] ?? '+44 7123 456789' }}
+                                {{ $content['header_phone'] ?? '+44 xxxxxx' }}
                             </span>
+                            <p class="text-slate-500 text-xs font-sans mt-1">Mon-Fri, 9am to 6pm</p>
                         </div>
                     </div>
                     <div class="pt-6">
-                        <a href="tel:{{ $content['header_phone'] ?? '+447123456789' }}" 
+                        <a href="tel:{{ $content['header_phone'] ?? '+44xxxxxx' }}" 
                            class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white transition-all block text-center">
                             Call Now
                         </a>
