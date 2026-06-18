@@ -176,17 +176,17 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
                     
                     <!-- Column 1: Brand & Tagline -->
-                    <div class="md:col-span-3 space-y-6">
+                    <div class="md:col-span-4 space-y-6">
                         <a href="{{ url('/') }}" class="flex items-center">
-                            @include('partials.logo', ['idSuffix' => 'foot', 'class' => 'h-54 w-auto max-w-[200px]', 'icon_only' => false, 'color_mode' => 'light'])
+                            @include('partials.logo', ['idSuffix' => 'foot', 'class' => 'h-16 sm:h-20 w-auto max-w-[280px]', 'icon_only' => false, 'color_mode' => 'light'])
                         </a>
-                        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-sans">
+                        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-sans pr-4">
                             Real experience. Real quality. London’s trusted construction partner.
                         </p>
                     </div>
 
                     <!-- Column 2: Bounded Middle Navigation Links -->
-                    <div class="md:col-span-5 grid grid-cols-2 gap-x-4 gap-y-3.5 md:border-l md:border-r border-slate-150 px-0 md:px-8 lg:px-12">
+                    <div class="md:col-span-4 grid grid-cols-2 gap-x-4 gap-y-3.5 md:border-l md:border-r border-slate-150 px-0 md:px-8 lg:px-12">
                         <div class="space-y-3">
                             <a href="{{ url('/?scroll=about') }}" class="block text-xs sm:text-sm font-bold text-slate-700 hover:text-aqua transition-colors font-sans py-0.5">About Us</a>
                             <a href="{{ route('tendering') }}" class="block text-xs sm:text-sm font-bold text-slate-700 hover:text-aqua transition-colors font-sans py-0.5">Tendering Standard</a>
