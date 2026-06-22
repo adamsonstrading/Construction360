@@ -260,8 +260,9 @@
                 </div>
 
                 <!-- Muted Copyright bar with competitor design line -->
-                <div class="border-t border-slate-150 mt-16 pt-8 text-center text-[10px] sm:text-xs text-slate-400 font-sans tracking-wide">
-                    Construction 360 Ltd © 2026 - All Rights reserved.
+                <div class="border-t border-slate-150 mt-16 pt-8 flex flex-col items-center justify-center text-center text-[10px] sm:text-xs text-slate-400 font-sans tracking-wide space-y-1">
+                    <span>This Company is Registered in England and Wales. Company number 17277526</span>
+                    <span>Construction 360 Ltd &copy; 2026 - All Rights reserved.</span>
                 </div>
             </div>
         </footer>
