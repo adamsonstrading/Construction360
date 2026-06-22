@@ -57,7 +57,7 @@
                     </div>
                     <div class="pt-6">
                         <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" 
-                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white transition-all block text-center">
+                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#328f95] hover:bg-[#266b70] hover:text-white transition-all block text-center">
                             Email Us
                         </a>
                     </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="pt-6">
                         <a href="tel:{{ $content['header_phone'] ?? '+44xxxxxx' }}" 
-                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white transition-all block text-center">
+                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#328f95] hover:bg-[#266b70] hover:text-white transition-all block text-center">
                             Call Now
                         </a>
                     </div>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="pt-6">
                         <a href="{{ $content['contact_map_url'] ?? 'https://maps.app.goo.gl/91D2EVyYh2s8dC5X8' }}" target="_blank" rel="noopener noreferrer"
-                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white transition-all block text-center">
+                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#328f95] hover:bg-[#266b70] hover:text-white transition-all block text-center">
                             Visit Us
                         </a>
                     </div>
@@ -200,7 +200,7 @@
                             <button type="submit"
                                     class="inline-flex items-center space-x-6 pl-8 pr-2.5 py-2.5 border border-slate-200 rounded-full text-slate-900 hover:border-slate-800 transition-all font-sans text-xs font-bold bg-white group hover:bg-slate-50">
                                 <span>Submit</span>
-                                <span class="h-8 w-8 rounded-full bg-[#84cc16] text-white flex items-center justify-center group-hover:bg-[#65a30d] transition-colors">
+                                <span class="h-8 w-8 rounded-full bg-[#328f95] text-white flex items-center justify-center group-hover:bg-[#266b70] transition-colors">
                                     <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                                     </svg>

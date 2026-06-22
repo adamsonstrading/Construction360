@@ -25,12 +25,12 @@
             <!-- Category Filter Pills Bar (Competitor-matched) -->
             <div class="flex flex-wrap gap-2.5 pb-10 border-b border-slate-100 mb-12">
                 <a href="{{ route('blog.index') }}" 
-                   class="px-5 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider transition-all {{ !request('category') ? 'bg-[#84cc16] text-white border-transparent' : 'border-slate-200 text-slate-600 hover:border-slate-400 bg-white' }}">
+                   class="px-5 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider transition-all {{ !request('category') ? 'bg-[#328f95] text-white border-transparent' : 'border-slate-200 text-slate-600 hover:border-slate-400 bg-white' }}">
                     All Posts
                 </a>
                 @foreach($categories as $cat)
                     <a href="{{ route('blog.index', ['category' => $cat]) }}" 
-                       class="px-5 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider transition-all {{ request('category') === $cat ? 'bg-[#84cc16] text-white border-transparent' : 'border-slate-200 text-slate-600 hover:border-slate-400 bg-white' }}">
+                       class="px-5 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider transition-all {{ request('category') === $cat ? 'bg-[#328f95] text-white border-transparent' : 'border-slate-200 text-slate-600 hover:border-slate-400 bg-white' }}">
                         {{ $cat }}
                     </a>
                 @endforeach
@@ -71,7 +71,7 @@
 
                                 <!-- Date & Category Meta Row -->
                                 <div class="flex items-center space-x-4 text-xs font-bold uppercase tracking-wider text-slate-400">
-                                    <span class="bg-[#84cc16] text-white px-3 py-1 rounded-md text-[10px] tracking-widest uppercase">
+                                    <span class="bg-[#328f95] text-white px-3 py-1 rounded-md text-[10px] tracking-widest uppercase">
                                         {{ $blog->category ?? 'Uncategorized' }}
                                     </span>
                                     <span>•</span>

@@ -107,7 +107,7 @@
                 </a>
 
                 <!-- Pill-shape Button matching competitor green color -->
-                <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white rounded-full shadow-sm transition-all duration-200">
+                <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#328f95] hover:bg-[#266b70] hover:text-white rounded-full shadow-sm transition-all duration-200">
                     Get In Touch
                 </a>
             </div>
@@ -132,7 +132,7 @@
                 <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="text-xs font-bold text-slate-700 hover:text-aqua flex items-center">
                     <span>{{ $content['header_email'] ?? 'info@construction360.co' }}</span>
                 </a>
-                <a href="#" onclick="openTenderModal(); return false;" class="block text-center py-3 text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white rounded-full shadow-sm">
+                <a href="#" onclick="openTenderModal(); return false;" class="block text-center py-3 text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#328f95] hover:bg-[#266b70] hover:text-white rounded-full shadow-sm">
                     Get In Touch
                 </a>
             </div>
@@ -156,7 +156,7 @@
 
         <!-- Pre-Footer CTA Content -->
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-20 lg:py-28 space-y-6">
-            <span class="text-[10px] font-bold uppercase tracking-widest text-[#84cc16]">Your Execution Partner</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#328f95]">Your Execution Partner</span>
             <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tighter leading-none font-heading">
                 Your Execution Partner
             </h2>
@@ -164,7 +164,7 @@
                 Whether you're exploring our premium architectural builds or envisioning a custom structural solution, we are here to bring your vision to life.
             </p>
             <div class="pt-4 flex justify-center">
-                <a href="#" onclick="openTenderModal(); return false;" class="inline-flex w-32 h-32 rounded-full bg-[#84cc16] hover:bg-[#65a30d] text-slate-950 hover:text-white font-bold text-xs tracking-wider uppercase items-center justify-center text-center transition-all duration-300 shadow-xl shadow-[#84cc16]/10 hover:scale-105">
+                <a href="#" onclick="openTenderModal(); return false;" class="inline-flex w-32 h-32 rounded-full bg-[#328f95] hover:bg-[#266b70] text-slate-950 hover:text-white font-bold text-xs tracking-wider uppercase items-center justify-center text-center transition-all duration-300 shadow-xl shadow-[#328f95]/10 hover:scale-105">
                     <span class="px-3">Get Your<br>Free<br>Quote</span>
                 </a>
             </div>

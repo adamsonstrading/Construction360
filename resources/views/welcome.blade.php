@@ -68,7 +68,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-12 lg:pb-20 pt-4 lg:pt-8">
                 <!-- Left Column: Content & Action Buttons -->
                 <div class="lg:col-span-6 space-y-8">
-                    <span class="text-xs font-bold uppercase tracking-widest text-[#84cc16]">Construction 360 Ltd</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#328f95]">Construction 360 Ltd</span>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-950 font-heading leading-tight">
                         {{ $content['hero_title'] ?? 'Integrated Construction & Premium Architectural Builds' }}
                     </h1>
@@ -94,7 +94,7 @@
                         
                         <!-- Floating Badge in bottom-left -->
                         <div class="absolute bottom-6 left-6 bg-slate-950/90 text-white backdrop-blur-sm px-4 py-2.5 rounded-lg border border-white/10 flex items-center space-x-2 shadow-lg">
-                            <span class="h-2 w-2 rounded-full bg-[#84cc16] animate-pulse"></span>
+                            <span class="h-2 w-2 rounded-full bg-[#328f95] animate-pulse"></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider">CSCS Approved / Safety Compliant</span>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                         <img src="{{ asset('images/about_overlap.png') }}" alt="Project cutout" class="w-full object-contain mix-blend-multiply drop-shadow-xl" style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
                     </div>
 
-                    <div class="bg-[#84cc16] text-[#0f284d] rounded-2xl p-10 flex flex-col justify-between relative shadow-2xl w-full">
+                    <div class="bg-[#328f95] text-[#0f284d] rounded-2xl p-10 flex flex-col justify-between relative shadow-2xl w-full">
                         <!-- Content inside green card -->
                         <div class="pt-16 sm:pt-24 z-20 relative">
                             <p class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug">
@@ -210,13 +210,13 @@
             <!-- Header -->
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-20">
                 <div class="max-w-2xl">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#84cc16]">{{ $content['services_label'] ?? 'Marking Benchmarks' }}</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#328f95]">{{ $content['services_label'] ?? 'Marking Benchmarks' }}</span>
                     <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
                         {{ $content['services_title'] ?? 'Principle Contractor in construction' }}
                     </h2>
                 </div>
                 <div>
-                    <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#84cc16] hover:bg-[#65a30d] hover:text-white px-6 py-3.5 rounded-full shadow-sm transition-all duration-200">
+                    <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#328f95] hover:bg-[#266b70] hover:text-white px-6 py-3.5 rounded-full shadow-sm transition-all duration-200">
                         Ask for a quote
                     </a>
                 </div>
@@ -494,38 +494,38 @@
                 <span>Accreditations</span>
                 <span class="text-aqua">•</span>
                 <span>Memberships</span>
-                <span class="text-[#84cc16]">•</span>
+                <span class="text-[#328f95]">•</span>
                 <span>Incorporation 2013</span>
                 <span class="text-aqua">•</span>
                 <span>ISO 9001 Certified</span>
-                <span class="text-[#84cc16]">•</span>
+                <span class="text-[#328f95]">•</span>
                 <span>ISO 14001 Certified</span>
                 <span class="text-aqua">•</span>
                 <span>Fleet Operator Recognition Scheme</span>
-                <span class="text-[#84cc16]">•</span>
+                <span class="text-[#328f95]">•</span>
                 <span>Federation of Master Builders</span>
                 <span class="text-aqua">•</span>
                 <span>ConstructionLine Silver membership</span>
-                <span class="text-[#84cc16]">•</span>
+                <span class="text-[#328f95]">•</span>
             </div>
             <!-- Second marquee run for seamless loop -->
             <div class="absolute top-0 left-0 animate-marquee2 whitespace-nowrap flex items-center space-x-12 pr-12 text-lg sm:text-xl font-bold uppercase tracking-widest text-slate-450 font-heading select-none">
                 <span>Accreditations</span>
                 <span class="text-aqua">•</span>
                 <span>Memberships</span>
-                <span class="text-[#84cc16]">•</span>
+                <span class="text-[#328f95]">•</span>
                 <span>Incorporation 2013</span>
                 <span class="text-aqua">•</span>
                 <span>ISO 9001 Certified</span>
-                <span class="text-[#84cc16]">•</span>
+                <span class="text-[#328f95]">•</span>
                 <span>ISO 14001 Certified</span>
                 <span class="text-aqua">•</span>
                 <span>Fleet Operator Recognition Scheme</span>
-                <span class="text-[#84cc16]">•</span>
+                <span class="text-[#328f95]">•</span>
                 <span>Federation of Master Builders</span>
                 <span class="text-aqua">•</span>
                 <span>ConstructionLine Silver membership</span>
-                <span class="text-[#84cc16]">•</span>
+                <span class="text-[#328f95]">•</span>
             </div>
         </div>
     </section>
@@ -535,7 +535,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
             <div class="max-w-3xl mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#84cc16]">{{ $content['team_section_label'] ?? 'Operational Leadership' }}</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#328f95]">{{ $content['team_section_label'] ?? 'Operational Leadership' }}</span>
                 <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">{{ $content['team_section_title'] ?? 'Our Core Project Team' }}</h2>
                 <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-sans max-w-xl">
                     {{ $content['team_section_subtitle'] ?? 'A dedicated team of design partners, IStructE engineers, and quantity surveyors coordinating structural execution with digital precision.' }}
@@ -639,7 +639,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
             <div class="max-w-3xl mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#84cc16]">{{ $content['blog_label'] ?? 'Blueprints & Blue Skies' }}</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#328f95]">{{ $content['blog_label'] ?? 'Blueprints & Blue Skies' }}</span>
                 <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
                     {{ $content['blog_title'] ?? 'Discover inspiration and trends' }}
                 </h2>

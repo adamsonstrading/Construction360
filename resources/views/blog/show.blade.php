@@ -34,7 +34,7 @@
                     
                     <!-- Date & Category Meta Row -->
                     <div class="flex items-center space-x-4 text-xs font-bold uppercase tracking-wider text-slate-400">
-                        <span class="bg-[#84cc16] text-white px-3 py-1 rounded-md text-[10px] tracking-widest uppercase">
+                        <span class="bg-[#328f95] text-white px-3 py-1 rounded-md text-[10px] tracking-widest uppercase">
                             {{ $blog->category ?? 'Uncategorized' }}
                         </span>
                         <span>•</span>
