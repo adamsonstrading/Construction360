@@ -47,7 +47,7 @@
 
 @section('content')
     <!-- Competitor-Matched Hero Section -->
-    <section id="hero" class="relative w-full min-h-[600px] lg:min-h-[850px] bg-white pt-8 lg:pt-12 pb-20 px-6 lg:px-8 overflow-hidden border-b border-slate-100">
+    <section id="hero" class="relative w-full min-h-[600px] lg:min-h-[850px] bg-white pt-8 lg:pt-12 pb-0 px-6 lg:px-8 overflow-hidden border-b border-slate-100">
         <!-- Abstract Structural Grid lines SVG Background (Minimalist) -->
         <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
             <svg class="w-full h-full text-slate-800" fill="none" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -65,7 +65,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-12 lg:pb-20 pt-4 lg:pt-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-0 pt-4 lg:pt-8">
                 <!-- Left Column: Content & Action Buttons -->
                 <div class="lg:col-span-6 space-y-8">
                     <span class="text-xs font-bold uppercase tracking-widest text-[#328f95]">Construction 360 Ltd</span>
@@ -101,7 +101,7 @@
     </section>
 
     <!-- About Us Section Redesign -->
-    <section id="about" class="py-24 bg-white text-slate-900 border-b border-slate-100 scroll-mt-20 overflow-hidden">
+    <section id="about" class="pt-6 lg:pt-8 pb-24 bg-white text-slate-900 border-b border-slate-100 scroll-mt-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Huge Heading spanning top -->
             <div class="mb-16">
