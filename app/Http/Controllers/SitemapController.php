@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Service;
-use App\Models\BlogPost;
+use App\Models\Blog;
+use Illuminate\Support\Str;
 
 class SitemapController extends Controller
 {
@@ -25,7 +26,7 @@ class SitemapController extends Controller
         // Add dynamic routes
         $services = Service::all();
         foreach ($services as $service) {
-            $urls[] = route('services.show', $service->slug);
+            $urls[] = route('services.show', Str::slug($service->title));
         }
 
         $projects = Project::all();
@@ -33,7 +34,7 @@ class SitemapController extends Controller
             $urls[] = route('projects.show', $project->slug);
         }
 
-        $posts = BlogPost::where('is_published', true)->get();
+        $posts = Blog::where('published_at', '<=', now())->get();
         foreach ($posts as $post) {
             $urls[] = route('blog.show', $post->slug);
         }

@@ -646,5 +646,133 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
 
         DB::table('site_contents')->insert($data);
 
+        // Truncate and seed services
+        DB::table('services')->truncate();
+        DB::table('services')->insert([
+            [
+                'id' => 1,
+                'title' => 'Designing & Planning',
+                'description' => 'We engage as early as possible, typically during the design ideation stage—known as Early Contractor Involvement',
+                'icon' => 'academic-cap',
+                'display_order' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 2,
+                'title' => 'Commercial Development',
+                'description' => 'From design to operations, we love to solve complex challenges and exceed expectations.',
+                'icon' => 'building-office-2',
+                'display_order' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 3,
+                'title' => 'Residential Development',
+                'description' => 'We believe good architecture is a crucial foundation that influences the overall performance of a real estate...',
+                'icon' => 'square-3-stack-3d',
+                'display_order' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 4,
+                'title' => 'Facilities Management',
+                'description' => 'Our comprehensive estimates also reflect available lower-price options.',
+                'icon' => 'globe-alt',
+                'display_order' => 4,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
+
+        // Truncate and seed blogs
+        DB::table('blogs')->truncate();
+        DB::table('blogs')->insert([
+            [
+                'id' => 1,
+                'title' => 'The Future of Integrated Design & Construction Management',
+                'slug' => 'future-integrated-design-construction-management',
+                'excerpt' => 'Discover how unifying structural engineering, architectural design, and digital project management reduces delivery times and eliminates costly design discrepancies.',
+                'category' => 'Company',
+                'content' => '<p class="mb-4">In traditional construction, the separation between design planning and field execution is one of the primary drivers of budget overruns, delayed handovers, and structural deviations. When architects, structural engineers, and site developers operate in silos, miscommunications are inevitable.</p><p class="mb-4">At <strong>Construction 360 Ltd</strong>, we solve this through a unified approach. By integrating structural calculations directly with real-time architectural blueprints and commercial contracting models, we create a seamless flow from paper to timber and steel. This 360-degree digital overview ensures that any modification requested by building control or site developers updates across all active project files instantaneously.</p><p class="mb-4">Central to this model is our commitment to a digital-first communication channel. By routing all project briefs and architectural specifications through structured, immutable digital logs and decommissioning legacy telephone routes, we preserve an exact audit trail. This means no details are lost in casual conversation, safety margins are strictly maintained, and construction tolerances are met to the millimeter.</p>',
+                'image_url' => 'images/blog_integrated.png',
+                'author' => 'Construction 360 Editorial',
+                'meta_title' => 'The Future of Integrated Design & Construction Management | Construction 360',
+                'meta_description' => 'Learn how integrating architectural design with structural engineering under digital-first standards ensures seamless build handovers with zero errors.',
+                'meta_keywords' => 'integrated design, construction management, BIM, architectural precision, digital contracting',
+                'published_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 2,
+                'title' => 'Mastering Bespoke Glazing: A Guide to Modern Structural Glass',
+                'slug' => 'mastering-bespoke-glazing-guide-modern-structural-glass',
+                'excerpt' => 'An in-depth look at specifying high-performance double and triple glazing for modern residential extensions, from U-values to structural frame design.',
+                'category' => 'Tips & Tricks',
+                'content' => '<p class="mb-4">Contemporary architectural design increasingly relies on structural glass to bridge the gap between interior comfort and outdoor natural light. Double-height rear extensions, minimal-profile sliding doors, and structural glass rooflights are highly sought after by homeowners seeking to modernize their properties.</p><p class="mb-4">However, executing large-scale glazing installations is a complex engineering challenge. High-performance glass requires precise structural calculations to account for wind loads, building deflection, and thermal expansion. Additionally, maintaining low U-values—the measure of thermal transmittance—is critical for meeting building control insulation standards.</p><p class="mb-4">We ensure all glazing installations use top-tier insulated glass units (IGUs) matched with custom-extruded aluminum frames. Upon completion, we provide FENSA certification and comprehensive structural warranties, ensuring your architectural centerpieces are as energy-efficient and secure as they are visually striking.</p>',
+                'image_url' => 'images/blog_glazing.png',
+                'author' => 'Lead Glazing Engineer',
+                'meta_title' => 'Bespoke Glazing & Modern Structural Glass Guide | Construction 360',
+                'meta_description' => 'Dive deep into structural glazing for residential home extensions, including thermal U-values, wind-load calculations, and FENSA certifications.',
+                'meta_keywords' => 'structural glass, glazing, FENSA compliance, U-values, home extensions',
+                'published_at' => now()->subDays(2),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 3,
+                'title' => 'Commercial Fit-Outs: Maximizing Workspace Efficiency and Compliance',
+                'slug' => 'commercial-fit-outs-maximizing-workspace-efficiency-compliance',
+                'excerpt' => 'How commercial developers navigate building control regulations, CSCS safety standards, and space optimization for modern corporate hubs.',
+                'category' => 'Processes',
+                'content' => '<p class="mb-4">Refurbishing or fitting out a commercial space involves balancing human-centric design with strict regulatory compliance. Whether you are building out a modern co-working space, a high-traffic retail outlet, or a corporate headquarters, compliance with local fire codes, mechanical system regulations, and access guidelines is non-negotiable.</p><p class="mb-4">Every successful fit-out begins with space optimization planning. This involves positioning HVAC ducting, acoustic partitions, and emergency escape routes cleanly without sacrificing floor space or natural light. To guarantee execution quality on site, every surveyor, structural builder, and technician we deploy is fully CSCS certified, ensuring safety guidelines are executed to the highest standards.</p><p class="mb-4">By tracking and managing project timelines through centralized progress logs, commercial directors can view milestone check-offs in real time. This digital tracking minimizes overheads, eliminates contractor scheduling conflicts, and delivers a commercial environment tailored for operational excellence.</p>',
+                'image_url' => 'images/blog_fitout.png',
+                'author' => 'Project Management Lead',
+                'meta_title' => 'Commercial Fit-Outs & Workspace Compliance | Construction 360',
+                'meta_description' => 'Explore strategies for executing commercial renovations and workspace fit-outs aligned with fire codes, CSCS certification, and space efficiency.',
+                'meta_keywords' => 'commercial fit-out, office renovation, building control, CSCS, workspace design',
+                'published_at' => now()->subDays(5),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
+
+        // Truncate and seed team members
+        DB::table('team_members')->truncate();
+        DB::table('team_members')->insert([
+            [
+                'id' => 1,
+                'name' => 'William Vance',
+                'role' => 'Managing Director & Senior Coordinator',
+                'description' => 'William oversees all site planning operations and client relationships, enforcing our paperless, digital-first correspondence log standards.',
+                'accreditations' => 'CSCS Black Card, RICS Affiliate',
+                'display_order' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 2,
+                'name' => 'Elena Rostova',
+                'role' => 'Lead Structural Engineer',
+                'description' => 'Elena leads all wind-load assessments, concrete framing calculations, and structural detailing to guarantee full building control approval.',
+                'accreditations' => 'IStructE Member, MSc Civil Eng',
+                'display_order' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 3,
+                'name' => 'Marcus Thorne',
+                'role' => 'Project Estimator & Quantity Surveyor',
+                'description' => 'Marcus compiles our Bill of Quantities (BoQ) surveys and coordinates logistics schedules to keep project execution within precise budget limits.',
+                'accreditations' => 'RICS Certified, CSCS Card',
+                'display_order' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 }
