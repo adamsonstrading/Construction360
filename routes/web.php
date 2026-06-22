@@ -67,4 +67,11 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('team', TeamController::class);
 });
 
-Route::get('/sync-live-data', function () { Artisan::call('db:seed', ['--class' => 'LiveSyncSeeder']); return 'Live site successfully synced with local database!'; });
+Route::get('/sync-live-data', function () { \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'LiveSyncSeeder']); return 'Live site successfully synced with local database!'; });
+Route::get('/clear-cache', function () {
+    \Illuminate\Support\Facades\Artisan::call('route:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    \Illuminate\Support\Facades\Artisan::call('view:clear');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    return 'All Laravel caches (routes, config, views, cache) cleared successfully!';
+});
