@@ -77,26 +77,23 @@
                     </p>
                     <div class="flex flex-wrap gap-4 pt-2">
                         <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center justify-center text-xs font-bold uppercase tracking-widest text-white bg-slate-950 hover:bg-slate-800 px-8 py-4 rounded-full shadow-lg transition-all duration-200">
-                            Submit Tender Brief
+                            {{ $content['cta_submit_tender_label'] ?? 'Submit Tender Brief' }}
                         </a>
                         <a href="#services" class="inline-flex items-center justify-center text-xs font-bold uppercase tracking-widest text-slate-700 border border-slate-200 bg-white hover:bg-slate-50 px-8 py-4 rounded-full shadow-sm transition-all duration-200">
-                            Explore Services
+                            {{ $content['cta_explore_services_label'] ?? 'Explore Services' }}
                         </a>
                     </div>
                 </div>
 
                 <!-- Right Column: Image Container with CSCS badge -->
                 <div class="lg:col-span-6 relative">
-                    <!-- Image container -->
+                    <!-- Video container -->
                     <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-[30px] overflow-hidden border border-slate-200 bg-slate-100 shadow-xl group">
-                        <img src="{{ asset('images/hero_construction.png') }}" alt="Construction 360 Ltd Build Site" class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent"></div>
-                        
-                        <!-- Floating Badge in bottom-left -->
-                        <div class="absolute bottom-6 left-6 bg-slate-950/90 text-white backdrop-blur-sm px-4 py-2.5 rounded-lg border border-white/10 flex items-center space-x-2 shadow-lg">
-                            <span class="h-2 w-2 rounded-full bg-[#328f95] animate-pulse"></span>
-                            <span class="text-[10px] font-bold uppercase tracking-wider">CSCS Approved / Safety Compliant</span>
-                        </div>
+                        <video class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-200" autoplay loop muted playsinline>
+                            <source src="{{ asset('con360.mp4') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent pointer-events-none"></div>
                     </div>
                 </div>
             </div>
@@ -108,7 +105,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Huge Heading spanning top -->
             <div class="mb-16">
-                <h2 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#0f284d] tracking-tighter leading-[1.05] max-w-3xl">
+                <h2 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-950 tracking-tighter leading-[1.05] max-w-3xl">
                     {!! nl2br(e($content['about_heading'] ?? "We build more than just structures,\nwe build dreams")) !!}
                 </h2>
             </div>
@@ -124,11 +121,11 @@
                 <div class="lg:col-span-4 space-y-10 py-4 flex flex-col justify-center pl-0 lg:pl-4">
                     <!-- Vision -->
                     <div class="space-y-3">
-                        <div class="flex items-center space-x-3 text-[#0f284d]">
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <div class="flex items-center space-x-3 text-slate-950">
+                            <svg class="h-6 w-6 text-[#328f95]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                             </svg>
-                            <h3 class="text-xl font-bold tracking-tight">Our vision</h3>
+                            <h3 class="text-xl font-bold tracking-tight">{{ $content['about_vision_label'] ?? 'Our vision' }}</h3>
                         </div>
                         <p class="text-slate-600 text-sm leading-relaxed">
                             {{ $content['about_vision'] ?? "Shaping London's skyline through innovative design and exceptional construction." }}
@@ -137,11 +134,11 @@
                     
                     <!-- Mission -->
                     <div class="space-y-3">
-                        <div class="flex items-center space-x-3 text-[#0f284d]">
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <div class="flex items-center space-x-3 text-slate-950">
+                            <svg class="h-6 w-6 text-[#328f95]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.36c-5.91.5-9.25-4.14-9.25-9.14A9 9 0 019.5 3a5.98 5.98 0 014.28 1.48m5.84 7.36l-3.32-3.32m3.32 3.32A7.95 7.95 0 0019.5 12c0-2.28-.95-4.34-2.48-5.8m0 0L14 3.14m3.02 3.08a7.96 7.96 0 00-6.1-2.45m0 0l-1.32 1.32" />
                             </svg>
-                            <h3 class="text-xl font-bold tracking-tight">Our mission</h3>
+                            <h3 class="text-xl font-bold tracking-tight">{{ $content['about_mission_label'] ?? 'Our mission' }}</h3>
                         </div>
                         <p class="text-slate-600 text-sm leading-relaxed">
                             {{ $content['about_mission'] ?? "To deliver outstanding residential and commercial developments across London, combining visionary design with meticulous craftsmanship and unwavering client commitment." }}
@@ -150,11 +147,11 @@
 
                     <!-- Values -->
                     <div class="space-y-3">
-                        <div class="flex items-center space-x-3 text-[#0f284d]">
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <div class="flex items-center space-x-3 text-slate-950">
+                            <svg class="h-6 w-6 text-[#328f95]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <h3 class="text-xl font-bold tracking-tight">Our values</h3>
+                            <h3 class="text-xl font-bold tracking-tight">{{ $content['about_values_label'] ?? 'Our values' }}</h3>
                         </div>
                         <p class="text-slate-600 text-sm leading-relaxed">
                             {{ $content['about_values'] ?? "Through Integrity, Excellence, Innovation, success along Partnership." }}
@@ -172,7 +169,7 @@
                     <div class="bg-[#328f95] text-[#0f284d] rounded-2xl p-10 flex flex-col justify-between relative shadow-2xl w-full">
                         <!-- Content inside green card -->
                         <div class="pt-16 sm:pt-24 z-20 relative">
-                            <p class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug">
+                            <p class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug text-white">
                                 "{{ $content['about_quote'] ?? "With over 12 years of experience, we are committed to delivering premium quality & craftmanship." }}"
                             </p>
                         </div>
@@ -216,8 +213,8 @@
                     </h2>
                 </div>
                 <div>
-                    <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-slate-900 bg-[#328f95] hover:bg-[#266b70] hover:text-white px-6 py-3.5 rounded-full shadow-sm transition-all duration-200">
-                        Ask for a quote
+                    <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-white bg-[#328f95] hover:bg-[#266b70] px-6 py-3.5 rounded-full shadow-sm transition-all duration-200">
+                        {{ $content['cta_ask_quote_label'] ?? 'Ask for a quote' }}
                     </a>
                 </div>
             </div>
@@ -284,13 +281,13 @@
                 <!-- Filter Tabs -->
                 <div class="flex flex-wrap gap-2 pt-4 lg:pt-0">
                     <button id="filter-btn-all" onclick="filterProjects('all')" class="px-5 py-2.5 rounded-full border border-slate-950 bg-slate-950 text-white text-xs font-bold uppercase tracking-widest transition-all focus:outline-none">
-                        All Projects
+                        {{ $content['filter_all_label'] ?? 'All Projects' }}
                     </button>
                     <button id="filter-btn-completed" onclick="filterProjects('completed')" class="px-5 py-2.5 rounded-full border border-slate-200 text-slate-650 hover:border-slate-400 bg-white text-xs font-bold uppercase tracking-widest transition-all focus:outline-none">
-                        Completed Projs.
+                        {{ $content['filter_completed_label'] ?? 'Completed Projs.' }}
                     </button>
                     <button id="filter-btn-under-construction" onclick="filterProjects('under-construction')" class="px-5 py-2.5 rounded-full border border-slate-200 text-slate-650 hover:border-slate-400 bg-white text-xs font-bold uppercase tracking-widest transition-all focus:outline-none">
-                        Under Developm.
+                        {{ $content['filter_under_construction_label'] ?? 'Under Developm.' }}
                     </button>
                 </div>
             </div>
@@ -351,7 +348,7 @@
             <!-- View All Projects CTA Button -->
             <div class="mt-16 text-center">
                 <a href="{{ route('projects.index') }}" class="inline-flex items-center justify-center px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white bg-slate-950 hover:bg-slate-800 rounded-lg shadow-sm transition-all duration-200">
-                    Explore Full Portfolio
+                    {{ $content['cta_explore_portfolio_label'] ?? 'Explore Full Portfolio' }}
                 </a>
             </div>
         </div>
@@ -376,9 +373,9 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                             </svg>
                         </div>
-                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">Operational Excellence</h3>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed font-sans">
-                            We hold full ISO and FORS accreditations, ensuring our processes are rigorous, compliant, and efficient.
+                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">{{ $content['why_1_title'] ?? 'Operational Excellence' }}</h3>
+                        <p class="mt-3 text-xs sm:text-sm text-slate-550 leading-relaxed font-sans">
+                            {{ $content['why_1_text'] ?? 'We hold full ISO and FORS accreditations, ensuring our processes are rigorous, compliant, and efficient.' }}
                         </p>
                     </div>
                 </div>
@@ -391,9 +388,9 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                         </div>
-                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">London Specialists</h3>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed font-sans">
-                            Experts in London Landscape. With 25+ projects across Capital, we specialise in navigating the complexities of London.
+                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">{{ $content['why_2_title'] ?? 'London Specialists' }}</h3>
+                        <p class="mt-3 text-xs sm:text-sm text-slate-550 leading-relaxed font-sans">
+                            {{ $content['why_2_text'] ?? 'Experts in London Landscape. With 25+ projects across Capital, we specialise in navigating the complexities of London.' }}
                         </p>
                     </div>
                 </div>
@@ -403,12 +400,12 @@
                     <div>
                         <div class="h-10 w-10 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-aqua mb-6">
                             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                             </svg>
                         </div>
-                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">Quality Assurance</h3>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed font-sans">
-                            We refuse to cut corners, applying strict quality controls to ensure superior craftsmanship in every trade.
+                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">{{ $content['why_3_title'] ?? 'Quality Assurance' }}</h3>
+                        <p class="mt-3 text-xs sm:text-sm text-slate-550 leading-relaxed font-sans">
+                            {{ $content['why_3_text'] ?? 'We refuse to cut corners, applying strict quality controls to ensure superior craftsmanship in every trade.' }}
                         </p>
                     </div>
                 </div>
@@ -418,12 +415,12 @@
                     <div>
                         <div class="h-10 w-10 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-aqua mb-6">
                             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
-                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">Financial Clarity</h3>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed font-sans">
-                            Our detailed cost breakdowns and project management ensure you stay informed, in control, & confident in your investment throughout the build.
+                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">{{ $content['why_4_title'] ?? 'Financial Clarity' }}</h3>
+                        <p class="mt-3 text-xs sm:text-sm text-slate-550 leading-relaxed font-sans">
+                            {{ $content['why_4_text'] ?? 'Our detailed cost breakdowns and project management ensure you stay informed, in control, & confident in your investment throughout the build.' }}
                         </p>
                     </div>
                 </div>
@@ -491,41 +488,17 @@
         <div class="relative w-full flex overflow-x-hidden">
             <!-- First marquee run -->
             <div class="animate-marquee whitespace-nowrap flex items-center space-x-12 pr-12 text-lg sm:text-xl font-bold uppercase tracking-widest text-slate-450 font-heading select-none">
-                <span>Accreditations</span>
-                <span class="text-aqua">•</span>
-                <span>Memberships</span>
-                <span class="text-[#328f95]">•</span>
-                <span>Incorporation 2013</span>
-                <span class="text-aqua">•</span>
-                <span>ISO 9001 Certified</span>
-                <span class="text-[#328f95]">•</span>
-                <span>ISO 14001 Certified</span>
-                <span class="text-aqua">•</span>
-                <span>Fleet Operator Recognition Scheme</span>
-                <span class="text-[#328f95]">•</span>
-                <span>Federation of Master Builders</span>
-                <span class="text-aqua">•</span>
-                <span>ConstructionLine Silver membership</span>
-                <span class="text-[#328f95]">•</span>
+                @foreach(explode(' • ', $content['marquee_text'] ?? 'Accreditations • Memberships • Incorporation 2013 • ISO 9001 Certified • ISO 14001 Certified • Fleet Operator Recognition Scheme • Federation of Master Builders • ConstructionLine Silver membership') as $idx => $item)
+                    <span>{{ trim($item) }}</span>
+                    <span class="{{ $idx % 2 == 0 ? 'text-aqua' : 'text-[#328f95]' }}">•</span>
+                @endforeach
             </div>
             <!-- Second marquee run for seamless loop -->
             <div class="absolute top-0 left-0 animate-marquee2 whitespace-nowrap flex items-center space-x-12 pr-12 text-lg sm:text-xl font-bold uppercase tracking-widest text-slate-450 font-heading select-none">
-                <span>Accreditations</span>
-                <span class="text-aqua">•</span>
-                <span>Memberships</span>
-                <span class="text-[#328f95]">•</span>
-                <span>Incorporation 2013</span>
-                <span class="text-aqua">•</span>
-                <span>ISO 9001 Certified</span>
-                <span class="text-[#328f95]">•</span>
-                <span>ISO 14001 Certified</span>
-                <span class="text-aqua">•</span>
-                <span>Fleet Operator Recognition Scheme</span>
-                <span class="text-[#328f95]">•</span>
-                <span>Federation of Master Builders</span>
-                <span class="text-aqua">•</span>
-                <span>ConstructionLine Silver membership</span>
-                <span class="text-[#328f95]">•</span>
+                @foreach(explode(' • ', $content['marquee_text'] ?? 'Accreditations • Memberships • Incorporation 2013 • ISO 9001 Certified • ISO 14001 Certified • Fleet Operator Recognition Scheme • Federation of Master Builders • ConstructionLine Silver membership') as $idx => $item)
+                    <span>{{ trim($item) }}</span>
+                    <span class="{{ $idx % 2 == 0 ? 'text-aqua' : 'text-[#328f95]' }}">•</span>
+                @endforeach
             </div>
         </div>
     </section>
@@ -702,7 +675,7 @@
             <!-- View All Insights CTA Button -->
             <div class="mt-16 text-center">
                 <a href="{{ route('blog.index') }}" class="inline-flex items-center justify-center px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white bg-slate-950 hover:bg-slate-800 rounded-lg shadow-sm transition-all duration-200">
-                    view all posts
+                    {{ $content['cta_view_all_posts_label'] ?? 'view all posts' }}
                 </a>
             </div>
         </div>

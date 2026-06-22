@@ -128,9 +128,47 @@ class ContentController extends Controller
             'social_facebook' => 'nullable|url|max:255',
             'social_instagram' => 'nullable|url|max:255',
             'social_linkedin' => 'nullable|url|max:255',
+            'social_whatsapp' => 'nullable|url|max:255',
 
             // Site Logo
             'site_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+
+            // Footer Description
+            'footer_description' => 'required|string|max:1000',
+
+            // New Dynamic Fields
+            'about_vision_label' => 'required|string|max:255',
+            'about_mission_label' => 'required|string|max:255',
+            'about_values_label' => 'required|string|max:255',
+            'why_1_title' => 'required|string|max:255',
+            'why_1_text' => 'required|string|max:1000',
+            'why_2_title' => 'required|string|max:255',
+            'why_2_text' => 'required|string|max:1000',
+            'why_3_title' => 'required|string|max:255',
+            'why_3_text' => 'required|string|max:1000',
+            'why_4_title' => 'required|string|max:255',
+            'why_4_text' => 'required|string|max:1000',
+            'marquee_text' => 'required|string|max:2000',
+            'filter_all_label' => 'required|string|max:255',
+            'filter_completed_label' => 'required|string|max:255',
+            'filter_under_construction_label' => 'required|string|max:255',
+            'cta_submit_tender_label' => 'required|string|max:255',
+            'cta_explore_services_label' => 'required|string|max:255',
+            'cta_ask_quote_label' => 'required|string|max:255',
+            'cta_explore_portfolio_label' => 'required|string|max:255',
+            'cta_view_all_posts_label' => 'required|string|max:255',
+            'cta_get_free_quote_label' => 'required|string|max:255',
+            'contact_page_title' => 'required|string|max:255',
+            'contact_page_subtitle' => 'required|string|max:1000',
+            'contact_page_form_title' => 'required|string|max:255',
+            'contact_support_email_label' => 'required|string|max:255',
+            'contact_mobile_label' => 'required|string|max:255',
+            'contact_location_label' => 'required|string|max:255',
+            'digital_tenders_only_label' => 'required|string|max:255',
+            'contact_map_embed_url' => 'required|string|max:1000',
+            'pre_footer_cta_title' => 'required|string|max:255',
+            'pre_footer_cta_subtitle' => 'required|string|max:1000',
+            'footer_company_registration' => 'required|string|max:1000',
         ]);
 
         // Handle Site Logo Upload

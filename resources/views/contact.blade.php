@@ -10,19 +10,19 @@
                 <!-- Left Side: Title & Breadcrumbs -->
                 <div class="space-y-4">
                     <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-none font-sans">
-                        Get in touch
+                        {{ $content['contact_page_title'] ?? 'Get in touch' }}
                     </h1>
                     <div class="flex items-center space-x-2 text-xs font-bold text-slate-355 tracking-wider">
                         <a href="{{ url('/') }}" class="hover:text-aqua transition-colors">Home</a>
                         <span>•</span>
-                        <span class="text-aqua">Get in touch</span>
+                        <span class="text-aqua">{{ $content['contact_page_title'] ?? 'Get in touch' }}</span>
                     </div>
                 </div>
                 
                 <!-- Right Side: Subtitle description -->
                 <div class="max-w-md md:text-right">
                     <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
-                        Our global construction experts are here to help you in this ever-changing market.
+                        {{ $content['contact_page_subtitle'] ?? 'Our global construction experts are here to help you in this ever-changing market.' }}
                     </p>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-base font-extrabold text-slate-900 font-sans">Support email</h3>
+                            <h3 class="text-base font-extrabold text-slate-900 font-sans">{{ $content['contact_support_email_label'] ?? 'Support email' }}</h3>
                             <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="text-xs font-semibold text-slate-500 hover:text-aqua transition-colors font-sans block mt-1 underline decoration-aqua decoration-2">
                                 {{ $content['header_email'] ?? 'info@construction360.co' }}
                             </a>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="pt-6">
                         <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" 
-                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#328f95] hover:bg-[#266b70] hover:text-white transition-all block text-center">
+                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#328f95] hover:bg-[#266b70] transition-all block text-center">
                             Email Us
                         </a>
                     </div>
@@ -73,7 +73,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-base font-extrabold text-slate-900 font-sans">Mobile Number</h3>
+                            <h3 class="text-base font-extrabold text-slate-900 font-sans">{{ $content['contact_mobile_label'] ?? 'Mobile Number' }}</h3>
                             <span class="text-xs font-semibold text-slate-500 font-sans block mt-1">
                                 {{ $content['header_phone'] ?? '+440203 930 9629' }}
                             </span>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="pt-6">
                         <a href="tel:{{ $content['header_phone'] ?? '+4402039309629' }}" 
-                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#328f95] hover:bg-[#266b70] hover:text-white transition-all block text-center">
+                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#328f95] hover:bg-[#266b70] transition-all block text-center">
                             Call Now
                         </a>
                     </div>
@@ -99,15 +99,15 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-base font-extrabold text-slate-900 font-sans">Location</h3>
-                            <p class="text-xs text-slate-500 font-semibold font-sans mt-1 leading-relaxed line-clamp-2">
-                                {{ $content['contact_address'] ?? '6a, Kingfisher House, Restmor Way, Hackbridge, Wallington SM6 7AH' }}
+                            <h3 class="text-base font-extrabold text-slate-900 font-sans">{{ $content['contact_location_label'] ?? 'Location' }}</h3>
+                            <p class="text-xs text-slate-550 font-semibold font-sans mt-1 leading-relaxed line-clamp-2">
+                                {{ $content['contact_address'] ?? '73 Thrale Road, London, England, SW16 1NU' }}
                             </p>
                         </div>
                     </div>
                     <div class="pt-6">
-                        <a href="{{ $content['contact_map_url'] ?? 'https://maps.app.goo.gl/91D2EVyYh2s8dC5X8' }}" target="_blank" rel="noopener noreferrer"
-                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#328f95] hover:bg-[#266b70] hover:text-white transition-all block text-center">
+                        <a href="{{ $content['contact_map_url'] ?? 'https://www.google.com/maps/search/?api=1&query=73+Thrale+Road,+London,+England,+SW16+1NU' }}" target="_blank" rel="noopener noreferrer"
+                           class="w-full py-2.5 px-6 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#328f95] hover:bg-[#266b70] transition-all block text-center">
                             Visit Us
                         </a>
                     </div>
@@ -125,7 +125,7 @@
                 <!-- Left Side: Contact Form (6 columns) -->
                 <div id="message-form" class="lg:col-span-6 space-y-8">
                     <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-955 leading-tight font-sans">
-                        Leave a message
+                        {{ $content['contact_page_form_title'] ?? 'Leave a message' }}
                     </h2>
 
                     <!-- Success Alert -->
@@ -224,7 +224,7 @@
                 <div class="lg:col-span-6 h-full lg:sticky lg:top-28">
                     <div class="bg-white border border-slate-200 rounded-3xl p-2.5 shadow-md h-full overflow-hidden">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2489.1763137976785!2d-0.15582312389332213!3d51.363999921200236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760775d7b567d1%3A0xe54d33eb43516ff8!2sRestmor%20Way%2C%20Hackbridge%2C%20Wallington!5e0!3m2!1sen!2suk!4v1718617000000!5m2!1sen!2suk" 
+                            src="{{ $content['contact_map_embed_url'] ?? 'https://maps.google.com/maps?q=73%20Thrale%20Road,%20London,%20England,%20SW16%201NU&t=&z=15&ie=UTF8&iwloc=&output=embed' }}" 
                             class="w-full h-[320px] sm:h-[450px] lg:h-[540px] rounded-2xl border-0 shadow-inner" 
                             allowfullscreen="" 
                             loading="lazy" 

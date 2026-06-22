@@ -75,6 +75,17 @@
                         <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
                     @enderror
                 </div>
+
+                <div>
+                    <label for="social_whatsapp" class="block text-sm font-semibold text-slate-700">WhatsApp URL</label>
+                    <div class="mt-1.5">
+                        <input type="url" name="social_whatsapp" id="social_whatsapp" value="{{ old('social_whatsapp', $content['social_whatsapp'] ?? 'https://wa.me/447500896792') }}"
+                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
+                    </div>
+                    @error('social_whatsapp')
+                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
 
             <!-- SEO & Metadata Group -->
@@ -478,7 +489,7 @@
                         <label for="contact_address" class="block text-sm font-semibold text-slate-700">Physical Address</label>
                         <div class="mt-1.5">
                             <textarea rows="3" name="contact_address" id="contact_address" required
-                                class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">{{ old('contact_address', $content['contact_address'] ?? '6a, Kingfisher House, Restmor Way, Hackbridge, Wallington SM6 7AH') }}</textarea>
+                                class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">{{ old('contact_address', $content['contact_address'] ?? '73 Thrale Road, London, England, SW16 1NU') }}</textarea>
                         </div>
                         @error('contact_address')
                             <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
@@ -488,13 +499,25 @@
                     <div>
                         <label for="contact_map_url" class="block text-sm font-semibold text-slate-700">Google Maps URL</label>
                         <div class="mt-1.5">
-                            <input type="url" name="contact_map_url" id="contact_map_url" value="{{ old('contact_map_url', $content['contact_map_url'] ?? 'https://maps.app.goo.gl/91D2EVyYh2s8dC5X8') }}"
+                            <input type="url" name="contact_map_url" id="contact_map_url" value="{{ old('contact_map_url', $content['contact_map_url'] ?? 'https://www.google.com/maps/search/?api=1&query=73+Thrale+Road,+London,+England,+SW16+1NU') }}"
                                 class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
                         </div>
                         @error('contact_map_url')
                             <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
                         @enderror
                     </div>
+                </div>
+
+                <div class="mt-4">
+                    <label for="footer_description" class="block text-sm font-semibold text-slate-700">Footer Short Description</label>
+                    <div class="mt-1.5">
+                        <textarea rows="2" name="footer_description" id="footer_description" required
+                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm"
+                            placeholder="Delivering 360-degree integration of premium architectural builds, structural planning, and design-build management.">{{ old('footer_description', $content['footer_description'] ?? 'Delivering 360-degree integration of premium architectural builds, structural planning, and design-build management.') }}</textarea>
+                    </div>
+                    @error('footer_description')
+                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -778,6 +801,210 @@
                         <label for="tendering_content" class="block text-xs font-semibold text-slate-700">Main Sections Content (Plain Text)</label>
                         <textarea rows="8" name="tendering_content" id="tendering_content" required
                             class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('tendering_content', $content['tendering_content'] ?? '') }}</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Website Copy Details (Dynamic Customization) -->
+            <div class="space-y-6 pt-4">
+                <h4 class="text-sm font-bold text-[#008080] uppercase tracking-wider border-b border-slate-150 pb-2 flex items-center">
+                    <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                    Additional Dynamic Website Texts
+                </h4>
+
+                <!-- About Subheaders -->
+                <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
+                    <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">About Section Subheaders</span>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label for="about_vision_label" class="block text-xs font-semibold text-slate-700">Vision Section Title</label>
+                            <input type="text" name="about_vision_label" id="about_vision_label" value="{{ old('about_vision_label', $content['about_vision_label'] ?? 'Our vision') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="about_mission_label" class="block text-xs font-semibold text-slate-700">Mission Section Title</label>
+                            <input type="text" name="about_mission_label" id="about_mission_label" value="{{ old('about_mission_label', $content['about_mission_label'] ?? 'Our mission') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="about_values_label" class="block text-xs font-semibold text-slate-700">Values Section Title</label>
+                            <input type="text" name="about_values_label" id="about_values_label" value="{{ old('about_values_label', $content['about_values_label'] ?? 'Our values') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Choose Us Detailed Cards -->
+                <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-4">
+                    <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Why Choose Us Cards</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-3 bg-white border border-slate-150 rounded-lg space-y-2">
+                            <label for="why_1_title" class="block text-xs font-bold text-slate-700">Card 1 Title</label>
+                            <input type="text" name="why_1_title" id="why_1_title" value="{{ old('why_1_title', $content['why_1_title'] ?? 'Operational Excellence') }}" required
+                                class="block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            <label for="why_1_text" class="block text-xs font-bold text-slate-700 mt-2">Card 1 Description</label>
+                            <textarea rows="2" name="why_1_text" id="why_1_text" required
+                                class="block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('why_1_text', $content['why_1_text'] ?? 'We hold full ISO and FORS accreditations, ensuring our processes are rigorous, compliant, and efficient.') }}</textarea>
+                        </div>
+                        <div class="p-3 bg-white border border-slate-150 rounded-lg space-y-2">
+                            <label for="why_2_title" class="block text-xs font-bold text-slate-700">Card 2 Title</label>
+                            <input type="text" name="why_2_title" id="why_2_title" value="{{ old('why_2_title', $content['why_2_title'] ?? 'London Specialists') }}" required
+                                class="block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            <label for="why_2_text" class="block text-xs font-bold text-slate-700 mt-2">Card 2 Description</label>
+                            <textarea rows="2" name="why_2_text" id="why_2_text" required
+                                class="block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('why_2_text', $content['why_2_text'] ?? 'Experts in London Landscape. With 25+ projects across Capital, we specialise in navigating the complexities of London.') }}</textarea>
+                        </div>
+                        <div class="p-3 bg-white border border-slate-150 rounded-lg space-y-2">
+                            <label for="why_3_title" class="block text-xs font-bold text-slate-700">Card 3 Title</label>
+                            <input type="text" name="why_3_title" id="why_3_title" value="{{ old('why_3_title', $content['why_3_title'] ?? 'Quality Assurance') }}" required
+                                class="block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            <label for="why_3_text" class="block text-xs font-bold text-slate-700 mt-2">Card 3 Description</label>
+                            <textarea rows="2" name="why_3_text" id="why_3_text" required
+                                class="block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('why_3_text', $content['why_3_text'] ?? 'We refuse to cut corners, applying strict quality controls to ensure superior craftsmanship in every trade.') }}</textarea>
+                        </div>
+                        <div class="p-3 bg-white border border-slate-150 rounded-lg space-y-2">
+                            <label for="why_4_title" class="block text-xs font-bold text-slate-700">Card 4 Title</label>
+                            <input type="text" name="why_4_title" id="why_4_title" value="{{ old('why_4_title', $content['why_4_title'] ?? 'Financial Clarity') }}" required
+                                class="block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            <label for="why_4_text" class="block text-xs font-bold text-slate-700 mt-2">Card 4 Description</label>
+                            <textarea rows="2" name="why_4_text" id="why_4_text" required
+                                class="block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('why_4_text', $content['why_4_text'] ?? 'Our detailed cost breakdowns and project management ensure you stay informed, in control, & confident in your investment throughout the build.') }}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marquee and Filters -->
+                <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
+                    <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Marquee & Project Filters</span>
+                    <div>
+                        <label for="marquee_text" class="block text-xs font-semibold text-slate-700">Scrolling Marquee Text (Separate items with ' • ')</label>
+                        <input type="text" name="marquee_text" id="marquee_text" value="{{ old('marquee_text', $content['marquee_text'] ?? 'Accreditations • Memberships • Incorporation 2013 • ISO 9001 Certified • ISO 14001 Certified • Fleet Operator Recognition Scheme • Federation of Master Builders • ConstructionLine Silver membership') }}" required
+                            class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                        <div>
+                            <label for="filter_all_label" class="block text-xs font-semibold text-slate-700">Filter 'All' Title</label>
+                            <input type="text" name="filter_all_label" id="filter_all_label" value="{{ old('filter_all_label', $content['filter_all_label'] ?? 'All Projects') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="filter_completed_label" class="block text-xs font-semibold text-slate-700">Filter 'Completed' Title</label>
+                            <input type="text" name="filter_completed_label" id="filter_completed_label" value="{{ old('filter_completed_label', $content['filter_completed_label'] ?? 'Completed Projs.') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="filter_under_construction_label" class="block text-xs font-semibold text-slate-700">Filter 'Under Dev' Title</label>
+                            <input type="text" name="filter_under_construction_label" id="filter_under_construction_label" value="{{ old('filter_under_construction_label', $content['filter_under_construction_label'] ?? 'Under Developm.') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Actions & Labels -->
+                <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
+                    <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Call To Action Button Labels</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="cta_submit_tender_label" class="block text-xs font-semibold text-slate-700">Submit Tender Button</label>
+                            <input type="text" name="cta_submit_tender_label" id="cta_submit_tender_label" value="{{ old('cta_submit_tender_label', $content['cta_submit_tender_label'] ?? 'Submit Tender Brief') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="cta_explore_services_label" class="block text-xs font-semibold text-slate-700">Explore Services Button</label>
+                            <input type="text" name="cta_explore_services_label" id="cta_explore_services_label" value="{{ old('cta_explore_services_label', $content['cta_explore_services_label'] ?? 'Explore Services') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="cta_ask_quote_label" class="block text-xs font-semibold text-slate-700">Ask for Quote Button</label>
+                            <input type="text" name="cta_ask_quote_label" id="cta_ask_quote_label" value="{{ old('cta_ask_quote_label', $content['cta_ask_quote_label'] ?? 'Ask for a quote') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="cta_explore_portfolio_label" class="block text-xs font-semibold text-slate-700">Explore Portfolio Button</label>
+                            <input type="text" name="cta_explore_portfolio_label" id="cta_explore_portfolio_label" value="{{ old('cta_explore_portfolio_label', $content['cta_explore_portfolio_label'] ?? 'Explore Full Portfolio') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="cta_view_all_posts_label" class="block text-xs font-semibold text-slate-700">View All Posts Button</label>
+                            <input type="text" name="cta_view_all_posts_label" id="cta_view_all_posts_label" value="{{ old('cta_view_all_posts_label', $content['cta_view_all_posts_label'] ?? 'view all posts') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="cta_get_free_quote_label" class="block text-xs font-semibold text-slate-700">Footer Get Quote Circle (use \n for line breaks)</label>
+                            <textarea rows="2" name="cta_get_free_quote_label" id="cta_get_free_quote_label" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('cta_get_free_quote_label', $content['cta_get_free_quote_label'] ?? "Get Your\nFree\nQuote") }}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Page Specific Config -->
+                <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
+                    <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Contact Page Customizations</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="contact_page_title" class="block text-xs font-semibold text-slate-700">Contact Hero Title</label>
+                            <input type="text" name="contact_page_title" id="contact_page_title" value="{{ old('contact_page_title', $content['contact_page_title'] ?? 'Get in touch') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="contact_page_form_title" class="block text-xs font-semibold text-slate-700">Contact Form Title</label>
+                            <input type="text" name="contact_page_form_title" id="contact_page_form_title" value="{{ old('contact_page_form_title', $content['contact_page_form_title'] ?? 'Leave a message') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="contact_support_email_label" class="block text-xs font-semibold text-slate-700">Support Email Card Title</label>
+                            <input type="text" name="contact_support_email_label" id="contact_support_email_label" value="{{ old('contact_support_email_label', $content['contact_support_email_label'] ?? 'Support email') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="contact_mobile_label" class="block text-xs font-semibold text-slate-700">Mobile Card Title</label>
+                            <input type="text" name="contact_mobile_label" id="contact_mobile_label" value="{{ old('contact_mobile_label', $content['contact_mobile_label'] ?? 'Mobile Number') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="contact_location_label" class="block text-xs font-semibold text-slate-700">Location Card Title</label>
+                            <input type="text" name="contact_location_label" id="contact_location_label" value="{{ old('contact_location_label', $content['contact_location_label'] ?? 'Location') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="contact_page_subtitle" class="block text-xs font-semibold text-slate-700">Contact Hero Subtitle</label>
+                            <textarea rows="2" name="contact_page_subtitle" id="contact_page_subtitle" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('contact_page_subtitle', $content['contact_page_subtitle'] ?? 'Our global construction experts are here to help you in this ever-changing market.') }}</textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="contact_map_embed_url" class="block text-xs font-semibold text-slate-700">Google Map Embed URL</label>
+                            <input type="text" name="contact_map_embed_url" id="contact_map_embed_url" value="{{ old('contact_map_embed_url', $content['contact_map_embed_url'] ?? 'https://maps.google.com/maps?q=73%20Thrale%20Road,%20London,%20England,%20SW16%201NU&t=&z=15&ie=UTF8&iwloc=&output=embed') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miscellaneous Layout Copies -->
+                <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
+                    <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Layout & Pre-Footer Copys</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="digital_tenders_only_label" class="block text-xs font-semibold text-slate-700">Digital Tenders Only Label</label>
+                            <input type="text" name="digital_tenders_only_label" id="digital_tenders_only_label" value="{{ old('digital_tenders_only_label', $content['digital_tenders_only_label'] ?? 'Digital Tenders Only') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="pre_footer_cta_title" class="block text-xs font-semibold text-slate-700">Pre-Footer CTA Title</label>
+                            <input type="text" name="pre_footer_cta_title" id="pre_footer_cta_title" value="{{ old('pre_footer_cta_title', $content['pre_footer_cta_title'] ?? 'Your Execution Partner') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="pre_footer_cta_subtitle" class="block text-xs font-semibold text-slate-700">Pre-Footer CTA Subtitle</label>
+                            <textarea rows="2" name="pre_footer_cta_subtitle" id="pre_footer_cta_subtitle" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('pre_footer_cta_subtitle', $content['pre_footer_cta_subtitle'] ?? "Whether you're exploring our premium architectural builds or envisioning a custom structural solution, we are here to bring your vision to life.") }}</textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="footer_company_registration" class="block text-xs font-semibold text-slate-700">Footer Company Registration Line</label>
+                            <textarea rows="2" name="footer_company_registration" id="footer_company_registration" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('footer_company_registration', $content['footer_company_registration'] ?? 'This Company is Registered in England and Wales. Company number 17277526') }}</textarea>
+                        </div>
                     </div>
                 </div>
             </div>
