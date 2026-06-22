@@ -224,7 +224,7 @@ class LandingPageController extends Controller
     {
         $slug = strtolower($slug);
         
-        if ($slug === 'designing-planning' || $slug === 'designing-and-planning') {
+        if (str_contains($slug, 'design') || str_contains($slug, 'plan')) {
             return [
                 'title' => 'Designing & Planning',
                 'image_url' => 'images/service_design_planning.png',
@@ -280,7 +280,7 @@ class LandingPageController extends Controller
             ];
         }
         
-        if ($slug === 'commercial-development') {
+        if (str_contains($slug, 'commercial') || str_contains($slug, 'fit-out') || str_contains($slug, 'fitout')) {
             return [
                 'title' => 'Commercial Development',
                 'image_url' => 'images/service_commercial.png',
@@ -331,7 +331,7 @@ class LandingPageController extends Controller
             ];
         }
         
-        if ($slug === 'residential-development') {
+        if (str_contains($slug, 'residential')) {
             return [
                 'title' => 'Residential Development',
                 'image_url' => 'images/service_residential.png',
@@ -378,7 +378,7 @@ class LandingPageController extends Controller
             ];
         }
         
-        if ($slug === 'facilities-management') {
+        if (str_contains($slug, 'facilities') || str_contains($slug, 'maintenance')) {
             return [
                 'title' => 'Facilities Management',
                 'image_url' => 'images/service_facilities.png',
