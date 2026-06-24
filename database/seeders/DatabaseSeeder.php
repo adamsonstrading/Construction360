@@ -182,28 +182,46 @@ TEXT
         // 3. Seed Services aligned with the reference site
         $services = [
             [
-                'title' => 'Designing & Planning',
-                'description' => 'We engage as early as possible, typically during the design ideation stage—known as Early Contractor Involvement',
-                'icon' => 'academic-cap', // Structural design
+                'title' => 'Planning',
+                'description' => 'We offer comprehensive planning services, guiding your project from architectural drawings and planning consultancy to successful planning application submissions.',
+                'icon' => 'pencil-square',
                 'display_order' => 1,
             ],
             [
-                'title' => 'Commercial Development',
-                'description' => 'From design to operations, we love to solve complex challenges and exceed expectations.',
-                'icon' => 'building-office-2', // Building commercial
+                'title' => 'Design and Build',
+                'description' => 'Our integrated Design and Build service covers commercial and residential buildings, loft conversions, extensions, and outbuildings from concept to completion.',
+                'icon' => 'home',
                 'display_order' => 2,
             ],
             [
-                'title' => 'Residential Development',
-                'description' => 'We believe good architecture is a crucial foundation that influences the overall performance of a real estate...',
-                'icon' => 'square-3-stack-3d', // 3D/Stacking extensions
+                'title' => 'Finance',
+                'description' => 'We assist developers and property owners in securing development finance to fund construction projects and unlock commercial viability.',
+                'icon' => 'banknotes',
                 'display_order' => 3,
             ],
             [
-                'title' => 'Facilities Management',
-                'description' => 'Our comprehensive estimates also reflect available lower-price options.',
-                'icon' => 'globe-alt', // Glass/glazing
+                'title' => 'Design',
+                'description' => 'Our multidisciplinary design team provides specialist architectural, structural, below ground, fire safety, and M&E engineering services.',
+                'icon' => 'paint-brush',
                 'display_order' => 4,
+            ],
+            [
+                'title' => 'Construction',
+                'description' => 'We deliver full-spectrum construction services including demolition, piling, structural foundations, and reinforced concrete (RC) frames.',
+                'icon' => 'wrench',
+                'display_order' => 5,
+            ],
+            [
+                'title' => 'Support Services',
+                'description' => 'We manage crucial support services including conditions discharge, S106 negotiations, environmental reports, and SAP energy calculations.',
+                'icon' => 'document-text',
+                'display_order' => 6,
+            ],
+            [
+                'title' => 'Building Control',
+                'description' => 'We coordinate directly with local authorities and private inspectors to secure building control approvals and ensure full structural compliance.',
+                'icon' => 'shield-check',
+                'display_order' => 7,
             ],
         ];
 

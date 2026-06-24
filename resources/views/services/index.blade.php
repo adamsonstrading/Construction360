@@ -36,11 +36,7 @@
             @foreach($services as $index => $srv)
                 @php
                     $slug = \Illuminate\Support\Str::slug($srv->title);
-                    // Map local copied image fallbacks
-                    $imageUrl = asset($srv->title === 'Designing & Planning' ? 'images/service_design_planning.png' :
-                                      ($srv->title === 'Commercial Development' ? 'images/service_commercial.png' :
-                                      ($srv->title === 'Residential Development' ? 'images/service_residential.png' :
-                                      'images/service_facilities.png')));
+                    $imageUrl = asset($srv->image_url);
                 @endphp
                 <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 {{ $index % 2 !== 0 ? 'lg:flex-row-reverse' : '' }}">
                     <!-- Image Panel -->

@@ -225,20 +225,12 @@
                     @php
                         $slug = \Illuminate\Support\Str::slug($srv->title);
                         $num = str_pad($idx + 1, 2, '0', STR_PAD_LEFT);
-                        // Map images based on service index
-                        $imgMap = [
-                            'service_design_planning.png',
-                            'service_commercial.png',
-                            'service_residential.png',
-                            'service_facilities.png'
-                        ];
-                        $img = $imgMap[$idx % 4] ?? 'service_design_planning.png';
                     @endphp
                     <div class="bg-white border border-slate-150 shadow-sm rounded-2xl overflow-hidden hover:border-slate-350 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <!-- Card Image -->
                             <div class="h-48 w-full overflow-hidden bg-slate-100 relative group">
-                                <img src="{{ asset('images/' . $img) }}" alt="{{ $srv->title }}" class="object-cover h-full w-full group-hover:scale-102 transition-transform duration-500">
+                                <img src="{{ asset($srv->image_url) }}" alt="{{ $srv->title }}" class="object-cover h-full w-full group-hover:scale-102 transition-transform duration-500">
                                 <span class="absolute top-4 left-4 text-xs font-bold text-white bg-slate-950/80 px-2.5 py-1 rounded shadow-sm">{{ $num }}</span>
                             </div>
                             <!-- Card Body -->
