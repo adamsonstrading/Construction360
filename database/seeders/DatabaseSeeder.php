@@ -223,6 +223,12 @@ TEXT
                 'icon' => 'shield-check',
                 'display_order' => 7,
             ],
+            [
+                'title' => 'Facilities Management',
+                'description' => 'Our Managed Services division provides comprehensive facilities management, reactive maintenance, and planned preventative maintenance for residential blocks and commercial properties.',
+                'icon' => 'globe-alt',
+                'display_order' => 8,
+            ],
         ];
 
         // Clear existing services to avoid duplicates and repopulate cleanly

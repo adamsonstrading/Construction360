@@ -712,6 +712,15 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'id' => 8,
+                'title' => 'Facilities Management',
+                'description' => 'Our Managed Services division provides comprehensive facilities management, reactive maintenance, and planned preventative maintenance for residential blocks and commercial properties.',
+                'icon' => 'globe-alt',
+                'display_order' => 8,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
 
         // Truncate and seed blogs

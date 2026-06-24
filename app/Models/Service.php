@@ -37,6 +37,8 @@ class Service extends Model
             return 'images/service_facilities.png';
         } elseif (str_contains($title, 'building control')) {
             return 'images/service_commercial.png';
+        } elseif (str_contains($title, 'facilities') || str_contains($title, 'maintenance')) {
+            return 'images/service_facilities.png';
         }
         return 'images/service_design_planning.png';
     }

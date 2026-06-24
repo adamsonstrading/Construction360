@@ -3,18 +3,34 @@
 @section('title', $details['title'] . ' | Services | Construction 360 Ltd')
 
 @section('content')
-    <!-- Breadcrumbs & Header -->
-    <nav class="bg-slate-50 border-b border-slate-100 py-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-slate-400">
-                <a href="{{ url('/') }}" class="hover:text-aqua transition-colors">Home</a>
-                <span>/</span>
-                <a href="{{ route('services.index') }}" class="hover:text-aqua transition-colors">Services</a>
-                <span>/</span>
-                <span class="text-slate-600">{{ $details['title'] }}</span>
+    <!-- Services Dark Hero Banner -->
+    <section class="bg-slate-950 py-24 text-white relative overflow-hidden border-b border-slate-900">
+        <!-- Grid Watermark -->
+        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+            <svg class="w-full h-full text-white" fill="none" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <line x1="0" y1="25" x2="100" y2="25" stroke="currentColor" stroke-width="0.05" />
+                <line x1="0" y1="50" x2="100" y2="50" stroke="currentColor" stroke-width="0.05" />
+                <line x1="0" y1="75" x2="100" y2="75" stroke="currentColor" stroke-width="0.05" />
+                <line x1="25" y1="0" x2="25" y2="100" stroke="currentColor" stroke-width="0.05" />
+                <line x1="50" y1="0" x2="50" y2="100" stroke="currentColor" stroke-width="0.05" />
+                <line x1="75" y1="0" x2="75" y2="100" stroke="currentColor" stroke-width="0.05" />
+            </svg>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl space-y-4">
+                <div class="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-slate-400">
+                    <a href="{{ url('/') }}" class="hover:text-white transition-colors">Home</a>
+                    <span>/</span>
+                    <a href="{{ route('services.index') }}" class="hover:text-white transition-colors">Services</a>
+                    <span>/</span>
+                    <span class="text-white">{{ $details['title'] }}</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tighter leading-none mt-6">
+                    {{ $details['title'] }}
+                </h1>
             </div>
         </div>
-    </nav>
+    </section>
 
     <!-- About Section -->
     <section class="bg-white py-20 lg:py-28">
@@ -23,9 +39,9 @@
                 <!-- Left: Copy -->
                 <div class="lg:col-span-6 space-y-6">
                     <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">ABOUT THE SERVICE</span>
-                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tighter leading-none font-sans">
-                        {{ $details['title'] }}
-                    </h1>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight font-sans">
+                        Full-Spectrum {{ $details['title'] }} Solutions
+                    </h2>
                     <p class="text-sm sm:text-base text-slate-650 leading-relaxed font-sans pt-2">
                         {{ $details['about'] }}
                     </p>
@@ -33,7 +49,7 @@
                 
                 <!-- Right: Large image card -->
                 <div class="lg:col-span-6">
-                    <div class="bg-white border border-slate-150 rounded-2xl p-2.5 shadow-xl">
+                    <div class="bg-white border border-slate-150 rounded-2xl p-2.5 shadow-xl hover:shadow-2xl transition-all duration-300">
                         <img src="{{ asset($details['image_url']) }}" alt="{{ $details['title'] }}" class="w-full h-auto rounded-xl object-cover">
                     </div>
                 </div>
@@ -53,10 +69,10 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach($details['why_choose_us'] as $item)
-                    <div class="bg-white border border-slate-150 rounded-xl p-8 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+                    <div class="bg-white border border-slate-150 rounded-xl p-8 shadow-sm flex flex-col justify-between hover:border-slate-350 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
                         <div class="space-y-4">
                             <!-- Bullet Indicator -->
-                            <div class="h-1.5 w-8 bg-aqua rounded-full"></div>
+                            <div class="h-1 w-8 bg-aqua rounded-full"></div>
                             <h3 class="text-base font-bold text-slate-950 tracking-tight font-sans">
                                 {{ $item['title'] }}
                             </h3>
@@ -80,16 +96,16 @@
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 @foreach($details['services_offered'] as $subTitle => $subDesc)
-                    <div class="bg-white border border-slate-150 rounded-xl p-8 shadow-sm flex flex-col space-y-4 hover:border-slate-350 transition-colors duration-300">
+                    <div class="bg-white border border-slate-150 rounded-xl p-8 shadow-sm flex flex-col space-y-4 hover:border-slate-350 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                         <div class="flex items-center space-x-3">
-                            <span class="h-2 w-2 rounded-full bg-aqua"></span>
+                            <span class="h-2 w-2 rounded-full bg-aqua flex-shrink-0"></span>
                             <h3 class="text-base sm:text-lg font-bold text-slate-950 tracking-tight font-sans">
                                 {{ $subTitle }}
                             </h3>
                         </div>
-                        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-sans">
+                        <p class="text-xs sm:text-sm text-slate-555 leading-relaxed font-sans">
                             {{ $subDesc }}
                         </p>
                     </div>
@@ -170,8 +186,6 @@
                 // Close
                 panel.style.maxHeight = '0px';
                 icon.style.transform = 'rotate(0deg)';
-                // Change minus to plus icon by changing path back if desired, or keep rotation:
-                // Rotation from + to x (45deg) is clean, but let's rotate 180 or just rely on CSS
             } else {
                 // Close all others first
                 document.querySelectorAll('[id^="panel-"]').forEach((p, idx) => {

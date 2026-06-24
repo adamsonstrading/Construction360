@@ -580,6 +580,58 @@ class LandingPageController extends Controller
                 ]
             ];
         }
+
+        // 8. Facilities Management
+        if ($slug === 'facilities-management' || str_contains($slug, 'facilities') || str_contains($slug, 'maintenance')) {
+            return [
+                'title' => 'Facilities Management',
+                'image_url' => 'images/service_facilities.png',
+                'about' => 'Property ownership doesn’t end at completion—it’s an ongoing commitment that demands consistent attention, proactive maintenance, and rapid response when issues arise. At Construction 360 Ltd, our Managed Services division provides comprehensive facilities management for residential blocks, commercial properties, and mixed-use developments. With over 300 units under our management, we’ve developed robust systems and trusted supplier relationships that keep buildings running smoothly, tenants satisfied, and property values protected.',
+                'why_choose_us' => [
+                    [
+                        'title' => 'Responsive Service',
+                        'desc' => 'Emergency response with guaranteed call-back times. Routine requests handled within agreed SLAs.'
+                    ],
+                    [
+                        'title' => 'Proactive Maintenance',
+                        'desc' => 'Planned preventative maintenance programmes that catch issues before they become emergencies.'
+                    ],
+                    [
+                        'title' => 'In-House Capability',
+                        'desc' => 'From minor repairs to major remedial works, we handle everything with our in-house trade teams.'
+                    ],
+                    [
+                        'title' => 'Transparent Reporting',
+                        'desc' => 'Detailed reports outlining works completed, compliance statuses, and upcoming preventative tasks.'
+                    ]
+                ],
+                'services_offered' => [
+                    'Reactive Maintenance & Repairs' => 'Rapid response to tenant-reported issues and property emergencies. Our team handles everything from leaking taps and faulty electrics to boiler breakdowns and security concerns.',
+                    'Planned Preventative Maintenance (PPM)' => 'Structured maintenance programmes designed to extend asset life, maintain compliance, and prevent costly emergency repairs. PPM schedules typically include: HVAC servicing, gutter clearance, roof inspections, communal lighting checks, fire safety equipment testing, lift maintenance coordination, drainage surveys, and decorative upkeep cycles.',
+                    'Communal Area Management' => 'Comprehensive care for shared spaces in residential blocks and commercial buildings. Services include regular cleaning, lighting maintenance, entrance door and intercom upkeep, bin store management, car park maintenance, garden and landscaping coordination, and decorative refresh programmes.',
+                    'Building Fabric Maintenance' => 'Ongoing care for the physical structure and exterior of your property. Services include roof repairs and maintenance, external redecoration programmes, window and door maintenance, brickwork and pointing repairs, balcony inspections and repairs, rainwater goods maintenance, and structural monitoring where required.',
+                    'Emergency & Out-of-Hours Service' => 'Round-the-clock coverage for genuine emergencies. Our 24/7 service handles burst pipes, security breaches, dangerous structural issues, power failures, and other urgent situations that can\'t wait until morning.'
+                ],
+                'faqs' => [
+                    [
+                        'q' => 'What size properties do you manage?',
+                        'a' => 'We manage properties of all sizes, from individual residential buy-to-let apartments and blocks of flats to commercial office buildings, industrial spaces, and mixed-use retail blocks.'
+                    ],
+                    [
+                        'q' => 'How does your pricing work?',
+                        'a' => 'We offer both fixed-rate monthly retainer packages for planned maintenance and transparent hourly rates for reactive callouts. We can tailor an agreement based on your portfolio size.'
+                    ],
+                    [
+                        'q' => 'What\'s your response time for emergencies?',
+                        'a' => 'We provide a guaranteed 4-hour response time for structural, electrical, or plumbing emergencies that pose an immediate risk to the property or occupant safety.'
+                    ],
+                    [
+                        'q' => 'Are your trade teams fully certified?',
+                        'a' => 'Yes, all our engineers and tradespeople are fully certified, including Gas Safe, NICEIC registered electricians, and SafeContractor approved technicians.'
+                    ]
+                ]
+            ];
+        }
         
         return null;
     }
