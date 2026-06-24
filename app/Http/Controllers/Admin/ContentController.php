@@ -169,6 +169,26 @@ class ContentController extends Controller
             'pre_footer_cta_title' => 'required|string|max:255',
             'pre_footer_cta_subtitle' => 'required|string|max:1000',
             'footer_company_registration' => 'required|string|max:1000',
+
+            // Subpages Headings
+            'services_page_label' => 'required|string|max:255',
+            'services_page_title' => 'required|string|max:255',
+            'services_page_subtitle' => 'required|string|max:1000',
+            'service_about_label' => 'required|string|max:255',
+            'service_scopes_label' => 'required|string|max:255',
+            'service_scopes_title' => 'required|string|max:255',
+            'service_why_choose_us_label' => 'required|string|max:255',
+            'service_why_choose_us_title' => 'required|string|max:255',
+            'service_faqs_label' => 'required|string|max:255',
+            'service_faqs_title' => 'required|string|max:255',
+            'projects_page_label' => 'required|string|max:255',
+            'projects_page_title' => 'required|string|max:255',
+            'projects_page_subtitle' => 'required|string|max:1000',
+            'project_overview_title' => 'required|string|max:255',
+            'project_scopes_title' => 'required|string|max:255',
+            'project_specifications_title' => 'required|string|max:255',
+            'project_related_label' => 'required|string|max:255',
+            'project_related_title' => 'required|string|max:255',
         ]);
 
         // Handle Site Logo Upload

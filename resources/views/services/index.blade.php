@@ -19,12 +19,12 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-aqua">Services</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-aqua">{{ $content['services_page_label'] ?? 'Services' }}</span>
                 <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-950 mt-4 tracking-tighter leading-none font-sans">
-                    Design to Delivery
+                    {{ $content['services_page_title'] ?? 'Design to Delivery' }}
                 </h1>
                 <p class="mt-6 text-base sm:text-lg text-slate-550 leading-relaxed font-sans">
-                    We engage as early as possible in the lifecycle of a project to solve complex structural challenges, manage development risk, and exceed architectural standards.
+                    {{ $content['services_page_subtitle'] ?? 'We engage as early as possible in the lifecycle of a project to solve complex structural challenges, manage development risk, and exceed architectural standards.' }}
                 </p>
             </div>
         </div>

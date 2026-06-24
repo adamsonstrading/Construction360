@@ -170,6 +170,29 @@ Every modification, drawing correction, and schedule revision requested during t
 By maintaining a paperless, digital tendering registry, we reduce project administration overheads by 15%, passing the savings directly back to our commercial and residential clients in competitive pricing schedules.
 TEXT
 ,
+
+            // Subpages Headings & Text Configuration
+            'services_page_label' => 'Services',
+            'services_page_title' => 'Design to Delivery',
+            'services_page_subtitle' => 'We engage as early as possible in the lifecycle of a project to solve complex structural challenges, manage development risk, and exceed architectural standards.',
+            
+            'service_about_label' => 'ABOUT THE SERVICE',
+            'service_scopes_label' => 'SCOPES & DELIVERABLES',
+            'service_scopes_title' => 'Specialist Sub-Services',
+            'service_why_choose_us_label' => 'CAPABILITIES',
+            'service_why_choose_us_title' => 'Why Choose Us',
+            'service_faqs_label' => 'COMMON INQUIRIES',
+            'service_faqs_title' => 'Frequently Asked Questions',
+
+            'projects_page_label' => 'PORTFOLIO',
+            'projects_page_title' => 'Our Projects',
+            'projects_page_subtitle' => 'A curated selection of our high-spec residential builds, commercial workspace designs, and structural renovations across London and Essex.',
+
+            'project_overview_title' => 'Project Overview',
+            'project_scopes_title' => 'Development Scopes',
+            'project_specifications_title' => 'Project Specifications',
+            'project_related_label' => 'PORTFOLIO',
+            'project_related_title' => 'Related Projects',
         ];
 
         foreach ($contents as $key => $value) {

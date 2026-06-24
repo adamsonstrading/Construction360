@@ -17,12 +17,12 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-aqua">PORTFOLIO</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-aqua">{{ $content['projects_page_label'] ?? 'PORTFOLIO' }}</span>
                 <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-950 mt-4 tracking-tighter leading-none font-sans">
-                    Our Projects
+                    {{ $content['projects_page_title'] ?? 'Our Projects' }}
                 </h1>
                 <p class="mt-6 text-base sm:text-lg text-slate-550 leading-relaxed font-sans">
-                    A curated selection of our high-spec residential builds, commercial workspace designs, and structural renovations across London and Essex.
+                    {{ $content['projects_page_subtitle'] ?? 'A curated selection of our high-spec residential builds, commercial workspace designs, and structural renovations across London and Essex.' }}
                 </p>
             </div>
         </div>

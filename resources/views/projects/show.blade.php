@@ -43,7 +43,7 @@
                     <!-- Project Overview -->
                     <div class="space-y-6">
                         <h2 class="text-xl sm:text-2xl font-bold text-slate-950 tracking-tight font-sans">
-                            Project Overview
+                            {{ $content['project_overview_title'] ?? 'Project Overview' }}
                         </h2>
                         <div class="text-sm sm:text-base text-slate-650 leading-relaxed font-sans space-y-4">
                             @php
@@ -60,7 +60,7 @@
                     <!-- Project Timeline/Phases (Premium touch) -->
                     <div class="border-t border-slate-100 pt-10 space-y-6">
                         <h3 class="text-lg font-bold text-slate-950 tracking-tight font-sans">
-                            Development Scopes
+                            {{ $content['project_scopes_title'] ?? 'Development Scopes' }}
                         </h3>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
                             <div class="bg-slate-50 rounded-xl p-6 border border-slate-150 space-y-2">
@@ -87,7 +87,7 @@
                     <!-- Metadata card -->
                     <div class="bg-white border border-slate-150 rounded-2xl p-6 sm:p-8 shadow-md space-y-6">
                         <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 pb-4">
-                            Project Specifications
+                            {{ $content['project_specifications_title'] ?? 'Project Specifications' }}
                         </h3>
                         
                         <div class="space-y-4">
@@ -137,9 +137,9 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Section Title -->
                 <div class="mb-12">
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-aqua">PORTFOLIO</span>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-aqua">{{ $content['project_related_label'] ?? 'PORTFOLIO' }}</span>
                     <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-2 tracking-tighter font-sans">
-                        Related Projects
+                        {{ $content['project_related_title'] ?? 'Related Projects' }}
                     </h2>
                 </div>
 

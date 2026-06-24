@@ -38,7 +38,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
                 <!-- Left: Copy -->
                 <div class="lg:col-span-6 space-y-6">
-                    <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">ABOUT THE SERVICE</span>
+                    <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">{{ $content['service_about_label'] ?? 'ABOUT THE SERVICE' }}</span>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight font-sans">
                         Full-Spectrum {{ $details['title'] }} Solutions
                     </h2>
@@ -61,9 +61,9 @@
     <section class="bg-slate-50/50 py-24 lg:py-28 border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
-                <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">SCOPES & DELIVERABLES</span>
+                <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">{{ $content['service_scopes_label'] ?? 'SCOPES & DELIVERABLES' }}</span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-2 tracking-tighter font-sans">
-                    Specialist Sub-Services
+                    {{ $content['service_scopes_title'] ?? 'Specialist Sub-Services' }}
                 </h2>
             </div>
 
@@ -89,9 +89,9 @@
     <section class="bg-white py-24 lg:py-28 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
-                <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">CAPABILITIES</span>
+                <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">{{ $content['service_why_choose_us_label'] ?? 'CAPABILITIES' }}</span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-2 tracking-tighter font-sans">
-                    Why Choose Us
+                    {{ $content['service_why_choose_us_title'] ?? 'Why Choose Us' }}
                 </h2>
             </div>
 
@@ -118,9 +118,9 @@
     <section class="bg-white py-24 lg:py-28">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">COMMON INQUIRIES</span>
+                <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">{{ $content['service_faqs_label'] ?? 'COMMON INQUIRIES' }}</span>
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-2 tracking-tighter font-sans">
-                    Frequently Asked Questions
+                    {{ $content['service_faqs_title'] ?? 'Frequently Asked Questions' }}
                 </h2>
             </div>
 

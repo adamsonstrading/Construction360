@@ -981,6 +981,130 @@
                     </div>
                 </div>
 
+                <!-- Subpages Headings Customizations -->
+                <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-4">
+                    <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Subpages Headings & Text Customizations</span>
+                    
+                    <!-- Services Page Headers -->
+                    <div class="p-3 bg-white border border-slate-150 rounded-lg space-y-3">
+                        <span class="text-xs font-bold text-slate-500 uppercase">Services Listing Page</span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="services_page_label" class="block text-xs font-semibold text-slate-700">Hero Label</label>
+                                <input type="text" name="services_page_label" id="services_page_label" value="{{ old('services_page_label', $content['services_page_label'] ?? 'Services') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="services_page_title" class="block text-xs font-semibold text-slate-700">Hero Title</label>
+                                <input type="text" name="services_page_title" id="services_page_title" value="{{ old('services_page_title', $content['services_page_title'] ?? 'Design to Delivery') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="services_page_subtitle" class="block text-xs font-semibold text-slate-700">Hero Subtitle / Description</label>
+                                <textarea rows="2" name="services_page_subtitle" id="services_page_subtitle" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('services_page_subtitle', $content['services_page_subtitle'] ?? '') }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Detail Headers -->
+                    <div class="p-3 bg-white border border-slate-150 rounded-lg space-y-3">
+                        <span class="text-xs font-bold text-slate-500 uppercase">Service Detail Pages</span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="service_about_label" class="block text-xs font-semibold text-slate-700">About Section Label</label>
+                                <input type="text" name="service_about_label" id="service_about_label" value="{{ old('service_about_label', $content['service_about_label'] ?? 'ABOUT THE SERVICE') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div class="hidden md:block"></div>
+                            <div>
+                                <label for="service_scopes_label" class="block text-xs font-semibold text-slate-700">Scopes Section Label</label>
+                                <input type="text" name="service_scopes_label" id="service_scopes_label" value="{{ old('service_scopes_label', $content['service_scopes_label'] ?? 'SCOPES & DELIVERABLES') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="service_scopes_title" class="block text-xs font-semibold text-slate-700">Scopes Section Title</label>
+                                <input type="text" name="service_scopes_title" id="service_scopes_title" value="{{ old('service_scopes_title', $content['service_scopes_title'] ?? 'Specialist Sub-Services') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="service_why_choose_us_label" class="block text-xs font-semibold text-slate-700">Why Choose Us Label</label>
+                                <input type="text" name="service_why_choose_us_label" id="service_why_choose_us_label" value="{{ old('service_why_choose_us_label', $content['service_why_choose_us_label'] ?? 'CAPABILITIES') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="service_why_choose_us_title" class="block text-xs font-semibold text-slate-700">Why Choose Us Title</label>
+                                <input type="text" name="service_why_choose_us_title" id="service_why_choose_us_title" value="{{ old('service_why_choose_us_title', $content['service_why_choose_us_title'] ?? 'Why Choose Us') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="service_faqs_label" class="block text-xs font-semibold text-slate-700">FAQs Label</label>
+                                <input type="text" name="service_faqs_label" id="service_faqs_label" value="{{ old('service_faqs_label', $content['service_faqs_label'] ?? 'COMMON INQUIRIES') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="service_faqs_title" class="block text-xs font-semibold text-slate-700">FAQs Title</label>
+                                <input type="text" name="service_faqs_title" id="service_faqs_title" value="{{ old('service_faqs_title', $content['service_faqs_title'] ?? 'Frequently Asked Questions') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projects Page Headers -->
+                    <div class="p-3 bg-white border border-slate-150 rounded-lg space-y-3">
+                        <span class="text-xs font-bold text-slate-500 uppercase">Projects Listing Page</span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="projects_page_label" class="block text-xs font-semibold text-slate-700">Hero Label</label>
+                                <input type="text" name="projects_page_label" id="projects_page_label" value="{{ old('projects_page_label', $content['projects_page_label'] ?? 'PORTFOLIO') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="projects_page_title" class="block text-xs font-semibold text-slate-700">Hero Title</label>
+                                <input type="text" name="projects_page_title" id="projects_page_title" value="{{ old('projects_page_title', $content['projects_page_title'] ?? 'Our Projects') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="projects_page_subtitle" class="block text-xs font-semibold text-slate-700">Hero Subtitle / Description</label>
+                                <textarea rows="2" name="projects_page_subtitle" id="projects_page_subtitle" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('projects_page_subtitle', $content['projects_page_subtitle'] ?? '') }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Detail Headers -->
+                    <div class="p-3 bg-white border border-slate-150 rounded-lg space-y-3">
+                        <span class="text-xs font-bold text-slate-500 uppercase">Project Detail Pages</span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="project_overview_title" class="block text-xs font-semibold text-slate-700">Overview Section Title</label>
+                                <input type="text" name="project_overview_title" id="project_overview_title" value="{{ old('project_overview_title', $content['project_overview_title'] ?? 'Project Overview') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="project_scopes_title" class="block text-xs font-semibold text-slate-700">Development Scopes Title</label>
+                                <input type="text" name="project_scopes_title" id="project_scopes_title" value="{{ old('project_scopes_title', $content['project_scopes_title'] ?? 'Development Scopes') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="project_specifications_title" class="block text-xs font-semibold text-slate-700">Sidebar Specs Title</label>
+                                <input type="text" name="project_specifications_title" id="project_specifications_title" value="{{ old('project_specifications_title', $content['project_specifications_title'] ?? 'Project Specifications') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="project_related_label" class="block text-xs font-semibold text-slate-700">Related Section Label</label>
+                                <input type="text" name="project_related_label" id="project_related_label" value="{{ old('project_related_label', $content['project_related_label'] ?? 'PORTFOLIO') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="project_related_title" class="block text-xs font-semibold text-slate-700">Related Section Title</label>
+                                <input type="text" name="project_related_title" id="project_related_title" value="{{ old('project_related_title', $content['project_related_title'] ?? 'Related Projects') }}" required
+                                    class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Miscellaneous Layout Copies -->
                 <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3">
                     <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Layout & Pre-Footer Copys</span>
