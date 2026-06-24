@@ -6,24 +6,41 @@
 @section('content')
 @php
     // Pad why_choose_us to 4 items
-    $whyChooseUs = $service->why_choose_us ?? [];
+    $whyChooseUs = $service->why_choose_us;
+    if (is_string($whyChooseUs)) {
+        $whyChooseUs = json_decode($whyChooseUs, true);
+    }
+    if (!is_array($whyChooseUs)) {
+        $whyChooseUs = [];
+    }
     while (count($whyChooseUs) < 4) {
         $whyChooseUs[] = ['title' => '', 'desc' => ''];
     }
 
     // Pad services_offered to 4 items. services_offered is an associative array in DB.
+    $rawServicesOffered = $service->services_offered;
+    if (is_string($rawServicesOffered)) {
+        $rawServicesOffered = json_decode($rawServicesOffered, true);
+    }
+    if (!is_array($rawServicesOffered)) {
+        $rawServicesOffered = [];
+    }
     $servicesOffered = [];
-    if (!empty($service->services_offered)) {
-        foreach ($service->services_offered as $title => $desc) {
-            $servicesOffered[] = ['title' => $title, 'desc' => $desc];
-        }
+    foreach ($rawServicesOffered as $title => $desc) {
+        $servicesOffered[] = ['title' => $title, 'desc' => $desc];
     }
     while (count($servicesOffered) < 4) {
         $servicesOffered[] = ['title' => '', 'desc' => ''];
     }
 
     // Pad faqs to 4 items
-    $faqs = $service->faqs ?? [];
+    $faqs = $service->faqs;
+    if (is_string($faqs)) {
+        $faqs = json_decode($faqs, true);
+    }
+    if (!is_array($faqs)) {
+        $faqs = [];
+    }
     while (count($faqs) < 4) {
         $faqs[] = ['q' => '', 'a' => ''];
     }

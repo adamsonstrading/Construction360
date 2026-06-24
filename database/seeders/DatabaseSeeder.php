@@ -240,9 +240,9 @@ TEXT
             $details = $controller->getServiceDetails($slug);
             if ($details) {
                 $srv['about'] = $details['about'] ?? null;
-                $srv['why_choose_us'] = isset($details['why_choose_us']) ? json_encode($details['why_choose_us']) : null;
-                $srv['services_offered'] = isset($details['services_offered']) ? json_encode($details['services_offered']) : null;
-                $srv['faqs'] = isset($details['faqs']) ? json_encode($details['faqs']) : null;
+                $srv['why_choose_us'] = $details['why_choose_us'] ?? null;
+                $srv['services_offered'] = $details['services_offered'] ?? null;
+                $srv['faqs'] = $details['faqs'] ?? null;
                 $srv['image_url'] = $details['image_url'] ?? null;
             }
             Service::create($srv);
