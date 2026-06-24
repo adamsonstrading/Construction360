@@ -648,7 +648,7 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
 
         // Truncate and seed services
         DB::table('services')->truncate();
-        DB::table('services')->insert([
+        $services = [
             [
                 'id' => 1,
                 'title' => 'Planning',
@@ -721,7 +721,22 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-        ]);
+        ];
+
+        $controller = new \App\Http\Controllers\LandingPageController();
+        foreach ($services as &$srv) {
+            $slug = \Illuminate\Support\Str::slug($srv['title']);
+            $details = $controller->getServiceDetails($slug);
+            if ($details) {
+                $srv['about'] = $details['about'] ?? null;
+                $srv['why_choose_us'] = isset($details['why_choose_us']) ? json_encode($details['why_choose_us']) : null;
+                $srv['services_offered'] = isset($details['services_offered']) ? json_encode($details['services_offered']) : null;
+                $srv['faqs'] = isset($details['faqs']) ? json_encode($details['faqs']) : null;
+                $srv['image_url'] = $details['image_url'] ?? null;
+            }
+        }
+
+        DB::table('services')->insert($services);
 
         // Truncate and seed blogs
         DB::table('blogs')->truncate();

@@ -50,9 +50,39 @@ class LandingPageController extends Controller
         $content = SiteContent::pluck('value', 'key')->all();
         $services = Service::orderBy('display_order', 'asc')->get();
         
-        $details = $this->getServiceDetails($slug);
-        if (!$details) {
-            abort(404, 'Service not found');
+        // Find the service by slug
+        $service = null;
+        foreach ($services as $srv) {
+            if (\Illuminate\Support\Str::slug($srv->title) === $slug) {
+                $service = $srv;
+                break;
+            }
+        }
+        
+        if (!$service) {
+            $details = $this->getServiceDetails($slug);
+            if (!$details) {
+                abort(404, 'Service not found');
+            }
+        } else {
+            $details = [
+                'title' => $service->title,
+                'image_url' => $service->image_url,
+                'about' => $service->about,
+                'why_choose_us' => is_string($service->why_choose_us) ? json_decode($service->why_choose_us, true) : $service->why_choose_us,
+                'services_offered' => is_string($service->services_offered) ? json_decode($service->services_offered, true) : $service->services_offered,
+                'faqs' => is_string($service->faqs) ? json_decode($service->faqs, true) : $service->faqs,
+            ];
+            
+            // Fallback empty fields to defaults from controller
+            $defaults = $this->getServiceDetails($slug);
+            if ($defaults) {
+                if (empty($details['image_url'])) $details['image_url'] = $defaults['image_url'];
+                if (empty($details['about'])) $details['about'] = $defaults['about'];
+                if (empty($details['why_choose_us'])) $details['why_choose_us'] = $defaults['why_choose_us'];
+                if (empty($details['services_offered'])) $details['services_offered'] = $defaults['services_offered'];
+                if (empty($details['faqs'])) $details['faqs'] = $defaults['faqs'];
+            }
         }
 
         return view('services.show', compact('content', 'services', 'details', 'slug'));
@@ -220,7 +250,7 @@ class LandingPageController extends Controller
     /**
      * Structured detail data map for competitor-matched service pages.
      */
-    protected function getServiceDetails($slug)
+    public function getServiceDetails($slug)
     {
         $slug = strtolower($slug);
         
@@ -330,7 +360,7 @@ class LandingPageController extends Controller
         if ($slug === 'finance' || str_contains($slug, 'finance')) {
             return [
                 'title' => 'Finance',
-                'image_url' => 'images/about_overlap.png',
+                'image_url' => 'images/service_finance.png',
                 'about' => 'Securing the right funding structure is critical to the viability of any property development. At Construction 360 Ltd, we work alongside leading institutional lenders, private funds, and specialist brokers to help you structure development finance. By preparing detailed development appraisals, cash flow projections, and construction cost schedules, we present your project in its strongest light to secure optimal funding terms.',
                 'why_choose_us' => [
                     [
@@ -483,7 +513,7 @@ class LandingPageController extends Controller
         if ($slug === 'support-services' || str_contains($slug, 'support')) {
             return [
                 'title' => 'Support Services',
-                'image_url' => 'images/service_facilities.png',
+                'image_url' => 'images/service_support.png',
                 'about' => 'Successful developments require a range of technical approvals, regulatory compliance checks, and environmental surveys before and during construction. Our Support Services division manages these specialized requirements, including local authority planning conditions, Section 106 agreements, environmental assessments, and energy performance calculations. We act as your technical coordinator to ensure all regulatory obligations are discharged smoothly.',
                 'why_choose_us' => [
                     [
@@ -534,7 +564,7 @@ class LandingPageController extends Controller
         if ($slug === 'building-control' || str_contains($slug, 'control')) {
             return [
                 'title' => 'Building Control',
-                'image_url' => 'images/service_commercial.png',
+                'image_url' => 'images/service_control.png',
                 'about' => 'Building control is the essential framework that ensures all structures are safe, energy-efficient, and accessible. At Construction 360 Ltd, we manage the entire building control process, working with local authorities and approved private inspectors. We handle structural plan check submissions, schedule on-site inspections at critical build stages, and secure the final completion certificates that validate your building\'s structural compliance.',
                 'why_choose_us' => [
                     [
