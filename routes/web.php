@@ -68,6 +68,10 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::get('/sync-live-data', function () { \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'LiveSyncSeeder']); return 'Live site successfully synced with local database!'; });
+Route::get('/run-migrations', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+    return 'Migrations run successfully!';
+});
 Route::get('/clear-cache', function () {
     \Illuminate\Support\Facades\Artisan::call('route:clear');
     \Illuminate\Support\Facades\Artisan::call('config:clear');
