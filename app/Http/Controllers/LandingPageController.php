@@ -249,12 +249,10 @@ class LandingPageController extends Controller
                     ]
                 ],
                 'services_offered' => [
-                    'Commercial Building' => 'End-to-end design and construction of commercial facilities, offices, retail spaces, and mixed-use structures tailored to operational needs.',
-                    'Residential Buildings' => 'Construction of new build developments, blocks of flats, and premium custom residences built to the highest architectural standards.',
-                    'Loft Conversions' => 'Transforming unused roof space into premium habitable rooms, including dormer, mansard, and hip-to-gable conversions with full structural support.',
-                    'Rear Extensions' => 'Expanding ground-floor living spaces with seamless rear extensions that connect your home to the outdoors with modern glazing and layouts.',
-                    'Second Storey Extensions' => 'Adding a second floor to existing structures, requiring careful structural load assessment and seamless integration with existing architecture.',
-                    'Outbuildings' => 'Design and build of bespoke garden rooms, home offices, gyms, and annexes built with full residential-grade insulation and utility services.'
+                    'Commercial & Residential Buildings' => 'End-to-end design and construction of new residential blocks, custom homes, and commercial facilities.',
+                    'Loft Conversions' => 'Transforming unused roof spaces into premium habitable rooms with full structural support and compliance.',
+                    'Home Extensions' => 'Expanding ground-floor and multi-storey spaces with seamless rear and side extensions.',
+                    'Bespoke Outbuildings' => 'Design and construction of high-specification garden rooms, home offices, and custom annexes.'
                 ],
                 'faqs' => [
                     [
@@ -302,9 +300,10 @@ class LandingPageController extends Controller
                     ]
                 ],
                 'services_offered' => [
-                    'Architectural Drawings' => 'Detailed planning drawings including site layout plans, floor plans, elevations, and sections showing the exact proposal and its relation to neighboring properties.',
-                    'Planning Consultancy' => 'Professional advice on development potential, planning policy compliance, pre-application consultations, and strategy development for complex schemes.',
-                    'Planning Application submissions' => 'Preparation, compilation, and submission of all planning documents, design and access statements, and management of the application through local authority determination.'
+                    'Architectural Planning Drawings' => 'Detailed layouts, site plans, floor plans, and elevation drawings tailored for council review.',
+                    'Planning Consultancy' => 'Expert advice on policy compliance, permitted development limits, and feasibility assessments.',
+                    'Pre-Application Consultations' => 'Formal pre-application submissions and negotiations with local authorities to de-risk planning.',
+                    'Full Application Submissions' => 'Preparation, compilation, and formal submission of planning applications and appeal management.'
                 ],
                 'faqs' => [
                     [
@@ -352,7 +351,10 @@ class LandingPageController extends Controller
                     ]
                 ],
                 'services_offered' => [
-                    'Development Finance' => 'Sourcing and structuring funding for ground-up developments, commercial fit-outs, major refurbishments, and land acquisitions.'
+                    'Development Finance Sourcing' => 'Structuring and securing funding for ground-up developments, refurbishments, and land acquisitions.',
+                    'Financial Feasibility Appraisals' => 'Creating comprehensive cash flow models and cost plans that meet strict institutional lending requirements.',
+                    'Equity & Joint Venture Advisory' => 'Structuring joint ventures and mezzanine funding to optimize developer equity contributions.',
+                    'Drawdown & Monitoring Management' => 'Coordinating monthly surveyor valuations and site inspections to ensure smooth funds release.'
                 ],
                 'faqs' => [
                     [
@@ -400,11 +402,10 @@ class LandingPageController extends Controller
                     ]
                 ],
                 'services_offered' => [
-                    'Architectural services' => 'Concept creation, spatial planning, detailed elevations, interior specifications, and construction-level drawing sets.',
-                    'Structural Services' => 'Structural steelwork designs, reinforced concrete calculations, load-bearing masonry analysis, and timber frame designs.',
-                    'Below Ground Services' => 'Specialist design of below-ground drainage layouts, attenuation tanks, soil drainage networks, and connection details to public sewers.',
-                    'Fire Safety Consultancy' => 'Comprehensive fire safety strategies, fire risk assessments, compartmentation layouts, and fire escape route designs.',
-                    'M&E services' => 'Design of mechanical, electrical, and plumbing infrastructure including heating layouts, ventilation, power routing, and smart control systems.'
+                    'Architectural Services' => 'Creative concept designs, spatial planning, detailed construction specifications, and material selections.',
+                    'Structural Services' => 'Structural steel calculations, reinforced concrete layouts, and load-bearing masonry analysis.',
+                    'Below Ground Drainage Services' => 'Specialist design of foul water systems, rainwater attenuation tanks, and public sewer connection approvals.',
+                    'M&E & Fire Safety Consultancy' => 'Comprehensive mechanical, electrical, and fire safety strategy layouts for full code compliance.'
                 ],
                 'faqs' => [
                     [
@@ -452,11 +453,10 @@ class LandingPageController extends Controller
                     ]
                 ],
                 'services_offered' => [
-                    'Demolition' => 'Safe, controlled demolition of existing structures, site clearance, and recycling of materials in accordance with environmental standards.',
-                    'Piling' => 'Installation of deep concrete or steel piles (such as screw, bored, or driven piles) to support heavy structural loads in weak soils.',
-                    'Foundations' => 'Design and casting of strip, raft, trench fill, or pile cap foundations engineered specifically for site soil conditions.',
-                    'RC Frames' => 'Construction of reinforced concrete (RC) frames, columns, slabs, and retaining walls for multi-storey residential and commercial builds.',
-                    'Etc' => 'Associated heavy works including ground retaining structures, basement excavations, structural steel frames, and civil engineering works.'
+                    'Demolition & Site Clearance' => 'Controlled structural demolition, site clearance, and environmental recycling of materials.',
+                    'Piling & Ground Engineering' => 'Deep concrete screw and bored piling installations to support structures in weak ground conditions.',
+                    'Concrete Foundations' => 'Slab foundations, trench fill, and engineered raft foundations suited to local soil reports.',
+                    'RC Frames & Superstructures' => 'Construction of reinforced concrete frames, structural slabs, retaining walls, and multi-storey skeletons.'
                 ],
                 'faqs' => [
                     [
@@ -504,11 +504,10 @@ class LandingPageController extends Controller
                     ]
                 ],
                 'services_offered' => [
-                    'Conditions Discharge' => 'Liaising with local planning authorities to submit details and clear pre-commencement and pre-occupation planning conditions.',
-                    'S106' => 'Assisting developers with Section 106 planning obligations, developer contributions, and coordination of community infrastructure levy (CIL) matters.',
-                    'Archeological and Heriotage Reports' => 'Specialist historical and archaeological impact assessments, heritage statements, and watching briefs for sensitive sites.',
-                    'Surface Water and Drainagae' => 'Preparation of Sustainable Drainage Systems (SuDS) reports, surface water run-off calculations, and drainage strategy schemes.',
-                    'SAP Calculations' => 'Standard Assessment Procedure (SAP) calculations for residential units to verify compliance with Building Regulations Part L (Conservation of Fuel and Power).'
+                    'Planning Conditions Discharge' => 'Liaising with councils to clear pre-commencement and pre-occupation planning conditions.',
+                    'Section 106 & CIL Management' => 'Negotiating Section 106 agreements, infrastructure contributions, and CIL liability assessments.',
+                    'Heritage & Archaeological Reports' => 'Impact assessments, heritage statements, and site watching briefs for historic sites.',
+                    'SAP Calculations & Energy Surveys' => 'Standard Assessment Procedure (SAP) energy ratings to satisfy Part L building compliance.'
                 ],
                 'faqs' => [
                     [
@@ -556,9 +555,10 @@ class LandingPageController extends Controller
                     ]
                 ],
                 'services_offered' => [
-                    'Building Regulations Submissions' => 'Compilation and submission of detailed technical drawings, structural calculations, and specifications for full plans check approval.',
-                    'Inspector Liaison & Site Inspections' => 'Coordinating key inspection stages on site with local authority building control officers or approved private inspectors.',
-                    'Final Completion Certification' => 'Securing the final Building Control Completion Certificate by compiling all necessary commissioning certificates and structural sign-offs.'
+                    'Building Regulations Submissions' => 'Preparation of detailed technical specifications and plan-check submissions for full approval.',
+                    'Site Inspection Coordination' => 'Managing milestone inspections on site (foundations, drainage, structure) with building inspectors.',
+                    'Technical Commissioning Liaison' => 'Compiling commissioning logs (electrical, gas, air testing, acoustics) for inspector review.',
+                    'Final Completion Certification' => 'Securing the final Building Control Completion Certificate to certify structural compliance.'
                 ],
                 'faqs' => [
                     [
@@ -606,11 +606,10 @@ class LandingPageController extends Controller
                     ]
                 ],
                 'services_offered' => [
-                    'Reactive Maintenance & Repairs' => 'Rapid response to tenant-reported issues and property emergencies. Our team handles everything from leaking taps and faulty electrics to boiler breakdowns and security concerns.',
-                    'Planned Preventative Maintenance (PPM)' => 'Structured maintenance programmes designed to extend asset life, maintain compliance, and prevent costly emergency repairs. PPM schedules typically include: HVAC servicing, gutter clearance, roof inspections, communal lighting checks, fire safety equipment testing, lift maintenance coordination, drainage surveys, and decorative upkeep cycles.',
-                    'Communal Area Management' => 'Comprehensive care for shared spaces in residential blocks and commercial buildings. Services include regular cleaning, lighting maintenance, entrance door and intercom upkeep, bin store management, car park maintenance, garden and landscaping coordination, and decorative refresh programmes.',
-                    'Building Fabric Maintenance' => 'Ongoing care for the physical structure and exterior of your property. Services include roof repairs and maintenance, external redecoration programmes, window and door maintenance, brickwork and pointing repairs, balcony inspections and repairs, rainwater goods maintenance, and structural monitoring where required.',
-                    'Emergency & Out-of-Hours Service' => 'Round-the-clock coverage for genuine emergencies. Our 24/7 service handles burst pipes, security breaches, dangerous structural issues, power failures, and other urgent situations that can\'t wait until morning.'
+                    'Reactive Maintenance & Repairs' => 'Rapid response plumbing, electrical, and structural repairs to handle tenant-reported issues.',
+                    'Planned Preventative Maintenance (PPM)' => 'Scheduled HVAC servicing, roof/gutter inspections, drainage surveys, and general upkeep.',
+                    'Communal Area Management' => 'Cleaning, lighting maintenance, bin stores, landscape coordination, and security system checks.',
+                    'Emergency 24/7 Out-of-Hours Service' => 'Round-the-clock emergency support for burst pipes, power failures, and building security issues.'
                 ],
                 'faqs' => [
                     [

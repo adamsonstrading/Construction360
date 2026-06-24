@@ -57,8 +57,36 @@
         </div>
     </section>
 
+    <!-- Detailed Sub-Services Offered -->
+    <section class="bg-slate-50/50 py-24 lg:py-28 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">SCOPES & DELIVERABLES</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-2 tracking-tighter font-sans">
+                    Specialist Sub-Services
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                @foreach($details['services_offered'] as $subTitle => $subDesc)
+                    <div class="bg-white border border-slate-150 rounded-xl p-8 shadow-sm flex flex-col space-y-4 hover:border-slate-350 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                        <div class="flex items-center space-x-3">
+                            <span class="h-2 w-2 rounded-full bg-aqua flex-shrink-0"></span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-950 tracking-tight font-sans">
+                                {{ $subTitle }}
+                            </h3>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-555 leading-relaxed font-sans">
+                            {{ $subDesc }}
+                        </p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     <!-- Why Choose Us Grid -->
-    <section class="bg-slate-50/50 border-y border-slate-100 py-24">
+    <section class="bg-white py-24 lg:py-28 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
                 <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">CAPABILITIES</span>
@@ -80,34 +108,6 @@
                                 {{ $item['desc'] }}
                             </p>
                         </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <!-- Detailed Sub-Services Offered -->
-    <section class="bg-white py-24 lg:py-28 border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16">
-                <span class="text-[10px] font-bold text-aqua uppercase tracking-[0.2em] block">SCOPES & DELIVERABLES</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-2 tracking-tighter font-sans">
-                    Specialist Sub-Services
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                @foreach($details['services_offered'] as $subTitle => $subDesc)
-                    <div class="bg-white border border-slate-150 rounded-xl p-8 shadow-sm flex flex-col space-y-4 hover:border-slate-350 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                        <div class="flex items-center space-x-3">
-                            <span class="h-2 w-2 rounded-full bg-aqua flex-shrink-0"></span>
-                            <h3 class="text-base sm:text-lg font-bold text-slate-950 tracking-tight font-sans">
-                                {{ $subTitle }}
-                            </h3>
-                        </div>
-                        <p class="text-xs sm:text-sm text-slate-555 leading-relaxed font-sans">
-                            {{ $subDesc }}
-                        </p>
                     </div>
                 @endforeach
             </div>
