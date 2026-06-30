@@ -1,6 +1,21 @@
 @extends('layouts.public')
 
-@section('title', $details['title'] . ' | Services | Construction 360 Ltd')
+@if(!empty($details['meta_title']))
+    @section('meta_title', $details['meta_title'])
+@else
+    @section('title', $details['title'] . ' | Services | Construction 360 Ltd')
+@endif
+
+@if(!empty($details['meta_description']) || !empty($details['meta_keywords']))
+    @section('meta')
+        @if(!empty($details['meta_description']))
+            <meta name="description" content="{{ $details['meta_description'] }}">
+        @endif
+        @if(!empty($details['meta_keywords']))
+            <meta name="keywords" content="{{ $details['meta_keywords'] }}">
+        @endif
+    @endsection
+@endif
 
 @section('content')
     <!-- Services Dark Hero Banner -->

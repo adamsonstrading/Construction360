@@ -64,6 +64,9 @@ class LandingPageController extends Controller
             if (!$details) {
                 abort(404, 'Service not found');
             }
+            $details['meta_title'] = null;
+            $details['meta_description'] = null;
+            $details['meta_keywords'] = null;
         } else {
             $details = [
                 'title' => $service->title,
@@ -72,6 +75,9 @@ class LandingPageController extends Controller
                 'why_choose_us' => is_string($service->why_choose_us) ? json_decode($service->why_choose_us, true) : $service->why_choose_us,
                 'services_offered' => is_string($service->services_offered) ? json_decode($service->services_offered, true) : $service->services_offered,
                 'faqs' => is_string($service->faqs) ? json_decode($service->faqs, true) : $service->faqs,
+                'meta_title' => $service->meta_title,
+                'meta_description' => $service->meta_description,
+                'meta_keywords' => $service->meta_keywords,
             ];
             
             // Fallback empty fields to defaults from controller

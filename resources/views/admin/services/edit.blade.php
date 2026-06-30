@@ -215,6 +215,51 @@
                 </div>
             </div>
 
+            <!-- SEO Settings Group -->
+            <div class="space-y-4 pt-4 border-t border-slate-200">
+                <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
+                    <svg class="h-4 w-4 mr-2 text-[#008080]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    SEO Metadata Settings
+                </h4>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="sm:col-span-2">
+                        <label for="meta_title" class="block text-sm font-semibold text-slate-700">Meta Title <span class="text-slate-400 font-normal">(Optional)</span></label>
+                        <div class="mt-1.5">
+                            <input type="text" name="meta_title" id="meta_title" value="{{ old('meta_title', $service->meta_title) }}" placeholder="e.g. Architectural Planning Services | Construction 360"
+                                class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm transition-all">
+                        </div>
+                        @error('meta_title')
+                            <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label for="meta_keywords" class="block text-sm font-semibold text-slate-700">Meta Keywords <span class="text-slate-400 font-normal">(Optional)</span></label>
+                        <div class="mt-1.5">
+                            <input type="text" name="meta_keywords" id="meta_keywords" value="{{ old('meta_keywords', $service->meta_keywords) }}" placeholder="e.g. architectural drawings, planning applications, planning consultancy"
+                                class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm transition-all">
+                        </div>
+                        @error('meta_keywords')
+                            <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <label for="meta_description" class="block text-sm font-semibold text-slate-700">Meta Description <span class="text-slate-400 font-normal">(Optional)</span></label>
+                        <div class="mt-1.5">
+                            <textarea rows="3" name="meta_description" id="meta_description" placeholder="A brief summary of the service for search results..."
+                                class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm transition-all">{{ old('meta_description', $service->meta_description) }}</textarea>
+                        </div>
+                        @error('meta_description')
+                            <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
             <div class="flex items-center justify-end space-x-3 pt-6 border-t border-slate-200">
                 <a href="{{ route('admin.services.index') }}" class="px-4 py-2 border border-slate-200 text-sm font-semibold text-slate-700 rounded-lg hover:bg-slate-50 transition-colors">
                     Cancel

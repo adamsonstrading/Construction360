@@ -18,6 +18,9 @@ class Service extends Model
         'services_offered',
         'faqs',
         'image_url',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
     ];
 
     protected $casts = [

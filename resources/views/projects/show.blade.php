@@ -1,6 +1,21 @@
 @extends('layouts.public')
 
-@section('title', $project->title . ' | Projects | Construction 360 Ltd')
+@if(!empty($project->meta_title))
+    @section('meta_title', $project->meta_title)
+@else
+    @section('title', $project->title . ' | Projects | Construction 360 Ltd')
+@endif
+
+@if(!empty($project->meta_description) || !empty($project->meta_keywords))
+    @section('meta')
+        @if(!empty($project->meta_description))
+            <meta name="description" content="{{ $project->meta_description }}">
+        @endif
+        @if(!empty($project->meta_keywords))
+            <meta name="keywords" content="{{ $project->meta_keywords }}">
+        @endif
+    @endsection
+@endif
 
 @section('content')
     <!-- Breadcrumbs & Navigation -->
