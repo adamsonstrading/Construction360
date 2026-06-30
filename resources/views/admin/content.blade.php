@@ -132,6 +132,18 @@
                         <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
                     @enderror
                 </div>
+
+                <div>
+                    <label for="google_site_verification" class="block text-sm font-semibold text-slate-700">Google Site Verification Code <span class="text-slate-400 font-normal">(Optional)</span></label>
+                    <div class="mt-1.5">
+                        <input type="text" name="google_site_verification" id="google_site_verification" value="{{ old('google_site_verification', $content['google_site_verification'] ?? '') }}" placeholder="e.g. google-site-verification=xxxxxx or code value"
+                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
+                    </div>
+                    <p class="mt-1 text-xs text-slate-400">Insert your Google Search Console verification meta tag key or code.</p>
+                    @error('google_site_verification')
+                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
 
             <!-- Hero Section Group -->

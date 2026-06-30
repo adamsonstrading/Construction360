@@ -9,6 +9,10 @@
     @else
         <title>@yield('title', 'Integrated Construction & Premium Architectural Builds') | Construction 360 Ltd</title>
     @endif
+    <link rel="canonical" href="{{ url()->current() }}">
+    @if(!empty($content['google_site_verification']))
+        <meta name="google-site-verification" content="{{ $content['google_site_verification'] }}">
+    @endif
     
     <!-- Meta tags -->
     @hasSection('meta')
@@ -48,6 +52,47 @@
             background-color: #1E293B;
         }
     </style>
+    <!-- JSON-LD Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Construction 360 Ltd",
+      "image": "{{ asset('favicon.svg') }}",
+      "@id": "{{ url('/') }}",
+      "url": "{{ url('/') }}",
+      "telephone": "{{ $content['contact_phone'] ?? '' }}",
+      "email": "{{ $content['header_email'] ?? 'info@construction360.co' }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ $content['footer_address'] ?? 'Essex, London' }}",
+        "addressLocality": "Essex",
+        "addressCountry": "GB"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 51.545,
+        "longitude": 0.478
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "sameAs": [
+        "{{ $content['social_facebook'] ?? '#' }}",
+        "{{ $content['social_instagram'] ?? '#' }}",
+        "{{ $content['social_linkedin'] ?? '#' }}"
+      ]
+    }
+    </script>
     @yield('styles')
 </head>
 <body class="antialiased min-h-screen flex flex-col relative overflow-x-hidden">

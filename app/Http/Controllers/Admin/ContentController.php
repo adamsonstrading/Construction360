@@ -27,6 +27,7 @@ class ContentController extends Controller
             'seo_meta_title' => 'required|string|max:255',
             'seo_meta_description' => 'required|string|max:1000',
             'seo_meta_keywords' => 'required|string|max:1000',
+            'google_site_verification' => 'nullable|string|max:255',
             
             'hero_title' => 'required|string|max:255',
             'hero_subtitle' => 'required|string|max:1000',

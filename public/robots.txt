@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /login
+
+Sitemap: https://const360.humayounakhtar.com/Construction360/public/sitemap.xml
