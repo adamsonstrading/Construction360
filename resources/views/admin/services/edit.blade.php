@@ -140,14 +140,25 @@
             <!-- Section 2: Specialist Sub-Services -->
             <div class="space-y-6 pt-4 border-t border-slate-100">
                 <div class="flex items-center justify-between border-b border-slate-100 pb-2">
-                    <h4 class="text-sm font-bold text-slate-800 uppercase tracking-wider">Specialist Sub-Services (Scopes & Deliverables)</h4>
-                    <span class="text-xs text-slate-500 font-medium">Exactly 4 items</span>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-800 uppercase tracking-wider">Specialist Sub-Services (Scopes & Deliverables)</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Manage as many sub-services as needed. Empty entries will be skipped.</p>
+                    </div>
+                    <button type="button" id="add-sub-service-btn" class="px-3 py-1.5 text-xs font-semibold text-[#008080] bg-teal-50 hover:bg-teal-100 rounded-lg transition-colors flex items-center">
+                        <svg class="h-3.5 w-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Add Sub-Service
+                    </button>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div id="sub-services-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     @foreach ($servicesOffered as $index => $item)
-                        <div class="bg-slate-50/50 p-4 border border-slate-200 rounded-xl space-y-3">
-                            <span class="text-xs font-bold text-slate-400">Sub-Service #{{ $index + 1 }}</span>
+                        <div class="bg-slate-50/50 p-4 border border-slate-200 rounded-xl space-y-3 relative sub-service-card">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-slate-400 card-index-label">Sub-Service #{{ $index + 1 }}</span>
+                                <button type="button" class="text-red-500 hover:text-red-700 text-xs font-semibold remove-sub-service-btn">Remove</button>
+                            </div>
                             <div>
                                 <label class="block text-xs font-semibold text-slate-600">Title</label>
                                 <input type="text" name="services_offered[{{ $index }}][title]" value="{{ old('services_offered.'.$index.'.title', $item['title']) }}"
@@ -271,4 +282,63 @@
         </form>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('sub-services-container');
+    const addBtn = document.getElementById('add-sub-service-btn');
+    
+    if (addBtn && container) {
+        addBtn.addEventListener('click', function () {
+            const cards = container.querySelectorAll('.sub-service-card');
+            const newIndex = cards.length;
+            
+            const cardHtml = `
+                <div class="bg-slate-50/50 p-4 border border-slate-200 rounded-xl space-y-3 relative sub-service-card">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-400 card-index-label">Sub-Service #\${newIndex + 1}</span>
+                        <button type="button" class="text-red-500 hover:text-red-700 text-xs font-semibold remove-sub-service-btn">Remove</button>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600">Title</label>
+                        <input type="text" name="services_offered[\${newIndex}][title]" value=""
+                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600">Description</label>
+                        <textarea rows="2" name="services_offered[\${newIndex}][desc]"
+                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs"></textarea>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', cardHtml);
+            reindexSubServices();
+        });
+        
+        container.addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-sub-service-btn')) {
+                const card = e.target.closest('.sub-service-card');
+                if (card) {
+                    card.remove();
+                    reindexSubServices();
+                }
+            }
+        });
+        
+        function reindexSubServices() {
+            const cards = container.querySelectorAll('.sub-service-card');
+            cards.forEach((card, idx) => {
+                const label = card.querySelector('.card-index-label');
+                if (label) label.textContent = `Sub-Service #\${idx + 1}`;
+                
+                const titleInput = card.querySelector('input[type="text"]');
+                if (titleInput) titleInput.name = `services_offered[\${idx}][title]`;
+                
+                const descTextarea = card.querySelector('textarea');
+                if (descTextarea) descTextarea.name = `services_offered[\${idx}][desc]`;
+            });
+        }
+    }
+});
+</script>
 @endsection
