@@ -260,10 +260,10 @@ class LandingPageController extends Controller
     {
         $slug = strtolower($slug);
         
-        // 1. Design and Build (must be matched before Design to avoid incorrect matching)
+        // 1. Design & Build (must be matched before Design to avoid incorrect matching)
         if ($slug === 'design-and-build' || str_contains($slug, 'design-and-build') || (str_contains($slug, 'design') && str_contains($slug, 'build'))) {
             return [
-                'title' => 'Design and Build',
+                'title' => 'Design & Build',
                 'image_url' => 'images/service_residential.png',
                 'about' => 'Our integrated Design and Build service provides a single point of responsibility, integrating architectural planning, structural engineering, and construction delivery. By aligning design intent with site feasibility and budgets from the outset, we eliminate discrepancies and accelerate project timelines. Whether executing a new commercial building, multi-unit residential project, complex loft conversion, or home extension, we manage every phase under a unified team.',
                 'why_choose_us' => [
@@ -305,20 +305,20 @@ class LandingPageController extends Controller
                 ],
                 'faqs' => [
                     [
-                        'q' => 'What are the benefits of Design and Build?',
-                        'a' => 'It minimizes project risk, reduces delivery times, and prevents budget overruns by eliminating the friction between separate architects and contractors.'
+                        'q' => 'What are the benefits of a Turnkey Design & Build solution?',
+                        'a' => 'Turnkey Design & Build unifies architectural drawings, structural engineering, and site execution under a single contractor. This eliminates communication gaps, keeps designs aligned with budgets, and accelerates delivery.'
                     ],
                     [
-                        'q' => 'Do you handle structural calculations for extensions?',
-                        'a' => 'Yes, our team includes structural engineers who produce all necessary structural calculations, steel beam specifications, and loading diagrams.'
+                        'q' => 'Do you handle conversions (loft, garage, basement) as well as new builds?',
+                        'a' => 'Yes. Our capabilities range from custom-built new homes and residential developments to complex loft, basement, and garage conversions.'
                     ],
                     [
-                        'q' => 'How long does a typical loft conversion or rear extension take?',
-                        'a' => 'Loft conversions generally take 6 to 8 weeks on site, while rear extensions typically require 8 to 12 weeks depending on structural complexity.'
+                        'q' => 'Can you handle listed building restorations and commercial fit-outs?',
+                        'a' => 'Yes. We have specialist divisions for sensitive restorations of heritage structures and complete turnkey office and commercial space fit-outs.'
                     ],
                     [
-                        'q' => 'Can I live in the property during construction?',
-                        'a' => 'For most loft conversions and rear extensions, we can partition the work areas to minimize disruption, allowing you to occupy the property safely.'
+                        'q' => 'How do you manage budgets and prevent cost overruns during the build?',
+                        'a' => 'By integrating our quantity surveyors and builders directly with the design team, we estimate costs in real-time, ensuring specifications remain within budget from day one.'
                     ]
                 ]
             ];
@@ -362,20 +362,20 @@ class LandingPageController extends Controller
                 ],
                 'faqs' => [
                     [
-                        'q' => 'What drawings are required for a planning application?',
-                        'a' => 'A standard application requires a site location plan, block plan, existing and proposed floor plans, and existing and proposed elevations.'
+                        'q' => 'What is the difference between a Pre-Application and a Full Planning Application?',
+                        'a' => 'A pre-application is an informal consultation with the council to assess policy alignment and identify potential constraints before committing to a full submission. A full planning application is the formal package submitted for official council review and determination.'
                     ],
                     [
-                        'q' => 'How long does a planning application take?',
-                        'a' => 'Once submitted, local planning authorities typically take 8 weeks to determine householder and minor applications, and up to 13 weeks for major developments.'
+                        'q' => 'How long does it take to secure planning permission?',
+                        'a' => 'Council determination periods are typically 8 weeks for householder/minor applications and 13 weeks for major or complex commercial schemes from the validation date.'
                     ],
                     [
-                        'q' => 'What is Permitted Development?',
-                        'a' => 'Permitted Development rights allow certain minor improvements and extensions to be built without submitting a full planning application, subject to specific limits and conditions.'
+                        'q' => 'What are planning conditions, and how are they discharged?',
+                        'a' => 'Planning approvals are often granted subject to conditions (e.g., matching materials, ecological protection). "Discharging" conditions is the formal process of submitting details, plans, or surveys to prove compliance before starting on site.'
                     ],
                     [
-                        'q' => 'Do you handle planning appeals?',
-                        'a' => 'Yes, if an application is refused, our planning consultancy team can assess the reasons for refusal and represent you in submitting a planning appeal.'
+                        'q' => 'Do you conduct feasibility studies before drawing up planning packages?',
+                        'a' => 'Yes. We conduct detailed site layout analysis, policy checks, and feasibility appraisals to ensure your proposals are both planning-compliant and buildable.'
                     ]
                 ]
             ];
@@ -417,20 +417,20 @@ class LandingPageController extends Controller
                 ],
                 'faqs' => [
                     [
-                        'q' => 'What is Development Finance?',
-                        'a' => 'Development finance is a short-term loan used to fund the purchase of land and the construction costs of a property development project.'
+                        'q' => 'How do you assist developers in sourcing construction finance?',
+                        'a' => 'We prepare robust financial feasibility models, detailed cash flow appraisals, and cost plans to present your scheme in the strongest terms to institutional lenders and specialist joint-venture partners.'
                     ],
                     [
-                        'q' => 'What information do lenders require?',
-                        'a' => 'Lenders require a detailed development appraisal, planning permission documents, architectural designs, detailed construction budgets, and CVs of the development team.'
+                        'q' => 'What is a Gross Development Value (GDV) appraisal?',
+                        'a' => 'GDV is the projected market value of the completed scheme. Lenders use this to calculate loan-to-value (LTV) or loan-to-cost (LTC) ratios to structure your funding.'
                     ],
                     [
-                        'q' => 'What is a Gross Development Value (GDV)?',
-                        'a' => 'GDV is the estimated market value that the completed property development project will achieve once it is fully built and sold or let.'
+                        'q' => 'How are drawdowns managed during the construction phase?',
+                        'a' => 'We compile monthly valuations, cash-flow updates, and cost-control reports, coordinating directly with the lender\'s monitoring surveyors to ensure funds are released promptly.'
                     ],
                     [
-                        'q' => 'How are development finance funds released?',
-                        'a' => 'Funds are typically released in stages (drawdowns) monthly, following an inspection by an independent monitoring surveyor to verify work completed.'
+                        'q' => 'What is the benefit of Quantity Surveying in project finance?',
+                        'a' => 'Quantity surveyors compile Bills of Quantities and track variances, providing institutional grade reports that mitigate risks for both the developer and the financier.'
                     ]
                 ]
             ];
@@ -481,20 +481,20 @@ class LandingPageController extends Controller
                 ],
                 'faqs' => [
                     [
-                        'q' => 'Why is structural design necessary?',
-                        'a' => 'Structural design ensures that a building can safely support all dead loads (its own weight) and live loads (people, furniture, wind) without structural failure.'
+                        'q' => 'What design disciplines do you coordinate under Engineering & Technical Design?',
+                        'a' => 'We provide fully integrated architectural plans, structural engineering calculations, civil infrastructure design, below-ground drainage layouts, MEP services, and fire safety strategies.'
                     ],
                     [
-                        'q' => 'What are below ground drainage services?',
-                        'a' => 'These involve designing systems to manage foul water (waste) and surface water (rainwater) beneath the ground, ensuring proper disposal and preventing flooding.'
+                        'q' => 'Why is clash detection important in technical design?',
+                        'a' => 'By coordinating structural frames (e.g. steel columns) with MEP ductwork and drainage runs in 3D, we detect and resolve spatial clashes prior to starting site works, preventing costly site delays.'
                     ],
                     [
-                        'q' => 'What does a Fire Safety Strategy include?',
-                        'a' => 'A strategy details how a building will detect, contain, and suppress fire, as well as how occupants will safely evacuate and how firefighters will access the building.'
+                        'q' => 'What does MEP (Mechanical, Electrical, & Plumbing) design cover?',
+                        'a' => 'It covers detailed specifications for power distribution, energy-efficient lighting, heating systems, comfort cooling (AC), mechanical ventilation (MVHR), and fire detection.'
                     ],
                     [
-                        'q' => 'Do you coordinate with building control during design?',
-                        'a' => 'Yes, we submit all technical designs to building control for plan check approval prior to starting work on site.'
+                        'q' => 'Do you act as the CDM Principal Designer?',
+                        'a' => 'Yes. We coordinate and manage health and safety risks during the pre-construction phase to ensure compliance with CDM 2015 regulations.'
                     ]
                 ]
             ];
@@ -539,20 +539,20 @@ class LandingPageController extends Controller
                 ],
                 'faqs' => [
                     [
-                        'q' => 'What is piling and when is it required?',
-                        'a' => 'Piling is the installation of deep structural columns into the ground. It is required when the surface soil is too weak to support a building\'s load.'
+                        'q' => 'What civil and substructure works do you execute?',
+                        'a' => 'We handle site clearances, demolition, deep excavations, groundworks, screw/bored piling, reinforced concrete (RC) foundations, and ground beams.'
                     ],
                     [
-                        'q' => 'What is an RC Frame?',
-                        'a' => 'An RC (Reinforced Concrete) Frame is a structural skeleton of concrete reinforced with steel bars, providing high strength and fire resistance for buildings.'
+                        'q' => 'What superstructures and building envelopes do you build?',
+                        'a' => 'We construct multi-storey reinforced concrete frames, structural steelwork, brick/block superstructures, cladding, glazing, and complete roofing systems.'
                     ],
                     [
-                        'q' => 'How do you manage noise and vibration during piling/demolition?',
-                        'a' => 'We use low-vibration piling rigs, implement acoustic barriers, and monitor noise and vibration levels to remain within local authority guidelines.'
+                        'q' => 'Do you install advanced renewable energy and smart services?',
+                        'a' => 'Yes. Our MEP teams install solar PV systems, EV charging points, heat pumps, fire alarm systems, and CCTV/access control infrastructure.'
                     ],
                     [
-                        'q' => 'Are you fully insured for demolition works?',
-                        'a' => 'Yes, we hold comprehensive public liability, employer\'s liability, and contractor\'s all-risk insurance specifically covering structural works.'
+                        'q' => 'What interior, external, and specialist services do you provide?',
+                        'a' => 'We deliver drylining, plastering, custom joinery, flooring, landscaping, paving, private road construction, scaffolding, and structural welding.'
                     ]
                 ]
             ];
@@ -598,20 +598,20 @@ class LandingPageController extends Controller
                 ],
                 'faqs' => [
                     [
-                        'q' => 'What does discharging planning conditions mean?',
-                        'a' => 'When planning permission is granted, it often contains conditions that must be formally cleared (discharged) by submitting reports to the planning department.'
+                        'q' => 'What regulatory and environmental reports do you coordinate?',
+                        'a' => 'We coordinate planning condition clearances, Section 106 agreements, CIL assessments, SAP calculations, energy reports, heritage statements, and archaeological briefs.'
                     ],
                     [
-                        'q' => 'What is a Section 106 (S106) agreement?',
-                        'a' => 'An agreement under Section 106 of the Town and Country Planning Act 1990 between a developer and a local authority to mitigate the impact of development on the community.'
+                        'q' => 'What is a SAP calculation and why is it required?',
+                        'a' => 'A Standard Assessment Procedure (SAP) calculation is the UK government\'s system for assessing the energy rating of dwellings to demonstrate compliance with Part L Building Regulations.'
                     ],
                     [
-                        'q' => 'Why do I need a SAP calculation?',
-                        'a' => 'SAP calculations are required by Building Regulations to prove that a new build home meets carbon emission targets and energy efficiency standards.'
+                        'q' => 'How do you assist with tender and procurement management?',
+                        'a' => 'We compile comprehensive packages, issue pricing surveys, manage sub-contractor bids, and advise on material procurement strategies to optimize cost and lead times.'
                     ],
                     [
-                        'q' => 'What is a SuDS report?',
-                        'a' => 'A Sustainable Drainage Systems (SuDS) report details how rainwater running off a new building or hard surface will be managed to prevent local flooding.'
+                        'q' => 'What does Section 106 and CIL management involve?',
+                        'a' => 'We review, appeal, or negotiate local planning obligations and Community Infrastructure Levy (CIL) liabilities to minimize unnecessary developer contributions.'
                     ]
                 ]
             ];
@@ -660,16 +660,16 @@ class LandingPageController extends Controller
                         'a' => 'Planning permission deals with the use of land, the appearance of a building, and its impact on the neighborhood. Building control deals with structural integrity, safety, fire escape, and energy efficiency.'
                     ],
                     [
-                        'q' => 'When is building control approval required?',
-                        'a' => 'Approval is required for almost all new buildings, structural alterations, extensions, loft conversions, and changes of use.'
+                        'q' => 'How do you manage the Building Regulations approval process?',
+                        'a' => 'We prepare and submit technical drawing packages for plan checks, schedule site inspections at key stages (excavations, structure, fire, DPC), and address inspector queries.'
                     ],
                     [
-                        'q' => 'What happens if building control sign-off is not obtained?',
-                        'a' => 'Without sign-off, it is illegal to occupy the building, you could face local authority enforcement action, and the property cannot be sold or financed.'
+                        'q' => 'What certificates are required to secure a final Completion Certificate?',
+                        'a' => 'You need gas safety, electrical installation (EICR), air pressure, acoustic performance, energy (SAP), and commissioning certificates for fire systems and technical plant.'
                     ],
                     [
-                        'q' => 'How are building inspections scheduled?',
-                        'a' => 'We coordinate with the inspector to check the work at key milestones: foundation excavations, concrete pours, drainage laying, floor structures, roof structures, and final completion.'
+                        'q' => 'Can you submit Building Notice applications?',
+                        'a' => 'Yes, we can compile and submit building notices for minor residential extensions and structural works to expedite initial site start dates.'
                     ]
                 ]
             ];
@@ -717,20 +717,20 @@ class LandingPageController extends Controller
                 ],
                 'faqs' => [
                     [
-                        'q' => 'What size properties do you manage?',
-                        'a' => 'We manage properties of all sizes, from individual residential buy-to-let apartments and blocks of flats to commercial office buildings, industrial spaces, and mixed-use retail blocks.'
+                        'q' => 'What is the difference between Reactive and Planned Preventative Maintenance (PPM)?',
+                        'a' => 'Reactive maintenance addresses immediate failures (e.g. leaks, power cuts) on an emergency basis. PPM involves scheduled servicing of boilers, ACs, gutters, and pumps to prevent issues.'
                     ],
                     [
-                        'q' => 'How does your pricing work?',
-                        'a' => 'We offer both fixed-rate monthly retainer packages for planned maintenance and transparent hourly rates for reactive callouts. We can tailor an agreement based on your portfolio size.'
+                        'q' => 'What emergency coverage do you provide?',
+                        'a' => 'We provide a 24/7 emergency service to handle immediate health, safety, and security issues across all residential and commercial properties under our management.'
                     ],
                     [
-                        'q' => 'What\'s your response time for emergencies?',
-                        'a' => 'We provide a guaranteed 4-hour response time for structural, electrical, or plumbing emergencies that pose an immediate risk to the property or occupant safety.'
+                        'q' => 'What building services do you manage and maintain?',
+                        'a' => 'We manage electrical testing, boiler/gas servicing, HVAC filter/pressure checks, communal area cleaning, landscape upkeep, and roofing repairs.'
                     ],
                     [
-                        'q' => 'Are your trade teams fully certified?',
-                        'a' => 'Yes, all our engineers and tradespeople are fully certified, including Gas Safe, NICEIC registered electricians, and SafeContractor approved technicians.'
+                        'q' => 'Do you manage entire residential blocks and commercial developments?',
+                        'a' => 'Yes. We handle asset tracking, communal utility management, health and safety compliance, and tenant repair requests for single assets and multi-unit portfolios.'
                     ]
                 ]
             ];
