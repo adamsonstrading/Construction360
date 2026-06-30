@@ -786,7 +786,7 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
             ],
             [
                 'id' => 2,
-                'title' => 'Design and Build',
+                'title' => 'Design & Build',
                 'description' => 'Our integrated Design and Build service covers commercial and residential buildings, loft conversions, extensions, and outbuildings from concept to completion.',
                 'icon' => 'home',
                 'display_order' => 2,
