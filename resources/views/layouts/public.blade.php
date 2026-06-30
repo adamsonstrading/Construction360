@@ -55,27 +55,27 @@
     <!-- JSON-LD Local Business Schema -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@@context": "https://schema.org",
+      "@@type": "LocalBusiness",
       "name": "Construction 360 Ltd",
       "image": "{{ asset('favicon.svg') }}",
-      "@id": "{{ url('/') }}",
+      "@@id": "{{ url('/') }}",
       "url": "{{ url('/') }}",
       "telephone": "{{ $content['contact_phone'] ?? '' }}",
       "email": "{{ $content['header_email'] ?? 'info@construction360.co' }}",
       "address": {
-        "@type": "PostalAddress",
+        "@@type": "PostalAddress",
         "streetAddress": "{{ $content['footer_address'] ?? 'Essex, London' }}",
         "addressLocality": "Essex",
         "addressCountry": "GB"
       },
       "geo": {
-        "@type": "GeoCoordinates",
+        "@@type": "GeoCoordinates",
         "latitude": 51.545,
         "longitude": 0.478
       },
       "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
+        "@@type": "OpeningHoursSpecification",
         "dayOfWeek": [
           "Monday",
           "Tuesday",
