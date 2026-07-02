@@ -220,7 +220,7 @@
             </div>
 
             <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @forelse($services as $idx => $srv)
                     @php
                         $slug = \Illuminate\Support\Str::slug($srv->title);
@@ -254,6 +254,92 @@
                         <p class="mt-2 text-sm text-slate-500">Premium structural calculations and engineering planning.</p>
                     </div>
                 @endforelse
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectors we deal in Section -->
+    <section id="sectors" class="py-28 bg-slate-50 border-b border-slate-100 scroll-mt-20 relative overflow-hidden">
+        <!-- Abstract geometric watermarks -->
+        <div class="absolute inset-0 z-0 opacity-[0.02] pointer-events-none">
+            <svg class="w-full h-full text-slate-900" fill="none" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="0.1" />
+                <circle cx="80" cy="80" r="25" stroke="currentColor" stroke-width="0.1" />
+            </svg>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mb-20">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#328f95]">{{ $content['sectors_label'] ?? 'Sectors & Builds' }}</span>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
+                    {{ $content['sectors_title'] ?? 'Constructions We Deal In' }}
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-4 leading-relaxed font-sans max-w-xl">
+                    {{ $content['sectors_description'] ?? 'From bespoke high-spec residential developments and custom extensions to structural high-rise concrete frameworks and modern modular methods, we deliver premium execution across diverse sectors.' }}
+                </p>
+            </div>
+
+            <!-- Sectors grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach($sectors as $sector)
+                    <div class="bg-white border border-slate-150 p-8 rounded-2xl shadow-sm hover:border-slate-350 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between space-y-4">
+                        <div class="space-y-4">
+                            <!-- Icon and Title -->
+                            <div class="flex items-center space-x-3.5">
+                                <div class="h-10 w-10 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center text-[#328f95] flex-shrink-0">
+                                    @if($sector['icon'] === 'home')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                        </svg>
+                                    @elseif($sector['icon'] === 'squares-plus')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    @elseif($sector['icon'] === 'chevron-double-up')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+                                        </svg>
+                                    @elseif($sector['icon'] === 'adjustments-horizontal')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
+                                        </svg>
+                                    @elseif($sector['icon'] === 'arrow-down-tray')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                        </svg>
+                                    @elseif($sector['icon'] === 'sparkles')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-1.81-5.096L2.1 14.1l5.09-1.8 1.8-5.1 1.81 5.1 5.096 1.8-5.096 1.804zM18.75 7.5l-.54 1.5-1.5.54 1.5.54.54 1.5.54-1.5 1.5-.54-1.5-.54-.54-1.5z" />
+                                        </svg>
+                                    @elseif($sector['icon'] === 'paint-brush')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122l9.37-9.37a2.121 2.121 0 113 3l-9.37 9.37a4.5 4.5 0 01-1.897 1.13L7 21l.825-3.364a4.5 4.5 0 011.13-1.897z" />
+                                        </svg>
+                                    @elseif($sector['icon'] === 'building-office')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                                        </svg>
+                                    @elseif($sector['icon'] === 'archive-box')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                                        </svg>
+                                    @elseif($sector['icon'] === 'building-office-2')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h18M12 3v18" />
+                                        </svg>
+                                    @elseif($sector['icon'] === 'cube')
+                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                                        </svg>
+                                    @endif
+                                </div>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-950 font-sans tracking-tight">{{ $sector['title'] }}</h3>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-555 leading-relaxed font-sans">
+                                {{ $sector['desc'] }}
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

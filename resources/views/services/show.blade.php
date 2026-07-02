@@ -3,19 +3,27 @@
 @if(!empty($details['meta_title']))
     @section('meta_title', $details['meta_title'])
 @else
-    @section('title', $details['title'] . ' | Services | Construction 360 Ltd')
+    @section('title', $details['title'] . ' Services UK | Construction 360 Ltd')
 @endif
 
-@if(!empty($details['meta_description']) || !empty($details['meta_keywords']))
-    @section('meta')
-        @if(!empty($details['meta_description']))
-            <meta name="description" content="{{ $details['meta_description'] }}">
-        @endif
-        @if(!empty($details['meta_keywords']))
-            <meta name="keywords" content="{{ $details['meta_keywords'] }}">
-        @endif
-    @endsection
-@endif
+@section('meta')
+    <meta name="description" content="{{ $details['meta_description'] ?? ($details['about'] ?? 'Professional ' . $details['title'] . ' services across the UK by Construction 360 Ltd.') }}">
+    <meta name="keywords" content="{{ $details['meta_keywords'] ?? '' }}">
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="Construction 360 Ltd">
+    <meta property="og:title" content="{{ $details['meta_title'] ?? ($details['title'] . ' Services UK | Construction 360 Ltd') }}">
+    <meta property="og:description" content="{{ $details['meta_description'] ?? ($details['about'] ?? 'Professional ' . $details['title'] . ' services across the UK by Construction 360 Ltd.') }}">
+    <meta property="og:image" content="{{ !empty($details['image_url']) ? asset($details['image_url']) : asset('images/hero_construction.png') }}">
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="{{ $details['meta_title'] ?? ($details['title'] . ' Services UK | Construction 360 Ltd') }}">
+    <meta property="twitter:description" content="{{ $details['meta_description'] ?? ($details['about'] ?? 'Professional ' . $details['title'] . ' services across the UK by Construction 360 Ltd.') }}">
+    <meta property="twitter:image" content="{{ !empty($details['image_url']) ? asset($details['image_url']) : asset('images/hero_construction.png') }}">
+@endsection
 
 @section('content')
     <!-- Services Dark Hero Banner -->
@@ -83,17 +91,40 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                @foreach($details['services_offered'] as $subTitle => $subDesc)
-                    <div class="bg-white border border-slate-150 rounded-xl p-8 shadow-sm flex flex-col space-y-4 hover:border-slate-350 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                        <div class="flex items-center space-x-3">
-                            <span class="h-2 w-2 rounded-full bg-aqua flex-shrink-0"></span>
-                            <h3 class="text-base sm:text-lg font-bold text-slate-950 tracking-tight font-sans">
-                                {{ $subTitle }}
-                            </h3>
+                @foreach($details['services_offered'] as $idx => $subService)
+                    <div class="bg-white border border-slate-150 rounded-2xl p-8 shadow-sm flex flex-col justify-between hover:border-slate-350 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group">
+                        <!-- Top Accent Line -->
+                        <div class="absolute top-0 left-0 right-0 h-[3px] bg-slate-100 group-hover:bg-[#008080] transition-colors duration-300"></div>
+
+                        <div class="space-y-4 pt-2">
+                            <!-- Card Header: Title & Index Badge -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <span class="h-2 w-2 rounded-full bg-[#008080] flex-shrink-0"></span>
+                                    <h3 class="text-base sm:text-lg font-bold text-slate-950 tracking-tight font-sans">
+                                        {{ $subService['title'] }}
+                                    </h3>
+                                </div>
+                                <span class="text-[9px] font-bold text-slate-400 font-mono tracking-widest uppercase bg-slate-50 border border-slate-150 px-2 py-0.5 rounded flex-shrink-0">
+                                    SCOPE {{ str_pad($idx + 1, 2, '0', STR_PAD_LEFT) }}
+                                </span>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-xs sm:text-sm text-slate-650 leading-relaxed font-sans pt-1">
+                                {{ $subService['desc'] }}
+                            </p>
                         </div>
-                        <p class="text-xs sm:text-sm text-slate-555 leading-relaxed font-sans">
-                            {{ $subDesc }}
-                        </p>
+
+                        <!-- Card Footer: Explore Link -->
+                        <div class="pt-6 border-t border-slate-100 mt-6">
+                            <a href="{{ route('subservices.show', [$slug, $subService['slug']]) }}" class="text-xs font-bold text-slate-900 group-hover:text-[#008080] transition-colors inline-flex items-center gap-1 group/btn">
+                                Explore Technical Scope
+                                <svg class="h-3.5 w-3.5 text-slate-400 group-hover/btn:text-[#008080] group-hover/btn:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>

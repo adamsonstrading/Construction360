@@ -27,6 +27,7 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::get('/contact', [LandingPageController::class, 'contact'])->name('contact.index');
 Route::get('/services', [LandingPageController::class, 'services'])->name('services.index');
 Route::get('/services/{slug}', [LandingPageController::class, 'showService'])->name('services.show');
+Route::get('/services/{service_slug}/{sub_service_slug}', [LandingPageController::class, 'showSubService'])->name('subservices.show');
 Route::get('/projects', [LandingPageController::class, 'projects'])->name('projects.index');
 Route::get('/projects/{slug}', [LandingPageController::class, 'showProject'])->name('projects.show');
 Route::get('/blog', [LandingPageController::class, 'blog'])->name('blog.index');

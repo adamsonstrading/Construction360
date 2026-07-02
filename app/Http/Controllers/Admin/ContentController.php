@@ -75,6 +75,13 @@ class ContentController extends Controller
             'testimonials_title' => 'required|string|max:255',
             'blog_label' => 'required|string|max:255',
             'blog_title' => 'required|string|max:255',
+            'sectors_label' => 'required|string|max:255',
+            'sectors_title' => 'required|string|max:255',
+            'sectors_description' => 'required|string|max:1000',
+            'sectors_list' => 'nullable|array',
+            'sectors_list.*.title' => 'required|string|max:255',
+            'sectors_list.*.icon' => 'required|string|max:255',
+            'sectors_list.*.desc' => 'required|string|max:1000',
 
             // Team Section Headers
             'team_section_label' => 'required|string|max:255',
@@ -191,6 +198,30 @@ class ContentController extends Controller
             'project_related_label' => 'required|string|max:255',
             'project_related_title' => 'required|string|max:255',
         ]);
+
+        // Handle Sectors List Serialization
+        if (isset($validated['sectors_list'])) {
+            $sectorsList = [];
+            foreach ($validated['sectors_list'] as $item) {
+                if (!empty($item['title'])) {
+                    $sectorsList[] = [
+                        'title' => $item['title'],
+                        'icon' => $item['icon'],
+                        'desc' => $item['desc'] ?? '',
+                    ];
+                }
+            }
+            SiteContent::updateOrCreate(
+                ['key' => 'sectors_list'],
+                ['value' => json_encode($sectorsList)]
+            );
+            unset($validated['sectors_list']);
+        } else {
+            SiteContent::updateOrCreate(
+                ['key' => 'sectors_list'],
+                ['value' => json_encode([])]
+            );
+        }
 
         // Handle Site Logo Upload
         if ($request->hasFile('site_logo')) {

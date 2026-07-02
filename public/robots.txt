@@ -1,5 +1,8 @@
 User-agent: *
 Disallow: /admin/
-Disallow: /login
+Disallow: /admin/login
+Disallow: /sync-live-data
+Disallow: /run-migrations
+Disallow: /clear-cache
 
-Sitemap: https://const360.humayounakhtar.com/Construction360/public/sitemap.xml
+Sitemap: https://construction360.co/sitemap.xml

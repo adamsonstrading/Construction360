@@ -2,6 +2,22 @@
 
 @section('title', 'Get in Touch | Construction 360 Ltd')
 
+@section('meta')
+    <meta name="description" content="Contact Construction 360 Ltd for professional construction services across the UK. Get in touch with our expert team for quotes, consultations and project enquiries.">
+    <meta name="keywords" content="contact construction 360, construction quote uk, construction consultancy contact, building contractor enquiry">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="Construction 360 Ltd">
+    <meta property="og:title" content="Get in Touch | Construction 360 Ltd">
+    <meta property="og:description" content="Contact Construction 360 Ltd for professional construction services across the UK. Get in touch with our expert team for quotes, consultations and project enquiries.">
+    <meta property="og:image" content="{{ asset('images/hero_construction.png') }}">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Get in Touch | Construction 360 Ltd">
+    <meta property="twitter:description" content="Contact Construction 360 Ltd for professional construction services across the UK.">
+    <meta property="twitter:image" content="{{ asset('images/hero_construction.png') }}">
+@endsection
+
 @section('content')
     <!-- Hero Header Block (Deep Blue Theme) -->
     <section class="bg-[#031d2e] pt-28 pb-32 text-white relative overflow-hidden">

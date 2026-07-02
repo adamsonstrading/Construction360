@@ -2,6 +2,22 @@
 
 @section('title', 'Insights & News | Construction 360 Ltd')
 
+@section('meta')
+    <meta name="description" content="Read the latest construction industry news, insights, project updates and expert guides from Construction 360 Ltd - your UK construction specialists.">
+    <meta name="keywords" content="construction news uk, construction blog, building industry insights, construction 360 news, UK construction updates">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="Construction 360 Ltd">
+    <meta property="og:title" content="Insights & News | Construction 360 Ltd">
+    <meta property="og:description" content="Read the latest construction industry news, insights, project updates and expert guides from Construction 360 Ltd.">
+    <meta property="og:image" content="{{ asset('images/hero_construction.png') }}">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Insights & News | Construction 360 Ltd">
+    <meta property="twitter:description" content="Read the latest construction industry news, insights, project updates and expert guides from Construction 360 Ltd.">
+    <meta property="twitter:image" content="{{ asset('images/hero_construction.png') }}">
+@endsection
+
 @section('content')
     <!-- Blog Hero Section -->
     <section class="bg-white py-16 border-b border-slate-100 relative overflow-hidden">

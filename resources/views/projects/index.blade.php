@@ -1,6 +1,22 @@
 @extends('layouts.public')
 
-@section('title', 'Project Portfolio | Architectural Builds & Fit-Outs')
+@section('title', 'Project Portfolio | Architectural Builds & Fit-Outs | Construction 360 Ltd')
+
+@section('meta')
+    <meta name="description" content="Browse Construction 360 Ltd's project portfolio showcasing completed residential, commercial and industrial builds across the UK including extensions, fit-outs and structural projects.">
+    <meta name="keywords" content="construction projects uk, building portfolio, completed projects construction, uk construction company portfolio, architectural builds">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="Construction 360 Ltd">
+    <meta property="og:title" content="Project Portfolio | Construction 360 Ltd">
+    <meta property="og:description" content="Browse Construction 360 Ltd's project portfolio showcasing completed residential, commercial and industrial builds across the UK.">
+    <meta property="og:image" content="{{ asset('images/hero_construction.png') }}">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Project Portfolio | Construction 360 Ltd">
+    <meta property="twitter:description" content="Browse Construction 360 Ltd's project portfolio showcasing completed builds across the UK.">
+    <meta property="twitter:image" content="{{ asset('images/hero_construction.png') }}">
+@endsection
 
 @section('content')
     <!-- Projects Hero Section -->

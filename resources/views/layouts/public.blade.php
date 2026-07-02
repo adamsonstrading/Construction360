@@ -21,6 +21,26 @@
         <meta name="description" content="{{ $content['seo_meta_description'] ?? 'Construction 360 Ltd delivers 360-degree integration of design, structural planning, and premium quality construction management.' }}">
         <meta name="keywords" content="{{ $content['seo_meta_keywords'] ?? 'construction, architectural builds, structural engineering, commercial fit-outs, extensions, renovations, glazing, Essex, London' }}">
     @endif
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Construction 360 Ltd">
+
+    <!-- Global Open Graph fallback (overridden per-page via @section('meta')) -->
+    @hasSection('meta')
+    @else
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:site_name" content="Construction 360 Ltd">
+        <meta property="og:title" content="@yield('title', $content['seo_meta_title'] ?? 'Integrated Construction & Premium Architectural Builds') | Construction 360 Ltd">
+        <meta property="og:description" content="{{ $content['seo_meta_description'] ?? 'Construction 360 Ltd delivers 360-degree integration of design, structural planning, and premium quality construction management.' }}">
+        <meta property="og:image" content="{{ asset('images/hero_construction.png') }}">
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="{{ url()->current() }}">
+        <meta property="twitter:title" content="@yield('title', $content['seo_meta_title'] ?? 'Integrated Construction & Premium Architectural Builds') | Construction 360 Ltd">
+        <meta property="twitter:description" content="{{ $content['seo_meta_description'] ?? 'Construction 360 Ltd delivers 360-degree integration of design, structural planning, and premium quality construction management.' }}">
+        <meta property="twitter:image" content="{{ asset('images/hero_construction.png') }}">
+    @endif
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

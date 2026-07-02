@@ -193,6 +193,22 @@ TEXT
             'project_specifications_title' => 'Project Specifications',
             'project_related_label' => 'PORTFOLIO',
             'project_related_title' => 'Related Projects',
+            'sectors_label' => 'Sectors & Builds',
+            'sectors_title' => 'Constructions We Deal In',
+            'sectors_description' => 'From bespoke high-spec residential developments and custom extensions to structural high-rise concrete frameworks and modern modular methods, we deliver premium execution across diverse sectors.',
+            'sectors_list' => json_encode([
+                ['title' => 'New Builds', 'icon' => 'home', 'desc' => 'End-to-end design and construction of bespoke residential and commercial buildings.'],
+                ['title' => 'House Extensions', 'icon' => 'squares-plus', 'desc' => 'Rear, side-return, and wrap-around multi-storey extensions.'],
+                ['title' => 'Loft Conversions', 'icon' => 'chevron-double-up', 'desc' => 'Dormer, hip-to-gable, L-shaped, and Velux loft structural conversions.'],
+                ['title' => 'Garage Conversions', 'icon' => 'adjustments-horizontal', 'desc' => 'Converting standard garages into premium insulated home offices or annexes.'],
+                ['title' => 'Basement Conversions', 'icon' => 'arrow-down-tray', 'desc' => 'Sub-ground excavation, load calculations, and structural waterproofing.'],
+                ['title' => 'Home Renovations', 'icon' => 'sparkles', 'desc' => 'Restoring and modernizing property layouts, services, and aesthetic finishes.'],
+                ['title' => 'Property Refurbishments', 'icon' => 'paint-brush', 'desc' => 'Comprehensive updates to revitalize commercial and residential property spaces.'],
+                ['title' => 'High-Rise Developments', 'icon' => 'building-office', 'desc' => 'Multi-storey concrete and steel framing solutions for urban developments.'],
+                ['title' => 'Warehouses', 'icon' => 'archive-box', 'desc' => 'Bespoke steel-portal frame industrial buildings and storage facilities.'],
+                ['title' => 'Mixed-Use Developments', 'icon' => 'building-office-2', 'desc' => 'Integrated developments combining commercial ground floors and upper residential units.'],
+                ['title' => 'Modular Construction', 'icon' => 'cube', 'desc' => 'Modern methods of construction (MMC) utilizing precision off-site fabrication.']
+            ]),
         ];
 
         foreach ($contents as $key => $value) {
@@ -205,52 +221,70 @@ TEXT
         // 3. Seed Services aligned with the reference site
         $services = [
             [
-                'title' => 'Planning',
-                'description' => 'We offer comprehensive planning services, guiding your project from architectural drawings and planning consultancy to successful planning application submissions.',
+                'title' => 'Pre-Construction',
+                'description' => 'Detailed architectural drawings, feasibility studies, planning permissions, building regulations, and structural engineering to set a solid foundation for your project.',
                 'icon' => 'pencil-square',
                 'display_order' => 1,
             ],
             [
-                'title' => 'Design & Build',
-                'description' => 'Our integrated Design and Build service covers commercial and residential buildings, loft conversions, extensions, and outbuildings from concept to completion.',
-                'icon' => 'home',
+                'title' => 'Site Preparation',
+                'description' => 'Professional site clearance, demolition, strip outs, excavation, earthworks, leveling, and utility installation to prepare any plot for ground breaking.',
+                'icon' => 'map',
                 'display_order' => 2,
             ],
             [
-                'title' => 'Finance',
-                'description' => 'We assist developers and property owners in securing development finance to fund construction projects and unlock commercial viability.',
-                'icon' => 'banknotes',
+                'title' => 'Foundations',
+                'description' => 'Heavy substructure works including deep piling, concrete slab foundations, basement excavation, and ground beams built to support structural load.',
+                'icon' => 'shield-check',
                 'display_order' => 3,
             ],
             [
-                'title' => 'Design',
-                'description' => 'Our multidisciplinary design team provides specialist architectural, structural, below ground, fire safety, and M&E engineering services.',
-                'icon' => 'paint-brush',
+                'title' => 'Structural Works',
+                'description' => 'Reinforced concrete frames, structural steelwork, masonry, blockwork, bricklaying, and timber framing engineered for maximum structural durability.',
+                'icon' => 'cube',
                 'display_order' => 4,
             ],
             [
-                'title' => 'Construction',
-                'description' => 'We deliver full-spectrum construction services including demolition, piling, structural foundations, and reinforced concrete (RC) frames.',
-                'icon' => 'wrench',
+                'title' => 'Roofing & Building Envelope',
+                'description' => 'High-performance roofing systems, flat roofs, pitched roof installations, sensitive structural roof repairs, and complete building envelope waterproofing.',
+                'icon' => 'home',
                 'display_order' => 5,
             ],
             [
-                'title' => 'Support Services',
-                'description' => 'We manage crucial support services including conditions discharge, S106 negotiations, environmental reports, and SAP energy calculations.',
-                'icon' => 'document-text',
+                'title' => 'MEP Services',
+                'description' => 'Integrated Mechanical, Electrical, and Plumbing engineering layouts including full rewiring, smart building automation, plumbing installations, and HVAC servicing.',
+                'icon' => 'bolt',
                 'display_order' => 6,
             ],
             [
-                'title' => 'Building Control',
-                'description' => 'We coordinate directly with local authorities and private inspectors to secure building control approvals and ensure full structural compliance.',
-                'icon' => 'shield-check',
+                'title' => 'Interior Works',
+                'description' => 'Bespoke drylining, partitions, plastering, custom joinery, flooring, suspended ceilings, and premium kitchen and bathroom fit-outs.',
+                'icon' => 'paint-brush',
                 'display_order' => 7,
             ],
             [
-                'title' => 'Facilities Management',
-                'description' => 'Our Managed Services division provides comprehensive facilities management, reactive maintenance, and planned preventative maintenance for residential blocks and commercial properties.',
-                'icon' => 'globe-alt',
+                'title' => 'External Works',
+                'description' => 'High-spec landscaping, garden designs, block paving, resin driveways, patios, tarmac surfacing, fencing, and decking for architectural properties.',
+                'icon' => 'sun',
                 'display_order' => 8,
+            ],
+            [
+                'title' => 'Civil Engineering',
+                'description' => 'Highways construction, private car parks, drainage systems, utility connections, sewer installations, and bridge engineering.',
+                'icon' => 'globe-alt',
+                'display_order' => 9,
+            ],
+            [
+                'title' => 'Specialist Services',
+                'description' => 'Specialized construction support including scaffolding, mobile crane hire, diamond drilling, concrete repairs, welding, and steel fabrication.',
+                'icon' => 'wrench',
+                'display_order' => 10,
+            ],
+            [
+                'title' => 'Renovation & Property Improvements',
+                'description' => 'Structural alterations, bespoke loft conversions, multi-storey house extensions, listed building restorations, and complete property renovations.',
+                'icon' => 'adjustments-horizontal',
+                'display_order' => 11,
             ],
         ];
 
@@ -267,6 +301,9 @@ TEXT
                 $srv['services_offered'] = $details['services_offered'] ?? null;
                 $srv['faqs'] = $details['faqs'] ?? null;
                 $srv['image_url'] = $details['image_url'] ?? null;
+                $srv['meta_title'] = $details['meta_title'] ?? null;
+                $srv['meta_description'] = $details['meta_description'] ?? null;
+                $srv['meta_keywords'] = $details['meta_keywords'] ?? null;
             }
             Service::create($srv);
         }

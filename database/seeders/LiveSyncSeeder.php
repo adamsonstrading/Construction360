@@ -777,8 +777,8 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
         $services = [
             [
                 'id' => 1,
-                'title' => 'Planning',
-                'description' => 'We offer comprehensive planning services, guiding your project from architectural drawings and planning consultancy to successful planning application submissions.',
+                'title' => 'Pre-Construction',
+                'description' => 'Detailed architectural drawings, feasibility studies, planning permissions, building regulations, and structural engineering to set a solid foundation for your project.',
                 'icon' => 'pencil-square',
                 'display_order' => 1,
                 'created_at' => now(),
@@ -786,64 +786,91 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
             ],
             [
                 'id' => 2,
-                'title' => 'Design & Build',
-                'description' => 'Our integrated Design and Build service covers commercial and residential buildings, loft conversions, extensions, and outbuildings from concept to completion.',
-                'icon' => 'home',
+                'title' => 'Site Preparation',
+                'description' => 'Professional site clearance, demolition, strip outs, excavation, earthworks, leveling, and utility installation to prepare any plot for ground breaking.',
+                'icon' => 'map',
                 'display_order' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 3,
-                'title' => 'Finance',
-                'description' => 'We assist developers and property owners in securing development finance to fund construction projects and unlock commercial viability.',
-                'icon' => 'banknotes',
+                'title' => 'Foundations',
+                'description' => 'Heavy substructure works including deep piling, concrete slab foundations, basement excavation, and ground beams built to support structural load.',
+                'icon' => 'shield-check',
                 'display_order' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 4,
-                'title' => 'Design',
-                'description' => 'Our multidisciplinary design team provides specialist architectural, structural, below ground, fire safety, and M&E engineering services.',
-                'icon' => 'paint-brush',
+                'title' => 'Structural Works',
+                'description' => 'Reinforced concrete frames, structural steelwork, masonry, blockwork, bricklaying, and timber framing engineered for maximum structural durability.',
+                'icon' => 'cube',
                 'display_order' => 4,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 5,
-                'title' => 'Construction',
-                'description' => 'We deliver full-spectrum construction services including demolition, piling, structural foundations, and reinforced concrete (RC) frames.',
-                'icon' => 'wrench',
+                'title' => 'Roofing & Building Envelope',
+                'description' => 'High-performance roofing systems, flat roofs, pitched roof installations, sensitive structural roof repairs, and complete building envelope waterproofing.',
+                'icon' => 'home',
                 'display_order' => 5,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 6,
-                'title' => 'Support Services',
-                'description' => 'We manage crucial support services including conditions discharge, S106 negotiations, environmental reports, and SAP energy calculations.',
-                'icon' => 'document-text',
+                'title' => 'MEP Services',
+                'description' => 'Integrated Mechanical, Electrical, and Plumbing engineering layouts including full rewiring, smart building automation, plumbing installations, and HVAC servicing.',
+                'icon' => 'bolt',
                 'display_order' => 6,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 7,
-                'title' => 'Building Control',
-                'description' => 'We coordinate directly with local authorities and private inspectors to secure building control approvals and ensure full structural compliance.',
-                'icon' => 'shield-check',
+                'title' => 'Interior Works',
+                'description' => 'Bespoke drylining, partitions, plastering, custom joinery, flooring, suspended ceilings, and premium kitchen and bathroom fit-outs.',
+                'icon' => 'paint-brush',
                 'display_order' => 7,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'id' => 8,
-                'title' => 'Facilities Management',
-                'description' => 'Our Managed Services division provides comprehensive facilities management, reactive maintenance, and planned preventative maintenance for residential blocks and commercial properties.',
-                'icon' => 'globe-alt',
+                'title' => 'External Works',
+                'description' => 'High-spec landscaping, garden designs, block paving, resin driveways, patios, tarmac surfacing, fencing, and decking for architectural properties.',
+                'icon' => 'sun',
                 'display_order' => 8,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 9,
+                'title' => 'Civil Engineering',
+                'description' => 'Highways construction, private car parks, drainage systems, utility connections, sewer installations, and bridge engineering.',
+                'icon' => 'globe-alt',
+                'display_order' => 9,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 10,
+                'title' => 'Specialist Services',
+                'description' => 'Specialized construction support including scaffolding, mobile crane hire, diamond drilling, concrete repairs, welding, and steel fabrication.',
+                'icon' => 'wrench',
+                'display_order' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 11,
+                'title' => 'Renovation & Property Improvements',
+                'description' => 'Structural alterations, bespoke loft conversions, multi-storey house extensions, listed building restorations, and complete property renovations.',
+                'icon' => 'adjustments-horizontal',
+                'display_order' => 11,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -853,12 +880,14 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
         foreach ($services as &$srv) {
             $slug = \Illuminate\Support\Str::slug($srv['title']);
             $details = $controller->getServiceDetails($slug);
-            if ($details) {
                 $srv['about'] = $details['about'] ?? null;
                 $srv['why_choose_us'] = isset($details['why_choose_us']) ? json_encode($details['why_choose_us']) : null;
                 $srv['services_offered'] = isset($details['services_offered']) ? json_encode($details['services_offered']) : null;
                 $srv['faqs'] = isset($details['faqs']) ? json_encode($details['faqs']) : null;
                 $srv['image_url'] = $details['image_url'] ?? null;
+                $srv['meta_title'] = $details['meta_title'] ?? null;
+                $srv['meta_description'] = $details['meta_description'] ?? null;
+                $srv['meta_keywords'] = $details['meta_keywords'] ?? null;
             }
         }
 

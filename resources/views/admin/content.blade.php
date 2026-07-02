@@ -258,6 +258,28 @@
                                 class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
                         </div>
                     </div>
+
+                    <!-- Sectors Header -->
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-3 md:col-span-2">
+                        <span class="text-xs font-bold text-[#008080] uppercase tracking-wide">Sectors Section</span>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="sectors_label" class="block text-xs font-semibold text-slate-700">Label (Small Text)</label>
+                                <input type="text" name="sectors_label" id="sectors_label" value="{{ old('sectors_label', $content['sectors_label'] ?? 'Sectors & Builds') }}" required
+                                    class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                            <div>
+                                <label for="sectors_title" class="block text-xs font-semibold text-slate-700">Title</label>
+                                <input type="text" name="sectors_title" id="sectors_title" value="{{ old('sectors_title', $content['sectors_title'] ?? 'Constructions We Deal In') }}" required
+                                    class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="sectors_description" class="block text-xs font-semibold text-slate-700">Description</label>
+                            <textarea rows="2" name="sectors_description" id="sectors_description" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('sectors_description', $content['sectors_description'] ?? 'From bespoke high-spec residential developments and custom extensions to structural high-rise concrete frameworks and modern modular methods, we deliver premium execution across diverse sectors.') }}</textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1143,6 +1165,81 @@
                         </div>
                     </div>
                 </div>
+                       </div>
+                </div>
+
+                <!-- Section 10: Constructions We Deal In (Sectors) -->
+                <div class="space-y-6 pt-4 border-t border-slate-100">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
+                            <span class="h-2 w-2 rounded-full bg-[#008080] mr-2"></span>
+                            Constructions We Deal In (Sectors)
+                        </h4>
+                        <button type="button" id="add-sector-btn" class="px-3 py-1 text-xs font-bold text-white bg-[#008080] hover:bg-[#006666] rounded shadow-sm transition-colors">
+                            + Add Sector
+                        </button>
+                    </div>
+
+                    <div id="sectors-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        @php
+                            $sectorsListRaw = $content['sectors_list'] ?? '[]';
+                            $sectorsList = json_decode($sectorsListRaw, true);
+                            if (empty($sectorsList)) {
+                                $sectorsList = [
+                                    ['title' => 'New Builds', 'icon' => 'home', 'desc' => 'End-to-end design and construction of bespoke residential and commercial buildings.'],
+                                    ['title' => 'House Extensions', 'icon' => 'squares-plus', 'desc' => 'Rear, side-return, and wrap-around multi-storey extensions.'],
+                                    ['title' => 'Loft Conversions', 'icon' => 'chevron-double-up', 'desc' => 'Dormer, hip-to-gable, L-shaped, and Velux loft structural conversions.'],
+                                    ['title' => 'Garage Conversions', 'icon' => 'adjustments-horizontal', 'desc' => 'Converting standard garages into premium insulated home offices or annexes.'],
+                                    ['title' => 'Basement Conversions', 'icon' => 'arrow-down-tray', 'desc' => 'Sub-ground excavation, load calculations, and structural waterproofing.'],
+                                    ['title' => 'Home Renovations', 'icon' => 'sparkles', 'desc' => 'Restoring and modernizing property layouts, services, and aesthetic finishes.'],
+                                    ['title' => 'Property Refurbishments', 'icon' => 'paint-brush', 'desc' => 'Comprehensive updates to revitalize commercial and residential property spaces.'],
+                                    ['title' => 'High-Rise Developments', 'icon' => 'building-office', 'desc' => 'Multi-storey concrete and steel framing solutions for urban developments.'],
+                                    ['title' => 'Warehouses', 'icon' => 'archive-box', 'desc' => 'Bespoke steel-portal frame industrial buildings and storage facilities.'],
+                                    ['title' => 'Mixed-Use Developments', 'icon' => 'building-office-2', 'desc' => 'Integrated developments combining commercial ground floors and upper residential units.'],
+                                    ['title' => 'Modular Construction', 'icon' => 'cube', 'desc' => 'Modern methods of construction (MMC) utilizing precision off-site fabrication.']
+                                ];
+                            }
+                        @endphp
+
+                        @foreach ($sectorsList as $index => $item)
+                            <div class="bg-slate-50/50 p-4 border border-slate-200 rounded-xl space-y-3 relative sector-card">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-bold text-slate-400 sector-index-label">Sector #{{ $index + 1 }}</span>
+                                    <button type="button" class="text-red-500 hover:text-red-700 text-xs font-semibold remove-sector-btn">Remove</button>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-[10px] font-semibold text-slate-500">Title</label>
+                                        <input type="text" name="sectors_list[{{ $index }}][title]" value="{{ $item['title'] }}" required
+                                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sector-title-input">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-semibold text-slate-500">Icon</label>
+                                        <select name="sectors_list[{{ $index }}][icon]" required
+                                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sector-icon-select">
+                                            <option value="home" {{ $item['icon'] === 'home' ? 'selected' : '' }}>Home / House</option>
+                                            <option value="squares-plus" {{ $item['icon'] === 'squares-plus' ? 'selected' : '' }}>Squares Plus / Extension</option>
+                                            <option value="chevron-double-up" {{ $item['icon'] === 'chevron-double-up' ? 'selected' : '' }}>Double Chevron Up / Loft</option>
+                                            <option value="adjustments-horizontal" {{ $item['icon'] === 'adjustments-horizontal' ? 'selected' : '' }}>Adjustments / Garage</option>
+                                            <option value="arrow-down-tray" {{ $item['icon'] === 'arrow-down-tray' ? 'selected' : '' }}>Arrow Down / Basement</option>
+                                            <option value="sparkles" {{ $item['icon'] === 'sparkles' ? 'selected' : '' }}>Sparkles / Renovation</option>
+                                            <option value="paint-brush" {{ $item['icon'] === 'paint-brush' ? 'selected' : '' }}>Paint Brush / Refurbishment</option>
+                                            <option value="building-office" {{ $item['icon'] === 'building-office' ? 'selected' : '' }}>Building Office / High-Rise</option>
+                                            <option value="archive-box" {{ $item['icon'] === 'archive-box' ? 'selected' : '' }}>Archive Box / Warehouse</option>
+                                            <option value="building-office-2" {{ $item['icon'] === 'building-office-2' ? 'selected' : '' }}>Building Office 2 / Mixed-Use</option>
+                                            <option value="cube" {{ $item['icon'] === 'cube' ? 'selected' : '' }}>Cube / Modular</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-semibold text-slate-500">Description</label>
+                                    <textarea rows="2" name="sectors_list[{{ $index }}][desc]" required
+                                        class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sector-desc-textarea">{{ $item['desc'] }}</textarea>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
 
             <!-- Actions -->
@@ -1157,4 +1254,85 @@
         </form>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('sectors-container');
+    const addBtn = document.getElementById('add-sector-btn');
+    
+    if (addBtn && container) {
+        addBtn.addEventListener('click', function () {
+            const cards = container.querySelectorAll('.sector-card');
+            const newIndex = cards.length;
+            
+            const cardHtml = `
+                <div class="bg-slate-50/50 p-4 border border-slate-200 rounded-xl space-y-3 relative sector-card">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-400 sector-index-label">Sector #\${newIndex + 1}</span>
+                        <button type="button" class="text-red-500 hover:text-red-700 text-xs font-semibold remove-sector-btn">Remove</button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] font-semibold text-slate-500">Title</label>
+                            <input type="text" name="sectors_list[\${newIndex}][title]" value="" required
+                                class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sector-title-input">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-semibold text-slate-500">Icon</label>
+                            <select name="sectors_list[\${newIndex}][icon]" required
+                                class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sector-icon-select">
+                                <option value="home">Home / House</option>
+                                <option value="squares-plus">Squares Plus / Extension</option>
+                                <option value="chevron-double-up">Double Chevron Up / Loft</option>
+                                <option value="adjustments-horizontal">Adjustments / Garage</option>
+                                <option value="arrow-down-tray">Arrow Down / Basement</option>
+                                <option value="sparkles">Sparkles / Renovation</option>
+                                <option value="paint-brush">Paint Brush / Refurbishment</option>
+                                <option value="building-office">Building Office / High-Rise</option>
+                                <option value="archive-box">Archive Box / Warehouse</option>
+                                <option value="building-office-2">Building Office 2 / Mixed-Use</option>
+                                <option value="cube">Cube / Modular</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-semibold text-slate-500">Description</label>
+                        <textarea rows="2" name="sectors_list[\${newIndex}][desc]" required
+                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sector-desc-textarea"></textarea>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', cardHtml);
+            reindexSectors();
+        });
+        
+        container.addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-sector-btn')) {
+                const card = e.target.closest('.sector-card');
+                if (card) {
+                    card.remove();
+                    reindexSectors();
+                }
+            }
+        });
+        
+        function reindexSectors() {
+            const cards = container.querySelectorAll('.sector-card');
+            cards.forEach((card, idx) => {
+                const label = card.querySelector('.sector-index-label');
+                if (label) label.textContent = `Sector #\${idx + 1}`;
+                
+                const titleInput = card.querySelector('.sector-title-input');
+                if (titleInput) titleInput.name = `sectors_list[\${idx}][title]`;
+                
+                const iconSelect = card.querySelector('.sector-icon-select');
+                if (iconSelect) iconSelect.name = `sectors_list[\${idx}][icon]`;
+                
+                const descTextarea = card.querySelector('.sector-desc-textarea');
+                if (descTextarea) descTextarea.name = `sectors_list[\${idx}][desc]`;
+            });
+        }
+    }
+});
+</script>
 @endsection

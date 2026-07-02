@@ -38,6 +38,7 @@ class ServiceController extends Controller
             'display_order' => 'required|integer|min:0',
             'about' => 'nullable|string',
             'image_url' => 'nullable|string|max:255',
+            'image_file' => 'nullable|image|max:5120',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:1000',
             'meta_keywords' => 'nullable|string|max:1000',
@@ -47,10 +48,21 @@ class ServiceController extends Controller
             'services_offered' => 'nullable|array',
             'services_offered.*.title' => 'nullable|string|max:255',
             'services_offered.*.desc' => 'nullable|string',
+            'services_offered.*.meta_title' => 'nullable|string|max:255',
+            'services_offered.*.meta_description' => 'nullable|string|max:1000',
+            'services_offered.*.meta_keywords' => 'nullable|string|max:1000',
+            'services_offered.*.deliverables' => 'nullable|string|max:1000',
             'faqs' => 'nullable|array',
             'faqs.*.q' => 'nullable|string|max:255',
             'faqs.*.a' => 'nullable|string',
         ]);
+
+        if ($request->hasFile('image_file')) {
+            $imageName = 'service_' . time() . '.' . $request->image_file->extension();
+            $request->image_file->move(public_path('uploads'), $imageName);
+            $validated['image_url'] = 'uploads/' . $imageName;
+        }
+        unset($validated['image_file']);
 
         $data = $this->processServiceData($validated);
 
@@ -79,6 +91,7 @@ class ServiceController extends Controller
             'display_order' => 'required|integer|min:0',
             'about' => 'nullable|string',
             'image_url' => 'nullable|string|max:255',
+            'image_file' => 'nullable|image|max:5120',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:1000',
             'meta_keywords' => 'nullable|string|max:1000',
@@ -88,10 +101,21 @@ class ServiceController extends Controller
             'services_offered' => 'nullable|array',
             'services_offered.*.title' => 'nullable|string|max:255',
             'services_offered.*.desc' => 'nullable|string',
+            'services_offered.*.meta_title' => 'nullable|string|max:255',
+            'services_offered.*.meta_description' => 'nullable|string|max:1000',
+            'services_offered.*.meta_keywords' => 'nullable|string|max:1000',
+            'services_offered.*.deliverables' => 'nullable|string|max:1000',
             'faqs' => 'nullable|array',
             'faqs.*.q' => 'nullable|string|max:255',
             'faqs.*.a' => 'nullable|string',
         ]);
+
+        if ($request->hasFile('image_file')) {
+            $imageName = 'service_' . time() . '.' . $request->image_file->extension();
+            $request->image_file->move(public_path('uploads'), $imageName);
+            $validated['image_url'] = 'uploads/' . $imageName;
+        }
+        unset($validated['image_file']);
 
         $data = $this->processServiceData($validated);
 
@@ -123,13 +147,19 @@ class ServiceController extends Controller
             $data['why_choose_us'] = [];
         }
 
-        // Process services offered (convert from list of title/desc to associative array)
+        // Process services offered (store as array of objects containing metadata)
         if (isset($data['services_offered']) && is_array($data['services_offered'])) {
             $servicesOffered = [];
             foreach ($data['services_offered'] as $item) {
-                if (!empty($item['title']) || !empty($item['desc'])) {
-                    $title = $item['title'] ?? '';
-                    $servicesOffered[$title] = $item['desc'] ?? '';
+                if (!empty($item['title'])) {
+                    $servicesOffered[] = [
+                        'title' => $item['title'],
+                        'desc' => $item['desc'] ?? '',
+                        'meta_title' => $item['meta_title'] ?? '',
+                        'meta_description' => $item['meta_description'] ?? '',
+                        'meta_keywords' => $item['meta_keywords'] ?? '',
+                        'deliverables' => $item['deliverables'] ?? '',
+                    ];
                 }
             }
             $data['services_offered'] = $servicesOffered;

@@ -11,7 +11,7 @@
             <p class="mt-1 text-sm text-slate-500">Provide details for the new construction or engineering service card.</p>
         </div>
 
-        <form action="{{ route('admin.services.store') }}" method="POST" class="p-6 space-y-8">
+        <form action="{{ route('admin.services.store') }}" method="POST" enctype="multipart/form-data" class="p-6 space-y-8">
             @csrf
 
             <!-- Section 1: Basic Information -->
@@ -31,14 +31,25 @@
                     </div>
 
                     <div>
-                        <label for="image_url" class="block text-sm font-semibold text-slate-700">Custom Image URL</label>
-                        <div class="mt-1.5">
-                            <input type="text" name="image_url" id="image_url" value="{{ old('image_url') }}" placeholder="e.g. images/service_custom.png (Leave blank for default dynamic image)"
-                                class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
+                        <label class="block text-sm font-semibold text-slate-700">Service Image</label>
+                        <div class="mt-1.5 grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 border border-slate-200 rounded-lg">
+                            <div>
+                                <label for="image_file" class="block text-xs font-semibold text-slate-555 mb-1">Upload New Image File</label>
+                                <input type="file" name="image_file" id="image_file" accept="image/*"
+                                    class="block w-full text-xs text-slate-500 file:mr-4 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-teal-50 file:text-[#008080] hover:file:bg-teal-100 transition-colors">
+                                @error('image_file')
+                                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="image_url" class="block text-xs font-semibold text-slate-555 mb-1">OR Enter Custom Image URL / Path</label>
+                                <input type="text" name="image_url" id="image_url" value="{{ old('image_url') }}" placeholder="e.g. images/service_custom.png"
+                                    class="block w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-md text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#008080] text-xs">
+                                @error('image_url')
+                                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
-                        @error('image_url')
-                            <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
-                        @enderror
                     </div>
                 </div>
 
@@ -119,12 +130,38 @@
                             <div>
                                 <label class="block text-xs font-semibold text-slate-600">Title</label>
                                 <input type="text" name="services_offered[{{ $index }}][title]" value="{{ old('services_offered.'.$index.'.title') }}"
-                                    class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                                    class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sub-service-title-input">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-slate-600">Description</label>
                                 <textarea rows="2" name="services_offered[{{ $index }}][desc]"
-                                    class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">{{ old('services_offered.'.$index.'.desc') }}</textarea>
+                                    class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sub-service-desc-input">{{ old('services_offered.'.$index.'.desc') }}</textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600">Scope Deliverables (comma-separated)</label>
+                                <input type="text" name="services_offered[{{ $index }}][deliverables]" value="{{ old('services_offered.'.$index.'.deliverables') }}"
+                                    placeholder="e.g. Regulatory & Code Compliance, Quality Assured Craftsmanship"
+                                    class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sub-service-deliverables-input">
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-200/60 space-y-2">
+                                <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">SEO Settings (Optional)</span>
+                                <div>
+                                    <label class="block text-[10px] font-semibold text-slate-500">Meta Title</label>
+                                    <input type="text" name="services_offered[{{ $index }}][meta_title]" value="{{ old('services_offered.'.$index.'.meta_title') }}"
+                                        placeholder="e.g. Architectural Drawings | Construction 360"
+                                        class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#008080] text-[11px] sub-service-meta-title-input">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-semibold text-slate-500">Meta Description</label>
+                                    <textarea rows="1" name="services_offered[{{ $index }}][meta_description]" placeholder="Short description for search results..."
+                                        class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#008080] text-[11px] sub-service-meta-desc-input">{{ old('services_offered.'.$index.'.meta_description') }}</textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-semibold text-slate-500">Meta Keywords</label>
+                                    <input type="text" name="services_offered[{{ $index }}][meta_keywords]" value="{{ old('services_offered.'.$index.'.meta_keywords') }}"
+                                        placeholder="e.g. drawings, planning applications"
+                                        class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#008080] text-[11px] sub-service-meta-keywords-input">
+                                </div>
                             </div>
                         </div>
                     @endfor
@@ -259,12 +296,38 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div>
                         <label class="block text-xs font-semibold text-slate-600">Title</label>
                         <input type="text" name="services_offered[\${newIndex}][title]" value=""
-                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs">
+                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sub-service-title-input">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-600">Description</label>
                         <textarea rows="2" name="services_offered[\${newIndex}][desc]"
-                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs"></textarea>
+                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sub-service-desc-input"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600">Scope Deliverables (comma-separated)</label>
+                        <input type="text" name="services_offered[\${newIndex}][deliverables]" value=""
+                            placeholder="e.g. Regulatory & Code Compliance, Quality Assured Craftsmanship"
+                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-xs sub-service-deliverables-input">
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-200/60 space-y-2">
+                        <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">SEO Settings (Optional)</span>
+                        <div>
+                            <label class="block text-[10px] font-semibold text-slate-500">Meta Title</label>
+                            <input type="text" name="services_offered[\${newIndex}][meta_title]" value=""
+                                placeholder="e.g. Architectural Drawings | Construction 360"
+                                class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#008080] text-[11px] sub-service-meta-title-input">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-semibold text-slate-500">Meta Description</label>
+                            <textarea rows="1" name="services_offered[\${newIndex}][meta_description]" placeholder="Short description for search results..."
+                                class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#008080] text-[11px] sub-service-meta-desc-input"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-semibold text-slate-500">Meta Keywords</label>
+                            <input type="text" name="services_offered[\${newIndex}][meta_keywords]" value=""
+                                placeholder="e.g. drawings, planning applications"
+                                class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#008080] text-[11px] sub-service-meta-keywords-input">
+                        </div>
                     </div>
                 </div>
             `;
@@ -288,11 +351,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 const label = card.querySelector('.card-index-label');
                 if (label) label.textContent = `Sub-Service #\${idx + 1}`;
                 
-                const titleInput = card.querySelector('input[type="text"]');
+                const titleInput = card.querySelector('.sub-service-title-input');
                 if (titleInput) titleInput.name = `services_offered[\${idx}][title]`;
                 
-                const descTextarea = card.querySelector('textarea');
+                const descTextarea = card.querySelector('.sub-service-desc-input');
                 if (descTextarea) descTextarea.name = `services_offered[\${idx}][desc]`;
+                
+                const deliverablesInput = card.querySelector('.sub-service-deliverables-input');
+                if (deliverablesInput) deliverablesInput.name = `services_offered[\${idx}][deliverables]`;
+                
+                const metaTitleInput = card.querySelector('.sub-service-meta-title-input');
+                if (metaTitleInput) metaTitleInput.name = `services_offered[\${idx}][meta_title]`;
+                
+                const metaDescInput = card.querySelector('.sub-service-meta-desc-input');
+                if (metaDescInput) metaDescInput.name = `services_offered[\${idx}][meta_description]`;
+                
+                const metaKeywordsInput = card.querySelector('.sub-service-meta-keywords-input');
+                if (metaKeywordsInput) metaKeywordsInput.name = `services_offered[\${idx}][meta_keywords]`;
             });
         }
     }

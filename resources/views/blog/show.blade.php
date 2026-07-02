@@ -1,13 +1,28 @@
 @extends('layouts.public')
 
-@section('title', $blog->title . ' | News & Insights | Construction 360 Ltd')
+@section('title', ($blog->meta_title ?: $blog->title) . ' | News & Insights | Construction 360 Ltd')
 
 @section('meta')
     <meta name="description" content="{{ $blog->meta_description ?: $blog->excerpt }}">
-    <meta name="keywords" content="{{ $blog->meta_keywords ?: 'construction blog, news, builder insights' }}">
-    @if($blog->meta_title)
-        <meta property="og:title" content="{{ $blog->meta_title }}">
+    <meta name="keywords" content="{{ $blog->meta_keywords ?: 'construction blog, news, builder insights, UK construction' }}">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Construction 360 Ltd">
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="Construction 360 Ltd">
+    <meta property="og:title" content="{{ $blog->meta_title ?: $blog->title }}">
+    <meta property="og:description" content="{{ $blog->meta_description ?: $blog->excerpt }}">
+    <meta property="og:image" content="{{ !empty($blog->image_url) ? asset($blog->image_url) : asset('images/hero_construction.png') }}">
+    @if($blog->published_at)
+        <meta property="article:published_time" content="{{ $blog->published_at->toIso8601String() }}">
     @endif
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="{{ $blog->meta_title ?: $blog->title }}">
+    <meta property="twitter:description" content="{{ $blog->meta_description ?: $blog->excerpt }}">
+    <meta property="twitter:image" content="{{ !empty($blog->image_url) ? asset($blog->image_url) : asset('images/hero_construction.png') }}">
 @endsection
 
 @section('content')
