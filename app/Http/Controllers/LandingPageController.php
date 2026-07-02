@@ -29,7 +29,21 @@ class LandingPageController extends Controller
         $projects = \App\Models\Project::orderBy('display_order', 'asc')->take(6)->get();
         $team = \App\Models\TeamMember::orderBy('display_order', 'asc')->get();
 
-        return view('welcome', compact('content', 'services', 'blogs', 'projects', 'team'));
+        // Sectors grid — load from DB if an admin has saved them, otherwise use defaults
+        $sectorsRaw = $content['homepage_sectors'] ?? null;
+        $sectors = $sectorsRaw ? json_decode($sectorsRaw, true) : [
+            ['icon' => 'home',                 'title' => 'Residential',          'desc' => 'Extensions, loft conversions, renovations and full new-build residential construction.'],
+            ['icon' => 'building-office',      'title' => 'Commercial',           'desc' => 'Office fit-outs, retail spaces, warehouses and bespoke commercial developments.'],
+            ['icon' => 'building-office-2',    'title' => 'Industrial',           'desc' => 'Factory units, logistics hubs and large-scale industrial construction projects.'],
+            ['icon' => 'squares-plus',         'title' => 'Mixed-Use',            'desc' => 'Integrated residential and commercial schemes delivered on time and to specification.'],
+            ['icon' => 'chevron-double-up',    'title' => 'Structural Works',     'desc' => 'Reinforced concrete, steelwork, masonry, brickwork and timber frame structures.'],
+            ['icon' => 'adjustments-horizontal','title' => 'MEP Services',        'desc' => 'Complete mechanical, electrical, plumbing, HVAC and building services solutions.'],
+            ['icon' => 'paint-brush',          'title' => 'Interior Fit-Out',     'desc' => 'Premium interior refurbishment, flooring, carpentry and decorating services.'],
+            ['icon' => 'cube',                 'title' => 'Civil Engineering',    'desc' => 'Roads, drainage, utilities, groundworks and infrastructure projects across the UK.'],
+            ['icon' => 'sparkles',             'title' => 'Specialist Services',  'desc' => 'Scaffolding, crane hire, waterproofing, concrete repairs and metal fabrication.'],
+        ];
+
+        return view('welcome', compact('content', 'services', 'blogs', 'projects', 'team', 'sectors'));
     }
 
     /**
