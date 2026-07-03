@@ -93,7 +93,7 @@ class LandingPageController extends Controller
                 'meta_description' => $service->meta_description,
                 'meta_keywords' => $service->meta_keywords,
             ];
-            
+
             // Fallback empty fields to defaults from controller
             $defaults = $this->getServiceDetails($slug);
             if ($defaults) {
@@ -103,6 +103,12 @@ class LandingPageController extends Controller
                 if (empty($details['services_offered'])) $details['services_offered'] = $defaults['services_offered'];
                 if (empty($details['faqs'])) $details['faqs'] = $defaults['faqs'];
             }
+        }
+
+        $details['slug'] = $slug;
+        // Normalise services_offered so every entry always has title, desc, and slug keys
+        if (!empty($details['services_offered']) && is_array($details['services_offered'])) {
+            $details['services_offered'] = $this->normaliseServicesOffered($details['services_offered']);
         }
 
         return view('services.show', compact('content', 'services', 'details', 'slug'));
@@ -270,6 +276,66 @@ class LandingPageController extends Controller
     /**
      * Structured detail data map for competitor-matched service pages.
      */
+    /**
+     * Normalise a services_offered array so every entry is a uniform
+     * ['title' => ..., 'desc' => ..., 'slug' => ...] array regardless
+     * of the format the data was originally stored in.
+     *
+     * Supported input formats:
+     *  - ['Title' => 'Description string'] (legacy key=>value)
+     *  - [['title' => ..., 'desc' => ...]] (structured, slug may be missing)
+     *  - [['title' => ..., 'desc' => ..., 'slug' => ...]] (fully structured)
+     */
+    private function normaliseServicesOffered(array $raw): array
+    {
+        $normalised = [];
+        foreach ($raw as $key => $value) {
+            if (is_array($value)) {
+                // Already a structured array — ensure slug and desc exist
+                $title = $value['title'] ?? (is_string($key) ? $key : '');
+                
+                // Normalise deliverables to array of strings
+                $deliverablesRaw = $value['deliverables'] ?? '';
+                $deliverables = [];
+                if (is_array($deliverablesRaw)) {
+                    $deliverables = $deliverablesRaw;
+                } elseif (is_string($deliverablesRaw) && trim($deliverablesRaw) !== '') {
+                    $deliverables = array_map('trim', explode(',', $deliverablesRaw));
+                } else {
+                    $deliverables = [
+                        'Regulatory & Code Compliance',
+                        'Quality Assured Craftsmanship',
+                        'Experienced Civil Engineers',
+                        'Comprehensive Sign-Off'
+                    ];
+                }
+
+                $normalised[] = [
+                    'title' => $title,
+                    'desc'  => $value['desc'] ?? $value['description'] ?? '',
+                    'slug'  => $value['slug'] ?? \Illuminate\Support\Str::slug($title),
+                    'deliverables' => $deliverables,
+                ] + $value;
+            } else {
+                // Legacy 'Title' => 'Description string' format
+                $title = is_string($key) ? $key : (string) $value;
+                $desc  = is_string($value) ? $value : '';
+                $normalised[] = [
+                    'title' => $title,
+                    'desc'  => $desc,
+                    'slug'  => \Illuminate\Support\Str::slug($title),
+                    'deliverables' => [
+                        'Regulatory & Code Compliance',
+                        'Quality Assured Craftsmanship',
+                        'Experienced Civil Engineers',
+                        'Comprehensive Sign-Off'
+                    ],
+                ];
+            }
+        }
+        return $normalised;
+    }
+
     public function getServiceDetails($slug)
     {
         $slug = strtolower($slug);
@@ -751,6 +817,77 @@ class LandingPageController extends Controller
         }
         
         return null;
+    }
+
+    /**
+     * Display the detailed Sub-Service page.
+     * Route: /services/{service_slug}/{sub_service_slug}
+     */
+    public function showSubService($serviceSlug, $subServiceSlug)
+    {
+        $content = SiteContent::pluck('value', 'key')->all();
+        $services = Service::orderBy('display_order', 'asc')->get();
+
+        // Resolve the parent service (DB first, then static fallback)
+        $service = null;
+        foreach ($services as $srv) {
+            if (\Illuminate\Support\Str::slug($srv->title) === $serviceSlug) {
+                $service = $srv;
+                break;
+            }
+        }
+
+        if (!$service) {
+            $details = $this->getServiceDetails($serviceSlug);
+            if (!$details) {
+                abort(404, 'Service not found');
+            }
+            $details['meta_title'] = null;
+            $details['meta_description'] = null;
+            $details['meta_keywords'] = null;
+        } else {
+            $details = [
+                'title'          => $service->title,
+                'image_url'      => $service->image_url,
+                'about'          => $service->about,
+                'why_choose_us'  => is_string($service->why_choose_us)  ? json_decode($service->why_choose_us,  true) : $service->why_choose_us,
+                'services_offered' => is_string($service->services_offered) ? json_decode($service->services_offered, true) : $service->services_offered,
+                'faqs'           => is_string($service->faqs)           ? json_decode($service->faqs,           true) : $service->faqs,
+                'meta_title'     => $service->meta_title,
+                'meta_description' => $service->meta_description,
+                'meta_keywords'  => $service->meta_keywords,
+            ];
+
+            $defaults = $this->getServiceDetails($serviceSlug);
+            if ($defaults) {
+                if (empty($details['image_url']))       $details['image_url']       = $defaults['image_url']       ?? null;
+                if (empty($details['about']))            $details['about']            = $defaults['about']            ?? null;
+                if (empty($details['why_choose_us']))   $details['why_choose_us']   = $defaults['why_choose_us']   ?? [];
+                if (empty($details['services_offered'])) $details['services_offered'] = $defaults['services_offered'] ?? [];
+                if (empty($details['faqs']))             $details['faqs']             = $defaults['faqs']             ?? [];
+            }
+        }
+
+        $details['slug'] = $serviceSlug;
+        // Normalise sub-services so every entry has title, desc, slug
+        if (!empty($details['services_offered']) && is_array($details['services_offered'])) {
+            $details['services_offered'] = $this->normaliseServicesOffered($details['services_offered']);
+        }
+
+        // Find the specific sub-service by slug
+        $subService = null;
+        foreach ($details['services_offered'] as $sub) {
+            if (($sub['slug'] ?? '') === $subServiceSlug) {
+                $subService = $sub;
+                break;
+            }
+        }
+
+        if (!$subService) {
+            abort(404, 'Sub-service not found');
+        }
+
+        return view('services.sub_show', compact('content', 'services', 'details', 'subService', 'serviceSlug', 'subServiceSlug'));
     }
 }
 
