@@ -878,8 +878,19 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
 
         $controller = new \App\Http\Controllers\LandingPageController();
         foreach ($services as &$srv) {
+            // Initialise all details fields to null to prevent SQL schema column mismatch in batch insert
+            $srv['about'] = null;
+            $srv['why_choose_us'] = null;
+            $srv['services_offered'] = null;
+            $srv['faqs'] = null;
+            $srv['image_url'] = null;
+            $srv['meta_title'] = null;
+            $srv['meta_description'] = null;
+            $srv['meta_keywords'] = null;
+
             $slug = \Illuminate\Support\Str::slug($srv['title']);
             $details = $controller->getServiceDetails($slug);
+            if ($details) {
                 $srv['about'] = $details['about'] ?? null;
                 $srv['why_choose_us'] = isset($details['why_choose_us']) ? json_encode($details['why_choose_us']) : null;
                 $srv['services_offered'] = isset($details['services_offered']) ? json_encode($details['services_offered']) : null;

@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        \Illuminate\Support\Facades\Schema::defaultStringLength(191);
+
         if (\Illuminate\Support\Facades\Schema::hasTable('site_contents')) {
             \Illuminate\Support\Facades\View::composer('*', function ($view) {
                 static $content = null;
