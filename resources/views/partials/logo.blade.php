@@ -11,7 +11,14 @@
 
 @if(isset($siteContent['site_logo']) && $siteContent['site_logo'])
     <!-- Uploaded Custom Logo -->
-    <img src="{{ asset($siteContent['site_logo']) }}" alt="Construction 360 Logo" class="{{ $sizeClass }} object-contain">
+    @php
+        $logoUrl = asset($siteContent['site_logo']);
+        $logoPath = public_path($siteContent['site_logo']);
+        if (file_exists($logoPath)) {
+            $logoUrl .= '?v=' . filemtime($logoPath);
+        }
+    @endphp
+    <img src="{{ $logoUrl }}" alt="Construction 360 Logo" class="{{ $sizeClass }} object-contain">
 @elseif($iconOnly)
     <!-- Compact Minimalist C360 Icon -->
     <svg class="{{ $sizeClass }} transition-transform duration-500 hover:scale-105" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
