@@ -768,6 +768,13 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'id' => '79',
+                'key' => 'google_site_verification',
+                'value' => 'RKr7Z5yGUbjxyvoUWYtvvx17blX28YkHUc2N-lDET68',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         DB::table('site_contents')->insert($data);

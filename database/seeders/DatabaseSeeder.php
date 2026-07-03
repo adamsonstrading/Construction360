@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             'seo_meta_title' => 'Integrated Construction & Premium Architectural Builds',
             'seo_meta_description' => 'Construction 360 Ltd delivers 360-degree integration of design, structural planning, and premium quality construction management.',
             'seo_meta_keywords' => 'construction, architectural builds, structural engineering, commercial fit-outs, extensions, renovations, glazing, Essex, London',
+            'google_site_verification' => 'RKr7Z5yGUbjxyvoUWYtvvx17blX28YkHUc2N-lDET68',
             
             'hero_title' => 'Integrated Construction & Premium Architectural Builds',
             'hero_subtitle' => 'Building your vision with geometric precision. Providing the highest standard of planning, design, and structural construction that stands the test of time.',
