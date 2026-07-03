@@ -204,7 +204,7 @@
             <!-- Logo Section -->
             <div class="flex items-center">
                 <a href="{{ url('/') }}" class="flex items-center group">
-                    @include('partials.logo', ['idSuffix' => 'nav', 'class' => 'max-h-12 w-auto max-w-[200px]', 'icon_only' => false, 'color_mode' => 'light'])
+                    @include('partials.logo', ['idSuffix' => 'nav', 'class' => 'max-h-16 w-auto max-w-[240px]', 'icon_only' => false, 'color_mode' => 'light'])
                 </a>
                 <!-- Vertical Separator Line -->
                 <div class="hidden lg:block h-8 w-[1px] bg-slate-200 mx-6"></div>
