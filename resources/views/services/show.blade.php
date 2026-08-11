@@ -94,13 +94,13 @@
                 @foreach($details['services_offered'] as $idx => $subService)
                     <div class="bg-white border border-slate-150 rounded-2xl p-8 shadow-sm flex flex-col justify-between hover:border-slate-350 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden group">
                         <!-- Top Accent Line -->
-                        <div class="absolute top-0 left-0 right-0 h-[3px] bg-slate-100 group-hover:bg-[#008080] transition-colors duration-300"></div>
+                        <div class="absolute top-0 left-0 right-0 h-[3px] bg-slate-100 group-hover:bg-[#36a1b3] transition-colors duration-300"></div>
 
                         <div class="space-y-4 pt-2">
                             <!-- Card Header: Title & Index Badge -->
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center space-x-3">
-                                    <span class="h-2 w-2 rounded-full bg-[#008080] flex-shrink-0"></span>
+                                    <span class="h-2 w-2 rounded-full bg-[#36a1b3] flex-shrink-0"></span>
                                     <h3 class="text-base sm:text-lg font-bold text-slate-950 tracking-tight font-sans">
                                         {{ $subService['title'] }}
                                     </h3>
@@ -118,9 +118,9 @@
 
                         <!-- Card Footer: Explore Link -->
                         <div class="pt-6 border-t border-slate-100 mt-6">
-                            <a href="{{ route('subservices.show', [$slug, $subService['slug']]) }}" class="text-xs font-bold text-slate-900 group-hover:text-[#008080] transition-colors inline-flex items-center gap-1 group/btn">
+                            <a href="{{ route('subservices.show', [$slug, $subService['slug']]) }}" class="text-xs font-bold text-slate-900 group-hover:text-[#36a1b3] transition-colors inline-flex items-center gap-1 group/btn">
                                 Explore Technical Scope
-                                <svg class="h-3.5 w-3.5 text-slate-400 group-hover/btn:text-[#008080] group-hover/btn:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <svg class="h-3.5 w-3.5 text-slate-400 group-hover/btn:text-[#36a1b3] group-hover/btn:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
                             </a>

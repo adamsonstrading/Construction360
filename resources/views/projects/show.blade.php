@@ -18,49 +18,56 @@
 @endif
 
 @section('content')
-    <!-- Breadcrumbs & Navigation -->
-    <nav class="bg-slate-50 border-b border-slate-100 py-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-slate-400">
-                <a href="{{ url('/') }}" class="hover:text-aqua transition-colors">Home</a>
-                <span>/</span>
-                <a href="{{ route('projects.index') }}" class="hover:text-aqua transition-colors">Projects</a>
-                <span>/</span>
-                <span class="text-slate-600">{{ $project->title }}</span>
-            </div>
-        </div>
-    </nav>
+    @php
+        $statusRaw = strtolower((string) ($project->status ?? ''));
+        $statusLabel = str_replace('-', ' ', $project->status ?: 'In progress');
+    @endphp
 
-    <!-- Project Details Content -->
-    <section class="bg-white py-20 lg:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Project Header -->
-            <div class="max-w-3xl mb-12 lg:mb-16">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-aqua">{{ $project->category }}</span>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none font-sans">
+    {{-- Light page header — home theme --}}
+    <section class="relative bg-white border-b border-black/5">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10" style="padding-top: 7.5rem; padding-bottom: 2.5rem;">
+            <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6b7280] mb-8">
+                <a href="{{ url('/') }}" class="hover:text-brand transition-colors">Home</a>
+                <span>•</span>
+                <a href="{{ route('projects.index') }}" class="hover:text-brand transition-colors">Projects</a>
+                <span>•</span>
+                <span class="text-[#0f2a3a] truncate max-w-[14rem] sm:max-w-none">{{ $project->title }}</span>
+            </div>
+
+            <div class="max-w-3xl">
+                @if(!empty($project->category))
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
+                        {{ $project->category }}
+                    </p>
+                @endif
+                <h1 class="mt-3 text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-tight text-[#0f2a3a]">
                     {{ $project->title }}
                 </h1>
+                <div class="mt-5 h-[3px] w-14 bg-brand"></div>
             </div>
+        </div>
+    </section>
 
-            <!-- Split Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-                
-                <!-- Left Column (Main Image, Description) -->
+    {{-- Project body --}}
+    <section class="bg-white py-12 lg:py-16">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
+
+                {{-- Main column --}}
                 <div class="lg:col-span-8 space-y-12">
-                    <!-- Large Cover Image -->
-                    <div class="bg-white border border-slate-150 rounded-2xl p-2.5 shadow-lg overflow-hidden">
-                        <img src="{{ asset($project->image_url ?: 'images/hero_architecture.png') }}" 
-                             alt="{{ $project->title }}" 
-                             class="w-full h-auto max-h-[550px] object-cover rounded-xl">
+                    <div class="relative w-full overflow-hidden rounded-2xl bg-[#0f2a3a] border border-black/5">
+                        <img
+                            src="{{ asset($project->image_url ?: 'images/hero_architecture.png') }}"
+                            alt="{{ $project->title }}"
+                            class="w-full h-auto max-h-[560px] object-cover"
+                        >
                     </div>
 
-                    <!-- Project Overview -->
-                    <div class="space-y-6">
-                        <h2 class="text-xl sm:text-2xl font-bold text-slate-950 tracking-tight font-sans">
+                    <div class="space-y-5">
+                        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#0f2a3a]">
                             {{ $content['project_overview_title'] ?? 'Project Overview' }}
                         </h2>
-                        <div class="text-sm sm:text-base text-slate-650 leading-relaxed font-sans space-y-4">
+                        <div class="text-sm sm:text-[15px] text-[#5b6770] leading-relaxed space-y-4">
                             @php
                                 $paragraphs = explode("\n", $project->description);
                             @endphp
@@ -72,72 +79,63 @@
                         </div>
                     </div>
 
-                    <!-- Project Timeline/Phases (Premium touch) -->
-                    <div class="border-t border-slate-100 pt-10 space-y-6">
-                        <h3 class="text-lg font-bold text-slate-950 tracking-tight font-sans">
+                    <div class="border-t border-black/5 pt-10 space-y-6">
+                        <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-[#0f2a3a]">
                             {{ $content['project_scopes_title'] ?? 'Development Scopes' }}
                         </h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
-                            <div class="bg-slate-50 rounded-xl p-6 border border-slate-150 space-y-2">
-                                <span class="text-aqua font-bold">PHASE 1</span>
-                                <h4 class="font-bold text-slate-900 font-sans">Structural & Framework</h4>
-                                <p class="text-slate-500 leading-relaxed">Establish initial framing coordinates, load-bearing assessments, and secure local building control approvals.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                            <div class="rounded-2xl border border-black/8 bg-aqua-light p-6 space-y-2">
+                                <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-brand">Phase 1</span>
+                                <h4 class="font-bold text-[#0f2a3a]">Structural & Framework</h4>
+                                <p class="text-sm text-[#5b6770] leading-relaxed">Establish initial framing coordinates, load-bearing assessments, and secure local building control approvals.</p>
                             </div>
-                            <div class="bg-slate-50 rounded-xl p-6 border border-slate-150 space-y-2">
-                                <span class="text-aqua font-bold">PHASE 2</span>
-                                <h4 class="font-bold text-slate-900 font-sans">Shell & Insulation</h4>
-                                <p class="text-slate-500 leading-relaxed">Installation of custom glazing specifications, fire barriers, thermal insulation, and external brickwork finishes.</p>
+                            <div class="rounded-2xl border border-black/8 bg-aqua-light p-6 space-y-2">
+                                <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-brand">Phase 2</span>
+                                <h4 class="font-bold text-[#0f2a3a]">Shell & Insulation</h4>
+                                <p class="text-sm text-[#5b6770] leading-relaxed">Installation of custom glazing specifications, fire barriers, thermal insulation, and external brickwork finishes.</p>
                             </div>
-                            <div class="bg-slate-50 rounded-xl p-6 border border-slate-150 space-y-2">
-                                <span class="text-aqua font-bold">PHASE 3</span>
-                                <h4 class="font-bold text-slate-900 font-sans">Handover & Audit</h4>
-                                <p class="text-slate-500 leading-relaxed">Final mechanical certifications, snagging audit compliance checks, and handover of 10-year structural warranty.</p>
+                            <div class="rounded-2xl border border-black/8 bg-aqua-light p-6 space-y-2">
+                                <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-brand">Phase 3</span>
+                                <h4 class="font-bold text-[#0f2a3a]">Handover & Audit</h4>
+                                <p class="text-sm text-[#5b6770] leading-relaxed">Final mechanical certifications, snagging audit compliance checks, and handover of 10-year structural warranty.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column (Sidebar Metadata & CTA) -->
-                <div class="lg:col-span-4 lg:sticky lg:top-28 space-y-8">
-                    <!-- Metadata card -->
-                    <div class="bg-white border border-slate-150 rounded-2xl p-6 sm:p-8 shadow-md space-y-6">
-                        <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 border-b border-slate-100 pb-4">
+                {{-- Specs sidebar --}}
+                <div class="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+                    <div class="rounded-2xl border border-black/8 bg-white p-6 sm:p-7 space-y-6">
+                        <h3 class="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand border-b border-black/5 pb-4">
                             {{ $content['project_specifications_title'] ?? 'Project Specifications' }}
                         </h3>
-                        
+
                         <div class="space-y-4">
-                            <!-- Location -->
-                            <div class="flex justify-between items-baseline text-xs">
-                                <span class="font-bold text-slate-400 uppercase tracking-widest">Location</span>
-                                <span class="font-bold text-slate-800 text-right">{{ $project->location }}</span>
+                            <div class="flex justify-between items-baseline gap-4 text-xs">
+                                <span class="font-semibold uppercase tracking-widest text-[#6b7280]">Location</span>
+                                <span class="font-bold text-[#0f2a3a] text-right">{{ $project->location }}</span>
                             </div>
-                            
-                            <!-- Sector -->
-                            <div class="flex justify-between items-baseline text-xs">
-                                <span class="font-bold text-slate-400 uppercase tracking-widest">Sector</span>
-                                <span class="font-bold text-slate-800 text-right">{{ $project->category }}</span>
+                            <div class="flex justify-between items-baseline gap-4 text-xs">
+                                <span class="font-semibold uppercase tracking-widest text-[#6b7280]">Sector</span>
+                                <span class="font-bold text-[#0f2a3a] text-right">{{ $project->category }}</span>
                             </div>
-
-                            <!-- Year -->
-                            <div class="flex justify-between items-baseline text-xs">
-                                <span class="font-bold text-slate-400 uppercase tracking-widest">Completed</span>
-                                <span class="font-bold text-slate-800 text-right">{{ $project->year }}</span>
+                            <div class="flex justify-between items-baseline gap-4 text-xs">
+                                <span class="font-semibold uppercase tracking-widest text-[#6b7280]">Completed</span>
+                                <span class="font-bold text-[#0f2a3a] text-right">{{ $project->year }}</span>
                             </div>
-
-                            <!-- Status -->
-                            <div class="flex justify-between items-baseline text-xs">
-                                <span class="font-bold text-slate-400 uppercase tracking-widest">Status</span>
-                                <span class="font-bold text-aqua uppercase tracking-wider text-right">
-                                    {{ str_replace('-', ' ', $project->status) }}
+                            <div class="flex justify-between items-baseline gap-4 text-xs">
+                                <span class="font-semibold uppercase tracking-widest text-[#6b7280]">Status</span>
+                                <span class="font-bold uppercase tracking-wider text-brand text-right">
+                                    {{ $statusLabel }}
                                 </span>
                             </div>
                         </div>
 
-                        <!-- Sidebar Action -->
-                        <div class="pt-4">
+                        <div class="pt-2">
                             <button type="button" onclick="openTenderModal()"
-                                    class="w-full inline-flex items-center justify-center px-5 py-3.5 text-xs font-bold uppercase tracking-widest text-white bg-slate-950 hover:bg-slate-800 rounded-lg shadow-sm transition-colors">
+                                    class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-brand hover:bg-brand-dark text-white px-5 py-3.5 text-xs font-bold uppercase tracking-[0.08em] transition-colors">
                                 Enquire about this build
+                                <span aria-hidden="true">→</span>
                             </button>
                         </div>
                     </div>
@@ -146,55 +144,71 @@
         </div>
     </section>
 
-    <!-- Related Projects Section -->
+    {{-- Related projects — home portfolio card style --}}
     @if(!$related->isEmpty())
-        <section class="bg-slate-50 border-t border-slate-100 py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Section Title -->
-                <div class="mb-12">
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-aqua">{{ $content['project_related_label'] ?? 'PORTFOLIO' }}</span>
-                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-2 tracking-tighter font-sans">
+        <section class="bg-brand text-white py-16 lg:py-24">
+            <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+                <div class="text-center max-w-2xl mx-auto mb-10 lg:mb-12 space-y-3">
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/80">
+                        {{ $content['project_related_label'] ?? 'Portfolio' }}
+                    </p>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-medium tracking-tight text-white leading-tight">
                         {{ $content['project_related_title'] ?? 'Related Projects' }}
                     </h2>
                 </div>
 
-                <!-- Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
                     @foreach($related as $relProj)
                         @php
                             $relSlug = $relProj->slug ?: \Illuminate\Support\Str::slug($relProj->title);
                             $relImg = asset($relProj->image_url ?: 'images/hero_architecture.png');
+                            $locParts = array_filter(array_map('trim', explode(',', (string) ($relProj->location ?: ''))));
+                            $loc = $locParts ? end($locParts) : ($relProj->category ?: 'London');
                         @endphp
-                        <div class="group bg-white border border-slate-150 rounded-2xl overflow-hidden hover:border-slate-300 transition-all flex flex-col justify-between">
-                            <div>
-                                <div class="relative h-48 overflow-hidden bg-slate-100 border-b border-slate-100">
-                                    <a href="{{ route('projects.show', $relSlug) }}" class="block h-full w-full">
-                                        <img src="{{ $relImg }}" alt="{{ $relProj->title }}" 
-                                             class="object-cover h-full w-full group-hover:scale-105 transition-transform duration-700">
-                                    </a>
-                                </div>
-                                <div class="p-6 space-y-2">
-                                    <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block">{{ $relProj->location }}</span>
-                                    <h3 class="text-base font-bold text-slate-950 tracking-tight leading-snug group-hover:text-aqua transition-colors font-sans">
-                                        <a href="{{ route('projects.show', $relSlug) }}">
-                                            {{ $relProj->title }}
-                                        </a>
-                                    </h3>
-                                </div>
+                        <a href="{{ route('projects.show', $relSlug) }}"
+                           class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/20 bg-[#0f2a3a]">
+                            <img
+                                src="{{ $relImg }}"
+                                alt="{{ $relProj->title }}"
+                                class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                            >
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute bottom-0 inset-x-0 p-5 lg:p-6">
+                                <span class="block text-[10px] font-semibold uppercase tracking-[0.18em] text-white/85 mb-1.5">
+                                    {{ strtoupper($loc) }}
+                                </span>
+                                <h3 class="text-[1.25rem] font-bold text-white leading-snug">
+                                    {{ $relProj->title }}
+                                </h3>
+                                <span class="mt-3 inline-flex text-[13px] font-semibold text-white/90 group-hover:text-[#f0d778] transition-colors">
+                                    View →
+                                </span>
                             </div>
-                            <div class="p-6 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between">
-                                <a href="{{ route('projects.show', $relSlug) }}" 
-                                   class="text-xs font-bold text-slate-900 hover:text-aqua transition-colors flex items-center group/btn evoke-link">
-                                    View details
-                                    <svg class="ml-1.5 h-3.5 w-3.5 group-hover/btn:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
+                        </a>
                     @endforeach
+                </div>
+
+                <div class="mt-10 text-center">
+                    <a href="{{ route('projects.index') }}" class="text-[13px] font-semibold text-white/80 hover:text-white transition-colors">
+                        {{ $content['cta_explore_portfolio_label'] ?? 'View full portfolio' }} →
+                    </a>
                 </div>
             </div>
         </section>
     @endif
+
+    {{-- Bottom CTA --}}
+    <section class="relative bg-white border-t border-black/5 py-14 lg:py-16">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div class="max-w-xl">
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#0f2a3a]">Ready to start your project?</h2>
+                <p class="mt-2 text-sm text-[#5b6770]">Tell us about your space, timeline and ambitions — we’ll respond with clear next steps.</p>
+            </div>
+            <a href="#" onclick="openTenderModal(); return false;"
+               class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-brand hover:bg-brand-dark text-white px-7 py-3.5 text-xs font-bold uppercase tracking-[0.08em] transition-colors">
+                Get a free quote
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </section>
 @endsection

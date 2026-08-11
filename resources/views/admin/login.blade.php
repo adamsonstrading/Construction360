@@ -5,20 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <title>Admin Login | Construction 360</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <!-- Vite CSS & JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Outfit', sans-serif;
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
         }
     </style>
 </head>
@@ -42,7 +34,7 @@
         <!-- Logo and Heading -->
         <div class="flex flex-col items-center">
             @include('partials.logo', ['idSuffix' => 'log', 'class' => 'h-16 w-16'])
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-white tracking-wider">CONSTRUCTION<span class="text-[#008080]">360</span></h2>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-white tracking-wider">CONSTRUCTION<span class="text-[#36a1b3]">360</span></h2>
             <p class="mt-2 text-center text-sm text-slate-400">
                 Admin Control Portal
             </p>
@@ -70,7 +62,7 @@
                         </label>
                         <div class="mt-1.5">
                             <input id="email" name="email" type="email" autocomplete="email" required value="{{ old('email') }}"
-                                class="appearance-none block w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-lg shadow-sm placeholder-slate-500 text-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
+                                class="appearance-none block w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-lg shadow-sm placeholder-slate-500 text-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
                         </div>
                     </div>
 
@@ -80,14 +72,14 @@
                         </label>
                         <div class="mt-1.5">
                             <input id="password" name="password" type="password" autocomplete="current-password" required
-                                class="appearance-none block w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-lg shadow-sm placeholder-slate-500 text-white focus:outline-none focus:ring-2 focus:ring-[#008080] focus:border-transparent text-sm">
+                                class="appearance-none block w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-lg shadow-sm placeholder-slate-500 text-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
                         </div>
                     </div>
 
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <input id="remember" name="remember" type="checkbox"
-                                class="h-4 w-4 text-[#008080] focus:ring-[#008080] border-slate-800 bg-slate-950 rounded">
+                                class="h-4 w-4 text-[#36a1b3] focus:ring-[#36a1b3] border-slate-800 bg-slate-950 rounded">
                             <label for="remember" class="ml-2 block text-sm text-slate-400">
                                 Remember me
                             </label>
@@ -96,14 +88,14 @@
 
                     <div>
                         <button type="submit"
-                            class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-md text-sm font-bold text-white bg-[#008080] hover:bg-[#006666] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-[#008080] transition-colors">
+                            class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-md text-sm font-bold text-white bg-[#36a1b3] hover:bg-[#2c8493] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-[#36a1b3] transition-colors">
                             Access Dashboard
                         </button>
                     </div>
                 </form>
 
                 <div class="mt-6 flex justify-center text-xs">
-                    <a href="{{ route('landing') }}" class="text-slate-500 hover:text-[#008080] transition-colors flex items-center">
+                    <a href="{{ route('landing') }}" class="text-slate-500 hover:text-[#36a1b3] transition-colors flex items-center">
                         <svg class="mr-1 h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>

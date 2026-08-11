@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 170" width="300" height="170">
+  <text x="14" y="90" font-family="'Times New Roman',Times,Georgia,serif" font-weight="400" font-size="88" fill="#1a1a1a" letter-spacing="6">RIBA</text>
+  <line x1="14" y1="104" x2="286" y2="104" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="14" y="128" font-family="'Times New Roman',Times,Georgia,serif" font-weight="400" font-size="19" fill="#1a1a1a">Royal Institute of</text>
+  <text x="14" y="153" font-family="'Times New Roman',Times,Georgia,serif" font-weight="400" font-size="19" fill="#1a1a1a">British Architects</text>
+</svg>

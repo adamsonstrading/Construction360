@@ -26,10 +26,10 @@
         <line x1="46" y1="18" x2="46" y2="82" stroke="{{ $lineHex }}" stroke-width="2.5" />
         
         <!-- C for Construction -->
-        <text x="36" y="62" font-family="'Outfit', 'Plus Jakarta Sans', sans-serif" font-size="34" font-weight="900" fill="{{ $textHex }}" text-anchor="end">C</text>
+        <text x="36" y="62" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial, sans-serif" font-size="34" font-weight="900" fill="{{ $textHex }}" text-anchor="end">C</text>
         
         <!-- 360 for Group -->
-        <text x="54" y="60" font-family="'Outfit', 'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="300" fill="#00B4D8" text-anchor="start">360</text>
+        <text x="54" y="60" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial, sans-serif" font-size="28" font-weight="300" fill="#36a1b3" text-anchor="start">360</text>
     </svg>
 @else
     <!-- Full Landscape Brand Logo -->
@@ -37,26 +37,26 @@
         <defs>
             <style>
                 .logo-text-c-{{ $suffix }} {
-                    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+                    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial, sans-serif;
                     font-size: 50px;
                     font-weight: 850;
                     fill: {{ $textHex }};
                 }
                 .logo-text-3-{{ $suffix }} {
-                    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+                    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial, sans-serif;
                     font-size: 50px;
                     font-weight: 300;
-                    fill: #00B4D8;
+                    fill: #36a1b3;
                 }
                 .logo-sub-blue-{{ $suffix }} {
-                    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+                    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial, sans-serif;
                     font-size: 10px;
                     font-weight: 700;
-                    fill: #00B4D8;
+                    fill: #36a1b3;
                     letter-spacing: 2px;
                 }
                 .logo-sub-dark-{{ $suffix }} {
-                    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+                    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial, sans-serif;
                     font-size: 10px;
                     font-weight: 700;
                     fill: {{ $textHex }};

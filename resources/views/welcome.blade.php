@@ -1,836 +1,844 @@
 @extends('layouts.public')
 
-@section('title', $content['seo_meta_title'] ?? 'Integrated Construction & Premium Architectural Builds')
+@section('title', $content['seo_meta_title'] ?? 'Design-led construction for London & Essex')
 
 @section('meta')
-    <meta name="description" content="{{ $content['seo_meta_description'] ?? ($content['hero_subtitle'] ?? 'We deliver 360-degree integration of design, structural planning, and premium quality construction management.') }}">
+    <meta name="description" content="{{ $content['seo_meta_description'] ?? ($content['hero_subtitle'] ?? 'Construction 360 Ltd delivers design, structural planning and premium builds as one accountable journey across London and Essex.') }}">
     <meta name="keywords" content="{{ $content['seo_meta_keywords'] ?? 'construction, architectural builds, structural engineering, commercial fit-outs, extensions, renovations, glazing, Essex, London' }}">
     <link rel="canonical" href="https://construction360.co">
-
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://construction360.co">
-    <meta property="og:title" content="{{ $content['seo_meta_title'] ?? ($content['hero_title'] ?? 'Integrated Construction & Premium Architectural Builds') }} | Construction 360 Ltd">
-    <meta property="og:description" content="{{ $content['seo_meta_description'] ?? ($content['hero_subtitle'] ?? 'We deliver 360-degree integration of design, structural planning, and premium quality construction management.') }}">
+    <meta property="og:title" content="{{ $content['seo_meta_title'] ?? 'Design-led construction for London & Essex' }} | Construction 360 Ltd">
+    <meta property="og:description" content="{{ $content['seo_meta_description'] ?? ($content['hero_subtitle'] ?? 'Design-led construction across London and Essex.') }}">
     <meta property="og:image" content="{{ asset('images/hero_construction.png') }}">
-
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://construction360.co">
-    <meta property="twitter:title" content="{{ $content['seo_meta_title'] ?? ($content['hero_title'] ?? 'Integrated Construction & Premium Architectural Builds') }} | Construction 360 Ltd">
-    <meta property="twitter:description" content="{{ $content['seo_meta_description'] ?? ($content['hero_subtitle'] ?? 'We deliver 360-degree integration of design, structural planning, and premium quality construction management.') }}">
+    <meta property="twitter:title" content="{{ $content['seo_meta_title'] ?? 'Design-led construction for London & Essex' }} | Construction 360 Ltd">
+    <meta property="twitter:description" content="{{ $content['seo_meta_description'] ?? ($content['hero_subtitle'] ?? 'Design-led construction across London and Essex.') }}">
     <meta property="twitter:image" content="{{ asset('images/hero_construction.png') }}">
-
-    <!-- Structured JSON-LD Data for local SEO -->
-    <script type="application/ld+json">
-    {
-      "@@context": "https://schema.org",
-      "@@type": "ConstructionBusiness",
-      "name": "Construction 360 Ltd",
-      "image": "{{ asset('images/hero_construction.png') }}",
-      "url": "https://construction360.co",
-      "email": "{{ $content['header_email'] ?? 'info@construction360.co' }}",
-      "areaServed": "Essex, London, United Kingdom",
-      "description": "{{ $content['hero_subtitle'] ?? 'Providing the highest standard of planning, design, and structural construction.' }}",
-      "sameAs": [
-        "https://www.360developmentsltd.com"
-      ],
-      "knowsAbout": [
-        "Structural Engineering & Design",
-        "Commercial fit-outs",
-        "Extensions & Renovations",
-        "Bespoke Window & Glazing Installations"
-      ]
-    }
-    </script>
 @endsection
 
 @section('content')
-    <!-- Competitor-Matched Hero Section -->
-    <section id="hero" class="relative w-full min-h-[600px] lg:min-h-[850px] bg-white pt-8 lg:pt-12 pb-0 px-6 lg:px-8 overflow-hidden border-b border-slate-100">
-        <!-- Abstract Structural Grid lines SVG Background (Minimalist) -->
-        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
-            <svg class="w-full h-full text-slate-800" fill="none" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <line x1="0" y1="20" x2="100" y2="20" stroke="currentColor" stroke-width="0.05" />
-                <line x1="0" y1="40" x2="100" y2="40" stroke="currentColor" stroke-width="0.05" />
-                <line x1="0" y1="60" x2="100" y2="60" stroke="currentColor" stroke-width="0.05" />
-                <line x1="0" y1="80" x2="100" y2="80" stroke="currentColor" stroke-width="0.05" />
-                <line x1="20" y1="0" x2="20" y2="100" stroke="currentColor" stroke-width="0.05" />
-                <line x1="40" y1="0" x2="40" y2="100" stroke="currentColor" stroke-width="0.05" />
-                <line x1="60" y1="0" x2="60" y2="100" stroke="currentColor" stroke-width="0.05" />
-                <line x1="80" y1="0" x2="80" y2="100" stroke="currentColor" stroke-width="0.05" />
-                <circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="0.08" stroke-dasharray="1 1" />
-                <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="0.05" />
-            </svg>
-        </div>
+    {{-- Light two-column hero --}}
+    <section id="hero" class="relative bg-white">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8" style="padding-top: 7.5rem; padding-bottom: 3.5rem;">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 items-center">
+                {{-- LEFT: copy --}}
+                <div class="max-w-xl lg:max-w-none">
+                    <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#6b7280]">
+                        <svg class="h-3.5 w-3.5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                        </svg>
+                        <span>{{ $content['hero_badge'] ?? 'London · Est. 2013 · Fixed prices' }}</span>
+                    </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-0 pt-4 lg:pt-8">
-                <!-- Left Column: Content & Action Buttons -->
-                <div class="lg:col-span-6 space-y-8">
-                    <span class="text-xs font-bold uppercase tracking-widest text-[#328f95]">Construction 360 Ltd</span>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-950 font-heading leading-tight">
-                        {{ $content['hero_title'] ?? 'Integrated Construction & Premium Architectural Builds' }}
+                    <h1 class="mt-5 text-4xl xl:text-5xl font-bold tracking-tight leading-tight text-[#0f2a3a]">
+                        <span class="block">
+                            {{ trim(($content['hero_line_1'] ?? '') . ' ' . ($content['hero_line_2'] ?? '')) ?: 'Design-led construction built with care' }}
+                        </span>
+                        <span class="block mt-1 text-brand">
+                            {{ trim(($content['hero_line_3'] ?? '') . ' ' . ($content['hero_line_4'] ?? '')) ?: 'Across London & Essex' }}
+                        </span>
                     </h1>
-                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-sans max-w-2xl">
-                        {{ $content['hero_subtitle'] ?? 'Building your vision with geometric precision. Providing the highest standard of planning, design, and structural construction.' }}
+
+                    <div class="mt-5 h-[3px] w-14 bg-brand"></div>
+
+                    <p class="mt-5 text-base text-[#5b6770] leading-relaxed max-w-lg">
+                        {{ $content['hero_subtitle'] ?? 'One accountable team from brief to handover — transparent pricing, disciplined programmes, and finishes that stand up to inspection.' }}
                     </p>
-                    <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center justify-center text-xs font-bold uppercase tracking-widest text-white bg-slate-950 hover:bg-slate-800 px-8 py-4 rounded-full shadow-lg transition-all duration-200">
-                            {{ $content['cta_submit_tender_label'] ?? 'Submit Tender Brief' }}
+
+                    <div class="mt-7 flex flex-wrap items-center gap-3">
+                        <a href="#enquiry" class="inline-flex items-center gap-2 rounded-lg bg-brand hover:bg-brand-dark text-white px-5 py-3.5 text-xs font-bold uppercase tracking-[0.08em] transition-colors">
+                            {{ $content['cta_submit_tender_label'] ?? 'Get Your Fixed-Price Quote' }}
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
                         </a>
-                        <a href="#services" class="inline-flex items-center justify-center text-xs font-bold uppercase tracking-widest text-slate-700 border border-slate-200 bg-white hover:bg-slate-50 px-8 py-4 rounded-full shadow-sm transition-all duration-200">
-                            {{ $content['cta_explore_services_label'] ?? 'Explore Services' }}
+                        <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}" class="inline-flex items-center gap-2 rounded-lg border border-[#d1d5db] bg-white hover:border-brand hover:text-brand text-[#0f2a3a] px-5 py-3.5 text-xs font-bold uppercase tracking-[0.06em] transition-colors">
+                            <svg class="h-4 w-4 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v1.5z"/></svg>
+                            {{ $content['cta_book_consult_label'] ?? 'Book a Free Consultation' }}
                         </a>
                     </div>
-                </div>
 
-                <!-- Right Column: Image Container with CSCS badge -->
-                <div class="lg:col-span-6 relative">
-                    <!-- Video container -->
-                    <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-[30px] overflow-hidden border border-slate-200 bg-slate-100 shadow-xl group">
-                        <video class="w-full h-full object-cover group-hover:scale-103 transition-transform duration-200" autoplay loop muted playsinline>
-                            <source src="{{ asset('con360.mp4') }}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent pointer-events-none"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    @php
+                        $heroStats = [
+                            [
+                                'value' => $content['stat_1_value'] ?? '120+',
+                                'label' => $content['stat_1_label'] ?? 'Projects Delivered',
+                                'icon' => 'M2.25 21h19.5M4.5 21V8.25l7.5-4.5 7.5 4.5V21M9 21v-6h6v6',
+                            ],
+                            [
+                                'value' => $content['stat_2_value'] ?? '25+',
+                                'label' => $content['stat_2_label'] ?? 'In-House Specialists',
+                                'icon' => 'M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z',
+                            ],
+                            [
+                                'value' => $content['stat_3_value'] ?? '12+',
+                                'label' => $content['stat_3_label'] ?? 'Years of Delivery',
+                                'icon' => 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+                            ],
+                            [
+                                'value' => $content['stat_4_value'] ?? '24h',
+                                'label' => $content['stat_4_label'] ?? 'Quote Response',
+                                'icon' => 'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z',
+                            ],
+                        ];
+                    @endphp
 
-    <!-- About Us Section Redesign -->
-    <section id="about" class="pt-6 lg:pt-8 pb-24 bg-white text-slate-900 border-b border-slate-100 scroll-mt-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Huge Heading spanning top -->
-            <div class="mb-16">
-                <h2 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-950 tracking-tighter leading-[1.05] max-w-3xl">
-                    {!! nl2br(e($content['about_heading'] ?? "We build more than just structures,\nwe build dreams")) !!}
-                </h2>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-                
-                <!-- Left Column (Main Image) -->
-                <div class="lg:col-span-4 h-full relative group rounded-2xl overflow-hidden shadow-sm border border-slate-200">
-                    <img src="{{ asset('images/about_engineering.png') }}" alt="Construction 360 Building" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 min-h-[400px]">
-                </div>
-
-                <!-- Middle Column (Vision, Mission, Values) -->
-                <div class="lg:col-span-4 space-y-10 py-4 flex flex-col justify-center pl-0 lg:pl-4">
-                    <!-- Vision -->
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3 text-slate-950">
-                            <svg class="h-6 w-6 text-[#328f95]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                            </svg>
-                            <h3 class="text-xl font-bold tracking-tight">{{ $content['about_vision_label'] ?? 'Our vision' }}</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            {{ $content['about_vision'] ?? "Shaping London's skyline through innovative design and exceptional construction." }}
-                        </p>
-                    </div>
-                    
-                    <!-- Mission -->
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3 text-slate-950">
-                            <svg class="h-6 w-6 text-[#328f95]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.36c-5.91.5-9.25-4.14-9.25-9.14A9 9 0 019.5 3a5.98 5.98 0 014.28 1.48m5.84 7.36l-3.32-3.32m3.32 3.32A7.95 7.95 0 0019.5 12c0-2.28-.95-4.34-2.48-5.8m0 0L14 3.14m3.02 3.08a7.96 7.96 0 00-6.1-2.45m0 0l-1.32 1.32" />
-                            </svg>
-                            <h3 class="text-xl font-bold tracking-tight">{{ $content['about_mission_label'] ?? 'Our mission' }}</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            {{ $content['about_mission'] ?? "To deliver outstanding residential and commercial developments across London, combining visionary design with meticulous craftsmanship and unwavering client commitment." }}
-                        </p>
-                    </div>
-
-                    <!-- Values -->
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3 text-slate-950">
-                            <svg class="h-6 w-6 text-[#328f95]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <h3 class="text-xl font-bold tracking-tight">{{ $content['about_values_label'] ?? 'Our values' }}</h3>
-                        </div>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            {{ $content['about_values'] ?? "Through Integrity, Excellence, Innovation, success along Partnership." }}
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Right Column (Green Card & Overlapping Image) -->
-                <div class="lg:col-span-4 relative mt-24 lg:mt-0 lg:pt-24 flex items-stretch">
-                    <!-- Overlapping image placed absolutely relative to this column -->
-                    <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-[85%] z-10 mix-blend-multiply drop-shadow-2xl opacity-90 hidden sm:block">
-                        <img src="{{ asset('images/about_overlap.png') }}" alt="Project cutout" class="w-full object-contain mix-blend-multiply drop-shadow-xl" style="mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
-                    </div>
-
-                    <div class="bg-[#328f95] text-[#0f284d] rounded-2xl p-10 flex flex-col justify-between relative shadow-2xl w-full">
-                        <!-- Content inside green card -->
-                        <div class="pt-16 sm:pt-24 z-20 relative">
-                            <p class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-snug text-white">
-                                "{{ $content['about_quote'] ?? "With over 12 years of experience, we are committed to delivering premium quality & craftmanship." }}"
-                            </p>
-                        </div>
-                        
-                        <div class="mt-16 flex items-end justify-between z-20 relative">
-                            <span class="text-xs font-bold uppercase tracking-widest text-white">Founder & CEO</span>
-                            
-                            <!-- Stamp/Seal Graphic -->
-                            <div class="w-16 h-16 rounded-full border border-[#0f284d]/20 flex items-center justify-center opacity-40 animate-spin-slow">
-                                <svg viewBox="0 0 100 100" class="w-full h-full text-[#0f284d] fill-current">
-                                    <path id="curve" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" />
-                                    <text font-size="12" font-weight="bold" letter-spacing="2">
-                                        <textPath href="#curve" startOffset="0%">• CONSTRUCTION 360 • LONDON</textPath>
-                                    </text>
+                    <div class="mt-9 grid grid-cols-2 sm:grid-cols-4 gap-5">
+                        @foreach($heroStats as $stat)
+                            <div class="flex items-start gap-2.5">
+                                <svg class="h-5 w-5 text-brand shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="{{ $stat['icon'] }}"/>
                                 </svg>
+                                <div>
+                                    <div class="text-2xl font-bold text-[#0f2a3a] tracking-tight leading-none">{{ $stat['value'] }}</div>
+                                    <div class="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#6b7280] leading-snug">{{ $stat['label'] }}</div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <!-- Accent graphics inside the card -->
-                        <div class="absolute inset-0 opacity-10 pointer-events-none rounded-2xl overflow-hidden">
-                            <svg class="absolute top-0 right-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                <polygon points="0,100 100,0 100,100" fill="currentColor"/>
-                            </svg>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 
+                {{-- RIGHT: media --}}
+                <div class="relative w-full">
+                    <div class="relative w-full overflow-hidden rounded-2xl bg-[#0f2a3a]" style="aspect-ratio: 5 / 4; min-height: 320px;">
+                        <img
+                            id="hero-intro-poster"
+                            src="{{ asset('images/hero_construction.png') }}"
+                            alt="Construction site across London and Essex"
+                            class="absolute inset-0 w-full h-full object-cover"
+                        >
+                        <video
+                            id="hero-intro-video"
+                            class="absolute inset-0 w-full h-full object-cover hidden"
+                            muted
+                            playsinline
+                            preload="metadata"
+                        >
+                            <source src="{{ asset('con360.mp4') }}" type="video/mp4">
+                        </video>
+
+                        <button
+                            type="button"
+                            id="hero-intro-play"
+                            class="absolute bottom-5 right-5 z-10 inline-flex items-center gap-3 rounded-xl bg-white px-3.5 py-2.5 shadow-lg hover:shadow-xl transition-shadow text-left"
+                            aria-label="Watch our intro video"
+                        >
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand text-white shrink-0">
+                                <svg class="h-4 w-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5.14v13.72L19 12 8 5.14z"/></svg>
+                            </span>
+                            <span>
+                                <span class="block text-[11px] font-bold uppercase tracking-[0.1em] text-[#0f2a3a]">{{ $content['hero_watch_label'] ?? 'Watch Our Intro' }}</span>
+                                <span class="block text-[11px] text-[#6b7280] mt-0.5">{{ $content['hero_watch_sub'] ?? '60 sec overview' }}</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-28 bg-white border-b border-slate-100 scroll-mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Header -->
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-20">
-                <div class="max-w-2xl">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#328f95]">{{ $content['services_label'] ?? 'Marking Benchmarks' }}</span>
-                    <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
-                        {{ $content['services_title'] ?? 'Principle Contractor in construction' }}
-                    </h2>
+    <script>
+        (function () {
+            const playBtn = document.getElementById('hero-intro-play');
+            const video = document.getElementById('hero-intro-video');
+            const poster = document.getElementById('hero-intro-poster');
+            if (!playBtn || !video) return;
+
+            playBtn.addEventListener('click', function () {
+                if (poster) poster.classList.add('hidden');
+                playBtn.classList.add('hidden');
+                video.classList.remove('hidden');
+                video.setAttribute('controls', 'controls');
+                video.play().catch(function () {});
+            });
+        })();
+    </script>
+
+    {{-- Reviews strip --}}
+    <section class="relative bg-brand">
+        <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-12 lg:py-16">
+            <div class="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-10">
+                <div class="lg:w-48 xl:w-56 shrink-0 space-y-2 text-white">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl sm:text-4xl font-bold leading-none tracking-tight">{{ $content['reviews_score'] ?? '4.9' }}</span>
+                        <div class="flex items-center gap-1 text-[#f0d778]" aria-label="5 stars">
+                            @for($i = 0; $i < 5; $i++)
+                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            @endfor
+                        </div>
+                    </div>
+                    <p class="text-base sm:text-lg font-medium text-white">{{ $content['reviews_score_sub'] ?? 'from client reviews' }}</p>
                 </div>
-                <div>
-                    <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-white bg-[#328f95] hover:bg-[#266b70] px-6 py-3.5 rounded-full shadow-sm transition-all duration-200">
-                        {{ $content['cta_ask_quote_label'] ?? 'Ask for a quote' }}
+
+                <div class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4 min-w-0">
+                    @foreach([
+                        [$content['testimonial_1_quote'] ?? 'Reliable, careful and genuinely communicative. The finish exceeded what we expected.', $content['testimonial_1_author'] ?? 'Colin Ashworth'],
+                        [$content['testimonial_2_quote'] ?? 'From drawing to opening day without drama — on time and tightly controlled.', $content['testimonial_2_author'] ?? 'David Vance'],
+                        [$content['testimonial_3_quote'] ?? 'The structure and detailing were handled with real expertise throughout.', $content['testimonial_3_author'] ?? 'Eleanor Finch'],
+                    ] as $t)
+                        <blockquote class="rounded-2xl bg-white border border-black/[0.04] p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <p class="font-heading text-lg text-[#1a1a1a] leading-snug">“{{ $t[0] }}”</p>
+                            <footer class="mt-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-brand">{{ $t[1] }}</footer>
+                        </blockquote>
+                    @endforeach
+                </div>
+
+                <div class="lg:w-40 xl:w-44 shrink-0 flex lg:justify-end">
+                    <a href="{{ route('contact.index') }}" class="inline-flex text-[12px] font-bold uppercase tracking-[0.14em] text-white hover:text-white/85 whitespace-nowrap">
+                        {{ $content['reviews_link_label'] ?? 'Read all reviews' }} →
                     </a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @forelse($services as $idx => $srv)
-                    @php
-                        $slug = \Illuminate\Support\Str::slug($srv->title);
-                        $num = str_pad($idx + 1, 2, '0', STR_PAD_LEFT);
-                    @endphp
-                    <div class="bg-white border border-slate-150 shadow-sm rounded-2xl overflow-hidden hover:border-slate-350 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
-                        <div>
-                            <!-- Card Image -->
-                            <div class="h-48 w-full overflow-hidden bg-slate-100 relative group">
-                                <img src="{{ asset($srv->image_url) }}" alt="{{ $srv->title }}" class="object-cover h-full w-full group-hover:scale-102 transition-transform duration-500">
-                                <span class="absolute top-4 left-4 text-xs font-bold text-white bg-slate-950/80 px-2.5 py-1 rounded shadow-sm">{{ $num }}</span>
-                            </div>
-                            <!-- Card Body -->
-                            <div class="p-6 space-y-3">
-                                <h3 class="text-lg font-bold text-slate-950 font-sans tracking-tight">{{ $srv->title }}</h3>
-                                <p class="text-xs text-slate-500 leading-relaxed font-sans line-clamp-4">{{ $srv->description }}</p>
-                            </div>
-                        </div>
-                        <div class="p-6 pt-0 border-t border-slate-100 mt-4 flex items-center justify-between">
-                            <a href="{{ route('services.show', $slug) }}" class="text-xs font-bold text-slate-900 hover:text-aqua transition-colors flex items-center group/btn evoke-link">
-                                Explore Service
-                                <svg class="ml-1.5 h-3.5 w-3.5 group-hover/btn:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+    {{-- Estimate form --}}
+    @include('partials.estimate-form')
+
+    {{-- Quick service shortcuts (moved out of hero) --}}
+    <section class="bg-white py-14 lg:py-16 border-b border-black/5">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                <div>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand mb-2">Start here</p>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#0f2a3a]">Popular project paths</h2>
+                </div>
+                <a href="{{ route('services.index') }}" class="text-[12px] font-bold uppercase tracking-[0.14em] text-[#1a1a1a] hover:text-brand">All services →</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                @php $heroCards = ($services ?? collect())->take(6); @endphp
+                @forelse($heroCards as $idx => $srv)
+                    @php $slug = \Illuminate\Support\Str::slug($srv->title); @endphp
+                    <a href="{{ route('services.show', $slug) }}" class="group relative overflow-hidden rounded-2xl min-h-[140px] flex flex-col justify-end p-4 text-white {{ $idx % 2 === 0 ? 'bg-brand' : 'bg-brand-dark' }} hover:scale-[1.02] transition-transform duration-300 shadow-md">
+                        @if($srv->image_url)
+                            <img src="{{ asset($srv->image_url) }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:opacity-50 group-hover:scale-110 transition-all duration-700">
+                        @endif
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <span class="relative text-[10px] font-bold uppercase tracking-[0.16em] text-white/70">0{{ $idx + 1 }}</span>
+                        <span class="relative font-heading text-xl leading-snug mt-1">{{ $srv->title }}</span>
+                        <span class="relative text-[12px] mt-2 opacity-80 group-hover:opacity-100">Explore →</span>
+                    </a>
                 @empty
-                    <div class="bg-white border border-slate-200 rounded-xl p-6">
-                        <h3 class="text-base font-bold text-slate-900">Engineering Design</h3>
-                        <p class="mt-2 text-sm text-slate-500">Premium structural calculations and engineering planning.</p>
-                    </div>
+                    @foreach(['Pre-Construction','Structure','Interiors','MEP','Foundations','External'] as $idx => $label)
+                        <a href="{{ route('services.index') }}" class="rounded-2xl min-h-[140px] flex flex-col justify-end p-4 text-white {{ $idx % 2 === 0 ? 'bg-brand' : 'bg-brand-dark' }}">
+                            <span class="font-heading text-xl">{{ $label }}</span>
+                        </a>
+                    @endforeach
                 @endforelse
             </div>
         </div>
     </section>
 
-    <!-- Sectors we deal in Section -->
-    <section id="sectors" class="py-28 bg-slate-50 border-b border-slate-100 scroll-mt-20 relative overflow-hidden">
-        <!-- Abstract geometric watermarks -->
-        <div class="absolute inset-0 z-0 opacity-[0.02] pointer-events-none">
-            <svg class="w-full h-full text-slate-900" fill="none" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="0.1" />
-                <circle cx="80" cy="80" r="25" stroke="currentColor" stroke-width="0.1" />
-            </svg>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-3xl mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#328f95]">{{ $content['sectors_label'] ?? 'Sectors & Builds' }}</span>
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
-                    {{ $content['sectors_title'] ?? 'Constructions We Deal In' }}
-                </h2>
-                <p class="text-xs sm:text-sm text-slate-500 mt-4 leading-relaxed font-sans max-w-xl">
-                    {{ $content['sectors_description'] ?? 'From bespoke high-spec residential developments and custom extensions to structural high-rise concrete frameworks and modern modular methods, we deliver premium execution across diverse sectors.' }}
+    {{-- Selected work / portfolio (Linx-style) --}}
+    <section id="projects" class="bg-brand text-white py-20 lg:py-28 scroll-mt-24 relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none bg-brand/10"></div>
+        <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="text-center max-w-2xl mx-auto mb-10 lg:mb-14 space-y-4">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/80">
+                    {{ $content['projects_label'] ?? 'Real projects' }}
                 </p>
-            </div>
-
-            <!-- Sectors grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($sectors as $sector)
-                    <div class="bg-white border border-slate-150 p-8 rounded-2xl shadow-sm hover:border-slate-350 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between space-y-4">
-                        <div class="space-y-4">
-                            <!-- Icon and Title -->
-                            <div class="flex items-center space-x-3.5">
-                                <div class="h-10 w-10 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center text-[#328f95] flex-shrink-0">
-                                    @if($sector['icon'] === 'home')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                                        </svg>
-                                    @elseif($sector['icon'] === 'squares-plus')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    @elseif($sector['icon'] === 'chevron-double-up')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
-                                        </svg>
-                                    @elseif($sector['icon'] === 'adjustments-horizontal')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
-                                        </svg>
-                                    @elseif($sector['icon'] === 'arrow-down-tray')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                                        </svg>
-                                    @elseif($sector['icon'] === 'sparkles')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-1.81-5.096L2.1 14.1l5.09-1.8 1.8-5.1 1.81 5.1 5.096 1.8-5.096 1.804zM18.75 7.5l-.54 1.5-1.5.54 1.5.54.54 1.5.54-1.5 1.5-.54-1.5-.54-.54-1.5z" />
-                                        </svg>
-                                    @elseif($sector['icon'] === 'paint-brush')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122l9.37-9.37a2.121 2.121 0 113 3l-9.37 9.37a4.5 4.5 0 01-1.897 1.13L7 21l.825-3.364a4.5 4.5 0 011.13-1.897z" />
-                                        </svg>
-                                    @elseif($sector['icon'] === 'building-office')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
-                                        </svg>
-                                    @elseif($sector['icon'] === 'archive-box')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                                        </svg>
-                                    @elseif($sector['icon'] === 'building-office-2')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h18M12 3v18" />
-                                        </svg>
-                                    @elseif($sector['icon'] === 'cube')
-                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                                        </svg>
-                                    @endif
-                                </div>
-                                <h3 class="text-base sm:text-lg font-bold text-slate-950 font-sans tracking-tight">{{ $sector['title'] }}</h3>
-                            </div>
-                            <p class="text-xs sm:text-sm text-slate-555 leading-relaxed font-sans">
-                                {{ $sector['desc'] }}
-                            </p>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Portfolio Section -->
-    <section id="projects" class="py-28 bg-slate-50/50 border-b border-slate-100 scroll-mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-20">
-                <div class="max-w-2xl">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-aqua">{{ $content['projects_label'] ?? 'Selected Scopes' }}</span>
-                    <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
-                        {{ $content['projects_title'] ?? 'Explore our diverse portfolio' }}
-                    </h2>
-                </div>
-                
-                <!-- Filter Tabs -->
-                <div class="flex flex-wrap gap-2 pt-4 lg:pt-0">
-                    <button id="filter-btn-all" onclick="filterProjects('all')" class="px-5 py-2.5 rounded-full border border-slate-950 bg-slate-950 text-white text-xs font-bold uppercase tracking-widest transition-all focus:outline-none">
-                        {{ $content['filter_all_label'] ?? 'All Projects' }}
-                    </button>
-                    <button id="filter-btn-completed" onclick="filterProjects('completed')" class="px-5 py-2.5 rounded-full border border-slate-200 text-slate-650 hover:border-slate-400 bg-white text-xs font-bold uppercase tracking-widest transition-all focus:outline-none">
-                        {{ $content['filter_completed_label'] ?? 'Completed Projs.' }}
-                    </button>
-                    <button id="filter-btn-under-construction" onclick="filterProjects('under-construction')" class="px-5 py-2.5 rounded-full border border-slate-200 text-slate-650 hover:border-slate-400 bg-white text-xs font-bold uppercase tracking-widest transition-all focus:outline-none">
-                        {{ $content['filter_under_construction_label'] ?? 'Under Developm.' }}
-                    </button>
+                <h2 class="font-heading text-4xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tight text-white leading-tight">
+                    {{ $content['projects_title'] ?? 'Watch real projects come together' }}
+                </h2>
+                <p class="text-sm sm:text-[15px] text-white/80 leading-relaxed">
+                    {{ $content['projects_subtitle'] ?? 'See the work behind the finish — on-site progress, walkthroughs and delivery from start to handover.' }}
+                </p>
+                <div class="inline-flex items-center gap-2.5 rounded-full bg-white/10 border border-white/20 px-4 py-2">
+                    <span class="flex items-center gap-0.5 text-[#f0d778]">
+                        @for($i = 0; $i < 5; $i++)
+                            <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        @endfor
+                    </span>
+                    <span class="text-[12px] text-white/85">{{ $content['projects_reviews_badge'] ?? 'Trusted by homeowners across London & Essex' }}</span>
                 </div>
             </div>
 
-            <!-- Projects Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @forelse($projects as $proj)
-                    @php
-                        $slug = $proj->slug ?: \Illuminate\Support\Str::slug($proj->title);
-                        $categoryClass = strtolower($proj->status); // completed or under-construction
-                    @endphp
-                    <div class="project-card bg-white border border-slate-150 rounded-2xl overflow-hidden hover:border-slate-350 transition-all duration-300 flex flex-col justify-between" data-category="{{ $categoryClass }}">
-                        <div>
-                            <!-- Cover Image -->
-                            <div class="h-60 w-full overflow-hidden bg-slate-100 border-b border-slate-100 relative group">
-                                @if($proj->image_url)
-                                    <img src="{{ asset($proj->image_url) }}" alt="{{ $proj->title }}" class="object-cover h-full w-full group-hover:scale-105 transition-transform duration-700">
-                                @else
-                                    <div class="h-full w-full bg-slate-50 flex items-center justify-center">
-                                        <svg class="h-10 w-10 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6.429 9.75L2.25 12l4.179 2.25m11.142 0L21.75 12l-4.179-2.25M12 5.25L16.179 7.5 12 9.75 7.821 7.5 12 5.25zm0 9l4.179 2.25L12 18.75l-4.179-2.25 4.179-2.25zm0-4.5l4.179 2.25L12 14.25l-4.179-2.25 4.179-2.25z" />
-                                        </svg>
-                                    </div>
-                                @endif
-                                <span class="absolute top-4 left-4 text-[9px] font-bold text-slate-800 bg-white border border-slate-200 px-2.5 py-1 rounded shadow-sm uppercase tracking-wider">{{ $proj->category }}</span>
-                                <span class="absolute top-4 right-4 text-[9px] font-bold text-white bg-slate-950/80 border border-white/10 px-2.5 py-1 rounded shadow-sm uppercase tracking-wider">
-                                    {{ $proj->status === 'completed' ? 'Completed' : 'Under Dev' }}
+            <div class="relative px-0 sm:px-6 lg:px-8">
+                <button type="button" id="projects-prev" aria-label="Previous projects"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden sm:flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#0f2a3a] shadow-lg hover:scale-105 transition-transform">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+                </button>
+                <button type="button" id="projects-next" aria-label="Next projects"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden sm:flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#0f2a3a] shadow-lg hover:scale-105 transition-transform">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                </button>
+
+                <div id="projects-carousel" class="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    @forelse($projects->take(8) as $proj)
+                        @php
+                            $slug = $proj->slug ?: \Illuminate\Support\Str::slug($proj->title);
+                            $imgUrl = asset($proj->image_url ?: 'images/hero_architecture.png');
+                        @endphp
+                        <a href="{{ route('projects.show', $slug) }}"
+                           class="group snap-start relative shrink-0 w-[78vw] sm:w-[240px] lg:w-[260px] aspect-[3/4] rounded-2xl overflow-hidden border border-white/20 bg-[#0f2a3a]">
+                            <img
+                                src="{{ $imgUrl }}"
+                                alt="{{ $proj->title }}"
+                                class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                            >
+                            {{-- Solid overlay for readable text (no half/half layout) --}}
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute bottom-0 inset-x-0 p-5">
+                                <span class="block text-[10px] font-semibold uppercase tracking-[0.18em] text-white/85 mb-1.5">
+                                    {{ $proj->category ?: 'Real project' }}
+                                </span>
+                                <h3 class="text-[1.25rem] sm:text-[1.35rem] font-bold text-white leading-snug drop-shadow-sm">
+                                    {{ $proj->title }}
+                                </h3>
+                                <span class="mt-3 inline-flex text-[13px] font-semibold text-white/90 group-hover:text-[#f0d778] transition-colors">
+                                    View →
                                 </span>
                             </div>
-                            <!-- Card Body -->
-                            <div class="p-6 space-y-3">
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">{{ $proj->location ? $proj->location . ' • ' : '' }}{{ $proj->year }}</span>
-                                <h3 class="text-lg font-bold text-slate-950 tracking-tight leading-snug">
-                                    <a href="{{ route('projects.show', $slug) }}" class="hover:text-aqua transition-colors">
-                                        {{ $proj->title }}
-                                    </a>
-                                </h3>
-                                <p class="text-xs text-slate-500 leading-relaxed font-sans line-clamp-3">{{ $proj->description }}</p>
-                            </div>
-                        </div>
-                        <!-- View Details CTA -->
-                        <div class="p-6 pt-0 border-t border-slate-100 mt-4 flex items-center justify-between">
-                            <a href="{{ route('projects.show', $slug) }}" class="text-xs font-bold text-slate-900 hover:text-aqua transition-colors flex items-center group/btn evoke-link">
-                                View Details
-                                <svg class="ml-1.5 h-3.5 w-3.5 group-hover/btn:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                @empty
-                    <div class="col-span-3 text-center py-16 bg-slate-50 border border-slate-200 rounded-xl">
-                        <p class="text-sm text-slate-500">No projects listed yet.</p>
-                    </div>
-                @endforelse
+                        </a>
+                    @empty
+                        <p class="text-white/70 text-sm">Projects coming soon.</p>
+                    @endforelse
+                </div>
             </div>
 
-            <!-- View All Projects CTA Button -->
-            <div class="mt-16 text-center">
-                <a href="{{ route('projects.index') }}" class="inline-flex items-center justify-center px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white bg-slate-950 hover:bg-slate-800 rounded-lg shadow-sm transition-all duration-200">
-                    {{ $content['cta_explore_portfolio_label'] ?? 'Explore Full Portfolio' }}
+            <div class="mt-10 text-center">
+                <a href="{{ route('projects.index') }}" class="text-[13px] font-semibold text-white/80 hover:text-white transition-colors">
+                    {{ $content['cta_explore_portfolio_label'] ?? 'View full portfolio' }} →
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section id="why-choose-us" class="py-28 bg-white border-b border-slate-100 scroll-mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-aqua">{{ $content['assurances_label'] ?? 'Operational Assurances' }}</span>
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
-                    {{ $content['assurances_title'] ?? "An exceptional quality that can't be beaten" }}
+    {{-- Client stories --}}
+    <section class="bg-white py-20 lg:py-28 border-t border-black/5">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="text-center max-w-2xl mx-auto mb-12 lg:mb-14 space-y-4">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
+                    {{ $content['client_stories_label'] ?? 'Client stories' }}
+                </p>
+                <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-[#0f2a3a]">
+                    {{ $content['client_stories_title'] ?? 'Hear from our clients' }}
                 </h2>
             </div>
+                
+            @php
+                $storyProjects = $projects->count() > 2
+                    ? $projects->skip(2)->take(2)
+                    : $projects->take(2);
+            @endphp
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1: Operational Excellence -->
-                <div class="bg-white border border-slate-150 rounded-2xl p-8 hover:border-slate-350 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="h-10 w-10 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-aqua mb-6">
-                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                            </svg>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-7 max-w-5xl mx-auto">
+                @forelse($storyProjects as $story)
+                    @php
+                        $slug = $story->slug ?: \Illuminate\Support\Str::slug($story->title);
+                        $locParts = array_filter(array_map('trim', explode(',', (string) ($story->location ?: ''))));
+                        $loc = $locParts ? end($locParts) : ($story->category ?: 'London');
+                        $statusLabel = in_array($story->status ?? '', ['completed', 'complete'], true) ? 'Complete' : 'In progress';
+                    @endphp
+                    <a href="{{ route('projects.show', $slug) }}" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-black/5">
+                        @if($story->image_url)
+                            <img src="{{ asset($story->image_url) }}" alt="{{ $story->title }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        @else
+                            <div class="absolute inset-0 bg-[#0f2a3a]"></div>
+                        @endif
+                        <div class="absolute inset-0 bg-black/55"></div>
+                        <div class="absolute bottom-0 inset-x-0 p-6 lg:p-8">
+                            <span class="text-[10px] uppercase tracking-[0.22em] text-white/80">{{ strtoupper($loc) }} — {{ strtoupper($statusLabel) }}</span>
+                            <h3 class="text-2xl sm:text-[1.75rem] font-bold text-white mt-2.5 leading-snug">{{ $story->title }}</h3>
+                            @if($story->description)
+                                <p class="mt-2 text-sm text-white/70 line-clamp-2">{{ $story->description }}</p>
+                            @endif
                         </div>
-                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">{{ $content['why_1_title'] ?? 'Operational Excellence' }}</h3>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-550 leading-relaxed font-sans">
-                            {{ $content['why_1_text'] ?? 'We hold full ISO and FORS accreditations, ensuring our processes are rigorous, compliant, and efficient.' }}
-                        </p>
-                    </div>
-                </div>
+                    </a>
+                @empty
+                    <p class="text-[#6b7280] text-sm col-span-2 text-center">Client stories coming soon.</p>
+                @endforelse
+            </div>
 
-                <!-- Card 2: London Specialists -->
-                <div class="bg-white border border-slate-150 rounded-2xl p-8 hover:border-slate-350 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="h-10 w-10 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-aqua mb-6">
-                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">{{ $content['why_2_title'] ?? 'London Specialists' }}</h3>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-550 leading-relaxed font-sans">
-                            {{ $content['why_2_text'] ?? 'Experts in London Landscape. With 25+ projects across Capital, we specialise in navigating the complexities of London.' }}
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 3: Quality Assurance -->
-                <div class="bg-white border border-slate-150 rounded-2xl p-8 hover:border-slate-350 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="h-10 w-10 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-aqua mb-6">
-                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">{{ $content['why_3_title'] ?? 'Quality Assurance' }}</h3>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-550 leading-relaxed font-sans">
-                            {{ $content['why_3_text'] ?? 'We refuse to cut corners, applying strict quality controls to ensure superior craftsmanship in every trade.' }}
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 4: Financial Clarity -->
-                <div class="bg-white border border-slate-150 rounded-2xl p-8 hover:border-slate-350 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div class="h-10 w-10 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-aqua mb-6">
-                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-base font-bold text-slate-900 font-sans tracking-tight">{{ $content['why_4_title'] ?? 'Financial Clarity' }}</h3>
-                        <p class="mt-3 text-xs sm:text-sm text-slate-550 leading-relaxed font-sans">
-                            {{ $content['why_4_text'] ?? 'Our detailed cost breakdowns and project management ensure you stay informed, in control, & confident in your investment throughout the build.' }}
-                        </p>
-                    </div>
-                </div>
+            <div class="mt-10 text-center">
+                <a href="{{ route('projects.index') }}" class="text-[13px] font-semibold text-brand hover:text-brand-dark transition-colors">
+                    {{ $content['client_stories_link'] ?? 'View full case studies' }} →
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Client Testimonials Section -->
-    <section class="py-28 bg-slate-50/50 border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-aqua">{{ $content['testimonials_label'] ?? 'Client Feedback' }}</span>
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">{{ $content['testimonials_title'] ?? 'Verified Testimonials' }}</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="relative bg-white rounded-2xl p-8 border border-slate-150 shadow-sm flex flex-col justify-between hover:border-slate-350 transition-all duration-300">
-                    <span class="absolute top-2 left-4 text-7xl font-serif text-sky-100 pointer-events-none select-none">“</span>
-                    <div class="relative z-10">
-                        <p class="text-sm sm:text-base text-slate-700 italic leading-relaxed font-sans">
-                            “{{ $content['testimonial_1_quote'] ?? 'Great company to do business with. Good standard of work and very reliable. Would definitely use again!' }}”
-                        </p>
-                    </div>
-                    <div class="mt-8 border-t border-slate-100 pt-4">
-                        <span class="block font-bold text-slate-950 text-sm tracking-wide">{{ $content['testimonial_1_author'] ?? 'Colin Ashworth' }}</span>
-                        <span class="block text-[10px] text-slate-400 font-bold uppercase mt-0.5 tracking-wider">{{ $content['testimonial_1_role'] ?? 'Essex Homeowner' }}</span>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="relative bg-white rounded-2xl p-8 border border-slate-150 shadow-sm flex flex-col justify-between hover:border-slate-350 transition-all duration-300">
-                    <span class="absolute top-2 left-4 text-7xl font-serif text-sky-100 pointer-events-none select-none">“</span>
-                    <div class="relative z-10">
-                        <p class="text-sm sm:text-base text-slate-700 italic font-sans">
-                            “{{ $content['testimonial_2_quote'] ?? '360 developments managed our full commercial fit-out from planning drawings to final handover. Completed on time, within budget, and to absolute tolerances.' }}”
-                        </p>
-                    </div>
-                    <div class="mt-8 border-t border-slate-100 pt-4">
-                        <span class="block font-bold text-slate-950 text-sm tracking-wide">{{ $content['testimonial_2_author'] ?? 'David Vance' }}</span>
-                        <span class="block text-[10px] text-slate-400 font-bold uppercase mt-0.5 tracking-wider">{{ $content['testimonial_2_role'] ?? 'Director, Vanguard Retail Group' }}</span>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="relative bg-white rounded-2xl p-8 border border-slate-150 shadow-sm flex flex-col justify-between hover:border-slate-350 transition-all duration-300">
-                    <span class="absolute top-2 left-4 text-7xl font-serif text-sky-100 pointer-events-none select-none">“</span>
-                    <div class="relative z-10">
-                        <p class="text-sm sm:text-base text-slate-700 italic leading-relaxed font-sans">
-                            “{{ $content['testimonial_3_quote'] ?? 'Superb execution on our double-height rear extension. The digital progress logs kept us updated at every stage, and the structural finish is second to none.' }}”
-                        </p>
-                    </div>
-                    <div class="mt-8 border-t border-slate-100 pt-4">
-                        <span class="block font-bold text-slate-950 text-sm tracking-wide">{{ $content['testimonial_3_author'] ?? 'Eleanor Finch' }}</span>
-                        <span class="block text-[10px] text-slate-400 font-bold uppercase mt-0.5 tracking-wider">{{ $content['testimonial_3_role'] ?? 'Residential Client, Chelmsford' }}</span>
-                    </div>
-                </div>
+    {{-- 4. About statement --}}
+    <section id="about" class="relative bg-brand py-20 lg:py-28 scroll-mt-24 text-white">
+        <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-6">
+            <span class="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/80">{{ $content['about_label'] ?? 'Who we are' }}</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-snug text-white">
+                {{ $content['about_heading'] ?? 'We craft buildings people love to live and work in' }}
+            </h2>
+            <div class="mx-auto w-14 h-[3px] bg-white"></div>
+            <p class="text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl mx-auto">
+                {{ $content['about_mission'] ?? 'To guide clients from brief to completion with joined-up design, engineering and construction management that protects quality, budget and programme.' }}
+            </p>
+            <div class="pt-4">
+                <a href="{{ route('about') }}" class="inline-flex items-center gap-2 rounded-lg bg-white text-brand px-6 py-3 text-xs font-bold uppercase tracking-[0.08em] hover:bg-aqua-light transition-colors">
+                    Learn more about us →
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Recognitions Marquee Section -->
-    <section class="py-16 bg-slate-950 text-white overflow-hidden relative border-t border-b border-slate-900">
-        <!-- Scrolling Marquee container -->
-        <div class="relative w-full flex overflow-x-hidden">
-            <!-- First marquee run -->
-            <div class="animate-marquee whitespace-nowrap flex items-center space-x-12 pr-12 text-lg sm:text-xl font-bold uppercase tracking-widest text-slate-450 font-heading select-none">
-                @foreach(explode(' • ', $content['marquee_text'] ?? 'Accreditations • Memberships • Incorporation 2013 • ISO 9001 Certified • ISO 14001 Certified • Fleet Operator Recognition Scheme • Federation of Master Builders • ConstructionLine Silver membership') as $idx => $item)
-                    <span>{{ trim($item) }}</span>
-                    <span class="{{ $idx % 2 == 0 ? 'text-aqua' : 'text-[#328f95]' }}">•</span>
-                @endforeach
-            </div>
-            <!-- Second marquee run for seamless loop -->
-            <div class="absolute top-0 left-0 animate-marquee2 whitespace-nowrap flex items-center space-x-12 pr-12 text-lg sm:text-xl font-bold uppercase tracking-widest text-slate-450 font-heading select-none">
-                @foreach(explode(' • ', $content['marquee_text'] ?? 'Accreditations • Memberships • Incorporation 2013 • ISO 9001 Certified • ISO 14001 Certified • Fleet Operator Recognition Scheme • Federation of Master Builders • ConstructionLine Silver membership') as $idx => $item)
-                    <span>{{ trim($item) }}</span>
-                    <span class="{{ $idx % 2 == 0 ? 'text-aqua' : 'text-[#328f95]' }}">•</span>
-                @endforeach
-            </div>
-        </div>
-    </section>
+    {{-- How your project works --}}
+    @php
+        $processDesign = [
+            [
+                'step' => '01',
+                'title' => 'Free consultation',
+                'duration' => '1 hour',
+                'body' => 'We listen to your brief, budget and constraints, then outline the clearest path from idea to site.',
+                'icon' => 'phone',
+            ],
+            [
+                'step' => '02',
+                'title' => 'Surveys & design',
+                'duration' => '2–4 weeks',
+                'body' => 'Measured surveys, design options and early engineering input so decisions are grounded and buildable.',
+                'icon' => 'pencil',
+            ],
+            [
+                'step' => '03',
+                'title' => 'Planning & approvals',
+                'duration' => '4–12 weeks',
+                'body' => 'We manage planning, building control and partner submissions so permissions stay on the critical path.',
+                'icon' => 'document',
+            ],
+            [
+                'step' => '04',
+                'title' => 'Costing & programme',
+                'duration' => '1–2 weeks',
+                'body' => 'Transparent budgets, procurement and a sequenced programme before any mobilisation begins.',
+                'icon' => 'clipboard',
+            ],
+            [
+                'step' => '05',
+                'title' => 'Construction delivery',
+                'duration' => 'Project based',
+                'body' => 'Principal contracting with weekly reporting, quality checkpoints and accountable site leadership.',
+                'icon' => 'building',
+            ],
+            [
+                'step' => '06',
+                'title' => 'Handover & aftercare',
+                'duration' => 'Ongoing',
+                'body' => 'Snag-free handover packs, warranties and a team that stays reachable after practical completion.',
+                'icon' => 'check',
+            ],
+        ];
+        $processBuild = [
+            [
+                'step' => '01',
+                'title' => 'Free consultation',
+                'duration' => '1 hour',
+                'body' => 'Share your drawings and aspirations — we confirm scope, risks and whether we are the right contractor.',
+                'icon' => 'phone',
+            ],
+            [
+                'step' => '02',
+                'title' => 'Drawings & scope review',
+                'duration' => '3–5 days',
+                'body' => 'We stress-test your pack for buildability, packages and missing information before pricing.',
+                'icon' => 'search',
+            ],
+            [
+                'step' => '03',
+                'title' => 'Fixed quotation',
+                'duration' => '1–2 weeks',
+                'body' => 'A clear tender with allowances, exclusions and a realistic programme you can take to decision.',
+                'icon' => 'clipboard',
+            ],
+            [
+                'step' => '04',
+                'title' => 'Pre-start & mobilisation',
+                'duration' => '1–2 weeks',
+                'body' => 'Contracts, site logistics, temporary works and neighbour liaison so day one runs cleanly.',
+                'icon' => 'document',
+            ],
+            [
+                'step' => '05',
+                'title' => 'Construction delivery',
+                'duration' => 'Project based',
+                'body' => 'Disciplined site delivery with scheduled updates, cost control and quality at every stage.',
+                'icon' => 'building',
+            ],
+            [
+                'step' => '06',
+                'title' => 'Handover & aftercare',
+                'duration' => 'Ongoing',
+                'body' => 'Commissioning, certification and responsive aftercare when you need us after handover.',
+                'icon' => 'check',
+            ],
+        ];
+        $processIcons = [
+            'phone' => '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>',
+            'pencil' => '<path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>',
+            'document' => '<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>',
+            'clipboard' => '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/>',
+            'building' => '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/>',
+            'search' => '<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>',
+            'check' => '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+        ];
+    @endphp
 
-    <!-- Corporate Team Section -->
-    <section id="team" class="py-28 bg-white border-b border-slate-100 scroll-mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="max-w-3xl mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#328f95]">{{ $content['team_section_label'] ?? 'Operational Leadership' }}</span>
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">{{ $content['team_section_title'] ?? 'Our Core Project Team' }}</h2>
-                <p class="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed font-sans max-w-xl">
-                    {{ $content['team_section_subtitle'] ?? 'A dedicated team of design partners, IStructE engineers, and quantity surveyors coordinating structural execution with digital precision.' }}
+    <section id="process" class="bg-aqua-light py-20 lg:py-28 scroll-mt-24">
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="text-center max-w-2xl mx-auto mb-10 space-y-4">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#9ca3af]">
+                    {{ $content['process_label'] ?? 'Our simple 6-step process' }}
+                </p>
+                <h2 class="text-4xl sm:text-5xl font-bold text-[#0f2a3a] leading-tight">
+                    {{ $content['process_title'] ?? 'How your project works — start to finish' }}
+                </h2>
+                <p class="text-sm sm:text-[15px] text-[#6b7280] leading-relaxed">
+                    {{ $content['process_subtitle'] ?? 'Whether you need full design & build support or already have plans, we keep every stage clear and accountable.' }}
                 </p>
             </div>
 
-            <!-- Team Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Member 1 -->
-                @if(!empty($content['team_member_1_name']))
-                <div class="bg-white border border-slate-150 rounded-2xl p-8 flex flex-col items-center text-center hover:border-slate-350 transition-all duration-300">
-                    @php
-                        $words1 = explode(' ', trim($content['team_member_1_name']));
-                        $initials1 = strtoupper(substr($words1[0] ?? 'T', 0, 1) . (isset($words1[1]) ? substr($words1[1], 0, 1) : ''));
-                    @endphp
-                    <div class="h-28 w-28 rounded-full bg-slate-950 border-2 border-aqua flex items-center justify-center mb-6 shadow-md relative overflow-hidden select-none flex-shrink-0">
-                        <span class="text-2xl font-black tracking-wider font-sans text-white">{{ $initials1 }}</span>
-                        <div class="absolute inset-0 bg-gradient-to-tr from-aqua/10 to-transparent"></div>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 tracking-tight">{{ $content['team_member_1_name'] }}</h3>
-                    <p class="text-[10px] font-bold text-aqua uppercase tracking-widest mt-1">{{ $content['team_member_1_role'] ?? '' }}</p>
-                    <p class="mt-4 text-xs text-slate-500 leading-relaxed font-sans max-w-xs">
-                        {{ $content['team_member_1_description'] ?? '' }}
-                    </p>
-                    
-                    <div class="mt-6 flex flex-wrap gap-1.5 justify-center">
-                        @foreach(explode(',', $content['team_member_1_accreditations'] ?? '') as $badge)
-                            @if(trim($badge))
-                                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-650 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">{{ trim($badge) }}</span>
-                            @endif
-                        @endforeach
-                    </div>
+            <div class="flex flex-col items-center gap-3 mb-10">
+                <div id="process-toggle" class="inline-flex rounded-full border border-black/10 p-1 bg-[#f7f7f5]" role="tablist" aria-label="Project pathway">
+                    <button type="button" data-process="design" role="tab" aria-selected="true"
+                        class="process-tab is-active inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[12px] font-semibold transition-all text-white bg-brand">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">{!! $processIcons['pencil'] !!}</svg>
+                        Design &amp; Build
+                    </button>
+                    <button type="button" data-process="build" role="tab" aria-selected="false"
+                        class="process-tab inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[12px] font-semibold transition-all text-[#1a1a1a] bg-transparent">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">{!! $processIcons['building'] !!}</svg>
+                        Build only
+                    </button>
                 </div>
-                @endif
+                <p id="process-caption" class="inline-flex items-center gap-1.5 text-[12px] text-[#6b7280]">
+                    <svg class="h-3.5 w-3.5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                    <span data-caption-design>{{ $content['process_caption_design'] ?? 'Full turnkey service — concept to completion' }}</span>
+                    <span data-caption-build class="hidden">{{ $content['process_caption_build'] ?? 'You bring the plans — we deliver the build' }}</span>
+                        </p>
+                    </div>
 
-                <!-- Member 2 -->
-                @if(!empty($content['team_member_2_name']))
-                <div class="bg-white border border-slate-150 rounded-2xl p-8 flex flex-col items-center text-center hover:border-slate-350 transition-all duration-300">
-                    @php
-                        $words2 = explode(' ', trim($content['team_member_2_name']));
-                        $initials2 = strtoupper(substr($words2[0] ?? 'T', 0, 1) . (isset($words2[1]) ? substr($words2[1], 0, 1) : ''));
-                    @endphp
-                    <div class="h-28 w-28 rounded-full bg-slate-950 border-2 border-aqua flex items-center justify-center mb-6 shadow-md relative overflow-hidden select-none flex-shrink-0">
-                        <span class="text-2xl font-black tracking-wider font-sans text-white">{{ $initials2 }}</span>
-                        <div class="absolute inset-0 bg-gradient-to-tr from-aqua/10 to-transparent"></div>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 tracking-tight">{{ $content['team_member_2_name'] }}</h3>
-                    <p class="text-[10px] font-bold text-aqua uppercase tracking-widest mt-1">{{ $content['team_member_2_role'] ?? '' }}</p>
-                    <p class="mt-4 text-xs text-slate-500 leading-relaxed font-sans max-w-xs">
-                        {{ $content['team_member_2_description'] ?? '' }}
-                    </p>
-                    
-                    <div class="mt-6 flex flex-wrap gap-1.5 justify-center">
-                        @foreach(explode(',', $content['team_member_2_accreditations'] ?? '') as $badge)
-                            @if(trim($badge))
-                                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-650 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">{{ trim($badge) }}</span>
-                            @endif
-                        @endforeach
-                    </div>
+            @foreach (['design' => $processDesign, 'build' => $processBuild] as $pathKey => $steps)
+                <div id="process-grid-{{ $pathKey }}" class="process-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 {{ $pathKey === 'build' ? 'hidden' : '' }}">
+                    @foreach ($steps as $step)
+                        <article class="group rounded-2xl border border-black/[0.06] bg-[#fafafa] hover:bg-white p-6 lg:p-7 flex flex-col min-h-[230px] hover:border-brand/25 hover:shadow-[0_20px_40px_-28px_rgba(26,26,26,0.35)] transition-all duration-300">
+                            <div class="flex items-start justify-between gap-3 mb-5">
+                                <span class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">Step {{ $step['step'] }}</span>
+                                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white border border-black/5 text-brand/70 group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-colors">
+                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">{!! $processIcons[$step['icon']] !!}</svg>
+                                </span>
+                            </div>
+                            <h3 class="font-heading text-2xl text-[#1a1a1a] font-medium leading-snug">{{ $step['title'] }}</h3>
+                            <p class="mt-2 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.12em] text-[#9ca3af]">
+                                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                {{ $step['duration'] }}
+                            </p>
+                            <p class="mt-3 text-sm text-[#6b7280] leading-relaxed flex-1">{{ $step['body'] }}</p>
+                        </article>
+                    @endforeach
                 </div>
-                @endif
+            @endforeach
 
-                <!-- Member 3 -->
-                @if(!empty($content['team_member_3_name']))
-                <div class="bg-white border border-slate-150 rounded-2xl p-8 flex flex-col items-center text-center hover:border-slate-350 transition-all duration-300">
-                    @php
-                        $words3 = explode(' ', trim($content['team_member_3_name']));
-                        $initials3 = strtoupper(substr($words3[0] ?? 'T', 0, 1) . (isset($words3[1]) ? substr($words3[1], 0, 1) : ''));
-                    @endphp
-                    <div class="h-28 w-28 rounded-full bg-slate-950 border-2 border-aqua flex items-center justify-center mb-6 shadow-md relative overflow-hidden select-none flex-shrink-0">
-                        <span class="text-2xl font-black tracking-wider font-sans text-white">{{ $initials3 }}</span>
-                        <div class="absolute inset-0 bg-gradient-to-tr from-aqua/10 to-transparent"></div>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 tracking-tight">{{ $content['team_member_3_name'] }}</h3>
-                    <p class="text-[10px] font-bold text-aqua uppercase tracking-widest mt-1">{{ $content['team_member_3_role'] ?? '' }}</p>
-                    <p class="mt-4 text-xs text-slate-500 leading-relaxed font-sans max-w-xs">
-                        {{ $content['team_member_3_description'] ?? '' }}
+            <div class="mt-12 text-center">
+                <a href="#" onclick="openTenderModal(); return false;"
+                    class="inline-flex items-center gap-2 rounded-lg bg-brand px-8 py-3.5 text-xs font-bold uppercase tracking-[0.08em] text-white hover:bg-brand-dark transition-colors">
+                    {{ $content['process_cta'] ?? 'Start your project today' }}
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                </a>
+            </div>
+                        </div>
+    </section>
+
+    {{-- What we do --}}
+    @php
+        $whatWeDoMeta = [
+            'Pre-Construction' => [
+                'label' => 'Pre-construction',
+                'title' => 'Surveys, design & planning',
+                'from' => 'Enquire for pricing',
+                'blurb' => 'Early consultancy that de-risks the brief — surveys, design coordination and a clear route to site.',
+            ],
+            'Structural Works' => [
+                'label' => 'Structure',
+                'title' => 'Structural works & frames',
+                'from' => 'Enquire for pricing',
+                'blurb' => 'Concrete, steel, masonry and timber systems engineered for lasting performance.',
+            ],
+            'Interior Works' => [
+                'label' => 'Interiors',
+                'title' => 'Interiors & fit-out',
+                'from' => 'Enquire for pricing',
+                'blurb' => 'Precise finishes, partitions and joinery that turn shell and core into lived-in space.',
+            ],
+            'External Works' => [
+                'label' => 'External',
+                'title' => 'External works & landscape',
+                'from' => 'Enquire for pricing',
+                'blurb' => 'Hard landscaping, paving and outdoor construction that completes the setting.',
+            ],
+        ];
+        $whatWeDoCards = collect($whatWeDoMeta)->map(function ($meta, $title) use ($services) {
+            $srv = ($services ?? collect())->first(fn ($s) => $s->title === $title);
+            return array_merge($meta, [
+                'image' => $srv?->image_url,
+                'slug' => $srv ? \Illuminate\Support\Str::slug($srv->title) : null,
+                'fallback_title' => $title,
+            ]);
+        })->values();
+    @endphp
+
+    <section id="services" class="bg-white py-20 lg:py-28 scroll-mt-24 border-t border-black/[0.04]">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="text-center max-w-2xl mx-auto mb-12 lg:mb-14 space-y-4">
+                <div class="flex items-center justify-center gap-4">
+                    <span class="hidden sm:block h-px w-16 bg-black/10"></span>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#9ca3af]">
+                        {{ $content['services_label'] ?? 'What we do' }}
                     </p>
-                    
-                    <div class="mt-6 flex flex-wrap gap-1.5 justify-center">
-                        @foreach(explode(',', $content['team_member_3_accreditations'] ?? '') as $badge)
-                            @if(trim($badge))
-                                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-650 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">{{ trim($badge) }}</span>
-                            @endif
-                        @endforeach
-                    </div>
+                    <span class="hidden sm:block h-px w-16 bg-black/10"></span>
                 </div>
-                @endif
+                <h2 class="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold leading-tight text-[#0f2a3a]">
+                    {{ $content['services_title_line1'] ?? 'One team.' }}
+                    <span class="text-brand">{{ $content['services_title_line2'] ?? 'Every discipline.' }}</span>
+                </h2>
+                <p class="text-sm sm:text-[15px] text-[#6b7280] leading-relaxed">
+                    {{ $content['services_subtitle'] ?? 'From pre-construction through structure, interiors and external works — one accountable team across every trade.' }}
+                </p>
+                </div>
 
-                @if(empty($content['team_member_1_name']) && empty($content['team_member_2_name']) && empty($content['team_member_3_name']))
-                    <div class="col-span-3 text-center py-16 bg-slate-50 border border-slate-200 rounded-xl">
-                        <p class="text-sm text-slate-500">No team members listed yet.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+                @foreach ($whatWeDoCards as $card)
+                    @php
+                        $href = $card['slug'] ? route('services.show', $card['slug']) : route('services.index');
+                    @endphp
+                    <a href="{{ $href }}" class="group relative aspect-[3/4.2] rounded-2xl overflow-hidden bg-[#1c1c1c] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                        @if($card['image'])
+                            <img src="{{ asset($card['image']) }}" alt="{{ $card['title'] }}" class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                        @endif
+                        <div class="absolute inset-0 bg-black/55"></div>
+                        <div class="absolute bottom-0 inset-x-0 p-5 lg:p-6 space-y-2">
+                            <span class="block text-[10px] font-semibold uppercase tracking-[0.2em] text-brand">{{ $card['label'] }}</span>
+                            <h3 class="font-heading text-2xl text-white leading-snug">{{ $card['title'] }}</h3>
+                            <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/70">{{ $card['from'] }}</p>
+                            <p class="text-[13px] text-white/65 leading-relaxed line-clamp-3 pt-1">{{ $card['blurb'] }}</p>
+                        </div>
+                    </a>
+                @endforeach
                     </div>
-                @endif
+
+            <div class="mt-12 text-center space-y-4">
+                <p class="text-sm text-[#6b7280]">{{ $content['services_cta_prompt'] ?? 'Looking for something specific?' }}</p>
+                <a href="{{ route('services.index') }}"
+                    class="inline-flex items-center gap-2 rounded-lg bg-brand px-7 py-3.5 text-xs font-bold uppercase tracking-[0.08em] text-white hover:bg-brand-dark transition-colors">
+                    {{ $content['cta_explore_services_label'] ?? 'Explore all services' }}
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="py-28 bg-slate-50/50 border-b border-slate-100 scroll-mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="max-w-3xl mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-[#328f95]">{{ $content['blog_label'] ?? 'Blueprints & Blue Skies' }}</span>
-                <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-950 mt-3 tracking-tighter leading-none">
-                    {{ $content['blog_title'] ?? 'Discover inspiration and trends' }}
+    {{-- 7. Sectors --}}
+    <section id="sectors" class="bg-aqua-light py-20 lg:py-28 scroll-mt-24">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="max-w-2xl mb-12 space-y-3">
+                <span class="section-eyebrow">{{ $content['sectors_label'] ?? 'Where we work' }}</span>
+                <h2 class="text-4xl sm:text-5xl font-bold text-[#0f2a3a]">{{ $content['sectors_title'] ?? 'Build typologies we know deeply' }}</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+                @foreach($sectors as $sector)
+                    <div class="rounded-2xl bg-white border border-black/[0.04] p-6 lg:p-7 hover:border-brand/25 hover:shadow-md transition-all duration-300">
+                        <h3 class="font-heading text-2xl text-brand">{{ $sector['title'] }}</h3>
+                        <p class="mt-2.5 text-sm text-[#6b7280] leading-relaxed">{{ $sector['desc'] }}</p>
+                    </div>
+                @endforeach
+                    </div>
+                </div>
+    </section>
+
+    {{-- Trusted partners / authorised suppliers --}}
+    <section id="partners" class="bg-white py-16 lg:py-20 border-t border-black/5">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="text-center mb-8 lg:mb-10 space-y-2">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0f2a3a]">
+                    {{ $content['partners_title'] ?? 'Our Trusted Partners' }}
                 </h2>
+                <p class="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-brand">
+                    {{ $content['partners_subtitle'] ?? 'Authorised suppliers' }}
+                </p>
             </div>
 
-            <!-- Blog Grid -->
+            @if($partners->isNotEmpty())
+                <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
+                    @foreach ($partners as $partner)
+                        <div class="bg-white rounded-xl shadow-sm border border-black/[0.03] aspect-[3/2] flex items-center justify-center p-3 md:p-4 hover:shadow-md hover:border-brand/20 transition-all duration-300">
+                            @if($partner->image_url)
+                                <img
+                                    src="{{ asset($partner->image_url) }}"
+                                    alt="{{ $partner->name }}"
+                                    class="max-h-12 md:max-h-14 w-auto max-w-full object-contain"
+                                    loading="lazy"
+                                >
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    </section>
+
+    {{-- 11. Our Leadership Team — NAB-style layout --}}
+    <section id="leadership" class="bg-aqua-light py-16 sm:py-20 lg:py-24 scroll-mt-24">
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-[0.04em] text-[#0f2a3a]">
+                    {{ $content['leadership_section_title'] ?? 'Our Leadership Team' }}
+                </h2>
+                <div class="mx-auto mt-3 sm:mt-4 h-[4px] w-[4.5rem] bg-brand"></div>
+            </div>
+
+            <div class="space-y-16 sm:space-y-20">
+                @forelse($team as $member)
+                    @php
+                        $words = preg_split('/\s+/', trim($member->name)) ?: [];
+                        $initials = strtoupper(substr($words[0] ?? 'T', 0, 1) . (isset($words[1]) ? substr($words[1], 0, 1) : ''));
+                        $image = $member->image_url ?? null;
+                        if ($image && !str_starts_with($image, 'http') && !str_starts_with($image, '/')) {
+                            $image = asset($image);
+                        } elseif ($image && str_starts_with($image, '/')) {
+                            $image = asset(ltrim($image, '/'));
+                        }
+                        $paragraphs = preg_split("/\n\s*\n/", trim((string) ($member->description ?? ''))) ?: [];
+                    @endphp
+                    <article class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 lg:gap-16">
+                        <div class="shrink-0 flex justify-center md:justify-start">
+                            <div class="h-[180px] w-[180px] sm:h-[210px] sm:w-[210px] lg:h-[230px] lg:w-[230px] rounded-full overflow-hidden bg-[#e8e8e8] border border-[#d9d9d9] shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                                @if($image)
+                                    <img src="{{ $image }}" alt="{{ $member->name }}" class="h-full w-full object-cover object-top">
+                                @else
+                                    <div class="h-full w-full flex items-center justify-center bg-brand text-white text-4xl font-semibold tracking-tight">
+                                        {{ $initials }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="flex-1 min-w-0 text-center md:text-left">
+                            <h3 class="text-[1.65rem] sm:text-[1.85rem] font-bold text-[#0f2a3a] leading-tight">{{ $member->name }}</h3>
+                            <div class="mx-auto md:mx-0 mt-2.5 h-[3px] w-14 bg-brand"></div>
+                            <p class="mt-3 text-[1.05rem] sm:text-lg font-bold uppercase tracking-[0.02em] text-[#0f2a3a]">{{ $member->role }}</p>
+                            <div class="mt-4 space-y-4 text-[15px] sm:text-[16px] text-[#777777] leading-[1.7] max-w-[640px] mx-auto md:mx-0">
+                                @foreach($paragraphs as $paragraph)
+                                    @if(trim($paragraph) !== '')
+                                        <p>{{ trim($paragraph) }}</p>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </article>
+                @empty
+                    <p class="text-center text-sm text-[#777777]">Leadership profiles will appear here once team members are added in the admin.</p>
+                @endforelse
+            </div>
+        </div>
+    </section>
+
+    {{-- 12. Insights --}}
+    <section id="blog" class="bg-white py-20 lg:py-28 scroll-mt-24">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+                <div class="space-y-3">
+                    <span class="section-eyebrow">{{ $content['blog_label'] ?? 'Insights' }}</span>
+                <h2 class="text-4xl sm:text-5xl font-bold text-[#0f2a3a]">{{ $content['blog_title'] ?? 'Notes from the studio and site' }}</h2>
+                </div>
+                <a href="{{ route('blog.index') }}" class="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand">{{ $content['cta_view_all_posts_label'] ?? 'View all insights' }} →</a>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @forelse($blogs->take(3) as $blog)
-                    <div class="bg-white border border-slate-150 shadow-sm rounded-2xl overflow-hidden flex flex-col justify-between hover:border-slate-350 transition-all duration-300">
-                        <div>
-                            <!-- Cover Image -->
-                            <div class="h-56 w-full overflow-hidden bg-slate-100 relative">
+                    <article class="group">
+                        <div class="aspect-[16/10] overflow-hidden bg-aqua-light mb-5 rounded-2xl">
                                 @if($blog->image_url)
-                                    <a href="{{ route('blog.show', $blog->slug) }}" class="block h-full w-full">
-                                        <img src="{{ asset($blog->image_url) }}" alt="{{ $blog->title }}" class="object-cover h-full w-full hover:scale-102 transition-transform duration-500">
-                                    </a>
-                                @else
-                                    <div class="h-full w-full bg-slate-50 flex items-center justify-center">
-                                        <svg class="h-10 w-10 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                                        </svg>
-                                    </div>
+                                <a href="{{ route('blog.show', $blog->slug) }}">
+                                    <img src="{{ asset($blog->image_url) }}" alt="{{ $blog->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                </a>
                                 @endif
-                                <span class="absolute top-4 left-4 text-[9px] font-bold text-slate-800 bg-white border border-slate-150 px-2.5 py-1 rounded shadow-sm uppercase tracking-wider">
-                                    {{ $blog->category ?? 'Uncategorized' }}
-                                </span>
-                            </div>
-                            <div class="p-6 space-y-3">
-                                <!-- Meta -->
-                                <div class="flex items-center text-[10px] text-slate-400 font-bold uppercase tracking-wider space-x-2">
-                                    <span class="text-slate-500">{{ $blog->author }}</span>
-                                    <span>•</span>
-                                    <span>{{ $blog->published_at ? $blog->published_at->format('M d, Y') : '' }}</span>
-                                </div>
-                                <!-- Title -->
-                                <h3 class="text-lg font-bold text-slate-900 tracking-tight leading-snug hover:text-aqua transition-colors">
-                                    <a href="{{ route('blog.show', $blog->slug) }}" class="text-left font-sans block">{{ $blog->title }}</a>
-                                </h3>
-                                <!-- Excerpt -->
-                                <p class="text-xs text-slate-500 leading-relaxed line-clamp-3 font-sans">{{ $blog->excerpt }}</p>
-                            </div>
                         </div>
-                        <!-- Footer action -->
-                        <div class="p-6 pt-0 border-t border-slate-100 mt-4 flex items-center justify-between">
-                            <a href="{{ route('blog.show', $blog->slug) }}" class="text-xs font-bold text-slate-900 hover:text-aqua transition-colors flex items-center group/btn evoke-link">
-                                Read Article
-                                <svg class="ml-1 h-3.5 w-3.5 group-hover/btn:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+                        <span class="text-[10px] uppercase tracking-[0.16em] text-[#9ca3af]">{{ $blog->published_at ? $blog->published_at->format('M d, Y') : '' }}</span>
+                        <h3 class="font-heading text-2xl text-[#1a1a1a] mt-2 leading-snug">
+                            <a href="{{ route('blog.show', $blog->slug) }}" class="hover:text-brand transition-colors">{{ $blog->title }}</a>
+                        </h3>
+                        <p class="mt-2 text-sm text-[#6b7280] line-clamp-2">{{ $blog->excerpt }}</p>
+                    </article>
                 @empty
-                    <div class="col-span-3 text-center py-16 bg-slate-50 border border-slate-200 rounded-xl">
-                        <p class="text-sm text-slate-500">No blog posts published yet.</p>
-                    </div>
+                    <p class="text-sm text-[#6b7280] col-span-3">No posts yet.</p>
                 @endforelse
-            </div>
-
-            <!-- View All Insights CTA Button -->
-            <div class="mt-16 text-center">
-                <a href="{{ route('blog.index') }}" class="inline-flex items-center justify-center px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white bg-slate-950 hover:bg-slate-800 rounded-lg shadow-sm transition-all duration-200">
-                    {{ $content['cta_view_all_posts_label'] ?? 'view all posts' }}
-                </a>
             </div>
         </div>
     </section>
 
-
+    {{-- Black CTA bar --}}
+    <section class="relative bg-brand text-white py-16 lg:py-20 overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 bg-brand/20"></div>
+        <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div class="max-w-xl">
+                <h2 class="font-heading text-3xl sm:text-4xl lg:text-[2.75rem] font-medium leading-tight">{{ $content['pre_footer_cta_title'] ?? 'Ready to build with clarity and craft?' }}</h2>
+                <p class="mt-3 text-sm text-white/55 max-w-lg">{{ $content['pre_footer_cta_subtitle'] ?? 'Tell us about your space, timeline and ambitions.' }}</p>
+            </div>
+            <a href="#" onclick="openTenderModal(); return false;" class="inline-flex shrink-0 items-center gap-2 rounded-lg px-8 py-3.5 text-xs font-bold uppercase tracking-[0.08em] text-brand bg-white hover:bg-aqua-light transition-colors shadow-lg">
+                {{ $content['cta_get_free_quote_label'] ?? 'Book a consultation' }}
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </section>
 @endsection
 
 @section('scripts-ready')
-    // ScrollSpy active link highlighting
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
-    const mobileLinks = document.querySelectorAll('#mobile-menu a');
-
     function changeActiveLink() {
         let index = sections.length;
-
-        // Loop backward to find the active section
-        while(--index && window.scrollY + 120 < sections[index].offsetTop) {}
-        
-        const activeSection = sections[index];
-        const activeId = activeSection ? activeSection.getAttribute('id') : '';
-
+        while (--index && window.scrollY + 120 < sections[index].offsetTop) {}
+        const activeId = sections[index] ? sections[index].getAttribute('id') : '';
         navLinks.forEach((link) => {
             const targetId = link.getAttribute('data-scroll');
-            if (targetId === activeId) {
-                link.classList.add('text-aqua');
-                link.classList.remove('text-slate-700');
+            if (targetId && targetId === activeId) {
+                link.classList.add('is-active');
             } else {
-                link.classList.remove('text-aqua');
-                link.classList.add('text-slate-700');
-            }
-        });
-
-        mobileLinks.forEach((link) => {
-            const targetId = link.getAttribute('data-scroll');
-            if (targetId === activeId) {
-                link.classList.add('text-aqua');
-                link.classList.remove('text-slate-700');
-            } else {
-                link.classList.remove('text-aqua');
-                link.classList.add('text-slate-700');
+                link.classList.remove('is-active');
             }
         });
     }
-
     changeActiveLink();
     window.addEventListener('scroll', changeActiveLink);
-@endsection
 
-@section('scripts')
-    <script>
-        // Project filtering logic
-        function filterProjects(category) {
-            const cards = document.querySelectorAll('.project-card');
-            const buttons = document.querySelectorAll('#projects button');
-            
-            // Update buttons active style
-            buttons.forEach(btn => {
-                if(btn.id === 'filter-btn-' + category) {
-                    btn.className = "px-5 py-2.5 rounded-full border border-slate-950 bg-slate-950 text-white text-xs font-bold uppercase tracking-widest transition-all focus:outline-none";
-                } else {
-                    btn.className = "px-5 py-2.5 rounded-full border border-slate-200 text-slate-650 hover:border-slate-400 bg-white text-xs font-bold uppercase tracking-widest transition-all focus:outline-none";
-                }
-            });
+    const projectsCarousel = document.getElementById('projects-carousel');
+    const projectsPrev = document.getElementById('projects-prev');
+    const projectsNext = document.getElementById('projects-next');
+    if (projectsCarousel && projectsPrev && projectsNext) {
+        const scrollByCard = (dir) => {
+            const card = projectsCarousel.querySelector('a');
+            const amount = card ? card.getBoundingClientRect().width + 16 : 280;
+            projectsCarousel.scrollBy({ left: dir * amount, behavior: 'smooth' });
+        };
+        projectsPrev.addEventListener('click', () => scrollByCard(-1));
+        projectsNext.addEventListener('click', () => scrollByCard(1));
+    }
 
-            // Filter cards
-            cards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                if (category === 'all' || cardCategory === category) {
-                    card.classList.remove('hidden');
-                    card.style.display = 'flex';
-                } else {
-                    card.classList.add('hidden');
-                    card.style.display = 'none';
-                }
+    const processTabs = document.querySelectorAll('.process-tab');
+    const captionDesign = document.querySelector('[data-caption-design]');
+    const captionBuild = document.querySelector('[data-caption-build]');
+    processTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            const path = tab.getAttribute('data-process');
+            processTabs.forEach((t) => {
+                const active = t === tab;
+                t.setAttribute('aria-selected', active ? 'true' : 'false');
+                t.classList.toggle('is-active', active);
+                t.classList.toggle('text-white', active);
+                t.classList.toggle('bg-brand', active);
+                t.classList.toggle('text-[#1a1a1a]', !active);
+                t.classList.toggle('bg-transparent', !active);
             });
-        }
-    </script>
+            document.querySelectorAll('.process-grid').forEach((grid) => {
+                grid.classList.toggle('hidden', grid.id !== `process-grid-${path}`);
+            });
+            if (captionDesign && captionBuild) {
+                captionDesign.classList.toggle('hidden', path !== 'design');
+                captionBuild.classList.toggle('hidden', path !== 'build');
+            }
+        });
+    });
 @endsection

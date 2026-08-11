@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 210" width="200" height="210">
+  <!-- Left roof triangle - light blue -->
+  <polygon points="10,105 100,22 100,105" fill="#5bbdd6"/>
+  <!-- Right roof triangle - medium blue -->
+  <polygon points="100,22 190,105 100,105" fill="#2092c2"/>
+  <!-- House body - medium teal -->
+  <rect x="10" y="105" width="180" height="90" fill="#2092c2"/>
+  <!-- Door - dark teal -->
+  <rect x="65" y="125" width="70" height="70" fill="#0a4f6e"/>
+</svg>

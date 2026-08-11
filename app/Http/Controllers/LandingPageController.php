@@ -25,9 +25,27 @@ class LandingPageController extends Controller
             ->orderBy('published_at', 'desc')
             ->get();
 
-        // Fetch projects and team members
-        $projects = \App\Models\Project::orderBy('display_order', 'asc')->take(6)->get();
+        // Fetch projects, team members, and partners
+        $projects = \App\Models\Project::orderBy('display_order', 'asc')->take(8)->get();
         $team = \App\Models\TeamMember::orderBy('display_order', 'asc')->get();
+        $partners = \App\Models\Partner::orderBy('display_order', 'asc')->get();
+
+        if ($team->isEmpty()) {
+            $team = collect([1, 2, 3])->map(function ($i) use ($content) {
+                $name = $content["team_member_{$i}_name"] ?? null;
+                if (!$name) {
+                    return null;
+                }
+
+                return (object) [
+                    'name' => $name,
+                    'role' => $content["team_member_{$i}_role"] ?? '',
+                    'description' => $content["team_member_{$i}_description"] ?? '',
+                    'image_url' => $content["team_member_{$i}_image"] ?? null,
+                    'accreditations' => null,
+                ];
+            })->filter()->values();
+        }
 
         // Sectors grid — load from DB if an admin has saved them, otherwise use defaults
         $sectorsRaw = $content['homepage_sectors'] ?? null;
@@ -43,7 +61,7 @@ class LandingPageController extends Controller
             ['icon' => 'sparkles',             'title' => 'Specialist Services',  'desc' => 'Scaffolding, crane hire, waterproofing, concrete repairs and metal fabrication.'],
         ];
 
-        return view('welcome', compact('content', 'services', 'blogs', 'projects', 'team', 'sectors'));
+        return view('welcome', compact('content', 'services', 'blogs', 'projects', 'team', 'partners', 'sectors'));
     }
 
     /**
@@ -235,6 +253,33 @@ class LandingPageController extends Controller
             ->get();
 
         return view('blog.show', compact('content', 'blog', 'categories', 'recent_posts'));
+    }
+
+    /**
+     * Display the public About Us page.
+     */
+    public function about()
+    {
+        $content = SiteContent::pluck('value', 'key')->all();
+
+        $team = \App\Models\TeamMember::orderBy('display_order', 'asc')->get();
+        if ($team->isEmpty()) {
+            $team = collect([1, 2, 3])->map(function ($i) use ($content) {
+                $name = $content["team_member_{$i}_name"] ?? null;
+                if (!$name) {
+                    return null;
+                }
+
+                return (object) [
+                    'name' => $name,
+                    'role' => $content["team_member_{$i}_role"] ?? '',
+                    'description' => $content["team_member_{$i}_description"] ?? '',
+                    'image_url' => $content["team_member_{$i}_image"] ?? null,
+                ];
+            })->filter()->values();
+        }
+
+        return view('about', compact('content', 'team'));
     }
 
     /**

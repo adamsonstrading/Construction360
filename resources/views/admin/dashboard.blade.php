@@ -10,7 +10,7 @@
         <!-- Card: Total Inquiries -->
         <div class="bg-white overflow-hidden shadow-sm border border-slate-200 rounded-xl hover:shadow-md transition-shadow">
             <div class="p-6 flex items-center">
-                <div class="p-3 rounded-lg bg-teal-50 text-[#008080]">
+                <div class="p-3 rounded-lg bg-teal-50 text-[#36a1b3]">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                     </svg>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                <a href="{{ route('admin.queries.index') }}" class="font-semibold text-[#008080] hover:text-[#006666] transition-colors">
+                <a href="{{ route('admin.queries.index') }}" class="font-semibold text-[#36a1b3] hover:text-[#2c8493] transition-colors">
                     View inbox
                 </a>
                 <span class="text-slate-400">All submissions</span>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                <a href="{{ route('admin.queries.index', ['status' => 'new']) }}" class="font-semibold text-[#008080] hover:text-[#006666] transition-colors">
+                <a href="{{ route('admin.queries.index', ['status' => 'new']) }}" class="font-semibold text-[#36a1b3] hover:text-[#2c8493] transition-colors">
                     Filter pending
                 </a>
                 <span class="text-slate-400">Requires attention</span>
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                <a href="{{ route('admin.services.index') }}" class="font-semibold text-[#008080] hover:text-[#006666] transition-colors">
+                <a href="{{ route('admin.services.index') }}" class="font-semibold text-[#36a1b3] hover:text-[#2c8493] transition-colors">
                     Manage service grid
                 </a>
                 <span class="text-slate-400">On public site</span>
@@ -90,7 +90,7 @@
                 <h3 class="text-lg font-bold text-slate-900">Recent Customer Inquiries</h3>
                 <p class="mt-1 text-sm text-slate-500">The most recent project inquiries routed electronically from the contact form.</p>
             </div>
-            <a href="{{ route('admin.queries.index') }}" class="text-xs font-semibold text-[#008080] hover:text-[#006666] border border-slate-200 hover:border-[#008080] rounded-lg px-3 py-2 transition-all">
+            <a href="{{ route('admin.queries.index') }}" class="text-xs font-semibold text-[#36a1b3] hover:text-[#2c8493] border border-slate-200 hover:border-[#36a1b3] rounded-lg px-3 py-2 transition-all">
                 View All Inquiries
             </a>
         </div>
@@ -134,7 +134,7 @@
                                             New
                                         </span>
                                     @elseif($item->status === 'reviewed')
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-50 text-[#008080] border border-teal-200">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-50 text-[#36a1b3] border border-teal-200">
                                             Reviewed
                                         </span>
                                     @else
@@ -147,7 +147,7 @@
                                     {{ $item->created_at->format('M d, Y H:i') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="{{ route('admin.queries.index') }}" class="text-[#008080] hover:text-[#006666] font-semibold">
+                                    <a href="{{ route('admin.queries.index') }}" class="text-[#36a1b3] hover:text-[#2c8493] font-semibold">
                                         Manage
                                     </a>
                                 </td>

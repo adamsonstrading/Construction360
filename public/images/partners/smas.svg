@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160">
+  <text x="12" y="105" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="95" fill="#0f4e41">smas</text>
+  <text x="310" y="38" font-family="Arial,sans-serif" font-weight="300" font-size="44" fill="#9aaba5">*</text>
+  <circle cx="20" cy="135" r="14" fill="#e55a1e"/>
+  <polyline points="13,135 18,142 28,126" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="42" y="147" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="20" fill="#e55a1e" letter-spacing="1.5">WORKSAFE</text>
+</svg>

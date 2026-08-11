@@ -9,19 +9,19 @@
     <div class="border-b border-slate-200">
         <nav class="-mb-px flex space-x-6" aria-label="Tabs">
             <a href="{{ route('admin.queries.index') }}" 
-               class="pb-4 px-1 border-b-2 font-semibold text-sm transition-colors {{ is_null($status) ? 'border-[#008080] text-[#008080]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-350' }}">
+               class="pb-4 px-1 border-b-2 font-semibold text-sm transition-colors {{ is_null($status) ? 'border-[#36a1b3] text-[#36a1b3]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-350' }}">
                 All Inquiries
             </a>
             <a href="{{ route('admin.queries.index', ['status' => 'new']) }}" 
-               class="pb-4 px-1 border-b-2 font-semibold text-sm transition-colors {{ $status === 'new' ? 'border-[#008080] text-[#008080]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-350' }}">
+               class="pb-4 px-1 border-b-2 font-semibold text-sm transition-colors {{ $status === 'new' ? 'border-[#36a1b3] text-[#36a1b3]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-350' }}">
                 New
             </a>
             <a href="{{ route('admin.queries.index', ['status' => 'reviewed']) }}" 
-               class="pb-4 px-1 border-b-2 font-semibold text-sm transition-colors {{ $status === 'reviewed' ? 'border-[#008080] text-[#008080]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-350' }}">
+               class="pb-4 px-1 border-b-2 font-semibold text-sm transition-colors {{ $status === 'reviewed' ? 'border-[#36a1b3] text-[#36a1b3]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-350' }}">
                 Reviewed
             </a>
             <a href="{{ route('admin.queries.index', ['status' => 'archived']) }}" 
-               class="pb-4 px-1 border-b-2 font-semibold text-sm transition-colors {{ $status === 'archived' ? 'border-[#008080] text-[#008080]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-350' }}">
+               class="pb-4 px-1 border-b-2 font-semibold text-sm transition-colors {{ $status === 'archived' ? 'border-[#36a1b3] text-[#36a1b3]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-350' }}">
                 Archived
             </a>
         </nav>
@@ -69,7 +69,7 @@
                                             New
                                         </span>
                                     @elseif($item->status === 'reviewed')
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-50 text-[#008080] border border-teal-200">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-50 text-[#36a1b3] border border-teal-200">
                                             Reviewed
                                         </span>
                                     @else
@@ -83,7 +83,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold">
                                     <button type="button" 
-                                            class="view-details-btn text-[#008080] hover:text-[#006666] transition-colors focus:outline-none"
+                                            class="view-details-btn text-[#36a1b3] hover:text-[#2c8493] transition-colors focus:outline-none"
                                             data-id="{{ $item->id }}"
                                             data-name="{{ $item->name }}"
                                             data-email="{{ $item->email }}"
@@ -141,7 +141,7 @@
                 </div>
                 <div>
                     <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Client Email</h4>
-                    <p class="mt-1 text-sm text-[#008080] font-medium" id="modal-client-email"></p>
+                    <p class="mt-1 text-sm text-[#36a1b3] font-medium" id="modal-client-email"></p>
                 </div>
             </div>
             
@@ -166,7 +166,7 @@
                 @method('PATCH')
                 <input type="hidden" name="status" id="modal-status-input" value="">
                 
-                <button type="button" id="mark-reviewed-btn" class="hidden px-4 py-2 text-xs font-bold text-white bg-[#008080] hover:bg-[#006666] rounded-lg shadow-sm transition-colors">
+                <button type="button" id="mark-reviewed-btn" class="hidden px-4 py-2 text-xs font-bold text-white bg-[#36a1b3] hover:bg-[#2c8493] rounded-lg shadow-sm transition-colors">
                     Mark as Reviewed
                 </button>
                 <button type="button" id="mark-archived-btn" class="hidden px-4 py-2 text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 rounded-lg shadow-sm transition-colors">
@@ -226,7 +226,7 @@
                     archiveBtn.classList.remove('hidden');
                 } else if (status === 'reviewed') {
                     statusBadge.textContent = 'Reviewed';
-                    statusBadge.classList.add('bg-teal-50', 'text-[#008080]', 'border', 'border-teal-200');
+                    statusBadge.classList.add('bg-teal-50', 'text-[#36a1b3]', 'border', 'border-teal-200');
                     
                     reviewBtn.classList.add('hidden');
                     archiveBtn.classList.remove('hidden');

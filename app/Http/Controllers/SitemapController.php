@@ -20,6 +20,7 @@ class SitemapController extends Controller
             ['loc' => route('projects.index'),        'lastmod' => $now, 'changefreq' => 'weekly',  'priority' => '0.8'],
             ['loc' => route('blog.index'),            'lastmod' => $now, 'changefreq' => 'daily',   'priority' => '0.8'],
             ['loc' => route('contact.index'),         'lastmod' => $now, 'changefreq' => 'monthly', 'priority' => '0.6'],
+            ['loc' => route('about'),                 'lastmod' => $now, 'changefreq' => 'monthly', 'priority' => '0.7'],
             ['loc' => route('tendering'),             'lastmod' => $now, 'changefreq' => 'monthly', 'priority' => '0.5'],
             ['loc' => route('privacy'),              'lastmod' => $now, 'changefreq' => 'yearly',  'priority' => '0.3'],
             ['loc' => route('terms'),                 'lastmod' => $now, 'changefreq' => 'yearly',  'priority' => '0.3'],

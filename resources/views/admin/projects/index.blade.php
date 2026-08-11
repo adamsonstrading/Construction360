@@ -11,7 +11,7 @@
             <h3 class="text-lg font-bold text-slate-900 font-sans">Active Projects</h3>
             <p class="text-sm text-slate-500 mt-1">Manage the projects displayed on the public landing page gallery.</p>
         </div>
-        <a href="{{ route('admin.projects.create') }}" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-[#008080] hover:bg-[#006666] rounded-lg shadow-sm transition-colors">
+        <a href="{{ route('admin.projects.create') }}" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-[#36a1b3] hover:bg-[#2c8493] rounded-lg shadow-sm transition-colors">
             <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
             </svg>
@@ -70,7 +70,7 @@
                             <td class="px-6 py-4">
                                 <div class="max-w-xs sm:max-w-sm">
                                     <span class="text-sm font-semibold text-slate-900 block truncate">{{ $item->title }}</span>
-                                    <span class="text-xs text-slate-400 block mt-0.5">Category: <span class="font-bold text-[#008080]">{{ $item->category }}</span> | Status: <span class="font-bold text-sky-600 uppercase text-[10px]">{{ str_replace('-', ' ', $item->status) }}</span> | Slug: <span class="font-mono text-slate-500">{{ $item->slug }}</span></span>
+                                    <span class="text-xs text-slate-400 block mt-0.5">Category: <span class="font-bold text-[#36a1b3]">{{ $item->category }}</span> | Status: <span class="font-bold text-sky-600 uppercase text-[10px]">{{ str_replace('-', ' ', $item->status) }}</span> | Slug: <span class="font-mono text-slate-500">{{ $item->slug }}</span></span>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -81,7 +81,7 @@
                                 {{ $item->display_order }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold space-x-3">
-                                <a href="{{ route('admin.projects.edit', $item->id) }}" class="text-[#008080] hover:text-[#006666] transition-colors">
+                                <a href="{{ route('admin.projects.edit', $item->id) }}" class="text-[#36a1b3] hover:text-[#2c8493] transition-colors">
                                     Edit
                                 </a>
                                 <form action="{{ route('admin.projects.destroy', $item->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this project?');">

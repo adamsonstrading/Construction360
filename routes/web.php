@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,10 @@ Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 Route::get('/', [LandingPageController::class, 'index'])->name('landing');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contact', [LandingPageController::class, 'contact'])->name('contact.index');
+Route::get('/about-us', [LandingPageController::class, 'about'])->name('about');
+Route::get('/about-us/leadership', function () {
+    return redirect('/about-us#leadership');
+})->name('about.leadership');
 Route::get('/services', [LandingPageController::class, 'services'])->name('services.index');
 Route::get('/services/{slug}', [LandingPageController::class, 'showService'])->name('services.show');
 Route::get('/services/{service_slug}/{sub_service_slug}', [LandingPageController::class, 'showSubService'])->name('subservices.show');
@@ -66,6 +71,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 
     // Team CRUD
     Route::resource('team', TeamController::class);
+
+    // Partners CRUD
+    Route::resource('partners', PartnerController::class);
 });
 
 Route::get('/sync-live-data', function () { \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'LiveSyncSeeder']); return 'Live site successfully synced with local database!'; });

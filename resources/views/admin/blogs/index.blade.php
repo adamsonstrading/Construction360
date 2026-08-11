@@ -11,7 +11,7 @@
             <h3 class="text-lg font-bold text-slate-900 font-sans">Active Blog Posts</h3>
             <p class="text-sm text-slate-500 mt-1">Manage the blog posts displayed on the public landing page.</p>
         </div>
-        <a href="{{ route('admin.blogs.create') }}" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-[#008080] hover:bg-[#006666] rounded-lg shadow-sm transition-colors">
+        <a href="{{ route('admin.blogs.create') }}" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-[#36a1b3] hover:bg-[#2c8493] rounded-lg shadow-sm transition-colors">
             <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
             </svg>
@@ -87,7 +87,7 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold space-x-3">
-                                <a href="{{ route('admin.blogs.edit', $item->id) }}" class="text-[#008080] hover:text-[#006666] transition-colors">
+                                <a href="{{ route('admin.blogs.edit', $item->id) }}" class="text-[#36a1b3] hover:text-[#2c8493] transition-colors">
                                     Edit
                                 </a>
                                 <form action="{{ route('admin.blogs.destroy', $item->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to permanently delete this blog post?');">

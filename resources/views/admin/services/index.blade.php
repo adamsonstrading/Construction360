@@ -11,7 +11,7 @@
             <h3 class="text-lg font-bold text-slate-900 font-sans">Active Public Services</h3>
             <p class="text-sm text-slate-500 mt-1">Manage the services displayed on the public landing page services grid.</p>
         </div>
-        <a href="{{ route('admin.services.create') }}" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-[#008080] hover:bg-[#006666] rounded-lg shadow-sm transition-colors">
+        <a href="{{ route('admin.services.create') }}" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-[#36a1b3] hover:bg-[#2c8493] rounded-lg shadow-sm transition-colors">
             <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
             </svg>
@@ -46,7 +46,7 @@
                     @foreach($services as $item)
                         <tr class="hover:bg-slate-50 transition-colors">
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="h-10 w-10 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center text-[#008080]">
+                                <div class="h-10 w-10 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center text-[#36a1b3]">
                                     @if($item->icon === 'academic-cap')
                                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.263 15.918a9.008 9.008 0 0015.474 0M12 2.25l-9.75 4.5 9.75 4.5 9.75-4.5-9.75-4.5zM3 13.5v3.375c0 .621.504 1.125 1.125 1.125h15.75c.621 0 1.125-.504 1.125-1.125V13.5" /></svg>
                                     @elseif($item->icon === 'building-office-2')
@@ -74,7 +74,7 @@
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold space-x-3">
-                                <a href="{{ route('admin.services.edit', $item->id) }}" class="text-[#008080] hover:text-[#006666] transition-colors">
+                                <a href="{{ route('admin.services.edit', $item->id) }}" class="text-[#36a1b3] hover:text-[#2c8493] transition-colors">
                                     Edit
                                 </a>
                                 <form action="{{ route('admin.services.destroy', $item->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to permanently delete this service?');">

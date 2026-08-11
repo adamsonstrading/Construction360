@@ -11,7 +11,7 @@
             <h3 class="text-lg font-bold text-slate-900 font-sans">Active Team Members</h3>
             <p class="text-sm text-slate-500 mt-1">Manage the core team members displayed on the public landing page.</p>
         </div>
-        <a href="{{ route('admin.team.create') }}" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-[#008080] hover:bg-[#006666] rounded-lg shadow-sm transition-colors">
+        <a href="{{ route('admin.team.create') }}" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-[#36a1b3] hover:bg-[#2c8493] rounded-lg shadow-sm transition-colors">
             <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
             </svg>
@@ -71,7 +71,7 @@
                             <td class="px-6 py-4">
                                 <div class="max-w-xs sm:max-w-sm">
                                     <span class="text-sm font-semibold text-slate-900 block truncate">{{ $item->name }}</span>
-                                    <span class="text-xs text-[#008080] font-bold block mt-0.5">{{ $item->role }}</span>
+                                    <span class="text-xs text-[#36a1b3] font-bold block mt-0.5">{{ $item->role }}</span>
                                 </div>
                             </td>
                             <td class="px-6 py-4">
@@ -87,7 +87,7 @@
                                 {{ $item->display_order }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold space-x-3">
-                                <a href="{{ route('admin.team.edit', $item->id) }}" class="text-[#008080] hover:text-[#006666] transition-colors">
+                                <a href="{{ route('admin.team.edit', $item->id) }}" class="text-[#36a1b3] hover:text-[#2c8493] transition-colors">
                                     Edit
                                 </a>
                                 <form action="{{ route('admin.team.destroy', $item->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to remove this team member?');">
