@@ -1,83 +1,98 @@
 @extends('layouts.public')
 
-@section('title', 'Our Services | Design & Construction Specialists')
+@section('title', ($content['services_page_title'] ?? 'Our Services') . ' | Construction 360 Ltd')
+
+@section('meta')
+    <meta name="description" content="{{ $content['services_page_subtitle'] ?? 'Design-led construction services across London and Essex — from pre-construction through delivery.' }}">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="Construction 360 Ltd">
+    <meta property="og:title" content="{{ $content['services_page_title'] ?? 'Our Services' }} | Construction 360 Ltd">
+    <meta property="og:description" content="{{ $content['services_page_subtitle'] ?? 'Design-led construction services across London and Essex.' }}">
+    <meta property="og:image" content="{{ asset($content['hero_image'] ?? 'images/hero_construction.png') }}">
+@endsection
 
 @section('content')
-    <!-- Services Hero Section -->
-    <section class="bg-white py-20 border-b border-slate-100 relative overflow-hidden">
-        <!-- Minimal Grid Watermark -->
-        <div class="absolute inset-0 z-0 opacity-[0.02] pointer-events-none">
-            <svg class="w-full h-full text-slate-900" fill="none" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <line x1="0" y1="25" x2="100" y2="25" stroke="currentColor" stroke-width="0.05" />
-                <line x1="0" y1="50" x2="100" y2="50" stroke="currentColor" stroke-width="0.05" />
-                <line x1="0" y1="75" x2="100" y2="75" stroke="currentColor" stroke-width="0.05" />
-                <line x1="25" y1="0" x2="25" y2="100" stroke="currentColor" stroke-width="0.05" />
-                <line x1="50" y1="0" x2="50" y2="100" stroke="currentColor" stroke-width="0.05" />
-                <line x1="75" y1="0" x2="75" y2="100" stroke="currentColor" stroke-width="0.05" />
-            </svg>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    {{-- Light hero — matches About / Contact --}}
+    <section class="relative bg-white border-b border-black/5">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10" style="padding-top: 7.5rem; padding-bottom: 3.5rem;">
             <div class="max-w-3xl">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-aqua">{{ $content['services_page_label'] ?? 'Services' }}</span>
-                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-950 mt-4 tracking-tighter leading-none font-sans">
-                    {{ $content['services_page_title'] ?? 'Design to Delivery' }}
-                </h1>
-                <p class="mt-6 text-base sm:text-lg text-slate-550 leading-relaxed font-sans">
-                    {{ $content['services_page_subtitle'] ?? 'We engage as early as possible in the lifecycle of a project to solve complex structural challenges, manage development risk, and exceed architectural standards.' }}
+                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
+                    {{ $content['services_page_label'] ?? 'Services' }}
                 </p>
+                <h1 class="mt-4 text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-tight text-[#0f2a3a]">
+                    {{ $content['services_page_title'] ?? 'Design to delivery' }}
+                </h1>
+                <div class="mt-5 h-[3px] w-14 bg-brand"></div>
+                <p class="mt-5 text-base sm:text-[15px] text-[#5b6770] leading-relaxed max-w-2xl">
+                    {{ $content['services_page_subtitle'] ?? 'We engage early in the project lifecycle to solve structural challenges, manage risk, and deliver premium builds across every discipline.' }}
+                </p>
+                <div class="mt-6 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6b7280]">
+                    <a href="{{ url('/') }}" class="hover:text-brand transition-colors">Home</a>
+                    <span>•</span>
+                    <span class="text-[#0f2a3a]">Services</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Alternating Split Grid -->
-    <section class="bg-white py-24 lg:py-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28 lg:space-y-40">
+    {{-- Services list --}}
+    <section class="bg-white py-16 lg:py-24">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 space-y-20 lg:space-y-28">
             @foreach($services as $index => $srv)
                 @php
                     $slug = \Illuminate\Support\Str::slug($srv->title);
                     $imageUrl = asset($srv->image_url);
                 @endphp
-                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 {{ $index % 2 !== 0 ? 'lg:flex-row-reverse' : '' }}">
-                    <!-- Image Panel -->
-                    <div class="w-full lg:w-1/2">
-                        <div class="relative bg-white border border-slate-150 rounded-2xl p-2.5 shadow-md group overflow-hidden">
-                            <a href="{{ route('services.show', $slug) }}" class="block overflow-hidden rounded-xl">
-                                <img src="{{ $imageUrl }}" alt="{{ $srv->title }}" class="w-full h-[300px] sm:h-[400px] object-cover rounded-xl group-hover:scale-[1.03] transition-transform duration-700">
-                            </a>
-                            <!-- Aqua line overlay effect -->
-                            <div class="absolute bottom-2.5 left-2.5 right-2.5 h-1 bg-aqua scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-xl"></div>
-                        </div>
+                <article class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center {{ $index % 2 !== 0 ? 'lg:[&>*:first-child]:order-2' : '' }}">
+                    <div class="relative overflow-hidden rounded-2xl border border-black/5 bg-[#0f2a3a] group">
+                        <a href="{{ route('services.show', $slug) }}" class="block">
+                            <img
+                                src="{{ $imageUrl }}"
+                                alt="{{ $srv->title }}"
+                                class="w-full h-[280px] sm:h-[360px] lg:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                            >
+                        </a>
                     </div>
 
-                    <!-- Copy Content Panel -->
-                    <div class="w-full lg:w-1/2 space-y-6">
-                        <div class="flex items-baseline space-x-3">
-                            <span class="text-xl font-bold font-sans text-aqua">0{{ $index + 1 }}</span>
-                            <span class="h-[1px] w-8 bg-slate-200"></span>
-                        </div>
-                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 tracking-tight font-sans">
-                            <a href="{{ route('services.show', $slug) }}" class="hover:text-aqua transition-colors">
+                    <div class="space-y-5">
+                        <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
+                            Service {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                        </p>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0f2a3a] leading-tight">
+                            <a href="{{ route('services.show', $slug) }}" class="hover:text-brand transition-colors">
                                 {{ $srv->title }}
                             </a>
                         </h2>
-                        <p class="text-sm sm:text-base text-slate-500 leading-relaxed font-sans">
+                        <div class="h-[3px] w-14 bg-brand"></div>
+                        <p class="text-sm sm:text-[15px] text-[#5b6770] leading-relaxed">
                             {{ $srv->description }}
                         </p>
-                        
-                        <div class="pt-4">
-                            <a href="{{ route('services.show', $slug) }}" class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-slate-900 hover:text-aqua transition-colors group evoke-link">
-                                Read more
-                                <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                </svg>
-                            </a>
-                        </div>
+                        <a href="{{ route('services.show', $slug) }}"
+                           class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.12em] text-brand hover:text-brand-dark transition-colors">
+                            Explore service
+                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                        </a>
                     </div>
-                </div>
+                </article>
             @endforeach
         </div>
     </section>
 
-
+    {{-- CTA --}}
+    <section class="bg-brand text-white py-16 lg:py-20">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 text-center space-y-5">
+            <h2 class="text-2xl sm:text-3xl font-bold leading-tight">
+                {{ $content['pre_footer_cta_title'] ?? 'Ready to build with clarity and craft?' }}
+            </h2>
+            <p class="text-sm text-white/75 max-w-lg mx-auto">
+                {{ $content['pre_footer_cta_subtitle'] ?? 'Tell us about your space, timeline and ambitions.' }}
+            </p>
+            <a href="#" onclick="openTenderModal(); return false;"
+               class="inline-flex items-center gap-2 rounded-lg bg-white text-brand px-6 py-3.5 text-xs font-bold uppercase tracking-[0.08em] hover:bg-aqua-light transition-colors">
+                {{ $content['cta_get_free_quote_label'] ?? 'Get your free quote' }}
+            </a>
+        </div>
+    </section>
 @endsection

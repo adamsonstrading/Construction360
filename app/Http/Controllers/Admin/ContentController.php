@@ -29,8 +29,72 @@ class ContentController extends Controller
             'seo_meta_keywords' => 'required|string|max:1000',
             'google_site_verification' => 'nullable|string|max:255',
             
-            'hero_title' => 'required|string|max:255',
+            'hero_line_1' => 'required|string|max:255',
+            'hero_line_2' => 'nullable|string|max:255',
+            'hero_line_3' => 'nullable|string|max:255',
+            'hero_line_4' => 'nullable|string|max:255',
+            'hero_badge' => 'nullable|string|max:255',
             'hero_subtitle' => 'required|string|max:1000',
+            'hero_watch_label' => 'nullable|string|max:255',
+            'hero_watch_sub' => 'nullable|string|max:255',
+            'hero_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:4096',
+            'hero_video' => 'nullable|mimes:mp4,webm|max:51200',
+
+            'stat_1_value' => 'required|string|max:50',
+            'stat_1_label' => 'required|string|max:255',
+            'stat_2_value' => 'required|string|max:50',
+            'stat_2_label' => 'required|string|max:255',
+            'stat_3_value' => 'required|string|max:50',
+            'stat_3_label' => 'required|string|max:255',
+            'stat_4_value' => 'required|string|max:50',
+            'stat_4_label' => 'required|string|max:255',
+
+            'reviews_score' => 'required|string|max:10',
+            'reviews_score_sub' => 'required|string|max:255',
+            'reviews_link_label' => 'required|string|max:255',
+            'cta_book_consult_label' => 'required|string|max:255',
+
+            'popular_paths_label' => 'required|string|max:255',
+            'popular_paths_title' => 'required|string|max:255',
+            'popular_paths_link' => 'required|string|max:255',
+            'projects_subtitle' => 'required|string|max:1000',
+            'projects_reviews_badge' => 'required|string|max:255',
+            'client_stories_label' => 'required|string|max:255',
+            'client_stories_title' => 'required|string|max:255',
+            'client_stories_link' => 'required|string|max:255',
+            'about_learn_more_label' => 'required|string|max:255',
+
+            'process_label' => 'required|string|max:255',
+            'process_title' => 'required|string|max:255',
+            'process_subtitle' => 'required|string|max:1000',
+            'process_caption_design' => 'required|string|max:255',
+            'process_caption_build' => 'required|string|max:255',
+            'process_cta' => 'required|string|max:255',
+            'process_tab_design' => 'required|string|max:255',
+            'process_tab_build' => 'required|string|max:255',
+            'process_design_steps' => 'nullable|array',
+            'process_design_steps.*.step' => 'required|string|max:10',
+            'process_design_steps.*.title' => 'required|string|max:255',
+            'process_design_steps.*.duration' => 'required|string|max:255',
+            'process_design_steps.*.body' => 'required|string|max:1000',
+            'process_design_steps.*.icon' => 'required|string|max:50',
+            'process_build_steps' => 'nullable|array',
+            'process_build_steps.*.step' => 'required|string|max:10',
+            'process_build_steps.*.title' => 'required|string|max:255',
+            'process_build_steps.*.duration' => 'required|string|max:255',
+            'process_build_steps.*.body' => 'required|string|max:1000',
+            'process_build_steps.*.icon' => 'required|string|max:50',
+
+            'services_title_line1' => 'required|string|max:255',
+            'services_title_line2' => 'required|string|max:255',
+            'services_subtitle' => 'required|string|max:1000',
+            'services_cta_prompt' => 'required|string|max:255',
+            'services_card_price_label' => 'required|string|max:255',
+            'partners_title' => 'required|string|max:255',
+            'partners_subtitle' => 'required|string|max:255',
+            'seo_og_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:4096',
+
+            'hero_title' => 'nullable|string|max:255',
             'about_heading' => 'required|string',
             'about_vision' => 'required|string',
             'about_mission' => 'required|string',
@@ -205,6 +269,29 @@ class ContentController extends Controller
             'project_related_title' => 'required|string|max:255',
         ]);
 
+        // Handle process steps serialization
+        foreach (['process_design_steps', 'process_build_steps'] as $stepsKey) {
+            if (isset($validated[$stepsKey])) {
+                $steps = [];
+                foreach ($validated[$stepsKey] as $item) {
+                    if (!empty($item['title'])) {
+                        $steps[] = [
+                            'step' => $item['step'] ?? '',
+                            'title' => $item['title'],
+                            'duration' => $item['duration'] ?? '',
+                            'body' => $item['body'] ?? '',
+                            'icon' => $item['icon'] ?? 'check',
+                        ];
+                    }
+                }
+                SiteContent::updateOrCreate(
+                    ['key' => $stepsKey],
+                    ['value' => json_encode($steps)]
+                );
+                unset($validated[$stepsKey]);
+            }
+        }
+
         // Handle Sectors List Serialization
         if (isset($validated['sectors_list'])) {
             $sectorsList = [];
@@ -229,20 +316,39 @@ class ContentController extends Controller
             );
         }
 
-        // Handle Site Logo Upload
-        if ($request->hasFile('site_logo')) {
-            $imageName = time() . '.' . $request->site_logo->extension();
-            $request->site_logo->move(public_path('uploads'), $imageName);
-            $validated['site_logo'] = 'uploads/' . $imageName;
+        // Handle file uploads
+        $fileFields = [
+            'site_logo' => 'uploads',
+            'hero_image' => 'uploads',
+            'hero_video' => 'uploads',
+            'seo_og_image' => 'uploads',
+        ];
+
+        foreach ($fileFields as $field => $dir) {
+            if ($request->hasFile($field)) {
+                $fileName = time() . '_' . $field . '.' . $request->file($field)->extension();
+                $request->file($field)->move(public_path($dir), $fileName);
+                $validated[$field] = $dir . '/' . $fileName;
+            }
         }
 
+        // Sync legacy hero_title from headline lines
+        $validated['hero_title'] = trim(
+            ($validated['hero_line_1'] ?? '') . ' ' .
+            ($validated['hero_line_2'] ?? '') . ' ' .
+            ($validated['hero_line_3'] ?? '') . ' ' .
+            ($validated['hero_line_4'] ?? '')
+        );
+
         foreach ($validated as $key => $value) {
-            if ($key !== 'site_logo' || $request->hasFile('site_logo')) {
-                SiteContent::updateOrCreate(
-                    ['key' => $key],
-                    ['value' => $value]
-                );
+            if (in_array($key, array_keys($fileFields), true) && !$request->hasFile($key)) {
+                continue;
             }
+
+            SiteContent::updateOrCreate(
+                ['key' => $key],
+                ['value' => $value]
+            );
         }
 
         return redirect()->route('admin.content.edit')->with('success', 'Landing page content updated successfully.');

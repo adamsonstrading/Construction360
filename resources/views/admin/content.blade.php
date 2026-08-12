@@ -134,6 +134,16 @@
                 </div>
 
                 <div>
+                    <label for="seo_og_image" class="block text-sm font-semibold text-slate-700">Social share image (OG/Twitter)</label>
+                    @if(!empty($content['seo_og_image']))
+                        <p class="mt-1 text-xs text-slate-500">Current: {{ $content['seo_og_image'] }}</p>
+                    @endif
+                    <input type="file" name="seo_og_image" id="seo_og_image" accept="image/*"
+                        class="mt-1.5 block w-full text-sm text-slate-600">
+                    <p class="mt-1 text-xs text-slate-400">Leave blank to use the hero poster image.</p>
+                </div>
+
+                <div>
                     <label for="google_site_verification" class="block text-sm font-semibold text-slate-700">Google Site Verification Code <span class="text-slate-400 font-normal">(Optional)</span></label>
                     <div class="mt-1.5">
                         <input type="text" name="google_site_verification" id="google_site_verification" value="{{ old('google_site_verification', $content['google_site_verification'] ?? '') }}" placeholder="e.g. google-site-verification=xxxxxx or code value"
@@ -153,15 +163,33 @@
                     Hero Header Section
                 </h4>
                 
-                <div>
-                    <label for="hero_title" class="block text-sm font-semibold text-slate-700">Hero Main Title</label>
-                    <div class="mt-1.5">
-                        <input type="text" name="hero_title" id="hero_title" value="{{ old('hero_title', $content['hero_title'] ?? '') }}" required
-                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="hero_line_1" class="block text-sm font-semibold text-slate-700">Headline line 1 (dark)</label>
+                        <input type="text" name="hero_line_1" id="hero_line_1" value="{{ old('hero_line_1', $content['hero_line_1'] ?? 'Design-led construction') }}" required
+                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
                     </div>
-                    @error('hero_title')
-                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
-                    @enderror
+                    <div>
+                        <label for="hero_line_2" class="block text-sm font-semibold text-slate-700">Headline line 2 (dark)</label>
+                        <input type="text" name="hero_line_2" id="hero_line_2" value="{{ old('hero_line_2', $content['hero_line_2'] ?? 'built with care') }}"
+                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
+                    </div>
+                    <div>
+                        <label for="hero_line_3" class="block text-sm font-semibold text-slate-700">Headline line 3 (teal)</label>
+                        <input type="text" name="hero_line_3" id="hero_line_3" value="{{ old('hero_line_3', $content['hero_line_3'] ?? 'Across London and') }}"
+                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
+                    </div>
+                    <div>
+                        <label for="hero_line_4" class="block text-sm font-semibold text-slate-700">Headline line 4 (teal)</label>
+                        <input type="text" name="hero_line_4" id="hero_line_4" value="{{ old('hero_line_4', $content['hero_line_4'] ?? 'Essex') }}"
+                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="hero_badge" class="block text-sm font-semibold text-slate-700">Hero badge (above headline)</label>
+                    <input type="text" name="hero_badge" id="hero_badge" value="{{ old('hero_badge', $content['hero_badge'] ?? 'London · Est. 2013 · Fixed prices') }}"
+                        class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
                 </div>
 
                 <div>
@@ -173,6 +201,72 @@
                     @error('hero_subtitle')
                         <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
                     @enderror
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="hero_image" class="block text-sm font-semibold text-slate-700">Hero poster image</label>
+                        @if(!empty($content['hero_image']))
+                            <p class="mt-1 text-xs text-slate-500">Current: {{ $content['hero_image'] }}</p>
+                        @endif
+                        <input type="file" name="hero_image" id="hero_image" accept="image/*"
+                            class="mt-1.5 block w-full text-sm text-slate-600">
+                    </div>
+                    <div>
+                        <label for="hero_video" class="block text-sm font-semibold text-slate-700">Hero intro video (MP4)</label>
+                        @if(!empty($content['hero_video']))
+                            <p class="mt-1 text-xs text-slate-500">Current: {{ $content['hero_video'] }}</p>
+                        @endif
+                        <input type="file" name="hero_video" id="hero_video" accept="video/mp4,video/webm"
+                            class="mt-1.5 block w-full text-sm text-slate-600">
+                    </div>
+                    <div>
+                        <label for="hero_watch_label" class="block text-sm font-semibold text-slate-700">Video overlay title</label>
+                        <input type="text" name="hero_watch_label" id="hero_watch_label" value="{{ old('hero_watch_label', $content['hero_watch_label'] ?? 'Watch Our Intro') }}"
+                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
+                    </div>
+                    <div>
+                        <label for="hero_watch_sub" class="block text-sm font-semibold text-slate-700">Video overlay subtitle</label>
+                        <input type="text" name="hero_watch_sub" id="hero_watch_sub" value="{{ old('hero_watch_sub', $content['hero_watch_sub'] ?? '60 sec overview') }}"
+                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+                    @foreach([1,2,3,4] as $i)
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2">
+                            <span class="text-xs font-bold text-[#36a1b3] uppercase">Stat {{ $i }}</span>
+                            <input type="text" name="stat_{{ $i }}_value" value="{{ old('stat_'.$i.'_value', $content['stat_'.$i.'_value'] ?? '') }}" required placeholder="Value"
+                                class="block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                            <input type="text" name="stat_{{ $i }}_label" value="{{ old('stat_'.$i.'_label', $content['stat_'.$i.'_label'] ?? '') }}" required placeholder="Label"
+                                class="block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- Reviews Strip -->
+            <div class="space-y-4">
+                <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider border-b border-slate-150 pb-2 flex items-center">
+                    <span class="h-2 w-2 rounded-full bg-[#36a1b3] mr-2"></span>
+                    Reviews Strip (teal band)
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="reviews_score" class="block text-sm font-semibold text-slate-700">Review score</label>
+                        <input type="text" name="reviews_score" id="reviews_score" value="{{ old('reviews_score', $content['reviews_score'] ?? '4.9') }}" required
+                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm">
+                    </div>
+                    <div>
+                        <label for="reviews_score_sub" class="block text-sm font-semibold text-slate-700">Score subtitle</label>
+                        <input type="text" name="reviews_score_sub" id="reviews_score_sub" value="{{ old('reviews_score_sub', $content['reviews_score_sub'] ?? 'from client reviews') }}" required
+                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm">
+                    </div>
+                    <div>
+                        <label for="reviews_link_label" class="block text-sm font-semibold text-slate-700">Link label</label>
+                        <input type="text" name="reviews_link_label" id="reviews_link_label" value="{{ old('reviews_link_label', $content['reviews_link_label'] ?? 'Read all reviews') }}" required
+                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm">
+                    </div>
                 </div>
             </div>
 
@@ -280,6 +374,137 @@
                                 class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-xs">{{ old('sectors_description', $content['sectors_description'] ?? 'From bespoke high-spec residential developments and custom extensions to structural high-rise concrete frameworks and modern modular methods, we deliver premium execution across diverse sectors.') }}</textarea>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Homepage Section Copy -->
+            <div class="space-y-6 pt-4">
+                <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider border-b border-slate-150 pb-2 flex items-center">
+                    <span class="h-2 w-2 rounded-full bg-[#36a1b3] mr-2"></span>
+                    Homepage Section Copy
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="popular_paths_label" class="block text-xs font-semibold text-slate-700">Popular paths — label</label>
+                        <input type="text" name="popular_paths_label" id="popular_paths_label" value="{{ old('popular_paths_label', $content['popular_paths_label'] ?? 'Start here') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="popular_paths_title" class="block text-xs font-semibold text-slate-700">Popular paths — title</label>
+                        <input type="text" name="popular_paths_title" id="popular_paths_title" value="{{ old('popular_paths_title', $content['popular_paths_title'] ?? 'Popular project paths') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="popular_paths_link" class="block text-xs font-semibold text-slate-700">Popular paths — link text</label>
+                        <input type="text" name="popular_paths_link" id="popular_paths_link" value="{{ old('popular_paths_link', $content['popular_paths_link'] ?? 'All services →') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="projects_subtitle" class="block text-xs font-semibold text-slate-700">Projects — subtitle</label>
+                        <input type="text" name="projects_subtitle" id="projects_subtitle" value="{{ old('projects_subtitle', $content['projects_subtitle'] ?? '') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="projects_reviews_badge" class="block text-xs font-semibold text-slate-700">Projects — trust badge</label>
+                        <input type="text" name="projects_reviews_badge" id="projects_reviews_badge" value="{{ old('projects_reviews_badge', $content['projects_reviews_badge'] ?? 'Trusted by homeowners across London & Essex') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="client_stories_label" class="block text-xs font-semibold text-slate-700">Client stories — label</label>
+                        <input type="text" name="client_stories_label" id="client_stories_label" value="{{ old('client_stories_label', $content['client_stories_label'] ?? 'Client stories') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="client_stories_title" class="block text-xs font-semibold text-slate-700">Client stories — title</label>
+                        <input type="text" name="client_stories_title" id="client_stories_title" value="{{ old('client_stories_title', $content['client_stories_title'] ?? 'Hear from our clients') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="client_stories_link" class="block text-xs font-semibold text-slate-700">Client stories — link</label>
+                        <input type="text" name="client_stories_link" id="client_stories_link" value="{{ old('client_stories_link', $content['client_stories_link'] ?? 'View full case studies') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="about_learn_more_label" class="block text-xs font-semibold text-slate-700">About band — button</label>
+                        <input type="text" name="about_learn_more_label" id="about_learn_more_label" value="{{ old('about_learn_more_label', $content['about_learn_more_label'] ?? 'Learn more about us →') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="services_title_line1" class="block text-xs font-semibold text-slate-700">What we do — title line 1</label>
+                        <input type="text" name="services_title_line1" id="services_title_line1" value="{{ old('services_title_line1', $content['services_title_line1'] ?? 'One team.') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="services_title_line2" class="block text-xs font-semibold text-slate-700">What we do — title line 2 (teal)</label>
+                        <input type="text" name="services_title_line2" id="services_title_line2" value="{{ old('services_title_line2', $content['services_title_line2'] ?? 'Every discipline.') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="services_subtitle" class="block text-xs font-semibold text-slate-700">What we do — subtitle</label>
+                        <textarea rows="2" name="services_subtitle" id="services_subtitle" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">{{ old('services_subtitle', $content['services_subtitle'] ?? 'From pre-construction through structure, interiors and external works — one accountable team across every trade.') }}</textarea>
+                    </div>
+                    <div>
+                        <label for="services_cta_prompt" class="block text-xs font-semibold text-slate-700">What we do — CTA prompt</label>
+                        <input type="text" name="services_cta_prompt" id="services_cta_prompt" value="{{ old('services_cta_prompt', $content['services_cta_prompt'] ?? 'Looking for something specific?') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="services_card_price_label" class="block text-xs font-semibold text-slate-700">Service card price label</label>
+                        <input type="text" name="services_card_price_label" id="services_card_price_label" value="{{ old('services_card_price_label', $content['services_card_price_label'] ?? 'Enquire for pricing') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <p class="mt-1 text-[10px] text-slate-400">Cards pull titles, images and descriptions from Admin → Services.</p>
+                    </div>
+                    <div>
+                        <label for="partners_title" class="block text-xs font-semibold text-slate-700">Partners — title</label>
+                        <input type="text" name="partners_title" id="partners_title" value="{{ old('partners_title', $content['partners_title'] ?? 'Our Trusted Partners') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                    <div>
+                        <label for="partners_subtitle" class="block text-xs font-semibold text-slate-700">Partners — subtitle</label>
+                        <input type="text" name="partners_subtitle" id="partners_subtitle" value="{{ old('partners_subtitle', $content['partners_subtitle'] ?? 'Authorised suppliers') }}" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+                </div>
+
+                @php
+                    $processIconOptions = ['phone','pencil','document','clipboard','building','search','check'];
+                    $defaultDesignSteps = [
+                        ['step'=>'01','title'=>'Free consultation','duration'=>'1 hour','body'=>'We listen to your brief, budget and constraints, then outline the clearest path from idea to site.','icon'=>'phone'],
+                        ['step'=>'02','title'=>'Surveys & design','duration'=>'2–4 weeks','body'=>'Measured surveys, design options and early engineering input so decisions are grounded and buildable.','icon'=>'pencil'],
+                        ['step'=>'03','title'=>'Planning & approvals','duration'=>'4–12 weeks','body'=>'We manage planning, building control and partner submissions so permissions stay on the critical path.','icon'=>'document'],
+                        ['step'=>'04','title'=>'Costing & programme','duration'=>'1–2 weeks','body'=>'Transparent budgets, procurement and a sequenced programme before any mobilisation begins.','icon'=>'clipboard'],
+                        ['step'=>'05','title'=>'Construction delivery','duration'=>'Project based','body'=>'Principal contracting with weekly reporting, quality checkpoints and accountable site leadership.','icon'=>'building'],
+                        ['step'=>'06','title'=>'Handover & aftercare','duration'=>'Ongoing','body'=>'Snag-free handover packs, warranties and a team that stays reachable after practical completion.','icon'=>'check'],
+                    ];
+                    $defaultBuildSteps = [
+                        ['step'=>'01','title'=>'Free consultation','duration'=>'1 hour','body'=>'Share your drawings and aspirations — we confirm scope, risks and whether we are the right contractor.','icon'=>'phone'],
+                        ['step'=>'02','title'=>'Drawings & scope review','duration'=>'3–5 days','body'=>'We stress-test your pack for buildability, packages and missing information before pricing.','icon'=>'search'],
+                        ['step'=>'03','title'=>'Fixed quotation','duration'=>'1–2 weeks','body'=>'A clear tender with allowances, exclusions and a realistic programme you can take to decision.','icon'=>'clipboard'],
+                        ['step'=>'04','title'=>'Pre-start & mobilisation','duration'=>'1–2 weeks','body'=>'Contracts, site logistics, temporary works and neighbour liaison so day one runs cleanly.','icon'=>'document'],
+                        ['step'=>'05','title'=>'Construction delivery','duration'=>'Project based','body'=>'Disciplined site delivery with scheduled updates, cost control and quality at every stage.','icon'=>'building'],
+                        ['step'=>'06','title'=>'Handover & aftercare','duration'=>'Ongoing','body'=>'Commissioning, certification and responsive aftercare when you need us after handover.','icon'=>'check'],
+                    ];
+                    $processDesignSteps = json_decode($content['process_design_steps'] ?? '[]', true) ?: $defaultDesignSteps;
+                    $processBuildSteps = json_decode($content['process_build_steps'] ?? '[]', true) ?: $defaultBuildSteps;
+                @endphp
+
+                <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-4">
+                    <span class="text-xs font-bold text-[#36a1b3] uppercase tracking-wide">Process Section</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" name="process_label" value="{{ old('process_label', $content['process_label'] ?? 'Our simple 6-step process') }}" required placeholder="Label" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <input type="text" name="process_title" value="{{ old('process_title', $content['process_title'] ?? 'How your project works — start to finish') }}" required placeholder="Title" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <textarea rows="2" name="process_subtitle" required placeholder="Subtitle" class="md:col-span-2 px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">{{ old('process_subtitle', $content['process_subtitle'] ?? 'Whether you need full design & build support or already have plans, we keep every stage clear and accountable.') }}</textarea>
+                        <input type="text" name="process_tab_design" value="{{ old('process_tab_design', $content['process_tab_design'] ?? 'Design & Build') }}" required placeholder="Tab: Design & Build" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <input type="text" name="process_tab_build" value="{{ old('process_tab_build', $content['process_tab_build'] ?? 'Build only') }}" required placeholder="Tab: Build only" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <input type="text" name="process_caption_design" value="{{ old('process_caption_design', $content['process_caption_design'] ?? 'Full turnkey service — concept to completion') }}" required placeholder="Caption: Design & Build" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <input type="text" name="process_caption_build" value="{{ old('process_caption_build', $content['process_caption_build'] ?? 'You bring the plans — we deliver the build') }}" required placeholder="Caption: Build only" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <input type="text" name="process_cta" value="{{ old('process_cta', $content['process_cta'] ?? 'Start your project today') }}" required placeholder="CTA button" class="md:col-span-2 px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
+
+                    @foreach(['process_design_steps' => 'Design & Build Steps', 'process_build_steps' => 'Build Only Steps'] as $field => $label)
+                        @php $steps = $field === 'process_design_steps' ? $processDesignSteps : $processBuildSteps; @endphp
+                        <div class="space-y-3 pt-2 border-t border-slate-200">
+                            <span class="text-xs font-semibold text-slate-700">{{ $label }}</span>
+                            @foreach($steps as $idx => $step)
+                                <div class="grid grid-cols-1 md:grid-cols-6 gap-2 bg-white p-3 rounded-lg border border-slate-100">
+                                    <input type="hidden" name="{{ $field }}[{{ $idx }}][step]" value="{{ $step['step'] ?? sprintf('%02d', $idx + 1) }}">
+                                    <input type="text" name="{{ $field }}[{{ $idx }}][title]" value="{{ old($field.'.'.$idx.'.title', $step['title'] ?? '') }}" required placeholder="Title" class="md:col-span-2 px-2 py-1.5 border border-slate-200 rounded text-xs">
+                                    <input type="text" name="{{ $field }}[{{ $idx }}][duration]" value="{{ old($field.'.'.$idx.'.duration', $step['duration'] ?? '') }}" required placeholder="Duration" class="px-2 py-1.5 border border-slate-200 rounded text-xs">
+                                    <select name="{{ $field }}[{{ $idx }}][icon]" class="px-2 py-1.5 border border-slate-200 rounded text-xs">
+                                        @foreach($processIconOptions as $icon)
+                                            <option value="{{ $icon }}" @selected(($step['icon'] ?? '') === $icon)>{{ $icon }}</option>
+                                        @endforeach
+                                    </select>
+                                    <textarea rows="2" name="{{ $field }}[{{ $idx }}][body]" required placeholder="Description" class="md:col-span-2 px-2 py-1.5 border border-slate-200 rounded text-xs">{{ old($field.'.'.$idx.'.body', $step['body'] ?? '') }}</textarea>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -978,8 +1203,13 @@
                     <span class="text-xs font-bold text-[#36a1b3] uppercase tracking-wide">Call To Action Button Labels</span>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label for="cta_submit_tender_label" class="block text-xs font-semibold text-slate-700">Submit Tender Button</label>
-                            <input type="text" name="cta_submit_tender_label" id="cta_submit_tender_label" value="{{ old('cta_submit_tender_label', $content['cta_submit_tender_label'] ?? 'Submit Tender Brief') }}" required
+                            <label for="cta_submit_tender_label" class="block text-xs font-semibold text-slate-700">Get Quote Button (hero)</label>
+                            <input type="text" name="cta_submit_tender_label" id="cta_submit_tender_label" value="{{ old('cta_submit_tender_label', $content['cta_submit_tender_label'] ?? 'Get Your Fixed-Price Quote') }}" required
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-xs">
+                        </div>
+                        <div>
+                            <label for="cta_book_consult_label" class="block text-xs font-semibold text-slate-700">Book Consultation Button (hero)</label>
+                            <input type="text" name="cta_book_consult_label" id="cta_book_consult_label" value="{{ old('cta_book_consult_label', $content['cta_book_consult_label'] ?? 'Book a Free Consultation') }}" required
                                 class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-xs">
                         </div>
                         <div>

@@ -10,11 +10,11 @@
     <meta property="og:url" content="https://construction360.co">
     <meta property="og:title" content="{{ $content['seo_meta_title'] ?? 'Design-led construction for London & Essex' }} | Construction 360 Ltd">
     <meta property="og:description" content="{{ $content['seo_meta_description'] ?? ($content['hero_subtitle'] ?? 'Design-led construction across London and Essex.') }}">
-    <meta property="og:image" content="{{ asset('images/hero_construction.png') }}">
+    <meta property="og:image" content="{{ asset($content['seo_og_image'] ?? $content['hero_image'] ?? 'images/hero_construction.png') }}">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="{{ $content['seo_meta_title'] ?? 'Design-led construction for London & Essex' }} | Construction 360 Ltd">
     <meta property="twitter:description" content="{{ $content['seo_meta_description'] ?? ($content['hero_subtitle'] ?? 'Design-led construction across London and Essex.') }}">
-    <meta property="twitter:image" content="{{ asset('images/hero_construction.png') }}">
+    <meta property="twitter:image" content="{{ asset($content['seo_og_image'] ?? $content['hero_image'] ?? 'images/hero_construction.png') }}">
 @endsection
 
 @section('content')
@@ -103,34 +103,22 @@
                     <div class="relative w-full overflow-hidden rounded-2xl bg-[#0f2a3a]" style="aspect-ratio: 5 / 4; min-height: 320px;">
                         <img
                             id="hero-intro-poster"
-                            src="{{ asset('images/hero_construction.png') }}"
+                            src="{{ asset($content['hero_image'] ?? 'images/hero_construction.png') }}"
                             alt="Construction site across London and Essex"
-                            class="absolute inset-0 w-full h-full object-cover"
+                            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
                         >
                         <video
                             id="hero-intro-video"
-                            class="absolute inset-0 w-full h-full object-cover hidden"
+                            class="absolute inset-0 w-full h-full object-cover"
                             muted
+                            autoplay
+                            loop
                             playsinline
-                            preload="metadata"
+                            preload="auto"
+                            poster="{{ asset($content['hero_image'] ?? 'images/hero_construction.png') }}"
                         >
-                            <source src="{{ asset('con360.mp4') }}" type="video/mp4">
+                            <source src="{{ asset($content['hero_video'] ?? 'con360.mp4') }}" type="video/mp4">
                         </video>
-
-                        <button
-                            type="button"
-                            id="hero-intro-play"
-                            class="absolute bottom-5 right-5 z-10 inline-flex items-center gap-3 rounded-xl bg-white px-3.5 py-2.5 shadow-lg hover:shadow-xl transition-shadow text-left"
-                            aria-label="Watch our intro video"
-                        >
-                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand text-white shrink-0">
-                                <svg class="h-4 w-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5.14v13.72L19 12 8 5.14z"/></svg>
-                            </span>
-                            <span>
-                                <span class="block text-[11px] font-bold uppercase tracking-[0.1em] text-[#0f2a3a]">{{ $content['hero_watch_label'] ?? 'Watch Our Intro' }}</span>
-                                <span class="block text-[11px] text-[#6b7280] mt-0.5">{{ $content['hero_watch_sub'] ?? '60 sec overview' }}</span>
-                            </span>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -139,18 +127,37 @@
 
     <script>
         (function () {
-            const playBtn = document.getElementById('hero-intro-play');
             const video = document.getElementById('hero-intro-video');
             const poster = document.getElementById('hero-intro-poster');
-            if (!playBtn || !video) return;
+            if (!video) return;
 
-            playBtn.addEventListener('click', function () {
-                if (poster) poster.classList.add('hidden');
-                playBtn.classList.add('hidden');
-                video.classList.remove('hidden');
-                video.setAttribute('controls', 'controls');
-                video.play().catch(function () {});
-            });
+            function hidePoster() {
+                if (poster) {
+                    poster.classList.add('opacity-0', 'pointer-events-none');
+                }
+            }
+
+            function showPoster() {
+                if (poster) {
+                    poster.classList.remove('opacity-0', 'pointer-events-none');
+                }
+            }
+
+            function startAutoplay() {
+                video.muted = true;
+                const attempt = video.play();
+                if (attempt && typeof attempt.then === 'function') {
+                    attempt.then(hidePoster).catch(showPoster);
+                }
+            }
+
+            video.addEventListener('playing', hidePoster);
+
+            if (video.readyState >= 2) {
+                startAutoplay();
+            } else {
+                video.addEventListener('loadeddata', startAutoplay, { once: true });
+            }
         })();
     </script>
 
@@ -200,10 +207,10 @@
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
                 <div>
-                    <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand mb-2">Start here</p>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-[#0f2a3a]">Popular project paths</h2>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand mb-2">{{ $content['popular_paths_label'] ?? 'Start here' }}</p>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#0f2a3a]">{{ $content['popular_paths_title'] ?? 'Popular project paths' }}</h2>
                 </div>
-                <a href="{{ route('services.index') }}" class="text-[12px] font-bold uppercase tracking-[0.14em] text-[#1a1a1a] hover:text-brand">All services →</a>
+                <a href="{{ route('services.index') }}" class="text-[12px] font-bold uppercase tracking-[0.14em] text-[#1a1a1a] hover:text-brand">{{ $content['popular_paths_link'] ?? 'All services →' }}</a>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
                 @php $heroCards = ($services ?? collect())->take(6); @endphp
@@ -371,7 +378,7 @@
             </p>
             <div class="pt-4">
                 <a href="{{ route('about') }}" class="inline-flex items-center gap-2 rounded-lg bg-white text-brand px-6 py-3 text-xs font-bold uppercase tracking-[0.08em] hover:bg-aqua-light transition-colors">
-                    Learn more about us →
+                    {{ $content['about_learn_more_label'] ?? 'Learn more about us →' }}
                 </a>
             </div>
         </div>
@@ -379,94 +386,6 @@
 
     {{-- How your project works --}}
     @php
-        $processDesign = [
-            [
-                'step' => '01',
-                'title' => 'Free consultation',
-                'duration' => '1 hour',
-                'body' => 'We listen to your brief, budget and constraints, then outline the clearest path from idea to site.',
-                'icon' => 'phone',
-            ],
-            [
-                'step' => '02',
-                'title' => 'Surveys & design',
-                'duration' => '2–4 weeks',
-                'body' => 'Measured surveys, design options and early engineering input so decisions are grounded and buildable.',
-                'icon' => 'pencil',
-            ],
-            [
-                'step' => '03',
-                'title' => 'Planning & approvals',
-                'duration' => '4–12 weeks',
-                'body' => 'We manage planning, building control and partner submissions so permissions stay on the critical path.',
-                'icon' => 'document',
-            ],
-            [
-                'step' => '04',
-                'title' => 'Costing & programme',
-                'duration' => '1–2 weeks',
-                'body' => 'Transparent budgets, procurement and a sequenced programme before any mobilisation begins.',
-                'icon' => 'clipboard',
-            ],
-            [
-                'step' => '05',
-                'title' => 'Construction delivery',
-                'duration' => 'Project based',
-                'body' => 'Principal contracting with weekly reporting, quality checkpoints and accountable site leadership.',
-                'icon' => 'building',
-            ],
-            [
-                'step' => '06',
-                'title' => 'Handover & aftercare',
-                'duration' => 'Ongoing',
-                'body' => 'Snag-free handover packs, warranties and a team that stays reachable after practical completion.',
-                'icon' => 'check',
-            ],
-        ];
-        $processBuild = [
-            [
-                'step' => '01',
-                'title' => 'Free consultation',
-                'duration' => '1 hour',
-                'body' => 'Share your drawings and aspirations — we confirm scope, risks and whether we are the right contractor.',
-                'icon' => 'phone',
-            ],
-            [
-                'step' => '02',
-                'title' => 'Drawings & scope review',
-                'duration' => '3–5 days',
-                'body' => 'We stress-test your pack for buildability, packages and missing information before pricing.',
-                'icon' => 'search',
-            ],
-            [
-                'step' => '03',
-                'title' => 'Fixed quotation',
-                'duration' => '1–2 weeks',
-                'body' => 'A clear tender with allowances, exclusions and a realistic programme you can take to decision.',
-                'icon' => 'clipboard',
-            ],
-            [
-                'step' => '04',
-                'title' => 'Pre-start & mobilisation',
-                'duration' => '1–2 weeks',
-                'body' => 'Contracts, site logistics, temporary works and neighbour liaison so day one runs cleanly.',
-                'icon' => 'document',
-            ],
-            [
-                'step' => '05',
-                'title' => 'Construction delivery',
-                'duration' => 'Project based',
-                'body' => 'Disciplined site delivery with scheduled updates, cost control and quality at every stage.',
-                'icon' => 'building',
-            ],
-            [
-                'step' => '06',
-                'title' => 'Handover & aftercare',
-                'duration' => 'Ongoing',
-                'body' => 'Commissioning, certification and responsive aftercare when you need us after handover.',
-                'icon' => 'check',
-            ],
-        ];
         $processIcons = [
             'phone' => '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>',
             'pencil' => '<path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>',
@@ -497,12 +416,12 @@
                     <button type="button" data-process="design" role="tab" aria-selected="true"
                         class="process-tab is-active inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[12px] font-semibold transition-all text-white bg-brand">
                         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">{!! $processIcons['pencil'] !!}</svg>
-                        Design &amp; Build
+                        {{ $content['process_tab_design'] ?? 'Design & Build' }}
                     </button>
                     <button type="button" data-process="build" role="tab" aria-selected="false"
                         class="process-tab inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[12px] font-semibold transition-all text-[#1a1a1a] bg-transparent">
                         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">{!! $processIcons['building'] !!}</svg>
-                        Build only
+                        {{ $content['process_tab_build'] ?? 'Build only' }}
                     </button>
                 </div>
                 <p id="process-caption" class="inline-flex items-center gap-1.5 text-[12px] text-[#6b7280]">
@@ -544,43 +463,6 @@
     </section>
 
     {{-- What we do --}}
-    @php
-        $whatWeDoMeta = [
-            'Pre-Construction' => [
-                'label' => 'Pre-construction',
-                'title' => 'Surveys, design & planning',
-                'from' => 'Enquire for pricing',
-                'blurb' => 'Early consultancy that de-risks the brief — surveys, design coordination and a clear route to site.',
-            ],
-            'Structural Works' => [
-                'label' => 'Structure',
-                'title' => 'Structural works & frames',
-                'from' => 'Enquire for pricing',
-                'blurb' => 'Concrete, steel, masonry and timber systems engineered for lasting performance.',
-            ],
-            'Interior Works' => [
-                'label' => 'Interiors',
-                'title' => 'Interiors & fit-out',
-                'from' => 'Enquire for pricing',
-                'blurb' => 'Precise finishes, partitions and joinery that turn shell and core into lived-in space.',
-            ],
-            'External Works' => [
-                'label' => 'External',
-                'title' => 'External works & landscape',
-                'from' => 'Enquire for pricing',
-                'blurb' => 'Hard landscaping, paving and outdoor construction that completes the setting.',
-            ],
-        ];
-        $whatWeDoCards = collect($whatWeDoMeta)->map(function ($meta, $title) use ($services) {
-            $srv = ($services ?? collect())->first(fn ($s) => $s->title === $title);
-            return array_merge($meta, [
-                'image' => $srv?->image_url,
-                'slug' => $srv ? \Illuminate\Support\Str::slug($srv->title) : null,
-                'fallback_title' => $title,
-            ]);
-        })->values();
-    @endphp
-
     <section id="services" class="bg-white py-20 lg:py-28 scroll-mt-24 border-t border-black/[0.04]">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
             <div class="text-center max-w-2xl mx-auto mb-12 lg:mb-14 space-y-4">

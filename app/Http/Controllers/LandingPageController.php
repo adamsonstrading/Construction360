@@ -47,21 +47,78 @@ class LandingPageController extends Controller
             })->filter()->values();
         }
 
-        // Sectors grid — load from DB if an admin has saved them, otherwise use defaults
-        $sectorsRaw = $content['homepage_sectors'] ?? null;
-        $sectors = $sectorsRaw ? json_decode($sectorsRaw, true) : [
-            ['icon' => 'home',                 'title' => 'Residential',          'desc' => 'Extensions, loft conversions, renovations and full new-build residential construction.'],
-            ['icon' => 'building-office',      'title' => 'Commercial',           'desc' => 'Office fit-outs, retail spaces, warehouses and bespoke commercial developments.'],
-            ['icon' => 'building-office-2',    'title' => 'Industrial',           'desc' => 'Factory units, logistics hubs and large-scale industrial construction projects.'],
-            ['icon' => 'squares-plus',         'title' => 'Mixed-Use',            'desc' => 'Integrated residential and commercial schemes delivered on time and to specification.'],
-            ['icon' => 'chevron-double-up',    'title' => 'Structural Works',     'desc' => 'Reinforced concrete, steelwork, masonry, brickwork and timber frame structures.'],
-            ['icon' => 'adjustments-horizontal','title' => 'MEP Services',        'desc' => 'Complete mechanical, electrical, plumbing, HVAC and building services solutions.'],
-            ['icon' => 'paint-brush',          'title' => 'Interior Fit-Out',     'desc' => 'Premium interior refurbishment, flooring, carpentry and decorating services.'],
-            ['icon' => 'cube',                 'title' => 'Civil Engineering',    'desc' => 'Roads, drainage, utilities, groundworks and infrastructure projects across the UK.'],
-            ['icon' => 'sparkles',             'title' => 'Specialist Services',  'desc' => 'Scaffolding, crane hire, waterproofing, concrete repairs and metal fabrication.'],
-        ];
+        // Sectors grid — load from DB (admin saves as sectors_list)
+        $sectorsRaw = $content['sectors_list'] ?? $content['homepage_sectors'] ?? null;
+        $sectors = $this->parseJsonContent($sectorsRaw, $this->defaultSectors());
 
-        return view('welcome', compact('content', 'services', 'blogs', 'projects', 'team', 'partners', 'sectors'));
+        $processDesign = $this->parseJsonContent($content['process_design_steps'] ?? null, $this->defaultProcessDesignSteps());
+        $processBuild = $this->parseJsonContent($content['process_build_steps'] ?? null, $this->defaultProcessBuildSteps());
+
+        $whatWeDoCards = $services->take(4)->map(function ($srv) use ($content) {
+            return [
+                'label' => $srv->title,
+                'title' => $srv->title,
+                'from' => $content['services_card_price_label'] ?? 'Enquire for pricing',
+                'blurb' => $srv->about ?: ($srv->description ?? ''),
+                'image' => $srv->image_url,
+                'slug' => \Illuminate\Support\Str::slug($srv->title),
+            ];
+        })->values();
+
+        return view('welcome', compact(
+            'content', 'services', 'blogs', 'projects', 'team', 'partners', 'sectors',
+            'processDesign', 'processBuild', 'whatWeDoCards'
+        ));
+    }
+
+    private function parseJsonContent(?string $raw, array $defaults): array
+    {
+        if (!$raw) {
+            return $defaults;
+        }
+
+        $decoded = json_decode($raw, true);
+
+        return is_array($decoded) && count($decoded) > 0 ? $decoded : $defaults;
+    }
+
+    private function defaultSectors(): array
+    {
+        return [
+            ['icon' => 'home', 'title' => 'Residential', 'desc' => 'Extensions, loft conversions, renovations and full new-build residential construction.'],
+            ['icon' => 'building-office', 'title' => 'Commercial', 'desc' => 'Office fit-outs, retail spaces, warehouses and bespoke commercial developments.'],
+            ['icon' => 'building-office-2', 'title' => 'Industrial', 'desc' => 'Factory units, logistics hubs and large-scale industrial construction projects.'],
+            ['icon' => 'squares-plus', 'title' => 'Mixed-Use', 'desc' => 'Integrated residential and commercial schemes delivered on time and to specification.'],
+            ['icon' => 'chevron-double-up', 'title' => 'Structural Works', 'desc' => 'Reinforced concrete, steelwork, masonry, brickwork and timber frame structures.'],
+            ['icon' => 'adjustments-horizontal', 'title' => 'MEP Services', 'desc' => 'Complete mechanical, electrical, plumbing, HVAC and building services solutions.'],
+            ['icon' => 'paint-brush', 'title' => 'Interior Fit-Out', 'desc' => 'Premium interior refurbishment, flooring, carpentry and decorating services.'],
+            ['icon' => 'cube', 'title' => 'Civil Engineering', 'desc' => 'Roads, drainage, utilities, groundworks and infrastructure projects across the UK.'],
+            ['icon' => 'sparkles', 'title' => 'Specialist Services', 'desc' => 'Scaffolding, crane hire, waterproofing, concrete repairs and metal fabrication.'],
+        ];
+    }
+
+    private function defaultProcessDesignSteps(): array
+    {
+        return [
+            ['step' => '01', 'title' => 'Free consultation', 'duration' => '1 hour', 'body' => 'We listen to your brief, budget and constraints, then outline the clearest path from idea to site.', 'icon' => 'phone'],
+            ['step' => '02', 'title' => 'Surveys & design', 'duration' => '2–4 weeks', 'body' => 'Measured surveys, design options and early engineering input so decisions are grounded and buildable.', 'icon' => 'pencil'],
+            ['step' => '03', 'title' => 'Planning & approvals', 'duration' => '4–12 weeks', 'body' => 'We manage planning, building control and partner submissions so permissions stay on the critical path.', 'icon' => 'document'],
+            ['step' => '04', 'title' => 'Costing & programme', 'duration' => '1–2 weeks', 'body' => 'Transparent budgets, procurement and a sequenced programme before any mobilisation begins.', 'icon' => 'clipboard'],
+            ['step' => '05', 'title' => 'Construction delivery', 'duration' => 'Project based', 'body' => 'Principal contracting with weekly reporting, quality checkpoints and accountable site leadership.', 'icon' => 'building'],
+            ['step' => '06', 'title' => 'Handover & aftercare', 'duration' => 'Ongoing', 'body' => 'Snag-free handover packs, warranties and a team that stays reachable after practical completion.', 'icon' => 'check'],
+        ];
+    }
+
+    private function defaultProcessBuildSteps(): array
+    {
+        return [
+            ['step' => '01', 'title' => 'Free consultation', 'duration' => '1 hour', 'body' => 'Share your drawings and aspirations — we confirm scope, risks and whether we are the right contractor.', 'icon' => 'phone'],
+            ['step' => '02', 'title' => 'Drawings & scope review', 'duration' => '3–5 days', 'body' => 'We stress-test your pack for buildability, packages and missing information before pricing.', 'icon' => 'search'],
+            ['step' => '03', 'title' => 'Fixed quotation', 'duration' => '1–2 weeks', 'body' => 'A clear tender with allowances, exclusions and a realistic programme you can take to decision.', 'icon' => 'clipboard'],
+            ['step' => '04', 'title' => 'Pre-start & mobilisation', 'duration' => '1–2 weeks', 'body' => 'Contracts, site logistics, temporary works and neighbour liaison so day one runs cleanly.', 'icon' => 'document'],
+            ['step' => '05', 'title' => 'Construction delivery', 'duration' => 'Project based', 'body' => 'Disciplined site delivery with scheduled updates, cost control and quality at every stage.', 'icon' => 'building'],
+            ['step' => '06', 'title' => 'Handover & aftercare', 'duration' => 'Ongoing', 'body' => 'Commissioning, certification and responsive aftercare when you need us after handover.', 'icon' => 'check'],
+        ];
     }
 
     /**
