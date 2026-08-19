@@ -35,7 +35,7 @@
         <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-16 lg:pb-20">
             <div class="max-w-2xl mb-10 lg:mb-12">
                 <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
-                    {{ $content['contact_page_label'] ?? 'Contact' }}
+                    {{ $content['contact_page_label'] ?? 'Contact Us' }}
                 </p>
                 <h1 class="mt-4 text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-tight text-[#0f2a3a]">
                     {{ $content['contact_page_title'] ?? 'Get in touch' }}
@@ -47,7 +47,7 @@
                 <div class="mt-5 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6b7280]">
                     <a href="{{ url('/') }}" class="hover:text-brand transition-colors">Home</a>
                     <span>•</span>
-                    <span class="text-[#0f2a3a]">Contact</span>
+                    <span class="text-[#0f2a3a]">Contact Us</span>
                 </div>
             </div>
 
@@ -162,14 +162,10 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-                            <button type="submit" class="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-brand hover:bg-brand-dark text-white px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] transition-colors shadow-sm">
+                        <div class="pt-2">
+                            <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand hover:bg-brand-dark text-white px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] transition-colors shadow-sm">
                                 Send message <span aria-hidden="true">→</span>
                             </button>
-                            <a href="tel:{{ $phone }}" class="inline-flex items-center justify-center gap-2 rounded-lg border border-black/10 bg-white text-[#1a1a1a] px-5 py-3.5 text-sm font-semibold hover:border-brand/40 transition-colors whitespace-nowrap">
-                                <svg class="h-4 w-4 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v1.5z"/></svg>
-                                {{ $phoneDisplay }}
-                            </a>
                         </div>
                     </form>
                 </div>

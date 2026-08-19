@@ -1297,7 +1297,7 @@
                             </div>
                             <div>
                                 <label for="services_page_title" class="block text-xs font-semibold text-slate-700">Hero Title</label>
-                                <input type="text" name="services_page_title" id="services_page_title" value="{{ old('services_page_title', $content['services_page_title'] ?? 'Design to Delivery') }}" required
+                                <input type="text" name="services_page_title" id="services_page_title" value="{{ old('services_page_title', $content['services_page_title'] ?? 'Design to Deliver') }}" required
                                     class="mt-1 block w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-xs">
                             </div>
                             <div class="md:col-span-2">

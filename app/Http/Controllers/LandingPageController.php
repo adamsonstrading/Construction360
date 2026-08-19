@@ -457,7 +457,7 @@ class LandingPageController extends Controller
         if ($slug === 'pre-construction' || str_contains($slug, 'pre-construction') || str_contains($slug, 'planning') || str_contains($slug, 'drawings')) {
             return [
                 'title' => 'Pre-Construction',
-                'image_url' => 'images/hero_architecture.png',
+                'image_url' => 'images/services/pre-construction.jpg',
                 'about' => 'Before ground breaking, every successful build relies on technical planning, architectural accuracy, and budget alignment. At Construction 360 Ltd, we coordinate your development\'s pre-construction phase, from bespoke architectural design and planning permissions to building regulations compliance and structural engineering. We align design intent with cost plans and site feasibility from day one to ensure your project starts smoothly.',
                 'meta_title' => 'Pre-Construction Services UK | Expert Planning & Design',
                 'meta_description' => 'Professional pre-construction services in the UK including planning, design, engineering, surveying and project consultancy for successful developments.',
@@ -661,7 +661,7 @@ class LandingPageController extends Controller
         if ($slug === 'site-preparation' || str_contains($slug, 'site-prep') || str_contains($slug, 'clearance')) {
             return [
                 'title' => 'Site Preparation',
-                'image_url' => 'images/service_support.png',
+                'image_url' => 'images/services/site-preparation.jpg',
                 'about' => 'Transforming raw land or old structures into a builder-ready site requires heavy plant expertise and absolute precision. Construction 360 Ltd handles all aspects of site preparation, including land clearance, structural demolition, internal strip outs, earthworks, and service utility installations. We execute all works under strict environmental controls to prepare your plot safely for ground breaking.',
                 'meta_title' => 'Site Preparation Services UK | Groundworks & Clearance',
                 'meta_description' => 'Professional site preparation services across the UK including site clearance, excavation, drainage, utilities and groundworks for residential and commercial projects.',
@@ -777,7 +777,7 @@ class LandingPageController extends Controller
         if ($slug === 'foundations' || str_contains($slug, 'foundation') || str_contains($slug, 'piling')) {
             return [
                 'title' => 'Foundations',
-                'image_url' => 'images/hero_construction.png',
+                'image_url' => 'images/services/foundations.jpg',
                 'about' => 'A build is only as secure as the ground it rests upon. Our foundations team delivers heavy sub-structure concrete engineering for sites with complex structural requirements or challenging ground conditions. We specialize in deep piling systems, reinforced concrete slab foundations, ground beam installation, and waterproof basement constructions built to transfer structural loads safely.',
                 'meta_title' => 'Foundations Services UK | Foundation Construction Experts',
                 'meta_description' => 'Discover comprehensive foundation services in the UK, including piling, concrete foundations and basement construction for residential, commercial and industrial developments.',
@@ -851,7 +851,7 @@ class LandingPageController extends Controller
         if ($slug === 'structural-works' || str_contains($slug, 'structural') || str_contains($slug, 'bricklaying')) {
             return [
                 'title' => 'Structural Works',
-                'image_url' => 'images/about_engineering.png',
+                'image_url' => 'images/services/structural-works.png',
                 'about' => 'Erecting the load-bearing frame of a building demands qualified trades and meticulous coordination. Construction 360 Ltd delivers full-scale structural framing and masonry solutions. We construct reinforced concrete (RC) frames, erect multi-storey structural steel portals, lay facing brickwork, and assemble structural timber frame systems built to withstand the test of time.',
                 'meta_title' => 'Structural Works UK | Expert Construction Services',
                 'meta_description' => 'Professional structural works services across the UK including concrete, steel, masonry, brickwork and timber frame construction for residential and commercial projects.',
@@ -960,7 +960,7 @@ class LandingPageController extends Controller
         if ($slug === 'roofing-and-building-envelope' || str_contains($slug, 'roofing') || str_contains($slug, 'envelope')) {
             return [
                 'title' => 'Roofing & Building Envelope',
-                'image_url' => 'images/blog_glazing.png',
+                'image_url' => 'images/services/roofing.jpg',
                 'about' => 'A property\'s external shell must provide total weather protection while maintaining high thermal performance. Our roofing and building envelope division specializes in flat and pitched roof installations, using modern slate, clay tiles, GRP fiberglass, and EPDM rubber membranes. We also coordinate insulation upgrades and structural roof timbers to secure a fully watertight, energy-efficient building envelope.',
                 'meta_title' => 'Roofing & Building Envelope UK | Expert Roofing Services',
                 'meta_description' => 'Professional roofing and building envelope services across the UK, including roof installation, repairs, replacements and weatherproof building solutions.',
@@ -1041,7 +1041,7 @@ class LandingPageController extends Controller
         if ($slug === 'mep-services' || str_contains($slug, 'mep') || str_contains($slug, 'electrical') || str_contains($slug, 'plumbing') || str_contains($slug, 'hvac')) {
             return [
                 'title' => 'MEP Services',
-                'image_url' => 'images/blog_integrated.png',
+                'image_url' => 'images/services/mep.jpg',
                 'about' => 'Mechanical, Electrical, and Plumbing (MEP) systems are the vital services that bring buildings to life. At Construction 360 Ltd, our registered NICEIC electrical contractors and Gas Safe engineers deliver integrated MEP solutions. From full property rewires and smart home installations to central heating, HVAC ventilation, and renewable solar systems, we ensure complete compliance with BS regulations.',
                 'meta_title' => 'MEP Services UK | Mechanical, Electrical & Plumbing Experts',
                 'meta_description' => 'Comprehensive MEP services across the UK, including HVAC, air conditioning, ventilation and ductwork solutions for residential and commercial projects.',
@@ -1227,7 +1227,7 @@ class LandingPageController extends Controller
         if ($slug === 'interior-works' || str_contains($slug, 'interior') || str_contains($slug, 'fit-out') || str_contains($slug, 'refurbishment')) {
             return [
                 'title' => 'Interior Works',
-                'image_url' => 'images/blog_fitout.png',
+                'image_url' => 'images/services/interior.jpg',
                 'about' => 'Executing high-spec interior finishes requires meticulous attention to detail and coordinated trades. Our interior division delivers premium residential refurbishments and commercial fit-outs. We handle drylining, drywall partitioning, Level-5 plaster skimming, suspended ceilings, flooring, bespoke carpentry, and complete kitchen and bathroom installations.',
                 'meta_title' => 'Interior Works UK | Professional Fit Out & Finishing Services',
                 'meta_description' => 'Expert interior works across the UK, including refurbishment, fit outs, flooring, tiling, carpentry, decorating and bespoke interior finishing solutions.',
@@ -1392,7 +1392,7 @@ class LandingPageController extends Controller
         if ($slug === 'external-works' || str_contains($slug, 'external') || str_contains($slug, 'landscaping') || str_contains($slug, 'driveway')) {
             return [
                 'title' => 'External Works',
-                'image_url' => 'images/about_overlap.png',
+                'image_url' => 'images/services/external.jpg',
                 'about' => 'The exterior layout of a property determines its curb appeal and complements its architectural design. Construction 360 Ltd delivers external works, including resin driveways, paved block layouts, natural stone patios, composite decking, boundaries, and full garden landscaping. We design and construct hard-wearing, permeable systems built to last.',
                 'meta_title' => 'External Works UK | Landscaping & Outdoor Construction',
                 'meta_description' => 'Professional external works services across the UK, including landscaping, paving, driveways, fencing, decking and outdoor construction for residential and commercial projects.',
@@ -1522,7 +1522,7 @@ class LandingPageController extends Controller
         if ($slug === 'civil-engineering' || str_contains($slug, 'civil-eng') || str_contains($slug, 'road')) {
             return [
                 'title' => 'Civil Engineering',
-                'image_url' => 'images/hero_construction.png',
+                'image_url' => 'images/services/civil.jpg',
                 'about' => 'Infrastructure projects require deep excavation capabilities, structural validation, and highway authority coordination. Our civil engineering team executes road construction, car park surfacing, oil bypass interceptors, utility trenching, sewer main installations, and bridge structures. We coordinate Section 278 and Section 104 adoptions directly on your behalf.',
                 'meta_title' => 'Civil Engineering Services UK | Infrastructure & Groundworks Experts',
                 'meta_description' => 'Professional civil engineering services across the UK, delivering roads, drainage, utilities, bridges and infrastructure solutions for residential, commercial and public sector projects.',
@@ -1610,7 +1610,7 @@ class LandingPageController extends Controller
         if ($slug === 'specialist-services' || str_contains($slug, 'specialist') || str_contains($slug, 'drilling')) {
             return [
                 'title' => 'Specialist Services',
-                'image_url' => 'images/service_facilities.png',
+                'image_url' => 'images/services/specialist.jpg',
                 'about' => 'High-spec builds often require specialized trade operations that demand certified tooling, rigger licensing, or advanced fabrication. Construction 360 Ltd provides scaffold assemblies, mobile crane lifts, core diamond drilling, concrete repairs, on-site structural welding, and custom metal fabrication.',
                 'meta_title' => 'Specialist Construction Services UK | Expert Building Solutions',
                 'meta_description' => 'Professional specialist construction services across the UK, including scaffolding, crane hire, waterproofing, concrete repairs, welding and metal fabrication.',
@@ -1712,7 +1712,7 @@ class LandingPageController extends Controller
         if ($slug === 'renovation-and-property-improvements' || str_contains($slug, 'renovation') || str_contains($slug, 'extension') || str_contains($slug, 'loft')) {
             return [
                 'title' => 'Renovation & Property Improvements',
-                'image_url' => 'images/service_residential.png',
+                'image_url' => 'images/services/renovation.jpg',
                 'about' => 'Reconfiguring or extending existing buildings requires a developer capable of handling structural complexities. Our renovation and extensions division delivers premium home extensions, loft conversions, structural wall removals with steel insertions, garage conversions, and listed building restorations across Essex and London.',
                 'meta_title' => 'Renovation & Property Improvements UK | Expert Building Solutions',
                 'meta_description' => 'Professional renovation and property improvement services across the UK, including extensions, conversions, refurbishments and structural alterations for homes and businesses.',

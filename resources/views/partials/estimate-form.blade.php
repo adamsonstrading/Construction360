@@ -2,6 +2,11 @@
     @php
     $selectClass = 'est-select w-full rounded-xl border border-black/10 bg-[#fafafa] pl-4 pr-10 py-3.5 text-sm text-[#1a1a1a] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand focus:bg-white appearance-none cursor-pointer transition-colors';
     $inputClass = 'w-full rounded-xl border border-black/10 bg-[#fafafa] px-4 py-3.5 text-sm text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand focus:bg-white transition-colors';
+    $estEmail = $content['header_email'] ?? 'info@construction360.co';
+    $estPhone = $content['header_phone'] ?? '+442039309629';
+    $estPhoneDisplay = $content['header_phone_display'] ?? ($content['header_phone'] ?? '0203 930 9629');
+    $estAddress = $content['contact_address'] ?? '73 Thrale Road, London, England, SW16 1NU';
+    $estMapUrl = $content['contact_map_url'] ?? 'https://www.google.com/maps/search/?api=1&query=73+Thrale+Road,+London,+England,+SW16+1NU';
 @endphp
 
 <section id="enquiry" class="relative bg-white py-16 lg:py-24 scroll-mt-24 overflow-hidden">
@@ -20,10 +25,41 @@
                         {{ $content['estimate_subtitle'] ?? "Tell us about your project and we'll be in touch shortly to discuss your requirements and suggest your first steps." }}
                     </p>
                 </div>
-                <ul class="space-y-3 text-sm text-white/85">
-                    <li class="flex items-start gap-2"><span class="text-[#f0d778] mt-0.5">✓</span> Fixed-price clarity</li>
-                    <li class="flex items-start gap-2"><span class="text-[#f0d778] mt-0.5">✓</span> Response within 24 hours</li>
-                    <li class="flex items-start gap-2"><span class="text-[#f0d778] mt-0.5">✓</span> Design & build support</li>
+                <ul class="space-y-4 text-sm text-white/90">
+                    <li>
+                        <a href="mailto:{{ $estEmail }}" class="group flex items-start gap-3 hover:text-white transition-colors">
+                            <span class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f0d778]">
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                            </span>
+                            <span>
+                                <span class="block text-[10px] uppercase tracking-[0.16em] text-white/60 mb-0.5">Email</span>
+                                {{ $estEmail }}
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tel:{{ $estPhone }}" class="group flex items-start gap-3 hover:text-white transition-colors">
+                            <span class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f0d778]">
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v1.5z"/></svg>
+                            </span>
+                            <span>
+                                <span class="block text-[10px] uppercase tracking-[0.16em] text-white/60 mb-0.5">Phone</span>
+                                {{ $estPhoneDisplay }}
+                                <span class="block text-xs text-white/55 mt-0.5">Mon–Fri, 9am–6pm</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ $estMapUrl }}" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3 hover:text-white transition-colors">
+                            <span class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f0d778]">
+                                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                            </span>
+                            <span>
+                                <span class="block text-[10px] uppercase tracking-[0.16em] text-white/60 mb-0.5">Office</span>
+                                {{ $estAddress }}
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="lg:col-span-8 bg-[#f8fbfc] p-6 sm:p-8 lg:p-10">
@@ -161,14 +197,10 @@
                 </div>
             @endif
 
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-                <button type="submit" class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-brand hover:bg-brand-dark text-white px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] transition-colors shadow-sm">
+            <div class="pt-2">
+                <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand hover:bg-brand-dark text-white px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] transition-colors shadow-sm">
                     Send <span aria-hidden="true">→</span>
                 </button>
-                <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}" class="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white text-[#1a1a1a] px-5 py-3.5 text-sm font-semibold hover:border-brand/40 transition-colors whitespace-nowrap">
-                    <svg class="h-4 w-4 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v1.5z"/></svg>
-                    {{ $content['header_phone_display'] ?? ($content['header_phone'] ?? '0203 930 9629') }}
-                </a>
             </div>
         </form>
             </div>

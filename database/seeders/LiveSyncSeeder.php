@@ -652,7 +652,7 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
             [
                 'id' => '62',
                 'key' => 'services_page_title',
-                'value' => 'Design to Delivery',
+                'value' => 'Design to Deliver',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -969,9 +969,9 @@ By maintaining a paperless, digital tendering registry, we reduce project admini
         DB::table('team_members')->insert([
             [
                 'id' => 1,
-                'name' => 'William Vance',
-                'role' => 'Managing Director & Senior Coordinator',
-                'description' => 'William oversees all site planning operations and client relationships, enforcing our paperless, digital-first correspondence log standards.',
+                'name' => 'Jey Yogendra',
+                'role' => 'Director',
+                'description' => "Jeyakanthan Yogendra is a highly experienced construction professional with more than 20 years of experience managing and delivering complex projects across the UK with a BSc (Hons) in Civil Engineering and a Postgraduate Diploma in Structural Engineering, he brings strong technical expertise and practical leadership to every project.\n\nHis experience covers a wide range of construction disciplines including reinforced concrete structures, post-tensioned slabs, groundworks, basements, top-down construction, bridges, tunnels, access shafts and landscaping.\n\nJeyakanthan is experienced in overseeing projects from initial tender and planning through to completion, with particular expertise in design coordination, programme management, cost control, health and safety, and quality assurance. His hands-on approach and focus on efficiency help ensure projects are delivered safely, on schedule, to a high standard and within budget.",
                 'accreditations' => 'CSCS Black Card, RICS Affiliate',
                 'display_order' => 1,
                 'created_at' => now(),

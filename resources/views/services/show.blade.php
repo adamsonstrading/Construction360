@@ -67,11 +67,11 @@
                 </div>
 
                 <div class="lg:col-span-6">
-                    <div class="relative overflow-hidden rounded-2xl border border-black/5 bg-[#0f2a3a] shadow-[0_20px_50px_-24px_rgba(15,42,58,0.35)]">
+                    <div class="rounded-xl overflow-hidden bg-[#ece8e1] shadow-[0_20px_44px_-28px_rgba(15,42,58,0.55)]">
                         <img
                             src="{{ asset($details['image_url']) }}"
                             alt="{{ $details['title'] }}"
-                            class="w-full h-auto max-h-[480px] object-cover"
+                            style="display:block;width:100%;height:340px;object-fit:cover;object-position:center;"
                         >
                     </div>
                 </div>

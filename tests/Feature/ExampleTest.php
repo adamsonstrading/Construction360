@@ -275,7 +275,7 @@ class ExampleTest extends TestCase
         $response = $this->get('/services');
         $response->assertStatus(200);
         $response->assertSee('Designing & Planning');
-        $response->assertSee('Design to Delivery');
+        $response->assertSee('Design to Deliver');
 
         // 3. Access service details
         $response = $this->get('/services/designing-planning');

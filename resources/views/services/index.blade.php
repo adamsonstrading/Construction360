@@ -22,7 +22,7 @@
                     {{ $content['services_page_label'] ?? 'Services' }}
                 </p>
                 <h1 class="mt-4 text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-tight text-[#0f2a3a]">
-                    {{ $content['services_page_title'] ?? 'Design to delivery' }}
+                    {{ $content['services_page_title'] ?? 'Design to Deliver' }}
                 </h1>
                 <div class="mt-5 h-[3px] w-14 bg-brand"></div>
                 <p class="mt-5 text-base sm:text-[15px] text-[#5b6770] leading-relaxed max-w-2xl">
@@ -39,24 +39,24 @@
 
     {{-- Services list --}}
     <section class="bg-white py-16 lg:py-24">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 space-y-20 lg:space-y-28">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col gap-20 lg:gap-28">
             @foreach($services as $index => $srv)
                 @php
                     $slug = \Illuminate\Support\Str::slug($srv->title);
                     $imageUrl = asset($srv->image_url);
                 @endphp
-                <article class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center {{ $index % 2 !== 0 ? 'lg:[&>*:first-child]:order-2' : '' }}">
-                    <div class="relative overflow-hidden rounded-2xl border border-black/5 bg-[#0f2a3a] group">
-                        <a href="{{ route('services.show', $slug) }}" class="block">
+                <article class="relative z-0 flex flex-col lg:flex-row lg:items-start gap-10 lg:gap-16 xl:gap-20 {{ $index % 2 !== 0 ? 'lg:flex-row-reverse' : '' }}">
+                    <div class="w-full lg:w-1/2 shrink-0">
+                        <a href="{{ route('services.show', $slug) }}" class="block rounded-xl overflow-hidden bg-[#ece8e1] shadow-[0_20px_44px_-28px_rgba(15,42,58,0.55)]">
                             <img
                                 src="{{ $imageUrl }}"
                                 alt="{{ $srv->title }}"
-                                class="w-full h-[280px] sm:h-[360px] lg:h-[400px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                                style="display:block;width:100%;height:340px;object-fit:cover;object-position:center;"
                             >
                         </a>
                     </div>
 
-                    <div class="space-y-5">
+                    <div class="w-full lg:w-1/2 space-y-5">
                         <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
                             Service {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
                         </p>

@@ -214,7 +214,7 @@
     </div>
 
                     <a href="{{ route('projects.index') }}" class="nav-link transition-colors">Projects</a>
-                    <a href="{{ route('contact.index') }}" class="nav-link transition-colors">Contact</a>
+                    <a href="{{ route('contact.index') }}" class="nav-link transition-colors">Contact Us</a>
 
                     <div class="nav-dropdown">
                         <button type="button" class="nav-link inline-flex items-center transition-colors bg-transparent border-0 cursor-pointer p-0 font-sans">
@@ -231,17 +231,21 @@
             </div>
             </nav>
 
-                <div class="hidden lg:flex items-center gap-2.5 shrink-0">
-                    <a href="{{ !empty($content['social_whatsapp']) ? $content['social_whatsapp'] : 'https://wa.me/447500896792' }}" target="_blank" aria-label="WhatsApp" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-sm hover:brightness-95 transition">
-                        <svg class="h-[18px] w-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 11.957.01c3.178 0 6.165 1.237 8.411 3.487 2.247 2.25 3.481 5.24 3.479 8.423-.004 6.549-5.341 11.888-11.9 11.888-2.006 0-3.971-.51-5.714-1.485L0 24zm6.549-3.82c1.684.997 3.518 1.523 5.4 1.527h.005c5.485 0 9.948-4.603 9.95-10.158 0-2.692-1.049-5.223-2.955-7.13C17.098 2.513 14.562 1.46 11.87 1.46h-.003C6.381 1.46 1.921 6.062 1.92 11.619c0 1.986.518 3.927 1.503 5.632l-.988 3.606 3.671-.977zm11.01-6.196c-.302-.15-1.786-.88-2.062-.98-.276-.1-.478-.15-.679.15-.2.3-.777.98-.952 1.18-.176.2-.352.23-.654.08-.302-.15-1.276-.47-2.43-1.5-1.258-1.12-1.806-1.57-1.98-1.87-.174-.3-.02-.46.13-.61.134-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.025-.53-.075-.15-.68-1.66-.93-2.27-.244-.59-.49-.51-.67-.52-.18-.01-.39-.01-.6-.01-.2 0-.53.07-.81.38-.28.3-.106 1.04-.106 2.54 0 1.5 1.09 2.94 1.24 3.14.15.2 2.14 3.27 5.18 4.58.72.31 1.28.5 1.72.64.73.23 1.4.2 1.92.12.58-.09 1.8-.74 2.05-1.45.25-.71.25-1.32.17-1.45-.07-.12-.27-.2-.57-.35z"/></svg>
-                    </a>
-                    <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}" aria-label="Call" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#111111] text-white shadow-sm hover:bg-[#333] transition">
-                        <svg class="h-[18px] w-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v1.5z"/></svg>
-                    </a>
+                <div class="hidden lg:flex items-center gap-4 shrink-0">
+                    <div class="flex items-center gap-4">
+                        <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}" class="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#1a1a1a] hover:text-brand transition-colors whitespace-nowrap">
+                            <svg class="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+                            {{ $content['header_phone_display'] ?? ($content['header_phone'] ?? '0203 930 9629') }}
+                        </a>
+                        <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#1a1a1a] hover:text-brand transition-colors whitespace-nowrap">
+                            <svg class="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                            {{ $content['header_email'] ?? 'info@construction360.co' }}
+                        </a>
+                    </div>
                     <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.06em] text-white bg-[#111111] shadow-sm hover:bg-[#333] transition-colors">
                         Get a Quote
-                </a>
-            </div>
+                    </a>
+                </div>
 
                 <button id="menu-toggle" type="button" class="menu-toggle-btn xl:hidden p-2 focus:outline-none" aria-label="Open menu">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -287,17 +291,21 @@
             </div>
             <a href="{{ url('/?scroll=sectors') }}" class="block px-3 py-2.5 text-sm font-medium text-[#1a1a1a] rounded-lg hover:bg-stone" data-scroll="sectors">Sectors</a>
             <a href="{{ route('projects.index') }}" class="block px-3 py-2.5 text-sm font-medium text-[#1a1a1a] rounded-lg hover:bg-stone">Projects</a>
-            <a href="{{ route('contact.index') }}" class="block px-3 py-2.5 text-sm font-medium text-[#1a1a1a] rounded-lg hover:bg-stone">Contact</a>
+            <a href="{{ route('contact.index') }}" class="block px-3 py-2.5 text-sm font-medium text-[#1a1a1a] rounded-lg hover:bg-stone">Contact Us</a>
             <a href="{{ route('blog.index') }}" class="block px-3 py-2.5 text-sm font-medium text-[#1a1a1a] rounded-lg hover:bg-stone">Insights</a>
             <a href="{{ route('tendering') }}" class="block px-3 py-2.5 text-sm font-medium text-[#1a1a1a] rounded-lg hover:bg-stone">Tendering standard</a>
-            <div class="pt-3 mt-2 border-t border-black/8 flex items-center gap-2.5 px-1">
-                <a href="{{ !empty($content['social_whatsapp']) ? $content['social_whatsapp'] : 'https://wa.me/447500896792' }}" target="_blank" aria-label="WhatsApp" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white">
-                    <svg class="h-[18px] w-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 11.957.01c3.178 0 6.165 1.237 8.411 3.487 2.247 2.25 3.481 5.24 3.479 8.423-.004 6.549-5.341 11.888-11.9 11.888-2.006 0-3.971-.51-5.714-1.485L0 24zm6.549-3.82c1.684.997 3.518 1.523 5.4 1.527h.005c5.485 0 9.948-4.603 9.95-10.158 0-2.692-1.049-5.223-2.955-7.13C17.098 2.513 14.562 1.46 11.87 1.46h-.003C6.381 1.46 1.921 6.062 1.92 11.619c0 1.986.518 3.927 1.503 5.632l-.988 3.606 3.671-.977zm11.01-6.196c-.302-.15-1.786-.88-2.062-.98-.276-.1-.478-.15-.679.15-.2.3-.777.98-.952 1.18-.176.2-.352.23-.654.08-.302-.15-1.276-.47-2.43-1.5-1.258-1.12-1.806-1.57-1.98-1.87-.174-.3-.02-.46.13-.61.134-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.025-.53-.075-.15-.68-1.66-.93-2.27-.244-.59-.49-.51-.67-.52-.18-.01-.39-.01-.6-.01-.2 0-.53.07-.81.38-.28.3-.106 1.04-.106 2.54 0 1.5 1.09 2.94 1.24 3.14.15.2 2.14 3.27 5.18 4.58.72.31 1.28.5 1.72.64.73.23 1.4.2 1.92.12.58-.09 1.8-.74 2.05-1.45.25-.71.25-1.32.17-1.45-.07-.12-.27-.2-.57-.35z"/></svg>
-                </a>
-                <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}" aria-label="Call" class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#111111] text-white">
-                    <svg class="h-[18px] w-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v1.5z"/></svg>
-                </a>
-                <a href="#" onclick="openTenderModal(); return false;" class="flex-1 text-center py-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.06em] text-white bg-[#111111]">
+            <div class="pt-3 mt-2 border-t border-black/8 space-y-3 px-1">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}" class="inline-flex items-center gap-1.5 text-sm font-bold text-[#1a1a1a] hover:text-brand transition-colors">
+                        <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+                        {{ $content['header_phone_display'] ?? ($content['header_phone'] ?? '0203 930 9629') }}
+                    </a>
+                    <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="inline-flex items-center gap-1.5 text-sm font-bold text-[#1a1a1a] hover:text-brand transition-colors">
+                        <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                        {{ $content['header_email'] ?? 'info@construction360.co' }}
+                    </a>
+                </div>
+                <a href="#" onclick="openTenderModal(); return false;" class="block w-full text-center py-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.06em] text-white bg-[#111111]">
                     Get a Quote
                 </a>
             </div>
@@ -320,7 +328,7 @@
 
                 <div class="lg:col-span-4 grid grid-cols-2 gap-x-6 gap-y-3">
                     <a href="{{ route('about') }}" class="text-sm text-white/65 hover:text-white transition-colors py-1">About Us</a>
-                    <a href="{{ route('contact.index') }}" class="text-sm text-white/65 hover:text-white transition-colors py-1">Contact</a>
+                    <a href="{{ route('contact.index') }}" class="text-sm text-white/65 hover:text-white transition-colors py-1">Contact Us</a>
                     <a href="{{ route('services.index') }}" class="text-sm text-white/65 hover:text-white transition-colors py-1">Our Services</a>
                     <a href="{{ route('projects.index') }}" class="text-sm text-white/65 hover:text-white transition-colors py-1">Projects</a>
                     <a href="{{ route('tendering') }}" class="text-sm text-white/65 hover:text-white transition-colors py-1">Tendering Standard</a>
@@ -391,19 +399,42 @@
                                 </p>
                             </div>
 
-                            <ul class="space-y-3 text-sm text-white/85">
-                                <li class="flex items-start gap-2.5"><span class="text-[#f0d778] mt-0.5">✓</span> Fixed-price clarity</li>
-                                <li class="flex items-start gap-2.5"><span class="text-[#f0d778] mt-0.5">✓</span> Response within 24 hours</li>
-                                <li class="flex items-start gap-2.5"><span class="text-[#f0d778] mt-0.5">✓</span> Design &amp; build support</li>
+                            <ul class="mt-auto space-y-4 text-sm text-white/90">
+                                <li>
+                                    <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="group flex items-start gap-3 hover:text-white transition-colors">
+                                        <span class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f0d778]">
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                                        </span>
+                                        <span>
+                                            <span class="block text-[10px] uppercase tracking-[0.16em] text-white/60 mb-0.5">Email</span>
+                                            {{ $content['header_email'] ?? 'info@construction360.co' }}
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}" class="group flex items-start gap-3 hover:text-white transition-colors">
+                                        <span class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f0d778]">
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v1.5z"/></svg>
+                                        </span>
+                                        <span>
+                                            <span class="block text-[10px] uppercase tracking-[0.16em] text-white/60 mb-0.5">Phone</span>
+                                            {{ $content['header_phone_display'] ?? ($content['header_phone'] ?? '0203 930 9629') }}
+                                            <span class="block text-xs text-white/55 mt-0.5">Mon–Fri, 9am–6pm</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ $content['contact_map_url'] ?? 'https://www.google.com/maps/search/?api=1&query=73+Thrale+Road,+London,+England,+SW16+1NU' }}" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3 hover:text-white transition-colors">
+                                        <span class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f0d778]">
+                                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                                        </span>
+                                        <span>
+                                            <span class="block text-[10px] uppercase tracking-[0.16em] text-white/60 mb-0.5">Office</span>
+                                            {{ $content['contact_address'] ?? '73 Thrale Road, London, England, SW16 1NU' }}
+                                        </span>
+                                    </a>
+                                </li>
                             </ul>
-
-                            <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}"
-                               class="mt-auto inline-flex items-center gap-2.5 text-sm font-semibold text-white hover:text-white/90 transition-colors">
-                                <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-[#f0d778]">
-                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v1.5z"/></svg>
-                                </span>
-                                {{ $content['header_phone_display'] ?? ($content['header_phone'] ?? '0203 930 9629') }}
-                            </a>
                         </div>
 
                         {{-- Form panel --}}
