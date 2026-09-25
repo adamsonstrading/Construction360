@@ -58,6 +58,19 @@
                         </a>
                     </div>
 
+                    {{-- Trustpilot Reviews Widget --}}
+                    <!-- TrustBox script -->
+                    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+                    <!-- End TrustBox script -->
+
+                    <!-- TrustBox widget - Review Collector -->
+                    <div class="mt-6 min-h-[52px] max-w-md sm:max-w-lg">
+                        <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6ab6685619df7f5c27ff7f3c" data-style-height="52px" data-style-width="100%" data-token="ded9966f-53d2-4ab7-9714-462df63db37a">
+                            <a href="https://www.trustpilot.com/review/construction360.co" target="_blank" rel="noopener">Trustpilot</a>
+                        </div>
+                    </div>
+                    <!-- End TrustBox widget -->
+
                     @php
                         $heroStats = [
                             [
