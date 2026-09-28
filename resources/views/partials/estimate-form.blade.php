@@ -191,6 +191,14 @@
                 <span id="est-file-label" class="text-sm text-[#9ca3af]">No files chosen</span>
             </div>
 
+            {{-- Google reCAPTCHA v2 --}}
+            <div class="pt-2 overflow-x-auto">
+                <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key', '6Lexo9MtAAAAAAwLn9Kg8xhfze4U4_qYot1786CJ') }}"></div>
+                @error('g-recaptcha-response')
+                    <p class="mt-1.5 text-xs font-semibold text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+
             @if($errors->any())
                 <div class="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
                     {{ $errors->first() }}

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactQuery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class ContactController extends Controller
 {
@@ -12,6 +14,45 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        // Verify Google reCAPTCHA
+        $recaptchaSecret = config('services.recaptcha.secret_key');
+        if (!empty($recaptchaSecret)) {
+            $recaptchaToken = $request->input('g-recaptcha-response');
+            if (empty($recaptchaToken)) {
+                $errorMsg = 'Please verify that you are not a robot.';
+                if ($request->wantsJson()) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => $errorMsg,
+                        'errors' => ['g-recaptcha-response' => [$errorMsg]],
+                    ], 422);
+                }
+                return redirect()->back()->withErrors(['g-recaptcha-response' => $errorMsg])->withInput();
+            }
+
+            try {
+                $verifyResponse = Http::asForm()->timeout(5)->post('https://www.google.com/recaptcha/api/siteverify', [
+                    'secret' => $recaptchaSecret,
+                    'response' => $recaptchaToken,
+                    'remoteip' => $request->ip(),
+                ]);
+
+                if (!$verifyResponse->successful() || !$verifyResponse->json('success')) {
+                    $errorMsg = 'reCAPTCHA verification failed. Please try again.';
+                    if ($request->wantsJson()) {
+                        return response()->json([
+                            'success' => false,
+                            'message' => $errorMsg,
+                            'errors' => ['g-recaptcha-response' => [$errorMsg]],
+                        ], 422);
+                    }
+                    return redirect()->back()->withErrors(['g-recaptcha-response' => $errorMsg])->withInput();
+                }
+            } catch (\Throwable $e) {
+                Log::warning('reCAPTCHA verification error: ' . $e->getMessage());
+            }
+        }
+
         $validated = $request->validate([
             'name' => 'nullable|string|max:255',
             'first_name' => 'nullable|string|max:120',

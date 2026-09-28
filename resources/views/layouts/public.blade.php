@@ -45,6 +45,9 @@
     <!-- Vite CSS & JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
+    <!-- Google reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
     <style>
         body {
             font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -466,6 +469,14 @@
                                     <label for="modal-message" class="block text-[10px] font-bold uppercase tracking-widest text-[#6b7280] mb-2">Project details</label>
                                     <textarea name="message" id="modal-message" rows="4" required placeholder="Location, scope and timeline"
                                         class="w-full rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors resize-none"></textarea>
+                                </div>
+
+                                {{-- Google reCAPTCHA v2 --}}
+                                <div class="pt-1 overflow-x-auto">
+                                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key', '6Lexo9MtAAAAAAwLn9Kg8xhfze4U4_qYot1786CJ') }}"></div>
+                                    @error('g-recaptcha-response')
+                                        <p class="mt-1.5 text-xs font-semibold text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div class="pt-1">
