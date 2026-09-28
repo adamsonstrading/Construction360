@@ -50,15 +50,19 @@ class SitemapController extends Controller
         // Project pages
         $projects = Project::all();
         foreach ($projects as $project) {
-            $projectLastmod = $project->updated_at ? $project->updated_at->tz('UTC')->toAtomString() : $now;
-            $urls[] = ['loc' => route('projects.show', $project->slug), 'lastmod' => $projectLastmod, 'changefreq' => 'monthly', 'priority' => '0.7'];
+            if (!empty($project->slug)) {
+                $projectLastmod = $project->updated_at ? $project->updated_at->tz('UTC')->toAtomString() : $now;
+                $urls[] = ['loc' => route('projects.show', $project->slug), 'lastmod' => $projectLastmod, 'changefreq' => 'monthly', 'priority' => '0.7'];
+            }
         }
 
         // Blog posts
         $posts = Blog::where('published_at', '<=', now())->get();
         foreach ($posts as $post) {
-            $postLastmod = $post->updated_at ? $post->updated_at->tz('UTC')->toAtomString() : $now;
-            $urls[] = ['loc' => route('blog.show', $post->slug), 'lastmod' => $postLastmod, 'changefreq' => 'monthly', 'priority' => '0.7'];
+            if (!empty($post->slug)) {
+                $postLastmod = $post->updated_at ? $post->updated_at->tz('UTC')->toAtomString() : $now;
+                $urls[] = ['loc' => route('blog.show', $post->slug), 'lastmod' => $postLastmod, 'changefreq' => 'monthly', 'priority' => '0.7'];
+            }
         }
 
         return response()->view('sitemap', compact('urls'))->header('Content-Type', 'text/xml');
