@@ -152,14 +152,12 @@
                                       class="{{ $inputClass }} resize-y">{{ old('message') }}</textarea>
                         </div>
 
-                        <div class="border border-black/10 rounded-xl p-3.5 bg-white flex items-center max-w-sm">
-                            <div class="flex items-center gap-3">
-                                <input type="checkbox" required id="turnstile-check"
-                                       class="h-5 w-5 rounded border-black/20 text-brand focus:ring-brand focus:ring-offset-0 cursor-pointer">
-                                <label for="turnstile-check" class="text-[11px] font-semibold text-[#5b6770] cursor-pointer select-none">
-                                    Verify you are human
-                                </label>
-                            </div>
+                        {{-- Google reCAPTCHA v2 --}}
+                        <div class="pt-1 overflow-x-auto">
+                            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key', '6Lexo9MtAAAAAAwLn9Kg8xhfze4U4_qYot1786CJ') }}"></div>
+                            @error('g-recaptcha-response')
+                                <p class="mt-1.5 text-xs font-semibold text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <div class="pt-2">
