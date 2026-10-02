@@ -115,4 +115,16 @@ return [
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Enquiry Notification Recipient
+    |--------------------------------------------------------------------------
+    |
+    | The email address that receives notifications whenever a new enquiry or
+    | quote request is submitted from the website forms.
+    |
+    */
+
+    'enquiry_recipient' => env('MAIL_ENQUIRY_RECIPIENT', env('MAIL_FROM_ADDRESS', 'info@construction360.co')),
+
 ];

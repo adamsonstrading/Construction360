@@ -381,13 +381,13 @@
     {{-- 4. About statement --}}
     <section id="about" class="relative bg-brand py-20 lg:py-28 scroll-mt-24 text-white">
         <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-6">
-            <span class="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/80">{{ $content['about_label'] ?? 'Who we are' }}</span>
+            <span class="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/80">{{ $content['who_we_are_label'] ?? ($content['about_label'] ?? 'Who we are') }}</span>
             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-snug text-white">
-                {{ $content['about_heading'] ?? 'We craft buildings people love to live and work in' }}
+                {{ $content['who_we_are_heading'] ?? ($content['about_heading'] ?? 'We craft buildings people love to live and work in') }}
             </h2>
             <div class="mx-auto w-14 h-[3px] bg-white"></div>
             <p class="text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl mx-auto">
-                {{ $content['about_mission'] ?? 'To guide clients from brief to completion with joined-up design, engineering and construction management that protects quality, budget and programme.' }}
+                {{ $content['who_we_are_text'] ?? ($content['about_mission'] ?? 'To guide clients from brief to completion with joined-up design, engineering and construction management that protects quality, budget and programme.') }}
             </p>
             <div class="pt-4">
                 <a href="{{ route('about') }}" class="inline-flex items-center gap-2 rounded-lg bg-white text-brand px-6 py-3 text-xs font-bold uppercase tracking-[0.08em] hover:bg-aqua-light transition-colors">

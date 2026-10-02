@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EnquiryNotification;
 use App\Models\ContactQuery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -126,6 +128,30 @@ class ContactController extends Controller
             'message' => $fullMessage,
             'status' => 'new',
         ]);
+
+        // Send enquiry notification email
+        try {
+            $recipient = config('mail.enquiry_recipient', 'info@construction360.co');
+            Mail::to($recipient)->send(new EnquiryNotification([
+                'name' => $name,
+                'email' => $validated['email'],
+                'phone' => $validated['phone'] ?? null,
+                'subject' => $subject,
+                'service' => $validated['service'] ?? null,
+                'start_when' => $validated['start_when'] ?? null,
+                'budget' => $validated['budget'] ?? null,
+                'call_day' => $validated['call_day'] ?? null,
+                'call_time' => $validated['call_time'] ?? null,
+                'message' => $validated['message'],
+                'attachments' => $storedFiles,
+                'submitted_at' => now()->format('d M Y, H:i (e)'),
+            ]));
+        } catch (\Throwable $e) {
+            Log::error('Failed to send enquiry notification email: ' . $e->getMessage(), [
+                'recipient' => $recipient ?? 'unknown',
+                'exception' => $e,
+            ]);
+        }
 
         $message = 'Thank you for your enquiry. Our team will review your project details and contact you shortly.';
 

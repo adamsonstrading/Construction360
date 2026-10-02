@@ -91,3 +91,50 @@ Route::get('/clear-cache', function () {
     \Illuminate\Support\Facades\Artisan::call('cache:clear');
     return 'All Laravel caches (routes, config, views, cache) cleared successfully!';
 });
+
+// SMTP Test Route — visit /test-smtp to verify email configuration
+Route::get('/test-smtp', function () {
+    $recipient = env('MAIL_ENQUIRY_RECIPIENT', env('MAIL_FROM_ADDRESS'));
+    $from      = env('MAIL_FROM_ADDRESS');
+    $fromName  = env('MAIL_FROM_NAME', 'Construction 360');
+    $host      = env('MAIL_HOST');
+    $port      = env('MAIL_PORT');
+    $username  = env('MAIL_USERNAME');
+
+    try {
+        \Illuminate\Support\Facades\Mail::raw(
+            "✅ SMTP test email from Construction 360.\n\n"
+            . "Sent at: " . now()->toDateTimeString() . "\n"
+            . "Host: {$host}:{$port}\n"
+            . "Username: {$username}",
+            function ($message) use ($recipient, $from, $fromName) {
+                $message->to($recipient)
+                        ->from($from, $fromName)
+                        ->subject('✅ SMTP Test — Construction 360');
+            }
+        );
+
+        return response(
+            "<h2 style='font-family:sans-serif;color:green;'>✅ SMTP Test Passed!</h2>"
+            . "<p style='font-family:sans-serif;'>Test email successfully sent to <strong>{$recipient}</strong>.</p>"
+            . "<ul style='font-family:sans-serif;'>"
+            . "<li><strong>Host:</strong> {$host}:{$port}</li>"
+            . "<li><strong>Username:</strong> {$username}</li>"
+            . "<li><strong>From:</strong> {$fromName} &lt;{$from}&gt;</li>"
+            . "</ul>",
+            200
+        )->header('Content-Type', 'text/html');
+
+    } catch (\Exception $e) {
+        return response(
+            "<h2 style='font-family:sans-serif;color:red;'>❌ SMTP Test Failed</h2>"
+            . "<p style='font-family:sans-serif;'><strong>Error:</strong> " . htmlspecialchars($e->getMessage()) . "</p>"
+            . "<ul style='font-family:sans-serif;'>"
+            . "<li><strong>Host:</strong> {$host}:{$port}</li>"
+            . "<li><strong>Username:</strong> {$username}</li>"
+            . "<li><strong>Recipient:</strong> {$recipient}</li>"
+            . "</ul>",
+            500
+        )->header('Content-Type', 'text/html');
+    }
+});
