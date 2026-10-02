@@ -508,103 +508,108 @@
                 </div>
             </div>
 
-            <!-- About Us Group -->
-            <div class="space-y-4 pt-4">
+            <!-- About Us & Who We Are Group -->
+            <div class="space-y-6 pt-4">
                 <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider border-b border-slate-150 pb-2 flex items-center">
                     <span class="h-2 w-2 rounded-full bg-[#36a1b3] mr-2"></span>
-                    About Us Page & Philosophy
+                    About Us & Who We Are Configuration
                 </h4>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- 1. ABOUT US SECTION CARD -->
+                <div class="bg-slate-50 p-5 border border-slate-200 rounded-xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span class="text-xs font-bold text-[#36a1b3] uppercase tracking-wide">1. About Us Section (Top Hero on About Us Page)</span>
+                        <span class="text-[11px] text-slate-400 font-normal">Controls top section of /about-us</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="about_page_label" class="block text-xs font-semibold text-slate-700">About Us Eyebrow / Label</label>
+                            <input type="text" name="about_page_label" id="about_page_label" value="{{ old('about_page_label', $content['about_page_label'] ?? 'About Us') }}"
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] text-xs">
+                        </div>
+                        <div>
+                            <label for="about_page_title" class="block text-xs font-semibold text-slate-700">About Us Page Title (H1)</label>
+                            <input type="text" name="about_page_title" id="about_page_title" value="{{ old('about_page_title', $content['about_page_title'] ?? 'About Us') }}"
+                                class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] text-xs">
+                        </div>
+                    </div>
+
                     <div>
-                        <label for="about_page_label" class="block text-sm font-semibold text-slate-700">About Page Eyebrow</label>
-                        <input type="text" name="about_page_label" id="about_page_label" value="{{ old('about_page_label', $content['about_page_label'] ?? 'About Us') }}"
-                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
+                        <label for="about_page_subtitle" class="block text-xs font-semibold text-slate-700">About Us Main Description / Paragraph</label>
+                        <textarea rows="4" name="about_page_subtitle" id="about_page_subtitle"
+                            class="mt-1 block w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] text-xs"
+                            placeholder="Enter the main About Us introduction text here...">{{ old('about_page_subtitle', $content['about_page_subtitle'] ?? 'Construction 360 Limited is a London-based construction and project support company providing a complete 360° service across the construction lifecycle. From initial planning and design through to engineering, approvals, procurement, construction and project delivery, we bring the key services together under one roof.') }}</textarea>
+                        <p class="mt-1 text-[11px] text-slate-400">This text appears directly under the "ABOUT US" title on the /about-us page.</p>
                     </div>
+                </div>
+
+                <!-- 2. WHO WE ARE SECTION CARD -->
+                <div class="bg-slate-50 p-5 border border-slate-200 rounded-xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span class="text-xs font-bold text-[#36a1b3] uppercase tracking-wide">2. Who We Are Section (Teal Banner)</span>
+                        <span class="text-[11px] text-slate-400 font-normal">Controls teal section on Homepage & About Page</span>
+                    </div>
+
                     <div>
-                        <label for="about_label" class="block text-sm font-semibold text-slate-700">Who We Are Label</label>
-                        <input type="text" name="about_label" id="about_label" value="{{ old('about_label', $content['about_label'] ?? 'Who we are') }}"
-                            class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
+                        <label for="who_we_are_label" class="block text-xs font-semibold text-slate-700">Who We Are Eyebrow / Label</label>
+                        <input type="text" name="who_we_are_label" id="who_we_are_label" value="{{ old('who_we_are_label', $content['who_we_are_label'] ?? ($content['about_label'] ?? 'Who we are')) }}"
+                            class="mt-1 block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] text-xs">
+                        <input type="hidden" name="about_label" value="{{ old('who_we_are_label', $content['who_we_are_label'] ?? ($content['about_label'] ?? 'Who we are')) }}">
+                    </div>
+
+                    <div>
+                        <label for="who_we_are_heading" class="block text-xs font-semibold text-slate-700">Who We Are Main Heading</label>
+                        <textarea rows="2" name="who_we_are_heading" id="who_we_are_heading"
+                            class="mt-1 block w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] text-xs"
+                            placeholder="e.g. We craft buildings people love to live and work in">{{ old('who_we_are_heading', $content['who_we_are_heading'] ?? ($content['about_heading'] ?? 'We craft buildings people love to live and work in')) }}</textarea>
+                        <input type="hidden" name="about_heading" value="{{ old('who_we_are_heading', $content['who_we_are_heading'] ?? ($content['about_heading'] ?? 'We craft buildings people love to live and work in')) }}">
+                        <p class="mt-1 text-[11px] text-slate-400">Main heading displayed in the teal band section.</p>
+                    </div>
+
+                    <div>
+                        <label for="who_we_are_text" class="block text-xs font-semibold text-slate-700">Who We Are Statement / Subtitle Text</label>
+                        <textarea rows="3" name="who_we_are_text" id="who_we_are_text"
+                            class="mt-1 block w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] text-xs"
+                            placeholder="e.g. To guide clients from brief to completion...">{{ old('who_we_are_text', $content['who_we_are_text'] ?? ($content['about_mission'] ?? 'To guide clients from brief to completion with joined-up design, engineering and construction management that protects quality, budget and programme.')) }}</textarea>
                     </div>
                 </div>
 
-                <div>
-                    <label for="about_page_title" class="block text-sm font-semibold text-slate-700">About Page Title (H1)</label>
-                    <input type="text" name="about_page_title" id="about_page_title" value="{{ old('about_page_title', $content['about_page_title'] ?? 'About Us') }}"
-                        class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
-                </div>
-
-                <div>
-                    <label for="about_page_subtitle" class="block text-sm font-semibold text-slate-700">About Page Intro</label>
-                    <textarea rows="2" name="about_page_subtitle" id="about_page_subtitle"
-                        class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">{{ old('about_page_subtitle', $content['about_page_subtitle'] ?? '') }}</textarea>
-                </div>
-
-                <div>
-                    <label for="about_heading" class="block text-sm font-semibold text-slate-700">About Statement Heading</label>
-                    <div class="mt-1.5">
-                        <textarea rows="2" name="about_heading" id="about_heading" required
-                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">{{ old('about_heading', $content['about_heading'] ?? '') }}</textarea>
+                <!-- 3. VISION, MISSION, VALUES & QUOTE -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-2">
+                        <label for="about_vision" class="block text-xs font-semibold text-slate-700">Our Vision</label>
+                        <textarea rows="3" name="about_vision" id="about_vision" required
+                            class="block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">{{ old('about_vision', $content['about_vision'] ?? '') }}</textarea>
                     </div>
-                    @error('about_heading')
-                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
-                    @enderror
-                </div>
 
-                <div>
-                    <label for="about_vision" class="block text-sm font-semibold text-slate-700">Our Vision</label>
-                    <div class="mt-1.5">
-                        <textarea rows="2" name="about_vision" id="about_vision" required
-                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">{{ old('about_vision', $content['about_vision'] ?? '') }}</textarea>
-                    </div>
-                    @error('about_vision')
-                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <label for="about_mission" class="block text-sm font-semibold text-slate-700">Our Mission</label>
-                    <div class="mt-1.5">
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-2">
+                        <label for="about_mission" class="block text-xs font-semibold text-slate-700">Our Mission</label>
                         <textarea rows="3" name="about_mission" id="about_mission" required
-                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">{{ old('about_mission', $content['about_mission'] ?? '') }}</textarea>
+                            class="block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">{{ old('about_mission', $content['about_mission'] ?? '') }}</textarea>
                     </div>
-                    @error('about_mission')
-                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
-                    @enderror
+
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-2">
+                        <label for="about_values" class="block text-xs font-semibold text-slate-700">Our Values</label>
+                        <textarea rows="3" name="about_values" id="about_values" required
+                            class="block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">{{ old('about_values', $content['about_values'] ?? '') }}</textarea>
+                    </div>
                 </div>
 
-                <div>
-                    <label for="about_values" class="block text-sm font-semibold text-slate-700">Our Values</label>
-                    <div class="mt-1.5">
-                        <textarea rows="2" name="about_values" id="about_values" required
-                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">{{ old('about_values', $content['about_values'] ?? '') }}</textarea>
-                    </div>
-                    @error('about_values')
-                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <label for="about_quote" class="block text-sm font-semibold text-slate-700">Founder's Quote</label>
-                    <div class="mt-1.5">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-2">
+                        <label for="about_quote" class="block text-xs font-semibold text-slate-700">Founder's Quote</label>
                         <textarea rows="2" name="about_quote" id="about_quote" required
-                            class="block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">{{ old('about_quote', $content['about_quote'] ?? '') }}</textarea>
+                            class="block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">{{ old('about_quote', $content['about_quote'] ?? '') }}</textarea>
                     </div>
-                    @error('about_quote')
-                        <p class="mt-1 text-xs text-red-650">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <label for="about_quote_author" class="block text-sm font-semibold text-slate-700">Quote Attribution</label>
-                    <input type="text" name="about_quote_author" id="about_quote_author" value="{{ old('about_quote_author', $content['about_quote_author'] ?? '') }}" placeholder="e.g. Founder, Construction 360"
-                        class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
-                </div>
-
-                <div>
-                    <label for="leadership_section_title" class="block text-sm font-semibold text-slate-700">Leadership Section Title</label>
-                    <input type="text" name="leadership_section_title" id="leadership_section_title" value="{{ old('leadership_section_title', $content['leadership_section_title'] ?? 'Our Leadership Team') }}"
-                        class="mt-1.5 block w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-sm">
+                    <div class="bg-slate-50 p-4 border border-slate-200 rounded-xl space-y-2">
+                        <label for="about_quote_author" class="block text-xs font-semibold text-slate-700">Quote Attribution</label>
+                        <input type="text" name="about_quote_author" id="about_quote_author" value="{{ old('about_quote_author', $content['about_quote_author'] ?? '') }}" placeholder="e.g. Founder, Construction 360"
+                            class="block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                        <label for="leadership_section_title" class="block text-xs font-semibold text-slate-700 pt-1">Leadership Section Title</label>
+                        <input type="text" name="leadership_section_title" id="leadership_section_title" value="{{ old('leadership_section_title', $content['leadership_section_title'] ?? 'Our Leadership Team') }}"
+                            class="block w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs">
+                    </div>
                 </div>
             </div>
 

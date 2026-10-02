@@ -19,14 +19,14 @@
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10" style="padding-top: 7.5rem; padding-bottom: 3.5rem;">
             <div class="max-w-3xl">
                 <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
-                    {{ $content['about_page_label'] ?? ($content['about_label'] ?? 'About Us') }}
+                    {{ $content['about_page_label'] ?? 'About Us' }}
                 </p>
                 <h1 class="mt-4 text-4xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight leading-tight text-[#0f2a3a]">
                     {{ $content['about_page_title'] ?? 'About Us' }}
                 </h1>
                 <div class="mt-5 h-[3px] w-14 bg-brand"></div>
                 <p class="mt-5 text-base sm:text-[15px] text-[#5b6770] leading-relaxed max-w-2xl">
-                    {{ $content['about_page_subtitle'] ?? ($content['about_heading'] ?? 'We craft buildings people love to live and work in.') }}
+                    {{ $content['about_page_subtitle'] ?? 'Construction 360 Limited is a London-based construction and project support company providing a complete 360° service across the construction lifecycle. From initial planning and design through to engineering, approvals, procurement, construction and project delivery, we bring the key services together under one roof.' }}
                 </p>
                 <div class="mt-6 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6b7280]">
                     <a href="{{ url('/') }}" class="hover:text-brand transition-colors">Home</a>
@@ -37,18 +37,18 @@
         </div>
     </section>
 
-    {{-- Mission statement band --}}
+    {{-- Who We Are band --}}
     <section class="relative bg-brand text-white py-16 lg:py-20">
         <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-5">
             <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/80">
-                {{ $content['about_label'] ?? 'Who we are' }}
+                {{ $content['who_we_are_label'] ?? ($content['about_label'] ?? 'Who we are') }}
             </p>
             <h2 class="text-3xl sm:text-4xl font-bold leading-snug text-white">
-                {{ $content['about_heading'] ?? 'We craft buildings people love to live and work in' }}
+                {{ $content['who_we_are_heading'] ?? ($content['about_heading'] ?? 'We craft buildings people love to live and work in') }}
             </h2>
             <div class="mx-auto w-14 h-[3px] bg-white"></div>
             <p class="text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl mx-auto">
-                {{ $content['about_mission'] ?? 'To guide clients from brief to completion with joined-up design, engineering and construction management that protects quality, budget and programme.' }}
+                {{ $content['who_we_are_text'] ?? ($content['about_mission'] ?? 'To guide clients from brief to completion with joined-up design, engineering and construction management that protects quality, budget and programme.') }}
             </p>
         </div>
     </section>
