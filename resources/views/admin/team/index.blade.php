@@ -58,7 +58,7 @@
                             $words = explode(' ', trim($item->name));
                             $initials = strtoupper(substr($words[0] ?? 'T', 0, 1) . (isset($words[1]) ? substr($words[1], 0, 1) : ''));
                         @endphp
-                        <tr class="hover:bg-slate-50 transition-colors">
+                        <tr class="hover:bg-slate-50 transition-colors cursor-pointer group" data-href="{{ route('admin.team.edit', $item->id) }}" title="Click to edit {{ $item->name }}">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="h-10 w-10 rounded-full overflow-hidden border border-slate-200 bg-slate-950 flex items-center justify-center text-teal-400 font-bold shadow-inner">
                                     @if($item->image_url)
@@ -70,7 +70,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="max-w-xs sm:max-w-sm">
-                                    <span class="text-sm font-semibold text-slate-900 block truncate">{{ $item->name }}</span>
+                                    <span class="text-sm font-semibold text-slate-900 group-hover:text-[#36a1b3] transition-colors block truncate">{{ $item->name }}</span>
                                     <span class="text-xs text-[#36a1b3] font-bold block mt-0.5">{{ $item->role }}</span>
                                 </div>
                             </td>
@@ -90,10 +90,10 @@
                                 <a href="{{ route('admin.team.edit', $item->id) }}" class="text-[#36a1b3] hover:text-[#2c8493] transition-colors">
                                     Edit
                                 </a>
-                                <form action="{{ route('admin.team.destroy', $item->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to remove this team member?');">
+                                <form action="{{ route('admin.team.destroy', $item->id) }}" method="POST" class="inline-block delete-team-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-650 hover:text-red-800 transition-colors focus:outline-none">
+                                    <button type="button" class="text-red-650 hover:text-red-800 transition-colors focus:outline-none delete-team-btn" data-name="{{ $item->name }}">
                                         Remove
                                     </button>
                                 </form>
@@ -105,4 +105,49 @@
         @endif
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Clickable table rows to open edit screen
+    document.querySelectorAll('tr[data-href]').forEach(function(row) {
+        row.addEventListener('click', function(e) {
+            if (e.target.closest('a, button, form, input')) {
+                return;
+            }
+            if (e.ctrlKey || e.metaKey || e.button === 1) {
+                window.open(this.dataset.href, '_blank');
+            } else {
+                window.location.href = this.dataset.href;
+            }
+        });
+    });
+
+    // SweetAlert2 Delete Confirmation
+    document.querySelectorAll('.delete-team-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const form = this.closest('form');
+            const name = this.dataset.name || 'this team member';
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    title: 'Remove Team Member?',
+                    text: 'Are you sure you want to remove "' + name + '"? This action cannot be undone.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc2626',
+                    cancelButtonColor: '#94a3b8',
+                    confirmButtonText: 'Yes, Remove',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            } else if (confirm('Are you sure you want to remove "' + name + '"?')) {
+                form.submit();
+            }
+        });
+    });
+});
+</script>
 @endsection

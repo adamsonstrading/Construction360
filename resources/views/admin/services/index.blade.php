@@ -44,9 +44,9 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-slate-200">
                     @foreach($services as $item)
-                        <tr class="hover:bg-slate-50 transition-colors">
+                        <tr class="hover:bg-slate-50 transition-colors cursor-pointer group" data-href="{{ route('admin.services.edit', $item->id) }}" title="Click to edit {{ $item->title }}">
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="h-10 w-10 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center text-[#36a1b3]">
+                                <div class="h-10 w-10 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center text-[#36a1b3] group-hover:bg-[#36a1b3] group-hover:text-white transition-colors">
                                     @if($item->icon === 'academic-cap')
                                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.263 15.918a9.008 9.008 0 0015.474 0M12 2.25l-9.75 4.5 9.75 4.5 9.75-4.5-9.75-4.5zM3 13.5v3.375c0 .621.504 1.125 1.125 1.125h15.75c.621 0 1.125-.504 1.125-1.125V13.5" /></svg>
                                     @elseif($item->icon === 'building-office-2')
@@ -62,7 +62,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="text-sm font-semibold text-slate-900">{{ $item->title }}</span>
+                                <span class="text-sm font-semibold text-slate-900 group-hover:text-[#36a1b3] transition-colors">{{ $item->title }}</span>
                                 <span class="text-xs text-slate-400 block mt-0.5">ID: #{{ $item->id }}</span>
                             </td>
                             <td class="px-6 py-4">
@@ -77,10 +77,10 @@
                                 <a href="{{ route('admin.services.edit', $item->id) }}" class="text-[#36a1b3] hover:text-[#2c8493] transition-colors">
                                     Edit
                                 </a>
-                                <form action="{{ route('admin.services.destroy', $item->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to permanently delete this service?');">
+                                <form action="{{ route('admin.services.destroy', $item->id) }}" method="POST" class="inline-block delete-service-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-650 hover:text-red-800 transition-colors focus:outline-none">
+                                    <button type="button" class="text-red-650 hover:text-red-800 transition-colors focus:outline-none delete-service-btn" data-title="{{ $item->title }}">
                                         Delete
                                     </button>
                                 </form>
@@ -92,4 +92,50 @@
         @endif
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Clickable table rows to open edit screen
+    document.querySelectorAll('tr[data-href]').forEach(function(row) {
+        row.addEventListener('click', function(e) {
+            // Do not navigate if user clicked inside a link, button, or form
+            if (e.target.closest('a, button, form, input')) {
+                return;
+            }
+            if (e.ctrlKey || e.metaKey || e.button === 1) {
+                window.open(this.dataset.href, '_blank');
+            } else {
+                window.location.href = this.dataset.href;
+            }
+        });
+    });
+
+    // SweetAlert2 Delete Confirmation
+    document.querySelectorAll('.delete-service-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const form = this.closest('form');
+            const title = this.dataset.title || 'this service';
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    title: 'Delete Service?',
+                    text: 'Are you sure you want to delete "' + title + '"? This action cannot be undone.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc2626',
+                    cancelButtonColor: '#94a3b8',
+                    confirmButtonText: 'Yes, Delete',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            } else if (confirm('Are you sure you want to delete "' + title + '"?')) {
+                form.submit();
+            }
+        });
+    });
+});
+</script>
 @endsection
