@@ -287,60 +287,88 @@ document.addEventListener('DOMContentLoaded', function () {
             const cards = container.querySelectorAll('.sub-service-card');
             const newIndex = cards.length;
             
-            const cardHtml = `
-                <div class="bg-slate-50/50 p-4 border border-slate-200 rounded-xl space-y-3 relative sub-service-card">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold text-slate-400 card-index-label">Sub-Service #\${newIndex + 1}</span>
-                        <button type="button" class="text-red-500 hover:text-red-700 text-xs font-semibold remove-sub-service-btn">Remove</button>
+            const card = document.createElement('div');
+            card.className = 'bg-slate-50/50 p-4 border border-slate-200 rounded-xl space-y-3 relative sub-service-card';
+            card.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-400 card-index-label">Sub-Service #${newIndex + 1}</span>
+                    <button type="button" class="text-red-500 hover:text-red-700 text-xs font-semibold remove-sub-service-btn">Remove</button>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600">Title</label>
+                    <input type="text" name="services_offered[${newIndex}][title]" value="" placeholder="e.g. Architectural Drawings"
+                        class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-xs sub-service-title-input">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600">Description</label>
+                    <textarea rows="2" name="services_offered[${newIndex}][desc]" placeholder="Brief description of this specialist service..."
+                        class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-xs sub-service-desc-input"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600">Scope Deliverables (comma-separated)</label>
+                    <input type="text" name="services_offered[${newIndex}][deliverables]" value=""
+                        placeholder="e.g. Regulatory & Code Compliance, Quality Assured Craftsmanship"
+                        class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-xs sub-service-deliverables-input">
+                </div>
+                <div class="mt-2 pt-2 border-t border-slate-200/60 space-y-2">
+                    <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">SEO Settings (Optional)</span>
+                    <div>
+                        <label class="block text-[10px] font-semibold text-slate-500">Meta Title</label>
+                        <input type="text" name="services_offered[${newIndex}][meta_title]" value=""
+                            placeholder="e.g. Architectural Drawings | Construction 360"
+                            class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#36a1b3] text-[11px] sub-service-meta-title-input">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-600">Title</label>
-                        <input type="text" name="services_offered[\${newIndex}][title]" value=""
-                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-xs sub-service-title-input">
+                        <label class="block text-[10px] font-semibold text-slate-500">Meta Description</label>
+                        <textarea rows="1" name="services_offered[${newIndex}][meta_description]" placeholder="Short description for search results..."
+                            class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#36a1b3] text-[11px] sub-service-meta-desc-input"></textarea>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-600">Description</label>
-                        <textarea rows="2" name="services_offered[\${newIndex}][desc]"
-                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-xs sub-service-desc-input"></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600">Scope Deliverables (comma-separated)</label>
-                        <input type="text" name="services_offered[\${newIndex}][deliverables]" value=""
-                            placeholder="e.g. Regulatory & Code Compliance, Quality Assured Craftsmanship"
-                            class="block w-full mt-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#36a1b3] focus:border-transparent text-xs sub-service-deliverables-input">
-                    </div>
-                    <div class="mt-2 pt-2 border-t border-slate-200/60 space-y-2">
-                        <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">SEO Settings (Optional)</span>
-                        <div>
-                            <label class="block text-[10px] font-semibold text-slate-500">Meta Title</label>
-                            <input type="text" name="services_offered[\${newIndex}][meta_title]" value=""
-                                placeholder="e.g. Architectural Drawings | Construction 360"
-                                class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#36a1b3] text-[11px] sub-service-meta-title-input">
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-semibold text-slate-500">Meta Description</label>
-                            <textarea rows="1" name="services_offered[\${newIndex}][meta_description]" placeholder="Short description for search results..."
-                                class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#36a1b3] text-[11px] sub-service-meta-desc-input"></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-semibold text-slate-500">Meta Keywords</label>
-                            <input type="text" name="services_offered[\${newIndex}][meta_keywords]" value=""
-                                placeholder="e.g. drawings, planning applications"
-                                class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#36a1b3] text-[11px] sub-service-meta-keywords-input">
-                        </div>
+                        <label class="block text-[10px] font-semibold text-slate-500">Meta Keywords</label>
+                        <input type="text" name="services_offered[${newIndex}][meta_keywords]" value=""
+                            placeholder="e.g. drawings, planning applications"
+                            class="block w-full mt-0.5 px-2 py-1 bg-white border border-slate-200 rounded text-slate-900 focus:outline-none focus:ring-1 focus:ring-[#36a1b3] text-[11px] sub-service-meta-keywords-input">
                     </div>
                 </div>
             `;
-            container.insertAdjacentHTML('beforeend', cardHtml);
+            container.appendChild(card);
             reindexSubServices();
+            const titleInput = card.querySelector('.sub-service-title-input');
+            if (titleInput) titleInput.focus();
         });
         
         container.addEventListener('click', function (e) {
-            if (e.target.classList.contains('remove-sub-service-btn')) {
-                const card = e.target.closest('.sub-service-card');
+            const removeBtn = e.target.closest('.remove-sub-service-btn');
+            if (removeBtn) {
+                const card = removeBtn.closest('.sub-service-card');
                 if (card) {
-                    card.remove();
-                    reindexSubServices();
+                    const titleInput = card.querySelector('.sub-service-title-input');
+                    const titleVal = titleInput ? titleInput.value.trim() : '';
+                    const titleText = titleVal ? `"${titleVal}"` : 'this sub-service';
+
+                    if (typeof Swal !== 'undefined') {
+                        Swal.fire({
+                            title: 'Remove Sub-Service?',
+                            text: `Are you sure you want to remove ${titleText}?`,
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#ef4444',
+                            cancelButtonColor: '#64748b',
+                            confirmButtonText: 'Yes, remove it',
+                            cancelButtonText: 'Cancel',
+                            reverseButtons: true,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                card.remove();
+                                reindexSubServices();
+                            }
+                        });
+                    } else {
+                        if (confirm(`Are you sure you want to remove ${titleText}?`)) {
+                            card.remove();
+                            reindexSubServices();
+                        }
+                    }
                 }
             }
         });
@@ -349,25 +377,25 @@ document.addEventListener('DOMContentLoaded', function () {
             const cards = container.querySelectorAll('.sub-service-card');
             cards.forEach((card, idx) => {
                 const label = card.querySelector('.card-index-label');
-                if (label) label.textContent = `Sub-Service #\${idx + 1}`;
+                if (label) label.textContent = 'Sub-Service #' + (idx + 1);
                 
                 const titleInput = card.querySelector('.sub-service-title-input');
-                if (titleInput) titleInput.name = `services_offered[\${idx}][title]`;
+                if (titleInput) titleInput.name = 'services_offered[' + idx + '][title]';
                 
                 const descTextarea = card.querySelector('.sub-service-desc-input');
-                if (descTextarea) descTextarea.name = `services_offered[\${idx}][desc]`;
+                if (descTextarea) descTextarea.name = 'services_offered[' + idx + '][desc]';
                 
                 const deliverablesInput = card.querySelector('.sub-service-deliverables-input');
-                if (deliverablesInput) deliverablesInput.name = `services_offered[\${idx}][deliverables]`;
+                if (deliverablesInput) deliverablesInput.name = 'services_offered[' + idx + '][deliverables]';
                 
                 const metaTitleInput = card.querySelector('.sub-service-meta-title-input');
-                if (metaTitleInput) metaTitleInput.name = `services_offered[\${idx}][meta_title]`;
+                if (metaTitleInput) metaTitleInput.name = 'services_offered[' + idx + '][meta_title]';
                 
                 const metaDescInput = card.querySelector('.sub-service-meta-desc-input');
-                if (metaDescInput) metaDescInput.name = `services_offered[\${idx}][meta_description]`;
+                if (metaDescInput) metaDescInput.name = 'services_offered[' + idx + '][meta_description]';
                 
                 const metaKeywordsInput = card.querySelector('.sub-service-meta-keywords-input');
-                if (metaKeywordsInput) metaKeywordsInput.name = `services_offered[\${idx}][meta_keywords]`;
+                if (metaKeywordsInput) metaKeywordsInput.name = 'services_offered[' + idx + '][meta_keywords]';
             });
         }
     }

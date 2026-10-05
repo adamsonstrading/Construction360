@@ -146,8 +146,8 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="relative">
                     <label for="est-call-day" class="sr-only">Best day to call</label>
-                    <select name="call_day" id="est-call-day" required class="{{ $selectClass }}">
-                        <option value="" disabled {{ old('call_day') ? '' : 'selected' }}>Best day to call *</option>
+                    <select name="call_day" id="est-call-day" class="{{ $selectClass }}">
+                        <option value="" disabled {{ old('call_day') ? '' : 'selected' }}>Best day to call</option>
                         <option value="Monday" @selected(old('call_day') === 'Monday')>Monday</option>
                         <option value="Tuesday" @selected(old('call_day') === 'Tuesday')>Tuesday</option>
                         <option value="Wednesday" @selected(old('call_day') === 'Wednesday')>Wednesday</option>
@@ -161,8 +161,8 @@
                 </div>
                 <div class="relative">
                     <label for="est-call-time" class="sr-only">Best time to call</label>
-                    <select name="call_time" id="est-call-time" required class="{{ $selectClass }}">
-                        <option value="" disabled {{ old('call_time') ? '' : 'selected' }}>Best time to call *</option>
+                    <select name="call_time" id="est-call-time" class="{{ $selectClass }}">
+                        <option value="" disabled {{ old('call_time') ? '' : 'selected' }}>Best time to call</option>
                         <option value="Morning (9–12)" @selected(old('call_time') === 'Morning (9–12)')>Morning (9–12)</option>
                         <option value="Afternoon (12–5)" @selected(old('call_time') === 'Afternoon (12–5)')>Afternoon (12–5)</option>
                         <option value="Evening (5–7)" @selected(old('call_time') === 'Evening (5–7)')>Evening (5–7)</option>

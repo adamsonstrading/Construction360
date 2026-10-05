@@ -126,5 +126,35 @@ class EnquiryMailTest extends TestCase
                    count($data['attachments']) === 1;
         });
     }
+
+    /**
+     * Test submitting enquiry without call_day and call_time succeeds.
+     */
+    public function test_estimate_enquiry_without_call_day_and_time_succeeds(): void
+    {
+        Mail::fake();
+        config(['services.recaptcha.secret_key' => null]);
+
+        $response = $this->post('/contact', [
+            'first_name' => 'James',
+            'last_name' => 'Taylor',
+            'email' => 'james.taylor@example.com',
+            'phone' => '+44 7700 900456',
+            'service' => 'Renovation',
+            'start_when' => 'ASAP',
+            'budget' => '£50k–£150k',
+            'message' => 'Complete home renovation enquiry.',
+        ]);
+
+        $response->assertSessionHasNoErrors();
+
+        Mail::assertSent(EnquiryNotification::class, function ($mail) {
+            $data = $mail->enquiry;
+            return $data['name'] === 'James Taylor' &&
+                   $data['email'] === 'james.taylor@example.com' &&
+                   empty($data['call_day']) &&
+                   empty($data['call_time']);
+        });
+    }
 }
 
