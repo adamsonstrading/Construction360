@@ -250,36 +250,35 @@
     </section>
 
     {{-- Selected work / portfolio (Linx-style) --}}
-    <section id="projects" class="bg-brand text-white py-20 lg:py-28 scroll-mt-24 relative overflow-hidden">
-        <div class="absolute inset-0 pointer-events-none bg-brand/10"></div>
+    <section id="projects" class="bg-white text-[#1a1a1a] py-20 lg:py-28 scroll-mt-24 relative overflow-hidden border-t border-black/5">
         <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
             <div class="text-center max-w-2xl mx-auto mb-10 lg:mb-14 space-y-4">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/80">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
                     {{ $content['projects_label'] ?? 'Real projects' }}
                 </p>
-                <h2 class="font-heading text-4xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tight text-white leading-tight">
+                <h2 class="font-heading text-4xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tight text-brand-deep leading-tight">
                     {{ $content['projects_title'] ?? 'Watch real projects come together' }}
                 </h2>
-                <p class="text-sm sm:text-[15px] text-white/80 leading-relaxed">
+                <p class="text-sm sm:text-[15px] text-[#4b5563] leading-relaxed">
                     {{ $content['projects_subtitle'] ?? 'See the work behind the finish — on-site progress, walkthroughs and delivery from start to handover.' }}
                 </p>
-                <div class="inline-flex items-center gap-2.5 rounded-full bg-white/10 border border-white/20 px-4 py-2">
-                    <span class="flex items-center gap-0.5 text-[#f0d778]">
+                <div class="inline-flex items-center gap-2.5 rounded-full bg-aqua-light border border-brand/20 px-4 py-2">
+                    <span class="flex items-center gap-0.5 text-gold">
                         @for($i = 0; $i < 5; $i++)
                             <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         @endfor
                     </span>
-                    <span class="text-[12px] text-white/85">{{ $content['projects_reviews_badge'] ?? 'Trusted by homeowners across London & Essex' }}</span>
+                    <span class="text-[12px] text-brand-deep font-medium">{{ $content['projects_reviews_badge'] ?? 'Trusted by homeowners across London & Essex' }}</span>
                 </div>
             </div>
 
             <div class="relative px-0 sm:px-6 lg:px-8">
                 <button type="button" id="projects-prev" aria-label="Previous projects"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden sm:flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#0f2a3a] shadow-lg hover:scale-105 transition-transform">
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden sm:flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand-deep border border-black/10 shadow-md hover:scale-105 hover:bg-stone transition-all">
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
                 </button>
                 <button type="button" id="projects-next" aria-label="Next projects"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden sm:flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#0f2a3a] shadow-lg hover:scale-105 transition-transform">
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden sm:flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand-deep border border-black/10 shadow-md hover:scale-105 hover:bg-stone transition-all">
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
                 </button>
 
@@ -290,14 +289,14 @@
                             $imgUrl = asset($proj->image_url ?: 'images/hero_architecture.png');
                         @endphp
                         <a href="{{ route('projects.show', $slug) }}"
-                           class="group snap-start relative shrink-0 w-[78vw] sm:w-[240px] lg:w-[260px] aspect-[3/4] rounded-2xl overflow-hidden border border-white/20 bg-[#0f2a3a]">
+                           class="group snap-start relative shrink-0 w-[78vw] sm:w-[240px] lg:w-[260px] aspect-[3/4] rounded-2xl overflow-hidden border border-black/10 bg-[#0f2a3a] shadow-md hover:shadow-xl transition-shadow">
                             <img
                                 src="{{ $imgUrl }}"
                                 alt="{{ $proj->title }}"
                                 class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                             >
                             {{-- Solid overlay for readable text (no half/half layout) --}}
-                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors"></div>
                             <div class="absolute bottom-0 inset-x-0 p-5">
                                 <span class="block text-[10px] font-semibold uppercase tracking-[0.18em] text-white/85 mb-1.5">
                                     {{ $proj->category ?: 'Real project' }}
@@ -305,78 +304,25 @@
                                 <h3 class="text-[1.25rem] sm:text-[1.35rem] font-bold text-white leading-snug drop-shadow-sm">
                                     {{ $proj->title }}
                                 </h3>
-                                <span class="mt-3 inline-flex text-[13px] font-semibold text-white/90 group-hover:text-[#f0d778] transition-colors">
+                                <span class="mt-3 inline-flex text-[13px] font-semibold text-white/90 group-hover:text-gold transition-colors">
                                     View →
                                 </span>
                             </div>
                         </a>
                     @empty
-                        <p class="text-white/70 text-sm">Projects coming soon.</p>
+                        <p class="text-[#6b7280] text-sm">Projects coming soon.</p>
                     @endforelse
                 </div>
             </div>
 
             <div class="mt-10 text-center">
-                <a href="{{ route('projects.index') }}" class="text-[13px] font-semibold text-white/80 hover:text-white transition-colors">
+                <a href="{{ route('projects.index') }}" class="text-[13px] font-semibold text-brand hover:text-brand-dark transition-colors">
                     {{ $content['cta_explore_portfolio_label'] ?? 'View full portfolio' }} →
                 </a>
             </div>
         </div>
     </section>
 
-    {{-- Client stories --}}
-    <section class="bg-white py-20 lg:py-28 border-t border-black/5">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
-            <div class="text-center max-w-2xl mx-auto mb-12 lg:mb-14 space-y-4">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand">
-                    {{ $content['client_stories_label'] ?? 'Client stories' }}
-                </p>
-                <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-[#0f2a3a]">
-                    {{ $content['client_stories_title'] ?? 'Hear from our clients' }}
-                </h2>
-            </div>
-                
-            @php
-                $storyProjects = $projects->count() > 2
-                    ? $projects->skip(2)->take(2)
-                    : $projects->take(2);
-            @endphp
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-7 max-w-5xl mx-auto">
-                @forelse($storyProjects as $story)
-                    @php
-                        $slug = $story->slug ?: \Illuminate\Support\Str::slug($story->title);
-                        $locParts = array_filter(array_map('trim', explode(',', (string) ($story->location ?: ''))));
-                        $loc = $locParts ? end($locParts) : ($story->category ?: 'London');
-                        $statusLabel = in_array($story->status ?? '', ['completed', 'complete'], true) ? 'Complete' : 'In progress';
-                    @endphp
-                    <a href="{{ route('projects.show', $slug) }}" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-black/5">
-                        @if($story->image_url)
-                            <img src="{{ asset($story->image_url) }}" alt="{{ $story->title }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        @else
-                            <div class="absolute inset-0 bg-[#0f2a3a]"></div>
-                        @endif
-                        <div class="absolute inset-0 bg-black/55"></div>
-                        <div class="absolute bottom-0 inset-x-0 p-6 lg:p-8">
-                            <span class="text-[10px] uppercase tracking-[0.22em] text-white/80">{{ strtoupper($loc) }} — {{ strtoupper($statusLabel) }}</span>
-                            <h3 class="text-2xl sm:text-[1.75rem] font-bold text-white mt-2.5 leading-snug">{{ $story->title }}</h3>
-                            @if($story->description)
-                                <p class="mt-2 text-sm text-white/70 line-clamp-2">{{ $story->description }}</p>
-                            @endif
-                        </div>
-                    </a>
-                @empty
-                    <p class="text-[#6b7280] text-sm col-span-2 text-center">Client stories coming soon.</p>
-                @endforelse
-            </div>
-
-            <div class="mt-10 text-center">
-                <a href="{{ route('projects.index') }}" class="text-[13px] font-semibold text-brand hover:text-brand-dark transition-colors">
-                    {{ $content['client_stories_link'] ?? 'View full case studies' }} →
-                </a>
-            </div>
-        </div>
-    </section>
 
     {{-- 4. About statement --}}
     <section id="about" class="relative bg-brand py-20 lg:py-28 scroll-mt-24 text-white">

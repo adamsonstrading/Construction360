@@ -44,6 +44,11 @@ Route::get('/privacy-policy', [LandingPageController::class, 'privacy'])->name('
 Route::get('/terms-and-conditions', [LandingPageController::class, 'terms'])->name('terms');
 Route::get('/tendering-standard', [LandingPageController::class, 'tendering'])->name('tendering');
 
+// Admin entrypoint redirect
+Route::get('/admin', function () {
+    return redirect()->route('admin.dashboard');
+});
+
 // Guest Admin Auth Routes
 Route::middleware('guest')->group(function () {
     Route::get('/admin/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -84,6 +89,32 @@ Route::get('/run-migrations', function () {
     \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
     return 'Migrations run successfully!';
 });
+Route::get('/restore-service-1', function () {
+    $service = \App\Models\Service::find(1);
+    if (!$service) {
+        return response('Service ID 1 not found in database!', 404);
+    }
+    $controller = new \App\Http\Controllers\LandingPageController();
+    $details = $controller->getServiceDetails('pre-construction');
+    if (!$details || empty($details['services_offered'])) {
+        return response('Canonical sub-services data not found!', 500);
+    }
+    $service->services_offered = $details['services_offered'];
+    if (empty($service->about) && !empty($details['about'])) {
+        $service->about = $details['about'];
+    }
+    if (empty($service->why_choose_us) && !empty($details['why_choose_us'])) {
+        $service->why_choose_us = $details['why_choose_us'];
+    }
+    if (empty($service->faqs) && !empty($details['faqs'])) {
+        $service->faqs = $details['faqs'];
+    }
+    $service->save();
+    \Illuminate\Support\Facades\Artisan::call('view:clear');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    return '<h3>✅ SUCCESS: Service ID 1 (Pre-Construction) restored successfully with ' . count($details['services_offered']) . ' sub-services!</h3><p>Other services remained 100% untouched.</p>';
+});
+
 Route::get('/clear-cache', function () {
     \Illuminate\Support\Facades\Artisan::call('route:clear');
     \Illuminate\Support\Facades\Artisan::call('config:clear');

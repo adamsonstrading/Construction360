@@ -47,7 +47,7 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-slate-200">
                     @foreach($partners as $item)
-                        <tr class="hover:bg-slate-50 transition-colors">
+                        <tr class="hover:bg-slate-50 transition-colors cursor-pointer group" data-href="{{ route('admin.partners.edit', $item->id) }}" title="Click to edit {{ $item->name }}">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="h-12 w-20 rounded-lg overflow-hidden border border-slate-200 bg-white flex items-center justify-center p-1.5">
                                     @if($item->image_url)
@@ -58,7 +58,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <span class="text-sm font-semibold text-slate-900 block truncate">{{ $item->name }}</span>
+                                <span class="text-sm font-semibold text-slate-900 group-hover:text-[#36a1b3] transition-colors block truncate">{{ $item->name }}</span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
                                 {{ $item->display_order }}
@@ -67,10 +67,10 @@
                                 <a href="{{ route('admin.partners.edit', $item->id) }}" class="text-[#36a1b3] hover:text-[#2c8493] transition-colors">
                                     Edit
                                 </a>
-                                <form action="{{ route('admin.partners.destroy', $item->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to remove this partner?');">
+                                <form action="{{ route('admin.partners.destroy', $item->id) }}" method="POST" class="inline-block delete-partner-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-650 hover:text-red-800 transition-colors focus:outline-none">
+                                    <button type="button" class="text-red-650 hover:text-red-800 transition-colors focus:outline-none delete-partner-btn" data-name="{{ $item->name }}">
                                         Remove
                                     </button>
                                 </form>
@@ -82,4 +82,49 @@
         @endif
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Clickable table rows to open edit screen
+    document.querySelectorAll('tr[data-href]').forEach(function(row) {
+        row.addEventListener('click', function(e) {
+            if (e.target.closest('a, button, form, input')) {
+                return;
+            }
+            if (e.ctrlKey || e.metaKey || e.button === 1) {
+                window.open(this.dataset.href, '_blank');
+            } else {
+                window.location.href = this.dataset.href;
+            }
+        });
+    });
+
+    // SweetAlert2 Delete Confirmation
+    document.querySelectorAll('.delete-partner-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const form = this.closest('form');
+            const name = this.dataset.name || 'this partner';
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    title: 'Remove Partner?',
+                    text: 'Are you sure you want to remove "' + name + '"? This action cannot be undone.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc2626',
+                    cancelButtonColor: '#94a3b8',
+                    confirmButtonText: 'Yes, Remove',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            } else if (confirm('Are you sure you want to remove "' + name + '"?')) {
+                form.submit();
+            }
+        });
+    });
+});
+</script>
 @endsection
