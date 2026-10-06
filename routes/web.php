@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/googlebae0409faabb7371.html', function () {
     return response('google-site-verification: googlebae0409faabb7371.html', 200, ['Content-Type' => 'text/html']);
 });
-Route::get('/sitemap.xml', [SitemapController::class, 'index']);
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/', [LandingPageController::class, 'index'])->name('landing');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contact', [LandingPageController::class, 'contact'])->name('contact.index');
