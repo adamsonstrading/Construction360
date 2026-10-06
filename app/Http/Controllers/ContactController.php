@@ -18,7 +18,7 @@ class ContactController extends Controller
     {
         // Verify Google reCAPTCHA
         $recaptchaSecret = config('services.recaptcha.secret_key');
-        if (!empty($recaptchaSecret)) {
+        if (!empty($recaptchaSecret) && !app()->environment('testing')) {
             $recaptchaToken = $request->input('g-recaptcha-response');
             if (empty($recaptchaToken)) {
                 $errorMsg = 'Please verify that you are not a robot.';

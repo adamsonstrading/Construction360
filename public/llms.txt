@@ -1,0 +1,32 @@
+# Construction 360 Ltd
+
+> Integrated Construction, Architectural Builds & Structural Engineering across London and Essex.
+
+## Overview
+Construction 360 Ltd delivers turnkey design-and-build, residential extensions, structural engineering, commercial fit-outs, and renovations under one accountable management team.
+
+- **Website**: https://construction360.co
+- **Email**: info@construction360.co
+- **Phone**: +44 203 930 9629
+- **Headquarters**: 73 Thrale Road, London, SW16 1NU, United Kingdom
+- **Company Number**: 17277526 (Registered in England and Wales)
+
+## Primary Services
+- **Design & Planning**: Architectural concepts, planning permission applications, structural calculations, and building control submissions.
+- **Residential Construction**: House extensions, loft conversions, full-house renovations, basements, and new builds.
+- **Structural Works**: Steel installation, load-bearing wall removals, foundation underpinning, and reinforced concrete.
+- **Commercial & Fit-Out**: Office refurbishment, retail interiors, MEP services, and commercial renovations.
+- **Tendering Standard**: Fixed-price tenders, transparent bills of quantities, and disciplined delivery schedules.
+
+## Service Coverage
+- Greater London (Streatham, Wimbledon, Woodford, Chigwell, Kensington, Wandsworth, etc.)
+- Essex (Chelmsford, Brentwood, Epping, Buckhurst Hill, etc.)
+
+## Key Pages & Endpoints
+- [Homepage](https://construction360.co/)
+- [Services Directory](https://construction360.co/services)
+- [Portfolio & Completed Projects](https://construction360.co/projects)
+- [About Us & Team](https://construction360.co/about)
+- [Tendering Standards](https://construction360.co/tendering)
+- [Contact & Free Consultation](https://construction360.co/contact)
+- [Sitemap](https://construction360.co/sitemap.xml)

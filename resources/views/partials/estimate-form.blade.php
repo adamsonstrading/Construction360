@@ -69,12 +69,12 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                     <label for="est-first-name" class="sr-only">First name</label>
-                    <input type="text" name="first_name" id="est-first-name" required placeholder="First name"
+                    <input type="text" name="first_name" id="est-first-name" aria-label="First name" required placeholder="First name"
                         value="{{ old('first_name') }}" class="{{ $inputClass }}">
                 </div>
                 <div>
                     <label for="est-last-name" class="sr-only">Last name</label>
-                    <input type="text" name="last_name" id="est-last-name" required placeholder="Last name"
+                    <input type="text" name="last_name" id="est-last-name" aria-label="Last name" required placeholder="Last name"
                         value="{{ old('last_name') }}" class="{{ $inputClass }}">
                 </div>
             </div>
@@ -82,19 +82,19 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                     <label for="est-email" class="sr-only">Email</label>
-                    <input type="email" name="email" id="est-email" required placeholder="Email"
+                    <input type="email" name="email" id="est-email" aria-label="Email" required placeholder="Email"
                         value="{{ old('email') }}" class="{{ $inputClass }}">
                 </div>
                 <div>
                     <label for="est-phone" class="sr-only">Phone number</label>
-                    <input type="tel" name="phone" id="est-phone" placeholder="Phone number"
+                    <input type="tel" name="phone" id="est-phone" aria-label="Phone number" placeholder="Phone number"
                         value="{{ old('phone') }}" class="{{ $inputClass }}">
                 </div>
             </div>
 
             <div class="relative">
                 <label for="est-service" class="sr-only">Select services</label>
-                <select name="service" id="est-service" class="{{ $selectClass }}">
+                <select name="service" id="est-service" aria-label="Select services" class="{{ $selectClass }}">
                     <option value="" disabled {{ old('service') ? '' : 'selected' }}>Select services...</option>
                     @forelse(($services ?? collect()) as $srv)
                         <option value="{{ $srv->title }}" @selected(old('service') === $srv->title)>{{ $srv->title }}</option>
@@ -115,7 +115,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="relative">
                     <label for="est-start" class="sr-only">When to start</label>
-                    <select name="start_when" id="est-start" class="{{ $selectClass }}">
+                    <select name="start_when" id="est-start" aria-label="When to start" class="{{ $selectClass }}">
                         <option value="" disabled {{ old('start_when') ? '' : 'selected' }}>When to start?</option>
                         <option value="ASAP" @selected(old('start_when') === 'ASAP')>ASAP</option>
                         <option value="1–3 months" @selected(old('start_when') === '1–3 months')>1–3 months</option>
@@ -129,7 +129,7 @@
                 </div>
                 <div class="relative">
                     <label for="est-budget" class="sr-only">Approx. budget</label>
-                    <select name="budget" id="est-budget" class="{{ $selectClass }}">
+                    <select name="budget" id="est-budget" aria-label="Approximate budget" class="{{ $selectClass }}">
                         <option value="" disabled {{ old('budget') ? '' : 'selected' }}>Approx. budget</option>
                         <option value="Under £50k" @selected(old('budget') === 'Under £50k')>Under £50k</option>
                         <option value="£50k–£150k" @selected(old('budget') === '£50k–£150k')>£50k–£150k</option>
@@ -146,7 +146,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="relative">
                     <label for="est-call-day" class="sr-only">Best day to call</label>
-                    <select name="call_day" id="est-call-day" class="{{ $selectClass }}">
+                    <select name="call_day" id="est-call-day" aria-label="Best day to call" class="{{ $selectClass }}">
                         <option value="" disabled {{ old('call_day') ? '' : 'selected' }}>Best day to call</option>
                         <option value="Monday" @selected(old('call_day') === 'Monday')>Monday</option>
                         <option value="Tuesday" @selected(old('call_day') === 'Tuesday')>Tuesday</option>
@@ -161,7 +161,7 @@
                 </div>
                 <div class="relative">
                     <label for="est-call-time" class="sr-only">Best time to call</label>
-                    <select name="call_time" id="est-call-time" class="{{ $selectClass }}">
+                    <select name="call_time" id="est-call-time" aria-label="Best time to call" class="{{ $selectClass }}">
                         <option value="" disabled {{ old('call_time') ? '' : 'selected' }}>Best time to call</option>
                         <option value="Morning (9–12)" @selected(old('call_time') === 'Morning (9–12)')>Morning (9–12)</option>
                         <option value="Afternoon (12–5)" @selected(old('call_time') === 'Afternoon (12–5)')>Afternoon (12–5)</option>
@@ -176,19 +176,19 @@
 
             <div>
                 <label for="est-message" class="sr-only">Briefly describe your project</label>
-                <textarea name="message" id="est-message" rows="5" required placeholder="Briefly describe your project"
+                <textarea name="message" id="est-message" aria-label="Briefly describe your project" rows="5" required placeholder="Briefly describe your project"
                     class="{{ $inputClass }} resize-y">{{ old('message') }}</textarea>
             </div>
 
             <div class="flex flex-wrap items-center gap-3 pt-1">
-                <label class="inline-flex items-center gap-2 rounded-md border border-black/10 bg-white px-4 py-2.5 text-sm text-[#1a1a1a] cursor-pointer hover:border-brand/40 transition-colors">
-                    <svg class="h-4 w-4 text-[#6b7280]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <label for="est-file-input" class="inline-flex items-center gap-2 rounded-md border border-black/10 bg-white px-4 py-2.5 text-sm text-[#1a1a1a] cursor-pointer hover:border-brand/40 transition-colors">
+                    <svg class="h-4 w-4 text-[#4b5563]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
                     </svg>
                     <span>Upload Files (Optional)</span>
-                    <input type="file" name="attachments[]" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.webp" class="sr-only" onchange="document.getElementById('est-file-label').textContent = this.files.length ? (this.files.length + ' file(s) chosen') : 'No files chosen'">
+                    <input type="file" id="est-file-input" aria-label="Upload Files (Optional)" name="attachments[]" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.webp" class="sr-only" onchange="document.getElementById('est-file-label').textContent = this.files.length ? (this.files.length + ' file(s) chosen') : 'No files chosen'">
                 </label>
-                <span id="est-file-label" class="text-sm text-[#9ca3af]">No files chosen</span>
+                <span id="est-file-label" class="text-sm text-[#4b5563]">No files chosen</span>
             </div>
 
             {{-- Google reCAPTCHA v2 --}}

@@ -43,11 +43,51 @@
     <meta property="twitter:image" content="{{ asset('images/hero_construction.png') }}">
     @endif
 
+    <!-- Performance preconnect & dns-prefetch -->
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://widget.trustpilot.com">
+
     <!-- Vite CSS & JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Google reCAPTCHA v2 -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Google reCAPTCHA v2 (Lazy Loaded on interaction for 100% PageSpeed) -->
+    <script>
+        (function() {
+            let rcLoaded = false;
+            function loadRc() {
+                if (rcLoaded) return;
+                rcLoaded = true;
+                const s = document.createElement('script');
+                s.src = 'https://www.google.com/recaptcha/api.js';
+                s.async = true;
+                s.defer = true;
+                document.head.appendChild(s);
+            }
+            window.loadRecaptchaImmediately = loadRc;
+            const evs = ['scroll', 'mousemove', 'touchstart', 'keydown'];
+            const onAct = function() {
+                loadRc();
+                evs.forEach(function(e) { window.removeEventListener(e, onAct, { passive: true }); });
+            };
+            evs.forEach(function(e) { window.addEventListener(e, onAct, { passive: true, once: true }); });
+            if ('IntersectionObserver' in window) {
+                document.addEventListener('DOMContentLoaded', function() {
+                    const obs = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                loadRc();
+                                obs.disconnect();
+                            }
+                        });
+                    }, { rootMargin: '300px' });
+                    document.querySelectorAll('.g-recaptcha, #enquiry, #tender-brief-modal').forEach(function(el) {
+                        obs.observe(el);
+                    });
+                });
+            }
+        })();
+    </script>
 
     <style>
         body {
@@ -348,28 +388,35 @@
             color: #36a1b3;
         }
     </style>
-    <!-- JSON-LD Local Business Schema -->
+    <!-- JSON-LD Local Business & General Contractor Schema -->
     <script type="application/ld+json">
         {
             "@@context": "https://schema.org",
-            "@@type": "LocalBusiness",
+            "@@type": "GeneralContractor",
             "name": "Construction 360 Ltd",
             "image": "{{ asset('favicon.svg') }}",
             "@@id": "{{ url('/') }}",
             "url": "{{ url('/') }}",
-            "telephone": "{{ $content['contact_phone'] ?? '' }}",
+            "telephone": "{{ $content['contact_phone'] ?? '+442039309629' }}",
             "email": "{{ $content['header_email'] ?? 'info@construction360.co' }}",
+            "priceRange": "£££",
+            "description": "{{ $content['seo_meta_description'] ?? 'Integrated construction, architectural builds, extensions, and structural engineering across London and Essex.' }}",
             "address": {
                 "@@type": "PostalAddress",
-                "streetAddress": "{{ $content['footer_address'] ?? 'Essex, London' }}",
-                "addressLocality": "Essex",
+                "streetAddress": "{{ $content['footer_address'] ?? '73 Thrale Road' }}",
+                "addressLocality": "London",
+                "postalCode": "SW16 1NU",
                 "addressCountry": "GB"
             },
             "geo": {
                 "@@type": "GeoCoordinates",
-                "latitude": 51.545,
-                "longitude": 0.478
+                "latitude": 51.4287,
+                "longitude": -0.1378
             },
+            "areaServed": [
+                { "@@type": "City", "name": "London" },
+                { "@@type": "AdministrativeArea", "name": "Essex" }
+            ],
             "openingHoursSpecification": {
                 "@@type": "OpeningHoursSpecification",
                 "dayOfWeek": [
@@ -380,12 +427,12 @@
                     "Friday"
                 ],
                 "opens": "08:00",
-                "closes": "17:00"
+                "closes": "18:00"
             },
             "sameAs": [
-                "{{ $content['social_facebook'] ?? '#' }}",
-                "{{ $content['social_instagram'] ?? '#' }}",
-                "{{ $content['social_linkedin'] ?? '#' }}"
+                "{{ !empty($content['social_facebook']) ? $content['social_facebook'] : 'https://www.facebook.com/people/Construction-360/61590797767639/' }}",
+                "{{ !empty($content['social_instagram']) ? $content['social_instagram'] : 'https://www.instagram.com/Construction360.co' }}",
+                "{{ !empty($content['social_linkedin']) ? $content['social_linkedin'] : 'https://www.linkedin.com/company/construction-360' }}"
             ]
         }
     </script>
@@ -393,6 +440,9 @@
 </head>
 
 <body class="antialiased min-h-screen flex flex-col relative overflow-x-hidden bg-white">
+    <!-- Skip to main content landmark link for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[250] focus:px-4 focus:py-2.5 focus:bg-brand focus:text-white focus:rounded-lg focus:shadow-2xl focus:font-semibold focus:text-xs focus:uppercase focus:tracking-wider focus:outline-none">Skip to main content</a>
+
 
     <!-- Global Success Toast -->
     @if(session('success'))
@@ -459,7 +509,7 @@
 
         <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="h-[70px] lg:h-[76px] flex items-center justify-between gap-4">
-                <a href="{{ url('/') }}" class="flex items-center shrink-0">
+                <a href="{{ url('/') }}" aria-label="Construction 360 Ltd Home" class="flex items-center shrink-0">
                     @include('partials.logo', [
                     'idSuffix' => 'nav',
                     'class' => 'max-h-10 w-auto max-w-[170px]',
@@ -536,7 +586,7 @@
                     <a href="{{ route('contact.index') }}" class="nav-link transition-colors">Contact Us</a>
 
                     <div class="nav-dropdown">
-                        <button type="button" class="nav-link inline-flex items-center transition-colors bg-transparent border-0 cursor-pointer p-0 font-sans">
+                        <button type="button" aria-label="More navigation options" aria-haspopup="true" aria-expanded="false" class="nav-link inline-flex items-center transition-colors bg-transparent border-0 cursor-pointer p-0 font-sans">
                             More <span class="nav-caret" aria-hidden="true"></span>
                         </button>
                         <div class="nav-dropdown-menu">
@@ -665,14 +715,18 @@
             </div>
         </div>
     </header>
-    @yield('content')
+
+    <!-- Main Content Landmark -->
+    <main id="main-content" role="main" class="flex-grow">
+        @yield('content')
+    </main>
 
     <!-- Footer -->
     <footer class="bg-[#111111] text-white">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-16 lg:py-20">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 <div class="lg:col-span-4 space-y-5">
-                    <a href="{{ url('/') }}" class="block">
+                    <a href="{{ url('/') }}" aria-label="Construction 360 Ltd Home" class="block">
                         @include('partials.logo', ['idSuffix' => 'foot', 'class' => 'w-full max-w-[200px] max-h-16 object-contain object-left-top brightness-0 invert', 'icon_only' => false, 'color_mode' => 'dark'])
                     </a>
                     <p class="text-sm text-white/50 leading-relaxed font-light max-w-sm">
@@ -806,27 +860,27 @@
 
                                 <div class="grid grid-cols-1 gap-5">
                                     <div>
-                                        <label for="modal-name" class="block text-[10px] font-bold uppercase tracking-widest text-[#6b7280] mb-2">Full name</label>
-                                        <input type="text" name="name" id="modal-name" required placeholder="Your name" autocomplete="name"
-                                            class="w-full rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors">
+                                        <label for="modal-name" class="block text-[10px] font-bold uppercase tracking-widest text-[#374151] mb-2">Full name</label>
+                                        <input type="text" name="name" id="modal-name" aria-label="Full name" required placeholder="Your name" autocomplete="name"
+                                            class="w-full rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] placeholder:text-[#6b7280] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors">
                                     </div>
                                     <div>
-                                        <label for="modal-email" class="block text-[10px] font-bold uppercase tracking-widest text-[#6b7280] mb-2">Email address</label>
-                                        <input type="email" name="email" id="modal-email" required placeholder="you@company.com" autocomplete="email"
-                                            class="w-full rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors">
+                                        <label for="modal-email" class="block text-[10px] font-bold uppercase tracking-widest text-[#374151] mb-2">Email address</label>
+                                        <input type="email" name="email" id="modal-email" aria-label="Email address" required placeholder="you@company.com" autocomplete="email"
+                                            class="w-full rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] placeholder:text-[#6b7280] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors">
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label for="modal-subject" class="block text-[10px] font-bold uppercase tracking-widest text-[#6b7280] mb-2">Project type</label>
-                                    <input type="text" name="subject" id="modal-subject" placeholder="e.g. Rear extension, commercial fit-out"
-                                        class="w-full rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors">
+                                    <label for="modal-subject" class="block text-[10px] font-bold uppercase tracking-widest text-[#374151] mb-2">Project type</label>
+                                    <input type="text" name="subject" id="modal-subject" aria-label="Project type" placeholder="e.g. Rear extension, commercial fit-out"
+                                        class="w-full rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] placeholder:text-[#6b7280] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors">
                                 </div>
 
                                 <div>
-                                    <label for="modal-message" class="block text-[10px] font-bold uppercase tracking-widest text-[#6b7280] mb-2">Project details</label>
-                                    <textarea name="message" id="modal-message" rows="4" required placeholder="Location, scope and timeline"
-                                        class="w-full rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] placeholder:text-[#9ca3af] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors resize-none"></textarea>
+                                    <label for="modal-message" class="block text-[10px] font-bold uppercase tracking-widest text-[#374151] mb-2">Project details</label>
+                                    <textarea name="message" id="modal-message" aria-label="Project details" rows="4" required placeholder="Location, scope and timeline"
+                                        class="w-full rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm text-[#1a1a1a] placeholder:text-[#6b7280] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors resize-none"></textarea>
                                 </div>
 
                                 {{-- Google reCAPTCHA v2 --}}
@@ -853,6 +907,9 @@
 
     <script>
         function openTenderModal() {
+            if (typeof window.loadRecaptchaImmediately === 'function') {
+                window.loadRecaptchaImmediately();
+            }
             const modal = document.getElementById('tender-brief-modal');
             if (modal) {
                 modal.classList.remove('hidden');
@@ -1003,7 +1060,7 @@
         });
     </script>
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/447500896792" target="_blank" aria-label="Chat on WhatsApp" class="fixed bottom-6 left-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:bg-[#128C7E] hover:scale-110 transition-all duration-300">
+    <a href="https://wa.me/447500896792" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="fixed bottom-6 left-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:bg-[#128C7E] hover:scale-110 transition-all duration-300">
         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.031 21.014c-1.636-.002-3.238-.42-4.664-1.21L2.247 21.52l1.758-5.003c-.868-1.468-1.325-3.14-1.322-4.862C2.686 5.86 7.378 1.168 13.167 1.17c2.81.002 5.454 1.096 7.441 3.084 1.986 1.988 3.08 4.633 3.078 7.444-.004 5.797-4.695 10.49-10.485 10.493l-1.17-.177zm5.556-7.585c-.305-.152-1.802-.888-2.08-.99-.279-.101-.482-.153-.686.152-.204.305-.788.99-.966 1.194-.178.204-.356.23-.661.077-.305-.153-1.286-.474-2.453-1.516-.906-.811-1.517-1.815-1.696-2.12-.178-.306-.02-.472.133-.625.138-.138.305-.357.458-.535.153-.178.204-.305.305-.509.102-.204.051-.382-.025-.535-.077-.152-.686-1.654-.94-2.264-.247-.593-.497-.513-.686-.523-.178-.01-.382-.01-.585-.01-.204 0-.535.076-.814.382-.279.305-1.067 1.042-1.067 2.54 0 1.498 1.093 2.946 1.246 3.149.153.204 2.148 3.28 5.203 4.597.727.313 1.294.5 1.738.641.73.232 1.393.199 1.916.12.585-.088 1.802-.736 2.056-1.448.254-.712.254-1.323.178-1.448-.076-.126-.279-.203-.584-.356z" />
         </svg>

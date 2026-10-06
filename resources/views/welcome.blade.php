@@ -24,7 +24,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 items-center">
                 {{-- LEFT: copy --}}
                 <div class="max-w-xl lg:max-w-none">
-                    <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#6b7280]">
+                    <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#4b5563]">
                         <svg class="h-3.5 w-3.5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
@@ -43,7 +43,7 @@
 
                     <div class="mt-5 h-[3px] w-14 bg-brand"></div>
 
-                    <p class="mt-5 text-base text-[#5b6770] leading-relaxed max-w-lg">
+                    <p class="mt-5 text-base text-[#374151] leading-relaxed max-w-lg">
                         {{ $content['hero_subtitle'] ?? 'One accountable team from brief to handover — transparent pricing, disciplined programmes, and finishes that stand up to inspection.' }}
                     </p>
 
@@ -58,18 +58,30 @@
                         </a>
                     </div>
 
-                    {{-- Trustpilot Reviews Widget --}}
-                    <!-- TrustBox script -->
-                    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
-                    <!-- End TrustBox script -->
-
-                    <!-- TrustBox widget - Review Collector -->
+                    {{-- Trustpilot Reviews Widget (Deferred for PageSpeed) --}}
                     <div class="mt-6 min-h-[52px] max-w-md sm:max-w-lg">
                         <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6ab6685619df7f5c27ff7f3c" data-style-height="52px" data-style-width="100%" data-token="ded9966f-53d2-4ab7-9714-462df63db37a">
-                            <a href="https://www.trustpilot.com/review/construction360.co" target="_blank" rel="noopener">Trustpilot</a>
+                            <a href="https://www.trustpilot.com/review/construction360.co" target="_blank" rel="noopener noreferrer">Trustpilot</a>
                         </div>
                     </div>
-                    <!-- End TrustBox widget -->
+                    <script>
+                        (function() {
+                            let tpLoaded = false;
+                            function loadTrustpilot() {
+                                if (tpLoaded) return;
+                                tpLoaded = true;
+                                const s = document.createElement('script');
+                                s.src = 'https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
+                                s.async = true;
+                                document.head.appendChild(s);
+                            }
+                            if ('requestIdleCallback' in window) {
+                                requestIdleCallback(function() { setTimeout(loadTrustpilot, 1200); }, { timeout: 3500 });
+                            } else {
+                                window.addEventListener('load', function() { setTimeout(loadTrustpilot, 1200); }, { once: true });
+                            }
+                        })();
+                    </script>
 
                     @php
                         $heroStats = [
@@ -104,33 +116,40 @@
                                 </svg>
                                 <div>
                                     <div class="text-2xl font-bold text-[#0f2a3a] tracking-tight leading-none">{{ $stat['value'] }}</div>
-                                    <div class="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#6b7280] leading-snug">{{ $stat['label'] }}</div>
+                                    <div class="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#4b5563] leading-snug">{{ $stat['label'] }}</div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
 
-                {{-- RIGHT: media --}}
+                {{-- RIGHT: media (Optimized LCP with WebP poster + idle-deferred video) --}}
                 <div class="relative w-full">
                     <div class="relative w-full overflow-hidden rounded-2xl bg-[#0f2a3a]" style="aspect-ratio: 5 / 4; min-height: 320px;">
-                        <img
-                            id="hero-intro-poster"
-                            src="{{ asset($content['hero_image'] ?? 'images/hero_construction.png') }}"
-                            alt="Construction site across London and Essex"
-                            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
-                        >
+                        <picture>
+                            <source srcset="{{ asset('images/hero_construction.webp') }}" type="image/webp">
+                            <img
+                                id="hero-intro-poster"
+                                src="{{ asset($content['hero_image'] ?? 'images/hero_construction.png') }}"
+                                alt="Construction site across London and Essex"
+                                width="640"
+                                height="512"
+                                fetchpriority="high"
+                                loading="eager"
+                                decoding="async"
+                                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 z-10"
+                            >
+                        </picture>
                         <video
                             id="hero-intro-video"
                             class="absolute inset-0 w-full h-full object-cover"
                             muted
-                            autoplay
-                            loop
                             playsinline
-                            preload="auto"
-                            poster="{{ asset($content['hero_image'] ?? 'images/hero_construction.png') }}"
+                            loop
+                            preload="none"
+                            poster="{{ asset('images/hero_construction.webp') }}"
                         >
-                            <source src="{{ asset($content['hero_video'] ?? 'con360.mp4') }}" type="video/mp4">
+                            <source data-src="{{ asset($content['hero_video'] ?? 'con360.mp4') }}" type="video/mp4">
                         </video>
                     </div>
                 </div>
@@ -156,7 +175,12 @@
                 }
             }
 
-            function startAutoplay() {
+            function startVideo() {
+                const source = video.querySelector('source[data-src]');
+                if (source && !source.src) {
+                    source.src = source.getAttribute('data-src');
+                    video.load();
+                }
                 video.muted = true;
                 const attempt = video.play();
                 if (attempt && typeof attempt.then === 'function') {
@@ -166,10 +190,14 @@
 
             video.addEventListener('playing', hidePoster);
 
-            if (video.readyState >= 2) {
-                startAutoplay();
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() {
+                    setTimeout(startVideo, 1200);
+                }, { timeout: 3500 });
             } else {
-                video.addEventListener('loadeddata', startAutoplay, { once: true });
+                window.addEventListener('load', function() {
+                    setTimeout(startVideo, 1200);
+                }, { once: true });
             }
         })();
     </script>
@@ -231,7 +259,7 @@
                     @php $slug = \Illuminate\Support\Str::slug($srv->title); @endphp
                     <a href="{{ route('services.show', $slug) }}" class="group relative overflow-hidden rounded-2xl min-h-[140px] flex flex-col justify-end p-4 text-white {{ $idx % 2 === 0 ? 'bg-brand' : 'bg-brand-dark' }} hover:scale-[1.02] transition-transform duration-300 shadow-md">
                         @if($srv->image_url)
-                            <img src="{{ asset($srv->image_url) }}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:opacity-50 group-hover:scale-110 transition-all duration-700">
+                            <img src="{{ asset($srv->image_url) }}" alt="{{ $srv->title }}" width="240" height="140" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:opacity-50 group-hover:scale-110 transition-all duration-700">
                         @endif
                         <div class="absolute inset-0 bg-black/40"></div>
                         <span class="relative text-[10px] font-bold uppercase tracking-[0.16em] text-white/70">0{{ $idx + 1 }}</span>
@@ -259,7 +287,7 @@
                 <h2 class="font-heading text-4xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-tight text-brand-deep leading-tight">
                     {{ $content['projects_title'] ?? 'Watch real projects come together' }}
                 </h2>
-                <p class="text-sm sm:text-[15px] text-[#4b5563] leading-relaxed">
+                <p class="text-sm sm:text-[15px] text-[#374151] leading-relaxed">
                     {{ $content['projects_subtitle'] ?? 'See the work behind the finish — on-site progress, walkthroughs and delivery from start to handover.' }}
                 </p>
                 <div class="inline-flex items-center gap-2.5 rounded-full bg-aqua-light border border-brand/20 px-4 py-2">
@@ -293,6 +321,10 @@
                             <img
                                 src="{{ $imgUrl }}"
                                 alt="{{ $proj->title }}"
+                                width="260"
+                                height="347"
+                                loading="lazy"
+                                decoding="async"
                                 class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                             >
                             {{-- Solid overlay for readable text (no half/half layout) --}}
@@ -310,7 +342,7 @@
                             </div>
                         </a>
                     @empty
-                        <p class="text-[#6b7280] text-sm">Projects coming soon.</p>
+                        <p class="text-[#4b5563] text-sm">Projects coming soon.</p>
                     @endforelse
                 </div>
             </div>
@@ -359,13 +391,13 @@
     <section id="process" class="bg-aqua-light py-20 lg:py-28 scroll-mt-24">
         <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-10">
             <div class="text-center max-w-2xl mx-auto mb-10 space-y-4">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#9ca3af]">
+                <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#4b5563]">
                     {{ $content['process_label'] ?? 'Our simple 6-step process' }}
                 </p>
                 <h2 class="text-4xl sm:text-5xl font-bold text-[#0f2a3a] leading-tight">
                     {{ $content['process_title'] ?? 'How your project works — start to finish' }}
                 </h2>
-                <p class="text-sm sm:text-[15px] text-[#6b7280] leading-relaxed">
+                <p class="text-sm sm:text-[15px] text-[#374151] leading-relaxed">
                     {{ $content['process_subtitle'] ?? 'Whether you need full design & build support or already have plans, we keep every stage clear and accountable.' }}
                 </p>
             </div>
@@ -383,12 +415,12 @@
                         {{ $content['process_tab_build'] ?? 'Build only' }}
                     </button>
                 </div>
-                <p id="process-caption" class="inline-flex items-center gap-1.5 text-[12px] text-[#6b7280]">
+                <p id="process-caption" class="inline-flex items-center gap-1.5 text-[12px] text-[#374151]">
                     <svg class="h-3.5 w-3.5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                     <span data-caption-design>{{ $content['process_caption_design'] ?? 'Full turnkey service — concept to completion' }}</span>
                     <span data-caption-build class="hidden">{{ $content['process_caption_build'] ?? 'You bring the plans — we deliver the build' }}</span>
-                        </p>
-                    </div>
+                </p>
+            </div>
 
             @foreach (['design' => $processDesign, 'build' => $processBuild] as $pathKey => $steps)
                 <div id="process-grid-{{ $pathKey }}" class="process-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 {{ $pathKey === 'build' ? 'hidden' : '' }}">
@@ -401,11 +433,11 @@
                                 </span>
                             </div>
                             <h3 class="font-heading text-2xl text-[#1a1a1a] font-medium leading-snug">{{ $step['title'] }}</h3>
-                            <p class="mt-2 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.12em] text-[#9ca3af]">
+                            <p class="mt-2 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.12em] text-[#4b5563]">
                                 <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 {{ $step['duration'] }}
                             </p>
-                            <p class="mt-3 text-sm text-[#6b7280] leading-relaxed flex-1">{{ $step['body'] }}</p>
+                            <p class="mt-3 text-sm text-[#374151] leading-relaxed flex-1">{{ $step['body'] }}</p>
                         </article>
                     @endforeach
                 </div>
@@ -418,7 +450,7 @@
                     <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
                 </a>
             </div>
-                        </div>
+        </div>
     </section>
 
     {{-- What we do --}}
@@ -427,7 +459,7 @@
             <div class="text-center max-w-2xl mx-auto mb-12 lg:mb-14 space-y-4">
                 <div class="flex items-center justify-center gap-4">
                     <span class="hidden sm:block h-px w-16 bg-black/10"></span>
-                    <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#9ca3af]">
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#4b5563]">
                         {{ $content['services_label'] ?? 'What we do' }}
                     </p>
                     <span class="hidden sm:block h-px w-16 bg-black/10"></span>
@@ -436,10 +468,10 @@
                     {{ $content['services_title_line1'] ?? 'One team.' }}
                     <span class="text-brand">{{ $content['services_title_line2'] ?? 'Every discipline.' }}</span>
                 </h2>
-                <p class="text-sm sm:text-[15px] text-[#6b7280] leading-relaxed">
+                <p class="text-sm sm:text-[15px] text-[#374151] leading-relaxed">
                     {{ $content['services_subtitle'] ?? 'From pre-construction through structure, interiors and external works — one accountable team across every trade.' }}
                 </p>
-                </div>
+            </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
                 @foreach ($whatWeDoCards as $card)
@@ -448,7 +480,7 @@
                     @endphp
                     <a href="{{ $href }}" class="group relative aspect-[3/4.2] rounded-2xl overflow-hidden bg-[#1c1c1c] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
                         @if($card['image'])
-                            <img src="{{ asset($card['image']) }}" alt="{{ $card['title'] }}" class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                            <img src="{{ asset($card['image']) }}" alt="{{ $card['title'] }}" width="400" height="560" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
                         @endif
                         <div class="absolute inset-0 bg-black/55"></div>
                         <div class="absolute bottom-0 inset-x-0 p-5 lg:p-6 space-y-2">
@@ -459,10 +491,10 @@
                         </div>
                     </a>
                 @endforeach
-                    </div>
+            </div>
 
             <div class="mt-12 text-center space-y-4">
-                <p class="text-sm text-[#6b7280]">{{ $content['services_cta_prompt'] ?? 'Looking for something specific?' }}</p>
+                <p class="text-sm text-[#374151]">{{ $content['services_cta_prompt'] ?? 'Looking for something specific?' }}</p>
                 <a href="{{ route('services.index') }}"
                     class="inline-flex items-center gap-2 rounded-lg bg-brand px-7 py-3.5 text-xs font-bold uppercase tracking-[0.08em] text-white hover:bg-brand-dark transition-colors">
                     {{ $content['cta_explore_services_label'] ?? 'Explore all services' }}
@@ -483,11 +515,11 @@
                 @foreach($sectors as $sector)
                     <div class="rounded-2xl bg-white border border-black/[0.04] p-6 lg:p-7 hover:border-brand/25 hover:shadow-md transition-all duration-300">
                         <h3 class="font-heading text-2xl text-brand">{{ $sector['title'] }}</h3>
-                        <p class="mt-2.5 text-sm text-[#6b7280] leading-relaxed">{{ $sector['desc'] }}</p>
+                        <p class="mt-2.5 text-sm text-[#374151] leading-relaxed">{{ $sector['desc'] }}</p>
                     </div>
                 @endforeach
-                    </div>
-                </div>
+            </div>
+        </div>
     </section>
 
     {{-- Trusted partners / authorised suppliers --}}
@@ -510,8 +542,11 @@
                                 <img
                                     src="{{ asset($partner->image_url) }}"
                                     alt="{{ $partner->name }}"
-                                    class="max-h-12 md:max-h-14 w-auto max-w-full object-contain"
+                                    width="140"
+                                    height="56"
                                     loading="lazy"
+                                    decoding="async"
+                                    class="max-h-12 md:max-h-14 w-auto max-w-full object-contain"
                                 >
                             @endif
                         </div>
@@ -548,7 +583,7 @@
                         <div class="shrink-0 flex justify-center md:justify-start">
                             <div class="h-[180px] w-[180px] sm:h-[210px] sm:w-[210px] lg:h-[230px] lg:w-[230px] rounded-full overflow-hidden bg-[#e8e8e8] border border-[#d9d9d9] shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
                                 @if($image)
-                                    <img src="{{ $image }}" alt="{{ $member->name }}" class="h-full w-full object-cover object-top">
+                                    <img src="{{ $image }}" alt="{{ $member->name }}" width="230" height="230" loading="lazy" decoding="async" class="h-full w-full object-cover object-top">
                                 @else
                                     <div class="h-full w-full flex items-center justify-center bg-brand text-white text-4xl font-semibold tracking-tight">
                                         {{ $initials }}
@@ -561,7 +596,7 @@
                             <h3 class="text-[1.65rem] sm:text-[1.85rem] font-bold text-[#0f2a3a] leading-tight">{{ $member->name }}</h3>
                             <div class="mx-auto md:mx-0 mt-2.5 h-[3px] w-14 bg-brand"></div>
                             <p class="mt-3 text-[1.05rem] sm:text-lg font-bold uppercase tracking-[0.02em] text-[#0f2a3a]">{{ $member->role }}</p>
-                            <div class="mt-4 space-y-4 text-[15px] sm:text-[16px] text-[#777777] leading-[1.7] max-w-[640px] mx-auto md:mx-0">
+                            <div class="mt-4 space-y-4 text-[15px] sm:text-[16px] text-[#374151] leading-[1.7] max-w-[640px] mx-auto md:mx-0">
                                 @foreach($paragraphs as $paragraph)
                                     @if(trim($paragraph) !== '')
                                         <p>{{ trim($paragraph) }}</p>
@@ -571,7 +606,7 @@
                         </div>
                     </article>
                 @empty
-                    <p class="text-center text-sm text-[#777777]">Leadership profiles will appear here once team members are added in the admin.</p>
+                    <p class="text-center text-sm text-[#374151]">Leadership profiles will appear here once team members are added in the admin.</p>
                 @endforelse
             </div>
         </div>
@@ -593,18 +628,18 @@
                         <div class="aspect-[16/10] overflow-hidden bg-aqua-light mb-5 rounded-2xl">
                                 @if($blog->image_url)
                                 <a href="{{ route('blog.show', $blog->slug) }}">
-                                    <img src="{{ asset($blog->image_url) }}" alt="{{ $blog->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <img src="{{ asset($blog->image_url) }}" alt="{{ $blog->title }}" width="400" height="250" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                 </a>
                                 @endif
                         </div>
-                        <span class="text-[10px] uppercase tracking-[0.16em] text-[#9ca3af]">{{ $blog->published_at ? $blog->published_at->format('M d, Y') : '' }}</span>
+                        <span class="text-[10px] uppercase tracking-[0.16em] text-[#4b5563]">{{ $blog->published_at ? $blog->published_at->format('M d, Y') : '' }}</span>
                         <h3 class="font-heading text-2xl text-[#1a1a1a] mt-2 leading-snug">
                             <a href="{{ route('blog.show', $blog->slug) }}" class="hover:text-brand transition-colors">{{ $blog->title }}</a>
                         </h3>
-                        <p class="mt-2 text-sm text-[#6b7280] line-clamp-2">{{ $blog->excerpt }}</p>
+                        <p class="mt-2 text-sm text-[#374151] line-clamp-2">{{ $blog->excerpt }}</p>
                     </article>
                 @empty
-                    <p class="text-sm text-[#6b7280] col-span-3">No posts yet.</p>
+                    <p class="text-sm text-[#374151] col-span-3">No posts yet.</p>
                 @endforelse
             </div>
         </div>
