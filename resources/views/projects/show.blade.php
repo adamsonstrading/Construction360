@@ -25,7 +25,7 @@
 
     {{-- Light page header — home theme --}}
     <section class="relative bg-white border-b border-black/5">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10" style="padding-top: 7.5rem; padding-bottom: 2.5rem;">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10" style="padding-top: 10.5rem; padding-bottom: 2.5rem;">
             <div class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6b7280] mb-8">
                 <a href="{{ url('/') }}" class="hover:text-brand transition-colors">Home</a>
                 <span>•</span>
@@ -55,11 +55,12 @@
 
                 {{-- Main column --}}
                 <div class="lg:col-span-8 space-y-12">
-                    <div class="relative w-full overflow-hidden rounded-2xl bg-[#0f2a3a] border border-black/5">
+                    <div class="relative w-full overflow-hidden rounded-2xl bg-[#0f2a3a] border border-black/5 shadow-sm" style="width: 100%; aspect-ratio: 16 / 10; max-height: 460px; min-height: 260px;">
                         <img
                             src="{{ asset($project->image_url ?: 'images/hero_architecture.png') }}"
                             alt="{{ $project->title }}"
-                            class="w-full h-auto max-h-[560px] object-cover"
+                            class="w-full h-full object-cover object-center"
+                            style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;"
                         >
                     </div>
 

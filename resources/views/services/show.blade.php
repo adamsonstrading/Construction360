@@ -25,7 +25,7 @@
 
 @section('content')
     {{-- Brand hero — matches sub-service & site theme --}}
-    <section class="bg-brand text-white" style="padding-top: 7.5rem;">
+    <section class="bg-brand text-white" style="padding-top: 10.5rem;">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-14 lg:pb-16">
             <div class="max-w-3xl space-y-4">
                 <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/70">

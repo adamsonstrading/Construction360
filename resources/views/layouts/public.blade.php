@@ -237,6 +237,169 @@
             }
         }
 
+        /* Second top navbar sizing */
+        #site-header .main-navbar-bar {
+            min-height: 72px;
+        }
+
+        @media (min-width: 640px) {
+            #site-header .main-navbar-bar {
+                min-height: 80px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #site-header .main-navbar-bar {
+                min-height: 88px;
+            }
+        }
+
+        /* Navbar Brand Logo — crisp, responsive sizing across all screen sizes */
+        #site-header .main-navbar-bar .brand-logo-wrap img,
+        #site-header .main-navbar-bar .brand-logo-wrap svg {
+            height: 38px;
+            width: auto;
+            max-width: 155px;
+            object-fit: contain;
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        @media (min-width: 480px) {
+            #site-header .main-navbar-bar .brand-logo-wrap img,
+            #site-header .main-navbar-bar .brand-logo-wrap svg {
+                height: 42px;
+                max-width: 175px;
+            }
+        }
+
+        @media (min-width: 640px) {
+            #site-header .main-navbar-bar .brand-logo-wrap img,
+            #site-header .main-navbar-bar .brand-logo-wrap svg {
+                height: 46px;
+                max-width: 200px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #site-header .main-navbar-bar .brand-logo-wrap img,
+            #site-header .main-navbar-bar .brand-logo-wrap svg {
+                height: 48px;
+                max-width: 220px;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            #site-header .main-navbar-bar .brand-logo-wrap img,
+            #site-header .main-navbar-bar .brand-logo-wrap svg {
+                height: 56px;
+                max-width: 260px;
+            }
+        }
+
+        #site-header .header-contact-icon {
+            width: 15px !important;
+            height: 15px !important;
+            flex-shrink: 0 !important;
+        }
+
+        #site-header .nav-link {
+            font-size: 0.8125rem !important; /* 13px at 1280px */
+            font-weight: 600 !important;
+            letter-spacing: 0.01em;
+            color: #1a1a1a;
+            white-space: nowrap;
+            padding: 0 0.15rem;
+        }
+
+        @media (min-width: 1360px) {
+            #site-header .nav-link {
+                font-size: 0.85rem !important;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            #site-header .nav-link {
+                font-size: 0.9rem !important;
+                padding: 0 0.25rem;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            #site-header .nav-link {
+                font-size: 0.95rem !important;
+            }
+        }
+
+        #site-header .nav-link:hover,
+        #site-header .nav-link.is-active {
+            color: #36a1b3 !important;
+        }
+
+        /* Responsive Desktop / Mobile Navigation Switcher */
+        #site-header #desktop-nav {
+            display: none !important;
+        }
+
+        #site-header .header-desktop-actions {
+            display: none !important;
+        }
+
+        #site-header .header-mobile-actions {
+            display: flex !important;
+        }
+
+        @media (min-width: 1280px) {
+            #site-header #desktop-nav {
+                display: flex !important;
+            }
+
+            #site-header .header-desktop-actions {
+                display: flex !important;
+                gap: 1rem !important;
+                align-items: center !important;
+                flex-shrink: 0 !important;
+            }
+
+            #site-header .header-mobile-actions {
+                display: none !important;
+            }
+
+            #site-header #mobile-menu {
+                display: none !important;
+            }
+        }
+
+        /* Ensure header actions never overlap under any circumstances */
+        #site-header .header-desktop-actions > * {
+            flex-shrink: 0 !important;
+        }
+
+        #site-header .header-phone-link {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.35rem !important;
+            white-space: nowrap !important;
+            font-size: 12.5px !important;
+            flex-shrink: 0 !important;
+        }
+
+        /* Hide long email in header between 1280px and 1440px to prevent crowding on laptops */
+        #site-header .header-email-link {
+            display: none !important;
+        }
+
+        @media (min-width: 1440px) {
+            #site-header .header-email-link {
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.35rem !important;
+                white-space: nowrap !important;
+                font-size: 12.5px !important;
+                flex-shrink: 0 !important;
+            }
+        }
+
         /* Responsive Auto-adjusting Mega Menu */
         #site-header .nav-mega-menu {
             display: none;
@@ -508,17 +671,17 @@
         </div>
 
         <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="h-[70px] lg:h-[76px] flex items-center justify-between gap-4">
-                <a href="{{ url('/') }}" aria-label="Construction 360 Ltd Home" class="flex items-center shrink-0">
+            <div class="main-navbar-bar h-[76px] sm:h-[84px] lg:h-[88px] flex items-center justify-between gap-3 xl:gap-4 2xl:gap-8">
+                <a href="{{ url('/') }}" aria-label="Construction 360 Ltd Home" class="brand-logo-wrap flex items-center shrink-0">
                     @include('partials.logo', [
                     'idSuffix' => 'nav',
-                    'class' => 'max-h-10 w-auto max-w-[170px]',
+                    'class' => 'h-10 sm:h-11 lg:h-[48px] 2xl:h-[56px] w-auto max-w-[155px] sm:max-w-[200px] 2xl:max-w-[260px]',
                     'icon_only' => false,
                     'color_mode' => 'light',
                     ])
                 </a>
 
-                <nav id="desktop-nav" class="hidden xl:flex items-center self-stretch gap-6 2xl:gap-7">
+                <nav id="desktop-nav" class="items-center self-stretch gap-3 2xl:gap-6 min-w-0">
                     <a href="{{ url('/') }}" class="nav-link transition-colors">Home</a>
 
                     <div class="nav-dropdown">
@@ -600,31 +763,43 @@
                     </div>
                 </nav>
 
-                <div class="hidden lg:flex items-center gap-4 shrink-0">
-                    <div class="flex items-center gap-4">
-                        <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}" class="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#1a1a1a] hover:text-brand transition-colors whitespace-nowrap">
-                            <svg class="h-3.5 w-3.5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                {{-- Right: Contact info & CTA for Desktop / Large screens --}}
+                <div class="header-desktop-actions items-center gap-4 2xl:gap-6 shrink-0">
+                    <div class="flex items-center gap-3.5 2xl:gap-5 shrink-0">
+                        <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}" class="header-phone-link text-[#1a1a1a] hover:text-brand transition-colors whitespace-nowrap">
+                            <svg class="header-contact-icon h-4 w-4 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                             </svg>
                             <span>{{ $content['header_phone_display'] ?? ($content['header_phone'] ?? '0203 930 9629') }}</span>
                         </a>
-                        <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#1a1a1a] hover:text-brand transition-colors whitespace-nowrap">
-                            <svg class="h-3.5 w-3.5 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <a href="mailto:{{ $content['header_email'] ?? 'info@construction360.co' }}" class="header-email-link text-[#1a1a1a] hover:text-brand transition-colors whitespace-nowrap">
+                            <svg class="header-contact-icon h-4 w-4 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                             </svg>
                             <span>{{ $content['header_email'] ?? 'info@construction360.co' }}</span>
                         </a>
                     </div>
-                    <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.06em] text-white bg-[#111111] shadow-sm hover:bg-[#333] transition-colors">
+                    <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center justify-center px-4.5 2xl:px-6 py-2.5 2xl:py-3 rounded-full text-xs font-bold uppercase tracking-[0.08em] text-white bg-[#111111] shadow-sm hover:bg-[#333] transition-colors whitespace-nowrap shrink-0">
                         Get a Quote
                     </a>
                 </div>
 
-                <button id="menu-toggle" type="button" class="menu-toggle-btn xl:hidden p-2 focus:outline-none" aria-label="Open menu">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
-                    </svg>
-                </button>
+                {{-- Mobile & Tablet (< 1200px) Right Action Bar: Phone icon + Get a Quote + Hamburger --}}
+                <div class="header-mobile-actions items-center gap-2 sm:gap-3 shrink-0">
+                    <a href="tel:{{ $content['header_phone'] ?? '+442039309629' }}" class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-[#0f2a3a] hover:bg-brand/10 hover:text-brand transition-colors" aria-label="Call {{ $content['header_phone_display'] ?? 'us' }}" title="Call us">
+                        <svg class="h-4 w-4 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                        </svg>
+                    </a>
+                    <a href="#" onclick="openTenderModal(); return false;" class="inline-flex items-center justify-center px-3.5 sm:px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white bg-[#111111] shadow-sm hover:bg-[#333] transition-colors whitespace-nowrap">
+                        Get a Quote
+                    </a>
+                    <button id="menu-toggle" type="button" class="menu-toggle-btn p-2 rounded-lg focus:outline-none hover:bg-stone/60 transition-colors" aria-label="Open menu">
+                        <svg class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 7h16M4 12h16M4 17h16" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
 
