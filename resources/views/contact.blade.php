@@ -30,7 +30,7 @@
     @endphp
 
     {{-- Intro + estimate-style form --}}
-    <section class="relative bg-white overflow-hidden" style="padding-top: 7.5rem;">
+    <section class="relative bg-white overflow-hidden" style="padding-top: 10.5rem;">
         <div class="pointer-events-none absolute inset-0 bg-brand/5"></div>
         <div class="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-16 lg:pb-20">
             <div class="max-w-2xl mb-10 lg:mb-12">
