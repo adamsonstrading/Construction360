@@ -20,7 +20,7 @@
 @section('content')
     {{-- Light two-column hero --}}
     <section id="hero" class="relative bg-white">
-        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8" style="padding-top: 7.5rem; padding-bottom: 3.5rem;">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8" style="padding-top: 11rem; padding-bottom: 3.5rem;">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 items-center">
                 {{-- LEFT: copy --}}
                 <div class="max-w-xl lg:max-w-none">
