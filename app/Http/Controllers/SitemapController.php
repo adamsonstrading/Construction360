@@ -13,7 +13,13 @@ class SitemapController extends Controller
 {
     public function index()
     {
-        $canonicalBase = rtrim(config('app.url', 'https://construction360.co'), '/');
+        // Always emit the public canonical host. Production APP_URL is often still
+        // http://localhost, which makes Google Search Console reject every URL.
+        $configured = rtrim((string) config('app.url'), '/');
+        $isLocalHost = $configured === ''
+            || str_contains($configured, 'localhost')
+            || str_contains($configured, '127.0.0.1');
+        $canonicalBase = $isLocalHost ? 'https://construction360.co' : $configured;
 
         // Helper to format ISO 8601 (Atom) date string
         $formatDate = function ($date, $fallback = null) {

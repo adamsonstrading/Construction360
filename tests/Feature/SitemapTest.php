@@ -85,13 +85,29 @@ class SitemapTest extends TestCase
         $this->assertStringContainsString('<image:loc>https://construction360.co/images/services/structural.jpg</image:loc>', $content);
         $this->assertStringContainsString('<image:title>Structural Works</image:title>', $content);
 
-        // Assert no localhost or 127.0.0.1 leaks
+        // Assert no localhost or 127.0.0.1 leaks (even when APP_URL is misconfigured)
         $this->assertStringNotContainsString('localhost', $content);
         $this->assertStringNotContainsString('127.0.0.1', $content);
+        $this->assertStringNotContainsString('http://localhost', $content);
 
         // Verify valid XML parsing
         $xml = simplexml_load_string($content);
         $this->assertNotFalse($xml, 'Sitemap should be valid XML');
         $this->assertGreaterThanOrEqual(13, count($xml->url));
+    }
+
+    /**
+     * Misconfigured APP_URL (localhost) must never leak into sitemap locs.
+     */
+    public function test_sitemap_rejects_localhost_app_url(): void
+    {
+        config(['app.url' => 'http://localhost']);
+
+        $response = $this->get('/sitemap.xml');
+
+        $response->assertStatus(200);
+        $content = $response->getContent();
+        $this->assertStringContainsString('<loc>https://construction360.co/</loc>', $content);
+        $this->assertStringNotContainsString('http://localhost', $content);
     }
 }
